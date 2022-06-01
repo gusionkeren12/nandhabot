@@ -1,6 +1,6 @@
-from nksama import bot
+from nandhabot import bot
 import os
-from nksama.utils.sendlog import send_log
+from nandhabot.utils.sendlog import send_log
 from pyrogram import filters
 
 
