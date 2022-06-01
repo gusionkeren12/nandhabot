@@ -1,7 +1,7 @@
 
   
 from requests import post, get
-from nksama import bot
+from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
