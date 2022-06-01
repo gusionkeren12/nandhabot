@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message
-from nksama import bot
+from nandhabot import bot
 
 WEL_GIF = "https://telegra.ph/file/b616d3a126715d9b1aa46.mp4"
 
