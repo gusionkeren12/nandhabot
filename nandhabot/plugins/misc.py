@@ -5,7 +5,7 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types import Message
 from gpytranslate import Translator
-from nksama import bot, SUPPORT_CHAT
+from nandhabot import bot, SUPPORT_CHAT
 from urllib.parse import quote
 
 
