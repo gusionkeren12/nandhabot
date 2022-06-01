@@ -1,7 +1,7 @@
 import os
 from requests import get
 from pyrogram import filters
-from nksama import bot
+from nandhabot import bot
 
 
 @bot.on_message(filters.command(['git', 'github']))
