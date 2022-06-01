@@ -14,10 +14,10 @@ from pyrogram.types import (
 )
 from requests import post
 
-from nksama import dev_user
-from nksama.config import OWNER_ID
-from nksama import bot as app
-from nksama import bot
+from nandhabot import dev_user
+from nandhabot.config import OWNER_ID
+from nnandhabot import bot as app
+from nandhabot import bot
 
 
 def get_readable_time(seconds: int) -> str:
