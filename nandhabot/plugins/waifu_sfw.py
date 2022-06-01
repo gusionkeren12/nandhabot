@@ -85,3 +85,13 @@ def pat(_, m: Message):
        else:
           m.reply_animation(url)
     
+@bot.on_message(filters.command("waifu"))
+def waifu(_, m: Message):
+       reply = m.reply_to_message
+       if reply:
+           api = requests.get("https://api.waifu.pics/sfw/waifu").json()
+           url = api["url"]
+           reply.reply_photo(url)
+       else:
+          m.reply_photo(url)
+    
