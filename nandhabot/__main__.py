@@ -5,7 +5,7 @@ from nandhabot.config import SUPPORT_CHAT
 
 
 logging.basicConfig(
-    filename="nandhabot.txt",
+    filename="logs.txt",
     level=logging.INFO,
     filemode="a",
     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
