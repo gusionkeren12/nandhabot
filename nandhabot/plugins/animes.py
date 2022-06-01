@@ -1,4 +1,4 @@
-from nksama import bot
+from nandhabot import bot
 from pyrogram import *
 from pyrogram.types import *
 
