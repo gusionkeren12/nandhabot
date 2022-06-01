@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import Message as message
-from nksama import bot
+from nandhabot import bot
 
 
 @bot.on_message(filters.command("write"))
