@@ -5,7 +5,7 @@ from Python_ARQ import ARQ
 from telegraph import Telegraph
 StartTime = time.time()
 
-from nksama.config import *
+from nandhabot.config import *
 
 #edit yourself nksama/config.py
 OWNER_ID = OWNER_ID
@@ -23,12 +23,12 @@ BOT_ID = BOT_ID
 API_ID = os.environ.get("API_ID", None)
 API_HASH = os.environ.get("API_HASH", None)
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
-bot = Client("nksama", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
+bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 
 
 print("Bot is Working")
 
-help_message = []
+
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 telegraph = Telegraph()
