@@ -55,15 +55,6 @@ def poke(_,  m: Message):
     m.reply_animatiom(nekos.img(target))
 
     
-@bot.on_message(filters.command("waifu"))
-def waifu(_,  m: Message):
-    target = "waifu"
-    with open("temp.png", "wb") as f:
-        f.write(requests.get(nekos.img(target)).content)
-    img = Image.open("temp.png")
-    img.save("temp.webp", "webp")
-    m.reply_document(open("temp.webp", "rb"))
-    os.remove("temp.webp")
 
 
 @bot.on_message(filters.command("kiss"))
