@@ -1,11 +1,11 @@
-from nksama import bot
+from nandhabot import bot
 import logging
-import nksama.plugins
-from nksama.config import SUPPORT_CHAT
+import nandhabot.plugins
+from nandhabot.config import SUPPORT_CHAT
 
 
 logging.basicConfig(
-    filename="logs.txt",
+    filename="nandhabot.txt",
     level=logging.INFO,
     filemode="a",
     format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
