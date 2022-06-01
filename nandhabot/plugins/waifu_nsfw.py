@@ -7,20 +7,20 @@ import requests
 def hneko(_, m: Message):
     api = requests.get("https://api.waifu.pics/nsfw/neko").json()
     url = api["url"]
-    m.reply_animation(url)
+    m.reply_photo(url)
     
 @bot.on_message(filters.command("hwaifu"))
 def hwaifu(_, m: Message):
     api = requests.get("https://api.waifu.pics/nsfw/waifu").json()
     url = api["url"]
-    m.reply_animation(animation=url)
+    m.reply_photo(url)
    
 
 @bot.on_message(filters.command("trap"))
 def trap(_, m: Message):
     api = requests.get("https://api.waifu.pics/nsfw/trap").json()
     url = api["url"]
-    m.reply_animation(url)
+    m.reply_photo(url)
     
 
 @bot.on_message(filters.command("blowjob"))
