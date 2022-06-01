@@ -1,6 +1,6 @@
 import random
 
-from nksama import bot , SUPPORT_CHAT, UPDATES_CHANNEL
+from nandhabot import bot , SUPPORT_CHAT, UPDATES_CHANNEL
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
