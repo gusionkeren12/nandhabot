@@ -16,7 +16,7 @@ from requests import post
 
 from nandhabot import dev_user
 from nandhabot.config import OWNER_ID
-from nnandhabot import bot as app
+from nandhabot import bot as app
 from nandhabot import bot
 
 
