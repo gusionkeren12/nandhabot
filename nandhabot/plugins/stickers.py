@@ -10,9 +10,9 @@ from pyrogram.errors import (PeerIdInvalid, ShortnameOccupyFailed,
                              StickerPngNopng, UserIsBlocked)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from nksama import BOT_USERNAME, bot as app
-from nksama.utils.errors import capture_err
-from nksama.utils.files import (get_document_from_file_id,
+from nandhabot import BOT_USERNAME, bot as app
+from nandhabot.utils.errors import capture_err
+from nandhabot.utils.files import (get_document_from_file_id,
                              resize_file_to_sticker_size, upload_document)
 
 
