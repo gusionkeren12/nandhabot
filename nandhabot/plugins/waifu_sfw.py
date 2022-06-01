@@ -35,3 +35,13 @@ def smile(_, m: Message):
        else:
           m.reply_animation(url)
     
+@bot.on_message(filters.command("highfive"))
+def highfive(_, m: Message):
+       reply = m.reply_to_message
+       if reply:
+           api = requests.get("https://api.waifu.pics/sfw/highfive").json()
+           url = api["url"]
+           reply.reply_animation(url)
+       else:
+          m.reply_animation(url)
+    
