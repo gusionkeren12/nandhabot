@@ -23,4 +23,15 @@ def cry(_, m: Message):
            reply.reply_animation(url)
        else:
           m.reply_animation(url)
+      
+    
+@bot.on_message(filters.command("smile"))
+def smile(_, m: Message):
+       reply = m.reply_to_message
+       if reply:
+           api = requests.get("https://api.waifu.pics/sfw/smile").json()
+           url = api["url"]
+           reply.reply_animation(url)
+       else:
+          m.reply_animation(url)
     
