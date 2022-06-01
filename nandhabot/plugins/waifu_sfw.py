@@ -7,7 +7,7 @@ import requests
 def kill(_, m: Message):
       reply = m.reply_to_message
       if reply:
-          api = request.get("https://api.waifu.pics/sfw/kill").json()
+          api = requests.get("https://api.waifu.pics/sfw/kill").json()
           url = api["url"]
           reply.reply_animation(url)
       else:
@@ -18,7 +18,7 @@ def kill(_, m: Message):
 def cry(_, m: Message):
        reply = m.reply_to_message
        if reply:
-           api = request.get("https://api.waifu.pics/sfw/cry").json()
+           api = requests.get("https://api.waifu.pics/sfw/cry").json()
            url = api["url"]
            reply.reply_animation(url)
        else:
