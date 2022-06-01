@@ -2,7 +2,7 @@ import os
 from nandhabot.utils.fonts import Fonts
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message 
-from nnandhabot import bot
+from nandhabot import bot
 
 @bot.on_message(filters.command("font"))
 async def style_buttons(c, m: Message, cb=False):
