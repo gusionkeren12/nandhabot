@@ -1,1 +1,1 @@
-worker: python3 -m Waifu
+worker: python3 -m nandha
