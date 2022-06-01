@@ -1,4 +1,4 @@
-from nksama import aiohttpsession as session
+from nandhabot import aiohttpsession as session
 
 
 async def get(url: str, *args, **kwargs):
