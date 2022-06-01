@@ -2,8 +2,8 @@ import os
 
 from pyrogram import filters
 from pyrogram.types import Message
-from nksama import dev_user, bot
-from nksama.utils.sections import section
+from nandhabot import dev_user, bot
+from nandhabot.utils.sections import section
 
 async def get_user_info(user, already=False):
     if not already:
