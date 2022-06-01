@@ -9,3 +9,9 @@ def hneko(_, m: Message):
     url = api["url"]
     m.reply_photo(photo=url)
     
+@bot.on_message(filtees.command("hwaifu"))
+def hwaifu(_, m: Message):
+    api = requests.get("https://api.waifu.pics/nsfw/waifu").json()
+    url = api["url"]
+    m.reply_photo(photo=url)
+    
