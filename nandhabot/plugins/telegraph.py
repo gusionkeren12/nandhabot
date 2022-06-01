@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-from nksama import bot as app, telegraph
+from nandhabot import bot as app, telegraph
 from telegraph import upload_file
 
 
