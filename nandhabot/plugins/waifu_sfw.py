@@ -7,4 +7,4 @@ import requests
 def waifu(_, m: Message):
     api = request.get("https://api.waifu.pics/sfw/kill").json()
     url = api["url"]
-    m.reply_photo(url)
+    m.reply_animation(url)
