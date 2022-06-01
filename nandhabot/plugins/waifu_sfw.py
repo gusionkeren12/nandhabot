@@ -10,7 +10,7 @@ def kill(_, m: Message):
       url = api["url"]
       reply.reply_animation(url)
    
-  else:
+else:
     m.reply_animation(url)
 
 @bot.on_message(filters.command("cry"))
@@ -20,6 +20,6 @@ def cry(_, m: Message):
        url = api["url"]
        reply.reply_animation(url)
     
-   else:
+ else:
      m.reply_animation(url)
     
