@@ -50,8 +50,7 @@ def bore(_, m: Message):
           api = requests.get("https://nekos.best/api/v2/bored").json()
           x = api["results"]
           for y in x:
-          y = ['url']
-          reply.reply_animation(y)
+          reply.reply_animation(y["url"])
       else:
           api = requests.get("https://nekos.best/api/v2/bored").json()
           url = api["url"]
