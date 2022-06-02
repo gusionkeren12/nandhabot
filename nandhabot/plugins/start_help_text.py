@@ -45,6 +45,8 @@ help and commands!**
 HELP_BUTTON = [[
         InlineKeyboardButton('Anime', callback_data='anime_help'),
         InlineKeyboardButton('Admin', callback_data='admin_help'),
+        InlineKeyboardButton('SFW', callback_data='sfw_help'),
+        InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
         InlineKeyboardButton('Userinfo', callback_data='userinfo_help')]]
 
          
@@ -128,4 +130,22 @@ anime themed sfw:
 • /cry - reply to user cry😭.
 • /kick - reply to user kick😏.
 • /pat - reply to user pat😇.
+**using nekos.py:**
+/feed - feed react gif.
+/neko - nokes img.
+/wallpaper - anime wall. 
+/ngif - night gif.
+/tickle - tickle anime react.
+/gasm - gasm anime react. 
+/kiss - kiss a user😘.
+/poke - poke gif react.
+/cuddle - cuddle anime react. 
+/smug - smug reacts.
+/foxgirl - foxgirl img.
+/8ball - 8ball question & answer.
 """
+
+@bot.on_callback_query(filters.regex("sfw_help"))
+async def adminhelp(_, query: CallbackQuery):
+     await query.message.edit_caption(SFW_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
