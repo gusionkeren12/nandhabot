@@ -3,15 +3,15 @@ from pyrogram import filters
 from pyrogram.types import Message 
 import requests 
 
-@bot.on_message(filters.command("kill"))
-def kill(_, m: Message):
+@bot.on_message(filters.command("punch"))
+def punch(_, m: Message):
       reply = m.reply_to_message
       if reply:
-          api = requests.get("https://nekos.best/api/v2/kill").json()
+          api = requests.get("https://nekos.best/api/v2/punch").json()
           url = api["url"]
           reply.reply_animation(url)
       else:
-          api = requests.get("https://nekos.best/api/v2/kill").json()
+          api = requests.get("https://nekos.best/api/v2/punch").json()
           url = api["url"]
           m.reply_animation(animation=url)
  
