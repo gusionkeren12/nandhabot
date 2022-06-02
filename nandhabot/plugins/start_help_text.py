@@ -45,7 +45,7 @@ help and commands!**
 HELP_BUTTON = [[
         InlineKeyboardButton('ANIME', callback_data='anime_help'),
         InlineKeyboardButton('ADMIN', callback_data='admin_help'),
-        InlineKeyboardButton('SFW', callback_data='sfw_help'),
+        InlineKeyboardButton('NEKOS', callback_data='nekos_help'),
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
         InlineKeyboardButton('INFO', callback_data='userinfo_help')]]
@@ -119,7 +119,7 @@ usage of admin cmds:
 async def adminhelp(_, query: CallbackQuery):
      await query.message.edit_caption(ADMIN_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
-SFW_TEXT = """
+NEKOS_TEXT = """
 anime themed sfw:
 **using: waifu.pics**
 • /slap - slap a user😠.
@@ -146,9 +146,9 @@ anime themed sfw:
 /8ball - 8ball question & answer.
 """
 
-@bot.on_callback_query(filters.regex("sfw_help"))
+@bot.on_callback_query(filters.regex("nekos_help"))
 async def sfwhelp(_, query: CallbackQuery):
-     await query.message.edit_caption(SFW_TEXT,
+     await query.message.edit_caption(NEKOS_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 
 NSFW_TEXT = """
