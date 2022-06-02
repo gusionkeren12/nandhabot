@@ -1,4 +1,4 @@
-import os
+import os, random 
 import requests
 from pyrogram import filters
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
