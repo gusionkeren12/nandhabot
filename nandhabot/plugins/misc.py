@@ -10,7 +10,7 @@ from urllib.parse import quote
 
 @bot.on_message(filters.command("wall"))
 async def wall(_, m: Message):
-       search = message.text.split(None, 1)[1]
+       search = m.text.split(None, 1)[1]
        x = await arq.wall(search)
        y = x.result
        photo = await m.reply_photo(random.choice(y).url_image)
