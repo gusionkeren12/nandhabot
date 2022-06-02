@@ -1,4 +1,4 @@
-from nandhabot import bot
+from nandhabot import bot #nekos.best
 from pyrogram import filters 
 from pyrogram.types import Message 
 import requests 
@@ -7,11 +7,11 @@ import requests
 def kill(_, m: Message):
       reply = m.reply_to_message
       if reply:
-          api = requests.get("https://api.waifu.pics/sfw/kill").json()
+          api = requests.get("https://nekos.best/api/v2/kill").json()
           url = api["url"]
           reply.reply_animation(url)
       else:
-          api = requests.get("https://api.waifu.pics/sfw/kill").json()
+          api = requests.get("https://nekos.best/api/v2/kill").json()
           url = api["url"]
           m.reply_animation(animation=url)
  
