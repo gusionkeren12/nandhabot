@@ -11,7 +11,7 @@ def kill(_, m: Message):
           url = api["url"]
           reply.reply_animation(url)
       else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
  
 
 @bot.on_message(filters.command("cry"))
@@ -22,7 +22,7 @@ def cry(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
       
     
 @bot.on_message(filters.command("smile"))
@@ -33,7 +33,7 @@ def smile(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("highfive"))
 def highfive(_, m: Message):
@@ -43,7 +43,7 @@ def highfive(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("slap"))
 def slap(_, m: Message):
@@ -53,7 +53,7 @@ def slap(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("kick"))
 def kick(_, m: Message):
@@ -63,7 +63,7 @@ def kick(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("hug"))
 def hug(_, m: Message):
@@ -73,7 +73,7 @@ def hug(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("pat"))
 def pat(_, m: Message):
@@ -83,7 +83,7 @@ def pat(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(url)
+          m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("waifu"))
 def waifu(_, m: Message):
@@ -93,5 +93,5 @@ def waifu(_, m: Message):
            url = api["url"]
            reply.reply_photo(url)
        else:
-          m.reply_photo(url)
+          m.reply_photo(photo=url)
     
