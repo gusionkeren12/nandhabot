@@ -11,6 +11,8 @@ def kill(_, m: Message):
           url = api["url"]
           reply.reply_animation(url)
       else:
+          api = requests.get("https://api.waifu.pics/sfw/kill").json()
+          url = api["url"]
           m.reply_animation(animation=url)
  
 
@@ -22,6 +24,8 @@ def cry(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/cry").json()
+          url = api["url"]
           m.reply_animation(animation=url)
       
     
@@ -33,6 +37,8 @@ def smile(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/smile").json()
+          url = api["url"]
           m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("highfive"))
@@ -53,7 +59,10 @@ def slap(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
-          m.reply_animation(animation=url)
+           api = requests.get("https://api.waifu.pics/sfw/slap").json()
+           url = api["url"]
+           m.reply.reply_animation(url)      
+         
     
 @bot.on_message(filters.command("kick"))
 def kick(_, m: Message):
@@ -63,6 +72,8 @@ def kick(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/kick").json()
+          url = api["url"]     
           m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("hug"))
@@ -73,6 +84,8 @@ def hug(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/hug").json()
+          url = api["url"]  
           m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("pat"))
@@ -83,6 +96,8 @@ def pat(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/pat").json()
+          url = api["url"]
           m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("waifu"))
@@ -93,5 +108,7 @@ def waifu(_, m: Message):
            url = api["url"]
            reply.reply_photo(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/waifu").json()
+          url = api["url"]       
           m.reply_photo(photo=url)
     
