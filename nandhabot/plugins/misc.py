@@ -5,10 +5,16 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types import Message
 from gpytranslate import Translator
-from nandhabot import bot, SUPPORT_CHAT
+from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-
+@bot.on_message(filters.command("wall"))
+async def wall(_, m: Message):
+       search = message.text.split(None, 1)[1]
+       x = await arq.wall(search)
+       y = x.result
+       photo = await m.reply_photo(random.choice(y).url_image)
+       await m.reply_document(photo)
 
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
@@ -88,8 +94,6 @@ async def jsonify(_, message):
        
 @bot.on_message(filters.command("ud"))
 async def ud(_, message: Message):
-       if len(message.command) < 2:
-        return await message.reply_text("» Give some text")
         text = message.text.split(None, 1)[1]
         results = requests.get(
         f'https://api.urbandictionary.com/v0/define?term={text}').json()
