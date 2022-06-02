@@ -161,6 +161,7 @@ using: Waifu.pics
 • /blowjob - hentai blowjob gif.
 • /trap - hentai trap img.
 """
+
 @bot.on_callback_query(filters.regex("nsfw_help"))
 async def adminhelp(_, query: CallbackQuery):
      await query.message.edit_caption(NSFW_TEXT,
