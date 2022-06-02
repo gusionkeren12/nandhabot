@@ -46,6 +46,7 @@ HELP_BUTTON = [[
         InlineKeyboardButton('Anime', callback_data='anime_help'),
         InlineKeyboardButton('Admin', callback_data='admin_help'),
         InlineKeyboardButton('SFW', callback_data='sfw_help'),
+        ][
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
         InlineKeyboardButton('Userinfo', callback_data='userinfo_help')]]
 
@@ -130,7 +131,7 @@ anime themed sfw:
 • /cry - reply to user cry😭.
 • /kick - reply to user kick😏.
 • /pat - reply to user pat😇.
-**using nekos.py:**
+**using: nekos.py**
 /feed - feed react gif.
 /neko - nokes img.
 /wallpaper - anime wall. 
