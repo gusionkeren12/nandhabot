@@ -19,6 +19,93 @@ sleep, smile, smug, stare,
 think, thumbsup, tickle,
 wave, wink
 """
+
+
+@bot.on_message(filters.command("facepalm"))
+def facepalm(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/facepalm").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/facepalm").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+@bot.on_message(filters.command("stare"))
+def stare(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/stare").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/stare").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+      
+@bot.on_message(filters.command("pout"))
+def pout(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/pout").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/pout").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+@bot.on_message(filters.command("handhold"))
+def handhold(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/handhold").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/handhold").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+@bot.on_message(filters.command("wave"))
+def wave(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/wave").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/wave").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+@bot.on_message(filters.command("blush"))
+def blush(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/blush").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/blush").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+
+@bot.on_message(filters.command("neko"))
+def neko(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/neko").json()
+          url = api["results"][0]['url']
+          reply.reply_photo(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/neko").json()
+          url = api["results"][0]['url']
+          m.reply_photo(url)
+
 @bot.on_message(filters.command("dance"))
 def dance(_, m: Message):
       reply = m.reply_to_message
@@ -176,6 +263,7 @@ def punch(_, m: Message):
           url = api["results"][0]['url']
           m.reply_animation(animation=url)
  
+
 
 @bot.on_message(filters.command("cry"))
 def cry(_, m: Message):
