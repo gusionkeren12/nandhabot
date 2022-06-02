@@ -11,10 +11,11 @@ from pyrogram.types import Message
 
 
 
+
 @bot.on_message(filters.command("feed"))
 def feed(_,  m: Message):
     target = "feed"
-    m.reply_video(nekos.img(target))
+    m.reply_animation(nekos.img(target))
     
 @bot.on_message(filters.command("neko"))
 def neko(_,  m: Message):
@@ -30,13 +31,13 @@ def wallpaper(_,  m: Message):
 @bot.on_message(filters.command("ngif"))
 def ngif(_,  m: Message):
     target = "ngif"
-    m.reply_video(nekos.img(target))
+    m.reply_animation(nekos.img(target))
 
 
 @bot.on_message(filters.command("tickle"))
 def tickle(_,  m: Message):
     target = "tickle"
-    m.reply_video(nekos.img(target))
+    m.reply_animatiin(nekos.img(target))
 
 @bot.on_message(filters.command("gasm"))
 def gasm(_,  m: Message):
