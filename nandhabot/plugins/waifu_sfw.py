@@ -63,7 +63,7 @@ def slap(_, m: Message):
        else:
            api = requests.get("https://api.waifu.pics/sfw/slap").json()
            url = api["url"]
-           m.reply.reply_animation(url)      
+           m.reply_animation(url)      
          
     
 @bot.on_message(filters.command("kick"))
