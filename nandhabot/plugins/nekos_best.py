@@ -24,11 +24,11 @@ def dance(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/dance").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/dance").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("baka"))
@@ -36,11 +36,11 @@ def baka(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/baka").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/baka").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("bore"))
@@ -48,12 +48,11 @@ def bore(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/bored").json()
-          x = api["results"]
-          for y in x:
-          reply.reply_animation(y["url"])
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/bored").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 
@@ -62,11 +61,11 @@ def laugh(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/laugh").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/laugh").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("smug"))
@@ -74,11 +73,11 @@ def smug(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/smug").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/smug").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("thumbsup"))
@@ -86,11 +85,11 @@ def thumbsup(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/thumbsup").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/thumbsup").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("shoot"))
@@ -98,11 +97,11 @@ def shoot(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/shoot").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/shoot").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("tickle"))
@@ -110,11 +109,11 @@ def tickle(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/tickle").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/tickle").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("feed"))
@@ -122,11 +121,11 @@ def feed(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/feed").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/feed").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("think"))
@@ -134,11 +133,11 @@ def think(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/think").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/think").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("wink"))
@@ -146,11 +145,11 @@ def wink(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/wink").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/wink").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("sleep"))
@@ -158,11 +157,11 @@ def sleep(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/sleep").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/sleep").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
 
 @bot.on_message(filters.command("punch"))
@@ -170,11 +169,11 @@ def punch(_, m: Message):
       reply = m.reply_to_message
       if reply:
           api = requests.get("https://nekos.best/api/v2/punch").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           reply.reply_animation(url)
       else:
           api = requests.get("https://nekos.best/api/v2/punch").json()
-          url = api["url"]
+          url = api["results"][0]['url']
           m.reply_animation(animation=url)
  
 
