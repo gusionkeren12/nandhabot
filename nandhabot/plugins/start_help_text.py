@@ -121,29 +121,15 @@ async def adminhelp(_, query: CallbackQuery):
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 NEKOS_TEXT = """
 anime themed sfw:
-**using: waifu.pics**
-• /slap - slap a user😠.
-• /hug - hug a user🤗.
-• /kill - kill a user😈.
-• /smile - just smile😊.
-• /waifu - waifu images.
-• /highfive - high a user🖐.
-• /cry - reply to user cry😭.
-• /kick - reply to user kick😏.
-• /pat - reply to user pat😇.
-**using: nekos.py**
-/feed - feed react gif.
-/neko - nokes img.
-/wallpaper - anime wall. 
-/ngif - night gif.
-/tickle - tickle anime react.
-/gasm - gasm anime react. 
-/kiss - kiss a user😘.
-/poke - poke gif react.
-/cuddle - cuddle anime react. 
-/smug - smug reacts.
-/foxgirl - foxgirl img.
-/8ball - 8ball question & answer.
+image:
+neko, waifu
+animation:
+cry, kill, smile,
+highfive, slap, kick,  hug, 
+pat, punch, sleep, wink, think, feed, 
+tickle, shoot, thumbsup, smug, laugh,bore, baka,
+dance, blush, facepalm, stare, pout, handhold, 
+wave
 """
 
 @bot.on_callback_query(filters.regex("nekos_help"))
