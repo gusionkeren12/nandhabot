@@ -49,6 +49,8 @@ def highfive(_, m: Message):
            url = api["url"]
            reply.reply_animation(url)
        else:
+          api = requests.get("https://api.waifu.pics/sfw/highfive").json()
+          url = api["url"]      
           m.reply_animation(animation=url)
     
 @bot.on_message(filters.command("slap"))
