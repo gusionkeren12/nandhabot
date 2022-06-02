@@ -28,7 +28,20 @@ def cry(_, m: Message):
           url = api["url"]
           m.reply_animation(animation=url)
       
-    
+   
+@bot.on_message(filters.command("kill"))
+def kill(_, m: Message):
+       reply = m.reply_to_message
+       if reply:
+           api = requests.get("https://api.waifu.pics/sfw/kill").json()
+           url = api["url"]
+           reply.reply_animation(url)
+       else:
+          api = requests.get("https://api.waifu.pics/sfw/kill").json()
+          url = api["url"]
+          m.reply_animation(animation=url)
+      
+      
 @bot.on_message(filters.command("smile"))
 def smile(_, m: Message):
        reply = m.reply_to_message
