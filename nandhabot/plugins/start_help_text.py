@@ -48,7 +48,7 @@ HELP_BUTTON = [[
         InlineKeyboardButton('SFW', callback_data='sfw_help'),
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
-        InlineKeyboardButton('U-GINFO', callback_data='userinfo_help')]]
+        InlineKeyboardButton('INFO', callback_data='userinfo_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -147,7 +147,7 @@ anime themed sfw:
 """
 
 @bot.on_callback_query(filters.regex("sfw_help"))
-async def adminhelp(_, query: CallbackQuery):
+async def sfwhelp(_, query: CallbackQuery):
      await query.message.edit_caption(SFW_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 
@@ -163,7 +163,7 @@ using: Waifu.pics
 """
 
 @bot.on_callback_query(filters.regex("nsfw_help"))
-async def adminhelp(_, query: CallbackQuery):
+async def nsfwhelp(_, query: CallbackQuery):
      await query.message.edit_caption(NSFW_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 
