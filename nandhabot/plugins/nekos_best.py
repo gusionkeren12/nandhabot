@@ -2,23 +2,46 @@ from nandhabot import bot #nekos.best
 from pyrogram import filters 
 from pyrogram.types import Message 
 import requests 
-"""
-Images (.png)
-kitsune, neko, waifu
 
-GIFs (.gif)
-baka, bite, 
-blush, bored,
-cry, cuddle, dance, 
-facepalm, feed, 
-handhold, happy, 
-highfive, hug, kick,kiss,
-laugh, pat, poke, pout, 
-punch, shoot, shrug, slap, 
-sleep, smile, smug, stare, 
-think, thumbsup, tickle,
-wave, wink
-"""
+
+
+@bot.on_message(filters.command("cuddle"))
+def cuddle(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/cuddle").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/cuddle").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+
+@bot.on_message(filters.command("shrug"))
+def shrug(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/shrug").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/shrug").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
+
+      
+@bot.on_message(filters.command("poke"))
+def poke(_, m: Message):
+      reply = m.reply_to_message
+      if reply:
+          api = requests.get("https://nekos.best/api/v2/poke").json()
+          url = api["results"][0]['url']
+          reply.reply_animation(url)
+      else:
+          api = requests.get("https://nekos.best/api/v2/poke").json()
+          url = api["results"][0]['url']
+          m.reply_animation(animation=url)
 
 
 @bot.on_message(filters.command("facepalm"))
