@@ -150,3 +150,19 @@ anime themed sfw:
 async def adminhelp(_, query: CallbackQuery):
      await query.message.edit_caption(SFW_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
+
+NSFW_TEXT = """
+this type of plugins fully Hentai 🔞
+so don't use public groups
+using: Waifu.pics
+
+• /hneko - hentai nekos img.
+• /hwaifu - hentai waifu img.
+• /blowjob - hentai blowjob gif.
+• /trap - hentai trap img.
+"""
+@bot.on_callback_query(filters.regex("nsfw_help"))
+async def adminhelp(_, query: CallbackQuery):
+     await query.message.edit_caption(NSFW_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+
