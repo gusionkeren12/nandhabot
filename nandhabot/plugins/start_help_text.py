@@ -125,14 +125,16 @@ anime themed sfw:
 neko, waifu
 
 **animation:**
-cry, kill, smile, highfive, 
-slap, kick,  hug, pat,
-punch, sleep, wink, think, 
-feed, tickle, shoot, thumbsup,
-smug, laugh, bore, baka,
-dance, blush, facepalm, stare, 
-pout, handhold, wave, cuddle, 
-poke, shrug
+cry, kill, smile, 
+highfive, slap, kick, 
+hug, pat, punch,
+sleep, wink, think, 
+feed, tickle, shoot, 
+thumbsup, smug, laugh, 
+bore, baka, dance,
+blush, facepalm, stare, 
+pout, handhold, wave, 
+cuddle, poke, shrug
 """
 
 @bot.on_callback_query(filters.regex("nekos_help"))
