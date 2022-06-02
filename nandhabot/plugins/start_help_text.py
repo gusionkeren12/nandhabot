@@ -43,12 +43,12 @@ help and commands!**
 """
 
 HELP_BUTTON = [[
-        InlineKeyboardButton('Anime', callback_data='anime_help'),
-        InlineKeyboardButton('Admin', callback_data='admin_help'),
+        InlineKeyboardButton('ANIME', callback_data='anime_help'),
+        InlineKeyboardButton('ADMIN', callback_data='admin_help'),
         InlineKeyboardButton('SFW', callback_data='sfw_help'),
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
-        InlineKeyboardButton('Userinfo', callback_data='userinfo_help')]]
+        InlineKeyboardButton('U-GINFO', callback_data='userinfo_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
