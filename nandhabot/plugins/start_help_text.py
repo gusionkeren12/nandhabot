@@ -125,4 +125,7 @@ anime themed sfw:
 • /smile - just smile😊.
 • /waifu - waifu images.
 • /highfive - high a user🖐.
+• /cry - reply to user cry😭.
+• /kick - reply to user kick😏.
+• /pat - reply to user pat😇.
 """
