@@ -8,13 +8,13 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-@bot.on_message(filters.command("wall"))
+@bot.on_message(filters.command("wall")) #thanks @h0daka for explain 
 async def wall(_, m: Message):
        search = m.text.split(None, 1)[1]
        x = await arq.wall(search)
        y = x.result
-       photo = await m.reply_photo(random.choice(y).url_image)
-       await m.reply_document(photo)
+       await m.reply_photo(random.choice(y).url_image)
+       await m.reply_document(random.choice(y).url_image)
 
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
