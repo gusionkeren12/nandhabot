@@ -63,8 +63,7 @@ async def help(_, query: CallbackQuery):
 async def close(_, query: CallbackQuery):
            query = query.message
            await query.delete()
-           await bot.send_message(query.chat.id, 
-                                  f"query message deleted by #{query.reply_to_message.from_user.first_name}")
+         
  
 ANIME_TEXT = """
 anime themed fun & search:
@@ -117,4 +116,13 @@ usage of admin cmds:
 async def adminhelp(_, query: CallbackQuery):
      await query.message.edit_caption(ADMIN_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
-
+SFW_TEXT = """
+anime themed sfw:
+**using: waifu.pics**
+• /slap - slap a user😠.
+• /hug - hug a user🤗.
+• /kill - kill a user😈.
+• /smile - just smile😊.
+• /waifu - waifu images.
+• /highfive - high a user🖐.
+"""
