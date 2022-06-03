@@ -1,6 +1,8 @@
 import io
 import sys
 import time
+import enums 
+import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
@@ -45,7 +47,7 @@ def pin(_, m):
   message_id = m.reply_to_message.id
   admin = bot.get_chat_member(m.chat.id, 
                                m.from_user.id,  
-                               filters='administrators')
+                               pyrogram.enums.ChatMemberStatus="ADMINISTRATOR")
   if m.from_user.id in admin:
      bot.pin_chat_message(m.chat.id, message_id)
      m.reply_text("pinned!")
