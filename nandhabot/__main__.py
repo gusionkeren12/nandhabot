@@ -26,7 +26,7 @@ PYRO - {}
 """
 
 @bot.on_message(filters.user(dev_user) & filters.command("alive"))
-def alive(_, m: Message):
+def async alive(_, m: Message):
     await msg = m.reply_text("Initialising")
     await msg.edit("Initialising ✪●●●●●")
     time.sleep(1)
