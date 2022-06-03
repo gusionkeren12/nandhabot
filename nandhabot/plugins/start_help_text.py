@@ -1,5 +1,6 @@
 from pyrogram import filters, __version__ as pyro
 import random 
+Import time
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
