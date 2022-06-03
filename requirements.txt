@@ -2,7 +2,6 @@ emoji
 nekos.py
 bs4
 aiohttp
-SQLAlchemy
 uvloop
 pyrogram
 pillow
@@ -14,7 +13,7 @@ telegraph
 Python_ARQ
 pymongo
 motor
-tracemoepy
 gpytranslate
 jikanpy
 wikipedia
+enums
