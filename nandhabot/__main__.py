@@ -25,7 +25,7 @@ DEV - @NandhaxD
 PYRO - {}
 """
 
-@bot.on_message(filters.user(dev_user) & filters.command("alive"))
+@bot.on_message(filters.command("alive"))
 async def alive(_, m: Message):
     msg = await m.reply_text("Initialising")
     await msg.edit("Initialising ✪●●●●●")
