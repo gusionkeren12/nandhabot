@@ -13,12 +13,8 @@ async def wall(_, m: Message):
        search = m.text.split(None, 1)[1]
        x = await arq.wall(search)
        y = x.result
-       if not search:
-                await message.reply_text("Reply to a message to translate it!\n Use: /langs for translation codes")
-                return
-                if search:
-                      await m.reply_photo(random.choice(y).url_image)
-                      await m.reply_document(random.choice(y).url_image)
+       await m.reply_photo(random.choice(y).url_image)
+       await m.reply_document(random.choice(y).url_image)
 
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
