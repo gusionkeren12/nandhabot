@@ -1,11 +1,35 @@
-from pyrogram import filters
+from pyrogram import filters, __version__ as pyro
 import random 
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-from nandhabot import bot, SUPPORT_CHAT
+from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
 from pyrogram.types import CallbackQuery
 
+
+alive = """
+BOT - {}
+DEV - @NandhaxD
+PYRO - {}
+"""
+
+@bot.on_message(filters.command("alive"))
+async def alive(_, m: Message):
+    msg = await m.reply_text("Initialising")
+    await msg.edit("Initialising ✪●●●●●")
+    time.sleep(1)
+    await msg.edit("Initialising ✪✪●●●●")
+    time.sleep(1)
+    await msg.edit("Initialising ✪✪✪●●●")
+    time.sleep(1)
+    await msg.edit("Initialising ✪✪✪✪●●")
+    time.sleep(1)
+    await msg.edit("Initialising ✪✪✪✪✪●")
+    time.sleep(1)
+    await msg.edit("Initialising ✪✪✪✪✪✪")
+    time.sleep(1)
+    await msg.edit("✪︎Connection Successful✪")
+    await msg.edit(alive.format(BOT_USERNAME, pyro))
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
