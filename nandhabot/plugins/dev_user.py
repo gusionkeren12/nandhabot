@@ -41,7 +41,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 @bot.on_message(filters.command("pin")) 
-def (_, m):
+def pin(_, m):
   message_id = m.reply_to_message.id
   admin = bot.get_chat_members(m.chat.id, 
                                m.from_user.id,  
