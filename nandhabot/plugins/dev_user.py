@@ -47,7 +47,7 @@ def pin(_, m):
                                m.from_user.id,  
                                filter='administrators')
   if m.from_user.id in admin:
-     bot.pin_chat_member(m.chat.id, message_id)
+     bot.pin_chat_message(m.chat.id, message_id)
      m.reply_text("pinned!")
                   
 
