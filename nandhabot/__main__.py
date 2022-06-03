@@ -3,7 +3,7 @@ from pyrogram import filters, __version__ as pyro
 from pyrogram.types import Message 
 import logging
 import nandhabot.plugins
-from nandhabot.config import SUPPORT_CHAT, BOT_USERNAME, 
+from nandhabot.config import SUPPORT_CHAT, BOT_USERNAME
 
 
 logging.basicConfig(
