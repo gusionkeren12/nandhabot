@@ -4,7 +4,7 @@ from pyrogram.types import Message
 import logging
 import nandhabot.plugins
 from nandhabot.config import SUPPORT_CHAT, BOT_USERNAME
-
+from nandhabot import dev_user
 
 logging.basicConfig(
     filename="logs.txt",
