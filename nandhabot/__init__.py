@@ -3,7 +3,6 @@ import os , time
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telegraph import Telegraph
-from telethon import TelegramClient
 
 StartTime = time.time()
 
@@ -27,7 +26,6 @@ API_HASH = os.environ.get("API_HASH", None)
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
-telethn = TelegramClient("nandhabot", API_ID, API_HASH)
 
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
