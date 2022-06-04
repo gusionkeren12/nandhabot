@@ -3,7 +3,7 @@ import os , time
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telegraph import Telegraph
-from telethn import TelegramClient
+from telethon import TelegramClient
 
 StartTime = time.time()
 
