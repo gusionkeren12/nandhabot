@@ -8,7 +8,7 @@ from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
 from pyrogram.types import CallbackQuery
 
 
-alive = """
+ALIVE_TEXT = """
 BOT - {}
 DEV - @NandhaxD
 PYRO - {}
@@ -30,8 +30,8 @@ async def alive(_, m: Message):
     await msg.edit("Initialising ✪✪✪✪✪✪")
     time.sleep(1)
     await msg.edit("✪︎Connection Successful✪")
-    msg.delete()
-    await m.reply_text(alive.format(BOT_USERNAME, pyro))
+    await msg.delete()
+    await m.reply_text(text=ALIVE_TEXT.format(BOT_USERNAME, pyro))
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
