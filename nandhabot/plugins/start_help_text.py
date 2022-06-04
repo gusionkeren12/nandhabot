@@ -30,7 +30,8 @@ async def alive(_, m: Message):
     await msg.edit("Initialising ✪✪✪✪✪✪")
     time.sleep(1)
     await msg.edit("✪︎Connection Successful✪")
-    await msg.edit(alive.format(BOT_USERNAME, pyro))
+    msg.delete()
+    await msg.reply_text(alive.format(BOT_USERNAME, pyro))
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
