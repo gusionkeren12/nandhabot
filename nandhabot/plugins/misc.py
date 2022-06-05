@@ -18,9 +18,10 @@ async def wall(_, m: Message):
 
 @bot.on_message(filters.command("reddit"))
 async def reddit(_, m: Message):
-           await m.reply(" /reddit {query}")
-           query = m.text.split(None, 1)[1]
-           if query:
+          query = m.text.split(None, 1)[1]
+          If not query:
+                return await m.reply(" /reddit {query}")
+          if query:
                  x = await arq.reddit(query)
                  y = x.result
                  msg = await m.reply("searching now")
