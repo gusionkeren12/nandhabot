@@ -16,6 +16,16 @@ async def wall(_, m: Message):
        await m.reply_photo(random.choice(y).url_image)
        await m.reply_document(random.choice(y).url_image)
 
+@bot.on_message(filters.command("reddit"))
+async def reddit(_, m: Message):
+           query = m.text.split(None, 1)[1]
+           x = await arq.reddit(query)
+           y = x.result
+           msg = await m.reply("searching now")
+           await msg.delete()
+           await message.reply_photo(
+                            y.url,  caption=f"[{y.title}]({y.postLink})")
+
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
        #langs codes
