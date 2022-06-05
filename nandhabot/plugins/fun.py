@@ -1,4 +1,4 @@
-from pyrogram.types import Message, CallbackQuery
+from pyrogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters
 from nandhabot import bot, BOT_ID
 import random
