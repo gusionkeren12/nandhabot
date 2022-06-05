@@ -19,14 +19,14 @@ async def wall(_, m: Message):
 @bot.on_message(filters.command("reddit"))
 async def reddit(_, m: Message):
           query = m.text.split(None, 1)[1]
-          if not query:
-                  await m.reply(" /reddit {query}")
+          usage = await m.reply(" /reddit {query}")
+          await usage.delete()
           if query:
-                 x = await arq.reddit(query)
-                 y = x.result
-                 msg = await m.reply("searching now")
-                 await msg.delete()
-                 await m.reply_photo(
+                    x = await arq.reddit(query)
+                    y = x.result
+                    msg = await m.reply("searching now")
+                    await msg.delete()
+                    await m.reply_photo(
                             y.url,  caption=f"[{y.title}]({y.postLink})")
 
 
