@@ -4,44 +4,7 @@ from nandhabot import bot, BOT_ID
 import random
 import requests 
         
-        
-@bot.on_message(filters.command(["ameme","animememe"]))
-async def animememe(_, m):
-     res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
-     url = res['url']
-     text = res['title']
-     link = res['postLink']
-     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Change 🔂",
-                        callback_data="ameme",
-                    ),
-                ],
-            ],
-        ),
-    )
-        
-@bot.on_callback_query(filters.regex("ameme"))
-async def ameme(_, query: CallbackQuery):
-                   query = query.message
-                   await query.delete()
-                   res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
-                   url = res['url']
-                   text = res['title']
-                   link = res['postLink']
-                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        text="Change 🔂",
-                        callback_data="ameme",
-                    ),
-                ],
-            ],
-        ),
-    )
+       
 
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
@@ -89,13 +52,6 @@ async def gbams(_, m: Message):
       await gbam.edit_caption(gbam_text.format(chat.username,user1.mention,
                                             user2.mention,reason,count))
        
-@bot.on_message(filters.command('meme'))
-def meme(_,message: Message):
-      res = requests.get('https://some-random-api.ml/meme').json()
-      url = res['image']
-      text = res['caption']
-      message.reply_photo(photo=url, caption=text)
-
       
 @bot.on_message(filters.command("joke"))
 def joke(_, message: Message):
