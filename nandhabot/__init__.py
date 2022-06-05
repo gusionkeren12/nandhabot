@@ -27,8 +27,13 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 
+log.info("Starting bot client")
+bot.start()
+
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
+
+og.info("telegraph downloading")
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
 
