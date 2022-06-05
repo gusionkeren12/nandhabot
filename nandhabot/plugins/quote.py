@@ -3,8 +3,8 @@ from traceback import format_exc
 from pyrogram import filters
 from pyrogram.types import Message
 
-from KURUMIBOT import pgram, arq
-from KURUMIBOT.utils.errors import capture_err
+from nandhabot import bot as pgram, arq
+from nandhabot.utils.errors import capture_err
 
 
 async def quotify(messages: list):
@@ -102,7 +102,3 @@ async def quotly_func(client, message: Message):
         )
         e = format_exc()
         print(e)
-__mod_name__ = "Quote"
-__help__ = """   
-× /q - create quote
-"""
