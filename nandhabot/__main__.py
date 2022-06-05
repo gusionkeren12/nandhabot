@@ -43,7 +43,8 @@ async def start_bot():
 
 
 if __name__ == "__main__":
-    bot.run()
-    with bot:
-        bot.send_message(f"@{SUPPORT_CHAT}" , "Hello there I'm Now online")
-        
+    install()
+    with closing(loop):
+        with suppress(asyncio.exceptions.CancelledError):
+            loop.run_until_complete(start_bot())
+        loop.run_until_complete(asyncio.sleep(3.0)) 
