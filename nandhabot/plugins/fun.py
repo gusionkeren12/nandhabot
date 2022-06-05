@@ -5,6 +5,14 @@ import random
 import requests 
         
         
+@bot.on_message(filters.command(["ameme","animememe"]))
+async def animememe(_, m):
+     res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
+     url = res['url']
+      = res['title']
+     link = res['postLink']
+     await message.reply_photo(caption=f"[{text}](")
+        
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
     reply = m.reply_to_message
