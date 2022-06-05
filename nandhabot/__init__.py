@@ -52,7 +52,7 @@ bot.start()
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-og.info("telegraph downloading")
+log.info("telegraph downloading")
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
 
