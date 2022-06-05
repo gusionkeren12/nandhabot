@@ -25,34 +25,16 @@ API_ID = os.environ.get("API_ID", None)
 API_HASH = os.environ.get("API_HASH", None)
 BOT_TOKEN = os.environ.get("BOT_TOKEN", None)
 
-class Log:
-    def __init__(self, save_to_file=False, file_name="wbb.log"):
-        self.save_to_file = save_to_file
-        self.file_name = file_name
-
-    def info(self, msg):
-        print(f"[+]: {msg}")
-        if self.save_to_file:
-            with open(self.file_name, "a") as f:
-                f.write(f"[INFO]({time.ctime(time.time())}): {msg}\n")
-
-    def error(self, msg):
-        print(f"[-]: {msg}")
-        if self.save_to_file:
-            with open(self.file_name, "a") as f:
-                f.write(f"[ERROR]({time.ctime(time.time())}): {msg}\n")
-
-log = Log(True, "bot.log")
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 
-log.info("Starting bot client")
+print("Starting bot client")
 bot.start()
 
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 
-log.info("telegraph downloading")
+print("telegraph downloading")
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
 
