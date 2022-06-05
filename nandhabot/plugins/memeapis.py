@@ -8,7 +8,7 @@ import requests
 #in this plugins made by @NandhaxD in tg
 
 @bot.on_message(filters.command(["ameme","animememe"]))
-async def animememe(_, m):
+async def animememes(_, m):
      res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
      url = res['url']
      text = res['title']
@@ -46,7 +46,7 @@ async def ameme(_, query: CallbackQuery):
     )
                 
 @bot.on_message(filters.command("meme"))
-async def meme(_, m):
+async def memes(_, m):
      res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
      url = res['url']
      text = res['title']
@@ -64,7 +64,7 @@ async def meme(_, m):
     )
         
 @bot.on_callback_query(filters.regex("meme"))
-async def nmeme(_, query: CallbackQuery):
+async def memess(_, query: CallbackQuery):
                    query = query.message
                    await query.delete()
                    res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
@@ -84,7 +84,7 @@ async def nmeme(_, query: CallbackQuery):
     )
 
 @bot.on_message(filters.command(["hmeme","hentaimeme"]))
-async def hetaimeme(_, m):
+async def hetaimemes(_, m):
      res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
      url = res['url']
      text = res['title']
@@ -94,7 +94,7 @@ async def hetaimeme(_, m):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="hmeme",
+                        callback_data="hentaimeme",
                     ),
                 ],
             ],
@@ -114,7 +114,7 @@ async def hmeme(_, query: CallbackQuery):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="hmeme",
+                        callback_data="hentaimeme",
                     ),
                 ],
             ],
