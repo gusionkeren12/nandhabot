@@ -5,6 +5,8 @@ import random
 import requests 
         
         
+#in this plugins made by @NandhaxD in tg
+
 @bot.on_message(filters.command(["ameme","animememe"]))
 async def animememe(_, m):
      res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
