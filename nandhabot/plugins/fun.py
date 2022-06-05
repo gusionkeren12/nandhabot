@@ -11,7 +11,7 @@ async def animememe(_, m):
      url = res['url']
      text = res['title']
      link = res['postLink']
-     await message.reply_photo(url,caption=f"[{text}]({link})")
+     await m.reply_photo(url,caption=f"[{text}]({link})")
         
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
