@@ -23,7 +23,7 @@ async def reddit(_, m: Message):
            y = x.result
            msg = await m.reply("searching now")
            await msg.delete()
-           await message.reply_photo(
+           await m.reply_photo(
                             y.url,  caption=f"[{y.title}]({y.postLink})")
 
 @bot.on_message(filters.command(["lang", "langs"]))
