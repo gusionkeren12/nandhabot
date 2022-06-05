@@ -31,7 +31,17 @@ async def ameme(_, query: CallbackQuery):
                    url = res['url']
                    text = res['title']
                    link = res['postLink']
-                   await query.reply_photo(url,caption=f"[{text}]({link})")
+                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Change 🔂",
+                        callback_data="ameme",
+                    ),
+                ],
+            ],
+        ),
+    )
 
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
