@@ -9,9 +9,9 @@ import requests
 async def animememe(_, m):
      res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
      url = res['url']
-      = res['title']
+     text = res['title']
      link = res['postLink']
-     await message.reply_photo(caption=f"[{text}](")
+     await message.reply_photo(url,caption=f"[{text}]({link})")
         
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
