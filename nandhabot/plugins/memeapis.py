@@ -81,3 +81,40 @@ async def nmeme(_, query: CallbackQuery):
         ),
     )
 
+@bot.on_message(filters.command(["hmeme","hentaimeme"]))
+async def hetaimeme(_, m):
+     res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
+     url = res['url']
+     text = res['title']
+     link = res['postLink']
+     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Change 🔂",
+                        callback_data="hmeme",
+                    ),
+                ],
+            ],
+        ),
+    )
+        
+@bot.on_callback_query(filters.regex("hmeme"))
+async def hmeme(_, query: CallbackQuery):
+                   query = query.message
+                   await query.delete()
+                   res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
+                   url = res['url']
+                   text = res['title']
+                   link = res['postLink']
+                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Change 🔂",
+                        callback_data="hmeme",
+                    ),
+                ],
+            ],
+        ),
+    )
