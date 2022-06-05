@@ -28,7 +28,7 @@ async def get_user_info(user, already=False):
         "✪ Mention": [mention],
         "✪ Bot": is_bot,
         "✪ Developer": is_dev,
-        "✪ Bio": [bio],
+        "✪ Bio": {bio},
     }
     caption = section("User info results", body)
     return [caption, photo_id]
