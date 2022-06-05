@@ -30,6 +30,18 @@ class Log:
         self.save_to_file = save_to_file
         self.file_name = file_name
 
+    def info(self, msg):
+        print(f"[+]: {msg}")
+        if self.save_to_file:
+            with open(self.file_name, "a") as f:
+                f.write(f"[INFO]({time.ctime(time.time())}): {msg}\n")
+
+    def error(self, msg):
+        print(f"[-]: {msg}")
+        if self.save_to_file:
+            with open(self.file_name, "a") as f:
+                f.write(f"[ERROR]({time.ctime(time.time())}): {msg}\n")
+
 log = Log(True, "bot.log")
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
