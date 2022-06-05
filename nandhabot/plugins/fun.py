@@ -1,4 +1,4 @@
-from pyrogram.types import Message
+from pyrogram.types import Message, CallbackQuery
 from pyrogram import filters
 from nandhabot import bot, BOT_ID
 import random
@@ -13,6 +13,16 @@ async def animememe(_, m):
      link = res['postLink']
      await m.reply_photo(url,caption=f"[{text}]({link})")
         
+@bot.on_callback_query(filters.regex("ameme"))
+async def ameme(_, query: CallbackQuery):
+                   query = query.message
+                   await query.delete()
+                   res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
+                   url = res['url']
+                   text = res['title']
+                   link = res['postLink']
+                  await query.reply_photo(url,caption=f"[{text}]({link})")
+
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
     reply = m.reply_to_message
