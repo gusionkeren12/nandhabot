@@ -101,7 +101,7 @@ async def hetaimemes(_, m):
         ),
     )
         
-@bot.on_callback_query(filters.regex("hmeme"))
+@bot.on_callback_query(filters.regex("hentaimeme"))
 async def hmeme(_, query: CallbackQuery):
                    query = query.message
                    await query.delete()
