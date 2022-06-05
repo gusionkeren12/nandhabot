@@ -8,7 +8,7 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-@bot.on_message(filters.command("wall")) #thanks @h0daka for explain 
+@bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
        search = m.text.split(None, 1)[1]
        x = await arq.wall(search)
