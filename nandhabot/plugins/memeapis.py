@@ -62,7 +62,7 @@ async def meme(_, m):
     )
         
 @bot.on_callback_query(filters.regex("meme"))
-async def ameme(_, query: CallbackQuery):
+async def nmeme(_, query: CallbackQuery):
                    query = query.message
                    await query.delete()
                    res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
