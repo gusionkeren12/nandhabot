@@ -20,7 +20,7 @@ async def wall(_, m: Message):
 async def reddit(_, m: Message):
           query = m.text.split(None, 1)[1]
           if not query:
-                return await m.reply(" /reddit {query}")
+                  await m.reply(" /reddit {query}")
           if query:
                  x = await arq.reddit(query)
                  y = x.result
