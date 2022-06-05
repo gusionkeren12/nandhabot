@@ -23,9 +23,9 @@ async def reddit(_, m: Message):
            if query:
                  x = await arq.reddit(query)
                  y = x.result
-                msg = await m.reply("searching now")
-                await msg.delete()
-                await m.reply_photo(
+                 msg = await m.reply("searching now")
+                 await msg.delete()
+                 await m.reply_photo(
                             y.url,  caption=f"[{y.title}]({y.postLink})")
 
 
