@@ -11,7 +11,17 @@ async def animememe(_, m):
      url = res['url']
      text = res['title']
      link = res['postLink']
-     await m.reply_photo(url,caption=f"[{text}]({link})")
+     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(
+                        text="Change 🔂",
+                        callback_data="ameme",
+                    ),
+                ],
+            ],
+        ),
+    )
         
 @bot.on_callback_query(filters.regex("ameme"))
 async def ameme(_, query: CallbackQuery):
@@ -83,8 +93,3 @@ def joke(_, message: Message):
         text = res['joke']
         message.reply_text(text)
         
-@bot.on_message(filters.command("tickle"))
-def tickle (_, message: Message):
-        res = requests.get('https://nekos.best/tickle').json()
-        tickle = res['tickle']
-        message.reply_animation(tickle)
