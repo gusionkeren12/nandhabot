@@ -9,5 +9,3 @@ SUPPORT_CHAT = "vegetasupport"
 LOG_GROUP_ID = "-1001690512977"
 ARQ_API_KEY = "EXRDLG-UIJPNE-XGERYB-EUGFCY-ARQ"
 ARQ_API_URL = "https://arq.hamker.in"
-WALL_API_KEY = "awoo"
-
