@@ -33,5 +33,5 @@ async def inline_query_handler(client, query):
                     reply_markup=InlineKeyboardMarkup(
                         [[InlineKeyboardButton("Support",url="t.me/VegetaSupport", ),
                           InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"),
-                      ],[ InlineKeyboardButton("Share any thing! 🤝", switch_inline_query=""),]])
+                      ],[ InlineKeyboardButton("Share any thing! 🤝", switch_inline_query="")]]
                             
