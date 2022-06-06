@@ -1,5 +1,5 @@
 import random
-
+from nandhabot.utils.inlinehelper import *
 from nandhabot import bot , SUPPORT_CHAT, UPDATES_CHANNEL
 from pyrogram.types import (
     InlineKeyboardButton,
@@ -31,20 +31,9 @@ async def inline_query_handler(client, query):
                     title=f"🤝 Help",
                     description=f" 😎 About @VegetaRobot",
                     reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    "Support",
-                                    url="t.me/VegetaSupport",
-                                ),
-                               
-                                 InlineKeyboardButton(
-                                    "Updates",
-                                    url="t.me/VegetaUpdates"),
-                                ],
-                                 [
-                                     
-                                InlineKeyboardButton(
+                    [[ InlineKeyboardButton("Support", url="t.me/VegetaSupport",),
+                       InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"), 
+                     ],[InlineKeyboardButton(
                                     "Share any thing! 🤝", switch_inline_query=""
                                 ),
                             ]
@@ -53,3 +42,21 @@ async def inline_query_handler(client, query):
                 ),
             ],
         )
+        
+@bot.on_inline_query()
+async def inline_query_handler(client, query):
+    text = query.query.lower()
+    if text.split()[0] == "wall":
+            if len(text.split()) < 2:
+                return await client.answer_inline_query(
+                    query.id,
+                    results=answers,
+                    is_gallery=True,
+                    switch_pm_text="Wallpapers Search | wall [QUERY]",
+                    switch_pm_parameter="inline",
+                )
+            tex = text.split(None, 1)[1].strip()
+            answerss = await wall_func(answers, tex)
+            await client.answer_inline_query(
+                query.id, results=answerss, cache_time=2
+            )
