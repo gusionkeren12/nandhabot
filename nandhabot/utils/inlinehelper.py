@@ -1,3 +1,7 @@
+from nandhabot import arq
+from pyrogram.types import ( InlineQueryResultArticle, 
+                          InputTextMessageContent,  InlineQueryResultPhoto )
+
 async def wall_func(answers, text):
     results = await arq.wall(text)
     if not results.ok:
