@@ -56,14 +56,14 @@ async def memes(_, m):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="meme",
+                        callback_data="bmeme",
                     ),
                 ],
             ],
         ),
     )
         
-@bot.on_callback_query(filters.regex("meme"))
+@bot.on_callback_query(filters.regex("bmeme"))
 async def memess(_, query: CallbackQuery):
                    query = query.message
                    await query.delete()
@@ -76,7 +76,7 @@ async def memess(_, query: CallbackQuery):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="meme",
+                        callback_data="bmeme",
                     ),
                 ],
             ],
@@ -94,14 +94,14 @@ async def hetaimemes(_, m):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="hentaimeme",
+                        callback_data="cmeme",
                     ),
                 ],
             ],
         ),
     )
         
-@bot.on_callback_query(filters.regex("hentaimeme"))
+@bot.on_callback_query(filters.regex("cmeme"))
 async def hmeme(_, query: CallbackQuery):
                    query = query.message
                    await query.delete()
@@ -114,7 +114,7 @@ async def hmeme(_, query: CallbackQuery):
                 [
                     InlineKeyboardButton(
                         text="Change 🔂",
-                        callback_data="hentaimeme",
+                        callback_data="cmeme",
                     ),
                 ],
             ],
