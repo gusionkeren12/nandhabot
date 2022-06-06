@@ -1,5 +1,10 @@
+from nandhabot import bot as app,arq
 
+from pykeyboard import InlineKeyboard
 
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineQueryResultArticle, InlineQueryResultPhoto,
+                            InputTextMessageContent)
 
 keywords_list = [
     "image",
