@@ -1,19 +1,37 @@
-import traceback
 
-from nandhabot import bot as app
-from nandhabot.utils.inlinefuncs import *
+  
+import random
 
-__MODULE__ = "Inline"
-__HELP__ = """See inline for help related to inline"""
+from nandhabot import bot , SUPPORT_CHAT, UPDATES_CHANNEL
+from pyrogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InputTextMessageContent,
+    InlineQueryResultArticle,
+    InlineQueryResultPhoto,
+)
+
+text = """
+Hello! Dear Users
+I'm An Anime themed Smart VegetaRobot make your group's joyful bellow Using /help commands!!
+Powerd by @PegaBots
+"""
 
 
-@app.on_inline_query()
+@bot.on_inline_query()
 async def inline_query_handler(client, query):
-    try:
-        text = query.query.strip().lower()
-        answers = []
-        if text.strip() == "":
-            answerss = await inline_help_func(__HELP__)
-            await client.answer_inline_query(
-                query.id, results=answerss, cache_time=10
-            )
+    text = query.query.lower()
+    if text.split()[0] == "alive":
+        await client.answer_inline_query(
+            query.id,
+            results=[
+               InlineQueryResultPhoto(
+                    photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                    thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                    title=f"🤝 Help",
+                    description=f" 😎 About @VegetaRobot",
+                    reply_markup=InlineKeyboardMarkup(
+                        [[InlineKeyboardButton("Support",url="t.me/VegetaSupport", ),
+                          InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"),
+                      ],[ InlineKeyboardButton("Share any thing! 🤝", switch_inline_query=""),]])
+                            
