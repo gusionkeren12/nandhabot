@@ -1,9 +1,18 @@
 from nandhabot import bot as app, arq
 from nandhabot.utils.errors import *
 from pyrogram import filters 
+import io
+from requests import get
 
 
 is_downloading = False
+
+async def download_song(url):
+    async with session.get(url) as resp:
+        song = await resp.read()
+    song = BytesIO(song)
+    song.name = "a.mp3"
+    return song
 
 @app.on_message(filters.command("saavn"))
 async def jssong(_, message):
