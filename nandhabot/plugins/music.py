@@ -1,7 +1,7 @@
 from nandhabot import bot as app, arq
 from nandhabot.utils.errors import *
 from pyrogram import filters 
-import io import BytesIO
+from io import BytesIO
 from requests import get
 
 from nandhabot import aiohttpsession as session
