@@ -5,7 +5,6 @@ from pyrogram import filters
 
 
 @app.on_message(filters.command("saavn"))
-@capture_err
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
