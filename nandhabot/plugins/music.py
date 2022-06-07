@@ -3,6 +3,7 @@ from nandhabot.utils.errors import *
 from pyrogram import filters 
 
 
+is_downloading = False
 
 @app.on_message(filters.command("saavn"))
 async def jssong(_, message):
