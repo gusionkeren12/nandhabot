@@ -46,7 +46,7 @@ async def jssong(_, message):
             title=sname,
             performer=ssingers,
             duration=sduration,
-            caption=f"[{sname}]({slink}),
+            caption=f"[{sname}]({slink})",
         )
         await m.delete()
     except Exception as e:
