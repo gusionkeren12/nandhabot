@@ -44,9 +44,9 @@ async def jssong(_, message):
         await message.reply_audio(
             audio=song,
             title=sname,
-            caption=f"[{sname}]({slink}),
             performer=ssingers,
             duration=sduration,
+            caption=f"[{sname}]({slink}),
         )
         await m.delete()
     except Exception as e:
