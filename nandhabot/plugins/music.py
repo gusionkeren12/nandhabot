@@ -4,6 +4,8 @@ from pyrogram import filters
 import io
 from requests import get
 
+from nandhabot import aiohttpsession as session
+
 
 is_downloading = False
 
