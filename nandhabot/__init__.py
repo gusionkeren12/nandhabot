@@ -4,6 +4,12 @@ from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telegraph import Telegraph
 
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
+    level=logging.INFO,
+)
+
 StartTime = time.time()
 
 from nandhabot.config import *
