@@ -55,6 +55,16 @@ async def jssong(_, message):
     is_downloading = False
     song.close()
 
+from nandhabot.utils.http import post
+
+BASE = "https://batbin.me/"
+
+
+async def paste(content: str):
+    resp = await post(f"{BASE}api/v2/paste", data=content)
+    if not resp["success"]:
+        return
+    return BASE + resp["message"]
 
 @app.on_message(filters.command("lyrics"))
 async def lyrics_func(_, message):
