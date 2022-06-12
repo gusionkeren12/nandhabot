@@ -9,10 +9,10 @@ import secureme
 async def encrypt(_, m):
            reply = m.reply_to_message.text
            if not reply:
-                 await m.reply_text("reply to message encrypt")
+                return await m.reply_text("reply to message encrypt")
            if reply:
                    text = secureme.encrypt(reply)
-                    x = await m.reply_text("encrypting....")
+                   xext = await m.reply_text("encrypting....")
                     await x.edit(reply)
        
 
@@ -51,7 +51,7 @@ async def gbams(_, m: Message):
       if not reply:
        return await m.reply("reply someone:\n/gban or /gbam")
       user1 = m.from_user
-      reason = m.text.split(None, 1)[1]
+      reason = m.text.split(None, 1)[1] else None
       count = random.randint(10,30)
       user2 = reply.from_user
       chat = m.chat
