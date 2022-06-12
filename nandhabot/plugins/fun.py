@@ -13,7 +13,7 @@ async def encrypt(_, m):
            if reply:
                    encrypt = secureme.encrypt(reply)
                    text = await m.reply_text("encrypting....")
-                    await text.edit(encrypt)
+                   await text.edit(encrypt)
        
 
 @bot.on_message(filters.regex('good morning'))
