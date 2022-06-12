@@ -1,7 +1,6 @@
 import io
 import sys
 import time
-import enums 
 import pyrogram
 StartTime = time.time()
 import traceback
@@ -41,16 +40,6 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     ping_time += ":".join(time_list)
     return ping_time
-
-@bot.on_message(filters.command("pin")) 
-def pin(_, m):
-  message_id = m.reply_to_message.id
-  admin = bot.get_chat_member(m.chat.id, 
-                               m.from_user.id,  
-                               pyrogram.enums.ChatMemberStatus=="ADMINISTRATOR")
-  if m.from_user.id in admin:
-     bot.pin_chat_message(m.chat.id, message_id)
-     m.reply_text("pinned!")
                   
 
 @bot.on_message(filters.command('devlist'))
