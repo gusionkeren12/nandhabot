@@ -11,9 +11,9 @@ async def encrypt(_, m):
            if not reply:
                 return await m.reply_text("reply to message encrypt")
            if reply:
-                   text = secureme.encrypt(reply)
-                   xext = await m.reply_text("encrypting....")
-                    await x.edit(reply)
+                   encrypt = secureme.encrypt(reply)
+                   text = await m.reply_text("encrypting....")
+                    await text.edit(encrypt)
        
 
 @bot.on_message(filters.regex('good morning'))
