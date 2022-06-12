@@ -10,7 +10,8 @@ from urllib.parse import quote
 
 @bot.on_message(filters.command(["img","pic"]))
 async def img(_, m):
-       api = requests.get("https://apibu.herokuapp.com/api/y-images?query=doraemon").json()
+       query = m.text.split(None, 1)[1]
+       api = requests.get(f"https://apibu.herokuapp.com/api/y-images?query={query}").json()
        image_url = api['result']
        await m.reply_photo(random.choice(image_url))
        await m.reply_document(random.choice(image_url))
