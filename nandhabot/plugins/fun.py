@@ -9,11 +9,21 @@ import secureme
 async def encrypt(_, m):
            reply = m.reply_to_message.text
            if not reply:
-                return await m.reply_text("reply to message encrypt")
+              return await m.reply("reply to message encrypt")
            if reply:
                    encrypt = secureme.encrypt(reply)
                    text = await m.reply_text("encrypting....")
                    await text.edit(encrypt)
+
+@bot.on_message(filters.command("decrypt"))
+async def decrypt(_, m):
+           reply = m.reply_to_message.text
+           if not reply:
+              return await m.reply("reply to message encrypt")
+           if reply:
+                   decrypt = secureme.decrypt(reply)
+                   text = await m.reply_text("encrypting....")
+                   await text.edit(decrypt)
        
 
 @bot.on_message(filters.regex('good morning'))
