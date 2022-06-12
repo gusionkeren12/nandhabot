@@ -1,5 +1,4 @@
 emoji
-nekos.py
 bs4
 aiohttp
 uvloop
