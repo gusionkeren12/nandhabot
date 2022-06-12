@@ -3,7 +3,7 @@ from pyrogram.types import *
 from nandhabot import bot as Bot
 
 
-CALCULATE_TEXT = "Made by @FayasNoushad"
+CALCULATE_TEXT = "Made by @VegetaRobot"
 
 CALCULATE_BUTTONS = InlineKeyboardMarkup(
     [
@@ -81,7 +81,7 @@ async def cb_data(_, message):
             else:
                 text = message_text + data
             await message.message.edit_text(
-                text=f"{text}\n\n{CALCULATE_TEXT}",
+                text=f"{text}",
                 disable_web_page_preview=True,
                 reply_markup=CALCULATE_BUTTONS
             )
