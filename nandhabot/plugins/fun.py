@@ -51,7 +51,7 @@ async def gbams(_, m: Message):
       if not reply:
        return await m.reply("reply someone:\n/gban or /gbam")
       user1 = m.from_user
-      reason = m.text.split(None, 1)[1] else None
+      reason = m.text.split(None, 1)[1]
       count = random.randint(10,30)
       user2 = reply.from_user
       chat = m.chat
