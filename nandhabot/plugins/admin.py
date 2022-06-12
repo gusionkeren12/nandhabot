@@ -14,13 +14,13 @@ async def is_admins(chat_id: int):
 async def ban(_, m):
      reply = m.reply_to_message
      user = m.from_user.id
-     chat = m.chat
+     chat_id = m.chat.id
      if user not in (
-            await is_admins(chat.id)
+            await is_admins(chat_id)
         ):
             return await message.reply_text(
                 "You are not admin"
             )
-     if user in (await is_admins(chat.id)):
+     if user in (await is_admins(chat_id)):
          await bot.ban_chat_member(m.chat.id, reply.from_user.id)
          await m.reply_text(f"bammed! {reply.from_user.id}")
