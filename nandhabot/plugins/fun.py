@@ -3,7 +3,17 @@ from pyrogram import filters
 from nandhabot import bot, BOT_ID
 import random
 import requests 
-        
+import secureme
+
+@bot.on_message(filters.command("encrypt"))
+async def encrypt(_, m):
+           reply = m.reply_to_message.text
+           if not reply:
+                 await m.reply_text("reply to message encrypt")
+           if reply:
+                   text = secureme.encrypt(reply)
+                    x = await m.reply_text("encrypting....")
+                    await x.edit(reply)
        
 
 @bot.on_message(filters.regex('good morning'))
