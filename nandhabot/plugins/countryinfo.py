@@ -1,8 +1,7 @@
-
 from countryinfo import CountryInfo
-from nandhabot import bot
 from pyrogram import filters
 
+from nandhabot import bot
 
 
 @bot.on_message(filters.command(["country", "countryinfo"]))
@@ -86,5 +85,5 @@ Time Zones:- {tom}
 Top Level Domain:- {lanester}
 wikipedia:- {wiki}</b>
 By @VegetaRobot ✨.</b>
-"""              
+"""
     await m.reply_text(caption, disable_web_page_preview=True)

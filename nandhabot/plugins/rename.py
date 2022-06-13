@@ -1,10 +1,12 @@
-from nandhabot import bot
 import os
-from nandhabot.utils.sendlog import send_log
+
 from pyrogram import filters
 
+from nandhabot import bot
+from nandhabot.utils.sendlog import send_log
 
-@bot.on_message(filters.command('rename'))
+
+@bot.on_message(filters.command("rename"))
 def rename(_, message):
 
     try:

@@ -1,4 +1,4 @@
-from nandhabot import bot, SUPPORT_CHAT
+from nandhabot import SUPPORT_CHAT, bot
 
 
 def send_log(err, module):

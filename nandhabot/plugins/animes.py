@@ -1,15 +1,14 @@
-from nandhabot import bot
+import re
+
+import requests
+from jikanpy import Jikan
 from pyrogram import *
 from pyrogram.types import *
 
-from pyrogram.handlers import MessageHandler
-
-import re
-import requests
-from jikanpy import Jikan
-from jikanpy.exceptions import APIException
+from nandhabot import bot
 
 jikan = Jikan()
+
 
 @bot.on_message(filters.command("character"))
 async def character(_, msg: Message):
@@ -30,18 +29,21 @@ async def character(_, msg: Message):
         rep = f"<b>{name} ({kanji})</b>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{about}</i>"
-        
-        await msg.reply_text(rep,reply_markup=InlineKeyboardMarkup([ 
-        [InlineKeyboardButton('View 💫' , url=f"{url}")]
-    ]))
-        
+
+        await msg.reply_text(
+            rep,
+            reply_markup=InlineKeyboardMarkup(
+                [[InlineKeyboardButton("View 💫", url=f"{url}")]]
+            ),
+        )
+
 
 @bot.on_message(filters.command("anime"))
 async def anime(_, msg: Message):
     query = msg.text.split(None, 1)[1]
     res = ""
     res = jikan.search("anime", query)
-    res = res.get("results")[0].get("mal_id") # Grab first result
+    res = res.get("results")[0].get("mal_id")  # Grab first result
     if res:
         anime = jikan.anime(res)
         title = anime.get("title")
@@ -63,8 +65,8 @@ async def anime(_, msg: Message):
         duration = anime.get("duration")
         premiered = anime.get("premiered")
         image_url = anime.get("image_url")
-        url = anime.get("url")
-        trailer = anime.get("trailer_url")
+        anime.get("url")
+        anime.get("trailer_url")
     else:
         await msg.reply_text("No results found!")
         return
@@ -81,10 +83,10 @@ async def anime(_, msg: Message):
     rep += f"<b>Rating:</b> <code>{rating}</code>\n\n"
     rep += f"<a href='{image_url}'>\u200c</a>"
     rep += f"<i>{synopsis}</i>\n"
-    
+
     await msg.reply_text(rep)
-    
-    
+
+
 @bot.on_message(filters.command("upcoming"))
 async def upcoming(_, msg: Message):
     rep = "<b>Upcoming anime</b>\n"
@@ -97,7 +99,8 @@ async def upcoming(_, msg: Message):
         if len(rep) > 2000:
             break
     await msg.reply_text(rep)
-    
+
+
 @bot.on_message(filters.command("manga"))
 async def manga(_, msg: Message):
     query = msg.text.split(None, 1)[1]
@@ -118,7 +121,7 @@ async def manga(_, msg: Message):
         genres = genres[:-2]
         synopsis = manga.get("synopsis")
         image = manga.get("image_url")
-        url = manga.get("url")
+        manga.get("url")
         rep = f"<b>{title} ({japanese})</b>\n"
         rep += f"<b>Type:</b> <code>{type}</code>\n"
         rep += f"<b>Status:</b> <code>{status}</code>\n"
@@ -128,18 +131,19 @@ async def manga(_, msg: Message):
         rep += f"<b>Chapters:</b> <code>{chapters}</code>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{synopsis}</i>"
-        
+
         await msg.reply_text(rep)
 
-@bot.on_message(filters.command(["quote","animequote","quotes"]))
+
+@bot.on_message(filters.command(["quote", "animequote", "quotes"]))
 async def quote(_, message: Message):
     res = requests.get("https://animechan.vercel.app/api/random").json()
-    anime = res['anime']
-    character = res['character']
-    quote = res['quote']
+    anime = res["anime"]
+    character = res["character"]
+    quote = res["quote"]
 
     rep = f"**Anime** - `{anime}`\n"
     rep += f"**Character** - `{character}`\n"
     rep += f"**Quote** - `{quote}`"
-    
+
     await message.reply_text(rep)

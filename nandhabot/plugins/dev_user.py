@@ -1,7 +1,7 @@
 import io
 import sys
 import time
-import pyrogram
+
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
@@ -15,10 +15,10 @@ from pyrogram.types import (
 )
 from requests import post
 
+from nandhabot import bot
+from nandhabot import bot as app
 from nandhabot import dev_user
 from nandhabot.config import OWNER_ID
-from nandhabot import bot as app
-from nandhabot import bot
 
 
 def get_readable_time(seconds: int) -> str:
@@ -40,26 +40,26 @@ def get_readable_time(seconds: int) -> str:
     time_list.reverse()
     ping_time += ":".join(time_list)
     return ping_time
-                  
 
-@bot.on_message(filters.command('devlist'))
+
+@bot.on_message(filters.command("devlist"))
 def devlist(_, m):
-      if m.from_user.id in dev_user:
-         m.reply(str(dev_user))
-      else:
-          m.reply("only Devs can access this command!")
-  
-        
-@app.on_message(filters.user(OWNER_ID) & filters.command("sh", prefixes=['/', '.', '?', '-']))
+    if m.from_user.id in dev_user:
+        m.reply(str(dev_user))
+    else:
+        m.reply("only Devs can access this command!")
+
+
+@app.on_message(
+    filters.user(OWNER_ID) & filters.command("sh", prefixes=["/", ".", "?", "-"])
+)
 def sh(_, m):
     if m.from_user.id in dev_user:
         code = m.text.replace(m.text.split(" ")[0], "")
         x = run(code)
-        m.reply(
-            f"**SHELL**: `{code}`\n\n**OUTPUT**:\n`{x}`")
+        m.reply(f"**SHELL**: `{code}`\n\n**OUTPUT**:\n`{x}`")
     else:
         m.reply("only Devs can access this command!")
-
 
 
 def paste(text):
@@ -83,7 +83,6 @@ def sendlogs(_, m: Message):
     m.reply(x, disable_web_page_preview=True, reply_markup=InlineKeyboardMarkup(keyb))
 
 
-
 @bot.on_callback_query(filters.regex(r"sendfile"))
 def sendfilecallback(_, query: CallbackQuery):
     sender = query.from_user.id
@@ -97,7 +96,8 @@ def sendfilecallback(_, query: CallbackQuery):
         query.answer(
             "This Is A Developer's Restricted Command.You Don't Have Access To Use This."
         )
-      
+
+
 @app.on_message(filters.user(dev_user) & filters.command("eval"))
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
@@ -157,7 +157,6 @@ async def aexec(code, client, message):
     return await locals()["__aexec"](client, message)
 
 
-
 @app.on_message(filters.command("leave") & filters.user(dev_user))
 async def leave(client, message):
     if len(message.command) == 1:
@@ -172,18 +171,19 @@ async def leave(client, message):
         except RPCError as e:
             print(e)
 
+
 @app.on_message(filters.command("invitelink"))
 async def invitelink(client, message):
     chat_id = message.chat.id
     try:
         grouplink = await client.export_chat_invite_link(chat_id)
         await message.reply_text(f"{grouplink}")
-        
-    except Exception as e:
+
+    except Exception:
         pass
 
-    
-@app.on_message(filters.command("ping", prefixes=['/', '.', '?', '-']))
+
+@app.on_message(filters.command("ping", prefixes=["/", ".", "?", "-"]))
 async def ping(_, m):
     start_time = time.time()
     img = "https://telegra.ph/file/fb6a277156b2956f26aa1.jpg"
@@ -191,6 +191,7 @@ async def ping(_, m):
     ping_time = round((end_time - start_time) * 1000, 3)
     uptime = get_readable_time((time.time() - StartTime))
     ping_message = await m.reply_text("Processing ...")
-    await m.reply_photo(photo=img, caption=f"**🏓 PONG!!:** `{ping_time} ms`\n**🆙 UPTIME:** `{uptime}`")
+    await m.reply_photo(
+        photo=img, caption=f"**🏓 PONG!!:** `{ping_time} ms`\n**🆙 UPTIME:** `{uptime}`"
+    )
     await ping_message.delete()
-    

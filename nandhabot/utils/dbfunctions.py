@@ -1,7 +1,7 @@
-from typing import Dict
 from nandhabot import db
 
 restart_stagedb = db.restart_stage
+
 
 async def clean_restart_stage() -> dict:
     data = await restart_stagedb.find_one({"something": "something"})

@@ -1,13 +1,15 @@
 import os
-from requests import get
+
 from pyrogram import filters
+from requests import get
+
 from nandhabot import bot
 
 
-@bot.on_message(filters.command(['git', 'github']))
+@bot.on_message(filters.command(["git", "github"]))
 def git(_, message):
-    user = message.text.split(' ')[1]
-    res = get(f'https://api.github.com/users/{user}').json()
+    user = message.text.split(" ")[1]
+    res = get(f"https://api.github.com/users/{user}").json()
     data = f"""**Name**: {res['name']}
 **UserName**: {res['login']}
 **Link**: [{res['login']}]({res['html_url']})
@@ -19,9 +21,8 @@ def git(_, message):
 **Following**: {res['following']}
 """
     with open(f"{user}.jpg", "wb") as f:
-        kek = get(res['avatar_url']).content
+        kek = get(res["avatar_url"]).content
         f.write(kek)
 
     message.reply_photo(f"{user}.jpg", caption=data)
     os.remove(f"{user}.jpg")
-     
