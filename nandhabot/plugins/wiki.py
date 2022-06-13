@@ -6,12 +6,11 @@ from nandhabot import bot
 
 
 @bot.on_message(filters.command(["wiki", "Wikipedia"]))
-async def wikipediasearch(_, message: Message):
-    message.reply_to_message
-    query = message.text.split(None, 1)[1]
+async def wikipediasearch(_, m: Message):
+    query = m.text.split(None, 1)[1]
     if not query:
-        await message.reply_text(
-            "Invalid Syntax see help menu to know how to use this command"
+        await m.reply_text(
+            "`Invalid Syntax See Help Menu To Know How To Use This Command`"
         )
         return
     results = wikipedia.search(query)
@@ -23,6 +22,6 @@ async def wikipediasearch(_, message: Message):
             result += f"> [{s}]({url}) \n"
         except BaseException:
             pass
-    await message.reply_text(
-        "WikiPedia Search: {} \n\n Result: \n\n{}".format(query, result)
+    await m.reply_text(
+        "`WikiPedia Search:` {} \n\n Result: \n\n{}".format(query, result)
     )
