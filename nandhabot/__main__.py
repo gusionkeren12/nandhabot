@@ -4,6 +4,7 @@ import random
 import nandhabot.plugins
 from nandhabot.config import SUPPORT_CHAT
 from nandhabot.utils.dbfunctions import clean_restart_stage
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
@@ -31,7 +32,17 @@ if __name__ == "__main__":
             )
 
         else:
-            await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**")
+            await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                  [                  
+                       InlineKeyboardButton(
+                             text="[► Summon Me ◄]",
+                             url=f"https://t.me/VegetaRobot?startgroup=true")
+                     ] 
+                ]
+            ),
+        ) )
     except Exception:
         pass
  
