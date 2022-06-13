@@ -2,6 +2,7 @@ from nandhabot import bot, arq
 import logging #aafe
 import random
 import nandhabot.plugins
+from pyrogram import idle
 from nandhabot.config import SUPPORT_CHAT
 from nandhabot.utils.dbfunctions import clean_restart_stage
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -16,15 +17,14 @@ logging.basicConfig(
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 
-if __name__ == "__main__":
-    bot.run()
-    restart_data = clean_restart_stage()
-    x = arq.wall("vegeta")
+async def start_bot():
+    restart_data = await clean_restart_stage()
+    x = await arq.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
         if restart_data:
-            bot.edit_message_media(
+            await bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
                 random.choice(y).url_image,
@@ -32,7 +32,7 @@ if __name__ == "__main__":
             )
 
         else:
-            bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
+           await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
             reply_markup=InlineKeyboardMarkup(
                 [
                    [                  
@@ -44,5 +44,6 @@ if __name__ == "__main__":
             ),
         ) 
     except Exception as e:
-        bot.send_message("@VegetaSupport", e)
+        await bot.send_message("@VegetaSupport", e)
+        await idle
  
