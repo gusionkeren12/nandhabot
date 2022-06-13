@@ -64,15 +64,17 @@ async def gbams(_, m: Message):
       if not reply:
        return await m.reply("reply someone:\n/gban or /gbam")
       user1 = m.from_user
-      reason = m.text.split(None, 1)[1] else: None
+      reason = m.text.split(None, 1)[1]
       count = random.randint(10,30)
       user2 = reply.from_user
       chat = m.chat
+      if len(m.command) < 2:
+          return await m.reply("add a reason to gban")
       if reply.from_user.id == BOT_ID:
           return await m.reply_text("nigga I can't gban myself")
       if reply:
-           gbam = await m.reply_photo(gban_img,caption="Gbaning...")
-      await gbam.edit_caption(gbam_text.format(chat.username,user1.mention,
+          gbam = await m.reply_photo(gban_img,caption="Gbaning...")
+          await gbam.edit_caption(gbam_text.format(chat.username,user1.mention,
                                             user2.mention,reason,count))
        
       
