@@ -15,15 +15,15 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.INFO)
 loop = asyncio.get_event_loop()
 
-def start_bot():
-    bot.run()
-    restart_data = clean_restart_stage()
+async def start_bot():
+    await bot.run()
+    restart_data = await clean_restart_stage()
     x = arq.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
         if restart_data:
-            bot.edit_message_media(
+            await bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
                 media=random.choice(y).url_image,
@@ -31,7 +31,7 @@ def start_bot():
             )
 
         else:
-            bot.send_photo(
+            await bot.send_photo(
                 "@VegetaSupport",
                 photo=random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
@@ -47,7 +47,7 @@ def start_bot():
                 ),
             )
     except Exception as e:
-        bot.send_message("@VegetaSupport", text=f"**ERROR:** `{e}`")
+        await bot.send_message("@VegetaSupport", text=f"**ERROR:** `{e}`")
         pass
 
 if __name__ == "__main__":
