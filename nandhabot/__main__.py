@@ -5,13 +5,15 @@ import nandhabot.plugins
 from nandhabot.config import SUPPORT_CHAT
 from nandhabot.utils.dbfunctions import clean_restart_stage
 
+# enable logging
+FORMAT = "[VEGETA ROBOT] %(message)s"
 logging.basicConfig(
-    filename="logs.txt",
+    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
     level=logging.INFO,
-    filemode="a",
-    format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
-    datefmt="%H:%M:%S",
+    format=FORMAT,
+    datefmt="[%X]",
 )
+logging.getLogger("pyrogram").setLevel(logging.INFO)
 
 if __name__ == "__main__":
     bot.run()
