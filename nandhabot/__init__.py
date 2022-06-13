@@ -1,5 +1,10 @@
 import os
 import time
+import sys
+import glob
+import importlib
+import logging
+from pathlib import Path
 
 from aiohttp import ClientSession
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
@@ -32,8 +37,7 @@ bot = Client(
     "nandhabot",
     api_id=API_ID,
     api_hash=API_HASH,
-    bot_token=BOT_TOKEN,
-    plugins=dict(root="{}/plugins".format(__name__)),
+    bot_token=BOT_TOKEN
 )
 
 bot.run()
@@ -45,5 +49,25 @@ telegraph.create_account(short_name=BOT_USERNAME)
 print("Initializing MongoDB client")
 mongo_client = MongoClient(MONGO_URL)
 db = mongo_client.aasf
+
+def load_plugins(plugin_name):
+    path = Path(f"nandhabot/plugins/{plugin_name}.py")
+    name = "nandhabot.plugins.{}".format(plugin_name)
+    spec = importlib.util.spec_from_file_location(name, path)
+    load = importlib.util.module_from_spec(spec)
+    load.logger = logging.getLogger(plugin_name)
+    spec.loader.exec_module(load)
+    sys.modules["nandhabot.plugins." + plugin_name] = load
+    print("Imported --> " + plugin_name)
+
+path = "nandhabot/plugins/*.py"
+files = glob.glob(path)
+for name in files:
+    with open(name) as a:
+        thepath = Path(a.name)
+        plugin_name = thepath.stem
+        load_plugins(plugin_name.replace(".py", ""))
+
+
 
 dev_user = [1491497760]
