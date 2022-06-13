@@ -5,7 +5,7 @@ from pyrogram import filters
 
 
 
-@bot.on_message(filters.command(["ci", "countryinfo"]))
+@bot.on_message(filters.command(["country", "countryinfo"]))
 async def countryinfo(_, m):
     search = m.text.split(None, 1)[1]
     country = CountryInfo(search)
@@ -44,8 +44,6 @@ async def countryinfo(_, m):
     for hitler in iSo:
         po = iSo.get(hitler)
         iso += po + ",  "
-    fla = iSo.get("alpha2")
-    nox = fla.upper()
 
     languages = a.get("languages")
     lMAO = ""
@@ -87,6 +85,6 @@ Sub Region:- {sub}
 Time Zones:- {tom}
 Top Level Domain:- {lanester}
 wikipedia:- {wiki}</b>
-Gathered By @VegetaRobot ✨.</b>
+By @VegetaRobot ✨.</b>
 """              
     await m.reply_text(caption)
