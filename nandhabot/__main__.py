@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
         else:
             bot.send_photo(
-                f"@VegetaSupport",
+                "@VegetaSupport",
                 photo=random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
                 reply_markup=InlineKeyboardMarkup(
