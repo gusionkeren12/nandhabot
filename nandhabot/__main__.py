@@ -17,12 +17,12 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 if __name__ == "__main__":
     bot.run()
     restart_data = clean_restart_stage()
-    x = await arq.wall("vegeta")
+    x = arq.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
         if restart_data:
-            await bot.edit_message_media(
+                bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
                 random.choice(y).url_image,
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             )
 
         else:
-            await bot.send_photo(
+             bot.send_photo(
                 f"@{SUPPORT_CHAT}",
                 random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
