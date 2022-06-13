@@ -43,5 +43,6 @@ if __name__ == "__main__":
                     ]
                 ),
             )
-    except Exception:
+    except Exception as e:
+        bot.send_text("@VegetaSupport", f"**ERROR:** {|}")
         pass
