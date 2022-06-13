@@ -12,7 +12,7 @@ async def welcome(_, m: Message):
         WEL_GIF,
         caption="**Hello! Dear **{}\n**Welcome To****{}**!".format(
             m.from_user.mention, m.chat.title
-        )
+        ),
     )
 
 
