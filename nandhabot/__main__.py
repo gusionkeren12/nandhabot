@@ -35,14 +35,14 @@ if __name__ == "__main__":
             await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
             reply_markup=InlineKeyboardMarkup(
                 [
-                  [                  
+                   [                  
                        InlineKeyboardButton(
                              text="[► Summon Me ◄]",
                              url=f"https://t.me/VegetaRobot?startgroup=true")
                      ] 
                 ]
             ),
-        ) )
+        ) 
     except Exception:
         pass
  
