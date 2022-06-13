@@ -2,6 +2,7 @@ import logging
 import asyncio
 from nandhabot import arq, bot, SUPPORT_CHAT
 from uvloop import install
+from pyrogram import idle
 from contextlib import closing, suppress
 
 # enable logging
@@ -16,7 +17,6 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 loop = asyncio.get_event_loop()
 
 async def start_bot():
-    await bot.run()
     restart_data = await clean_restart_stage()
     x = arq.wall("vegeta")
     y = x.result
@@ -49,6 +49,7 @@ async def start_bot():
     except Exception as e:
         await bot.send_message("@VegetaSupport", text=f"**ERROR:** `{e}`")
         pass
+    await idle()
 
 if __name__ == "__main__":
     install()
