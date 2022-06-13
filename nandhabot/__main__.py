@@ -1,6 +1,6 @@
 import logging
 
-from nandhabot import bot
+from nandhabot import bot, arq
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
