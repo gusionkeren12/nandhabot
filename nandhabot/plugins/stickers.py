@@ -1,11 +1,20 @@
+
+import imghdr
 import os
 from asyncio import gather
+from traceback import format_exc
 
 from pyrogram import filters
-from pyrogram.types import Message
+from pyrogram.errors import (PeerIdInvalid, ShortnameOccupyFailed,
+                             StickerEmojiInvalid, StickerPngDimensions,
+                             StickerPngNopng, UserIsBlocked)
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from nandhabot import bot as app
+from nandhabot import BOT_USERNAME, bot as app
 from nandhabot.utils.errors import capture_err
+from nandhabot.utils.files import (get_document_from_file_id,
+                             resize_file_to_sticker_size, upload_document)
+
 
 MAX_STICKERS = (
     120  # would be better if we could fetch this limit directly from telegram

@@ -1,23 +1,20 @@
-import requests
+from pyrogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
-
 from nandhabot import bot
+import random
+import requests 
+        
+        
+#in this plugins made by @NandhaxD in tg
+#Oruthu Ulagam
 
-# in this plugins made by @NandhaxD in tg
-# Oruthu Ulagam
-
-
-@bot.on_message(filters.command(["ameme", "animememe"]))
+@bot.on_message(filters.command(["ameme","animememe"]))
 async def animememes(_, m):
-    res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await m.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+     res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
+     url = res['url']
+     text = res['title']
+     link = res['postLink']
+     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -28,20 +25,16 @@ async def animememes(_, m):
             ],
         ),
     )
-
-
+        
 @bot.on_callback_query(filters.regex("ameme"))
 async def ameme(_, query: CallbackQuery):
-    query = query.message
-    await query.delete()
-    res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await query.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+                   query = query.message
+                   await query.delete()
+                   res = requests.get("https://meme-api.herokuapp.com/gimme/animememes").json()
+                   url = res['url']
+                   text = res['title']
+                   link = res['postLink']
+                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -52,18 +45,14 @@ async def ameme(_, query: CallbackQuery):
             ],
         ),
     )
-
-
+                
 @bot.on_message(filters.command("meme"))
 async def memes(_, m):
-    res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await m.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+     res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
+     url = res['url']
+     text = res['title']
+     link = res['postLink']
+     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -74,20 +63,16 @@ async def memes(_, m):
             ],
         ),
     )
-
-
+        
 @bot.on_callback_query(filters.regex("bmeme"))
 async def memess(_, query: CallbackQuery):
-    query = query.message
-    await query.delete()
-    res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await query.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+                   query = query.message
+                   await query.delete()
+                   res = requests.get("https://meme-api.herokuapp.com/gimme/memes").json()
+                   url = res['url']
+                   text = res['title']
+                   link = res['postLink']
+                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -99,17 +84,13 @@ async def memess(_, query: CallbackQuery):
         ),
     )
 
-
-@bot.on_message(filters.command(["hmeme", "hentaimeme"]))
+@bot.on_message(filters.command(["hmeme","hentaimeme"]))
 async def hetaimemes(_, m):
-    res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await m.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+     res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
+     url = res['url']
+     text = res['title']
+     link = res['postLink']
+     await m.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -120,20 +101,16 @@ async def hetaimemes(_, m):
             ],
         ),
     )
-
-
+        
 @bot.on_callback_query(filters.regex("cmeme"))
 async def hmeme(_, query: CallbackQuery):
-    query = query.message
-    await query.delete()
-    res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
-    url = res["url"]
-    text = res["title"]
-    link = res["postLink"]
-    await query.reply_photo(
-        url,
-        caption=f"[{text}]({link})",
-        reply_markup=InlineKeyboardMarkup(
+                   query = query.message
+                   await query.delete()
+                   res = requests.get("https://meme-api.herokuapp.com/gimme/hentaimemes").json()
+                   url = res['url']
+                   text = res['title']
+                   link = res['postLink']
+                   await query.reply_photo(url,caption=f"[{text}]({link})",reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(

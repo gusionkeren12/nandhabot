@@ -1,15 +1,9 @@
 from pyrogram import filters
 from pyrogram.types import Message
-from pyrogram.types.bots_and_keyboards.inline_keyboard_button import (
-    InlineKeyboardButton,
-)
-from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import (
-    InlineKeyboardMarkup,
-)
+from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
+from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
+from nandhabot import bot as app, telegraph
 from telegraph import upload_file
-
-from nandhabot import bot as app
-from nandhabot import telegraph
 
 
 @app.on_message(filters.command("txt"))
@@ -27,26 +21,21 @@ async def paste(_, message: Message):
         page_name, html_content=(reply.text.html).replace("\n", "<br>")
     )
     return await message.reply(
-        f"**Posted:** {page['url']}",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("View 💫", url=f"{page['url']}")]]
-        ),
-        disable_web_page_preview=True,
+        f"**Posted:** {page['url']}",reply_markup=InlineKeyboardMarkup([ 
+        [InlineKeyboardButton('View 💫' , url=f"{page['url']}")]
+    ]),disable_web_page_preview=True,
     )
+        
 
-
-@app.on_message(filters.command("tm"))
-def tm(_, message):
+@app.on_message(filters.command('tm'))
+def tm(_,message):
     reply = message.reply_to_message
     if reply.media:
         path = reply.download()
         fk = upload_file(path)
         for x in fk:
             url = "https://telegra.ph" + x
-
-        message.reply_text(
-            f"**Posted:** {url}",
-            reply_markup=InlineKeyboardMarkup(
-                [[InlineKeyboardButton("View 💫", url=f"{url}")]]
-            ),
-        )
+        
+        message.reply_text(f"**Posted:** {url}",reply_markup=InlineKeyboardMarkup([ 
+        [InlineKeyboardButton('View 💫' , url=f"{url}")]
+    ]))

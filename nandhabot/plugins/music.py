@@ -1,13 +1,13 @@
+from nandhabot import bot as app, arq
+from nandhabot.utils.errors import *
+from pyrogram import filters 
 from io import BytesIO
-
-from pyrogram import filters
+from requests import get
 
 from nandhabot import aiohttpsession as session
-from nandhabot import arq
-from nandhabot import bot as app
+
 
 is_downloading = False
-
 
 async def download_song(url):
     async with session.get(url) as resp:
@@ -16,8 +16,7 @@ async def download_song(url):
     song.name = "a.mp3"
     return song
 
-
-@app.on_message(filters.command(["saavn", "song"]))
+@app.on_message(filters.command(["saavn","song"]))
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
@@ -55,3 +54,4 @@ async def jssong(_, message):
         return await m.edit(str(e))
     is_downloading = False
     song.close()
+

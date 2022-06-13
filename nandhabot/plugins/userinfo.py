@@ -2,10 +2,8 @@ import os
 
 from pyrogram import filters
 from pyrogram.types import Message
-
-from nandhabot import bot, dev_user
+from nandhabot import dev_user, bot
 from nandhabot.utils.sections import section
-
 
 async def get_user_info(user, already=False):
     if not already:
@@ -21,7 +19,7 @@ async def get_user_info(user, already=False):
     is_bot = user.is_bot
     photo_id = user.photo.big_file_id if user.photo else None
     is_dev = user_id in dev_user
-    body = {
+    body = { 
         "✪ ID": user_id,
         "✪ DC": dc_id,
         "✪ Name": [first_name],
@@ -94,7 +92,9 @@ async def info_func(_, message: Message):
 async def chat_info_func(_, message: Message):
     try:
         if len(message.command) > 2:
-            return await message.reply_text("**➢ Usage:**/ginfo [USERNAME|ID]")
+            return await message.reply_text(
+                "**➢ Usage:**/ginfo [USERNAME|ID]"
+            )
 
         if len(message.command) == 1:
             chat = message.chat.id
@@ -114,16 +114,13 @@ async def chat_info_func(_, message: Message):
         os.remove(photo)
     except Exception as e:
         await m.edit(e)
+        
+@bot.on_message(filters.command('id'))
+def id(_,message):
+  reply = message.reply_to_message
+  if reply:
+    message.reply_text(f"**Your id**: {message.from_user.id}\n**User id**: {reply.from_user.id}\n**chat id**: {message.chat.id}")
+  else:
+    message.reply(f"**Your id**: {message.from_user.id}\n**chat id**: {message.chat.id}")
 
 
-@bot.on_message(filters.command("id"))
-def id(_, message):
-    reply = message.reply_to_message
-    if reply:
-        message.reply_text(
-            f"**Your id**: {message.from_user.id}\n**User id**: {reply.from_user.id}\n**chat id**: {message.chat.id}"
-        )
-    else:
-        message.reply(
-            f"**Your id**: {message.from_user.id}\n**chat id**: {message.chat.id}"
-        )
