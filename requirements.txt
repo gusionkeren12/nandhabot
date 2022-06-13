@@ -16,3 +16,4 @@ gpytranslate
 jikanpy
 wikipedia
 secureme
+countryinfo
