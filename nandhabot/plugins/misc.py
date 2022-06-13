@@ -1,5 +1,6 @@
-import os, random 
+import os, random , io
 import requests
+from PIL import Image
 from pyrogram import filters
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
