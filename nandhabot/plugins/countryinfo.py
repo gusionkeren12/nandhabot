@@ -12,7 +12,12 @@ async def countryinfo(_, m):
                   a = country.info()
                   name = a.get("name")
                   capital = a.get("capital")
-     
+                  languages = a.get("languages")
+                  lMAO = ""
+                  for lmao in languages:
+                      lMAO += lmao + ",  "
+
+
 caption = """
 **Country**: `{}`
 **Capital**: `{}`
