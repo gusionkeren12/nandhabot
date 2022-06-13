@@ -1,10 +1,8 @@
 from nandhabot import bot, arq
-import logging #aasf
+import logging 
 import random
 import nandhabot.plugins
-from pyrogram import idle
 from nandhabot.config import SUPPORT_CHAT
-from nandhabot.utils.dbfunctions import clean_restart_stage
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # enable logging
@@ -16,7 +14,10 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 
+x = arq.wall("vegeta")
+y = x.result
+
 if __name__ == "__main__":
    bot.run()
-     with bot:
-           bot.send_message("hello! There I'm  Alive")
+    with bot:
+        bot.send_photo(f"@{SUPPORT_CHAT}",photo=random.choice(y).image_url,caption="Hello there I'm Now online")
