@@ -16,7 +16,7 @@ StartTime = time.time()
 
 from nandhabot.config import *
 
-# edit yourself nksama/config.py
+# edit yourself nandhabot/config.py
 OWNER_ID = OWNER_ID
 LOG_GROUP_ID = LOG_GROUP_ID
 BOT_USERNAME = BOT_USERNAME
