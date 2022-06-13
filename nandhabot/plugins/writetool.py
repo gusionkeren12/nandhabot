@@ -5,7 +5,7 @@ from nandhabot import bot
 
 
 @bot.on_message(filters.command("write"))
-async def handwriting(_, m : Message):
+async def handwriting(_, m: Message):
     if len(m.command) < 2:
         return await m.reply_text("`» Give some text to write...`")
     m = await m.reply_text("`» I writing please wait...`")
