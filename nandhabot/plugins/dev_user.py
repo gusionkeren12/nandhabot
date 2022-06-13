@@ -72,7 +72,7 @@ def paste(text):
     filters.command("logs", prefixes=[".", "/", ";", "," "*"]) & filters.user(dev_user)
 )
 def sendlogs(_, m: Message):
-    logs = run("tail logs.txt")
+    logs = run("tail log.txt")
     x = paste(logs)
     keyb = [
         [
