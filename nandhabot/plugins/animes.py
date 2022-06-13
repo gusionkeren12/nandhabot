@@ -65,8 +65,8 @@ async def anime(_, msg: Message):
         duration = anime.get("duration")
         premiered = anime.get("premiered")
         image_url = anime.get("image_url")
-        anime.get("url")
-        anime.get("trailer_url")
+        #anime.get("url")
+        #anime.get("trailer_url")
     else:
         await msg.reply_text("No results found!")
         return
@@ -120,8 +120,8 @@ async def manga(_, msg: Message):
         genres = "".join(genre.get("name") + ", " for genre in genre_lst)
         genres = genres[:-2]
         synopsis = manga.get("synopsis")
-        image = manga.get("image_url")
-        manga.get("url")
+        #image = manga.get("image_url")
+       # manga.get("url")
         rep = f"<b>{title} ({japanese})</b>\n"
         rep += f"<b>Type:</b> <code>{type}</code>\n"
         rep += f"<b>Status:</b> <code>{status}</code>\n"
