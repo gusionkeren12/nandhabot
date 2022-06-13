@@ -87,4 +87,4 @@ Top Level Domain:- {lanester}
 wikipedia:- {wiki}</b>
 By @VegetaRobot ✨.</b>
 """              
-    await m.reply_text(caption)
+    await m.reply_text(caption, disable_web_preview=True)
