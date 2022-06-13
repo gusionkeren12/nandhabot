@@ -36,6 +36,8 @@ bot = Client(
     plugins=dict(root="{}/plugins".format(__name__)),
 )
 
+bot.run()
+
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 telegraph = Telegraph()
