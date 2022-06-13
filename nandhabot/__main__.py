@@ -48,4 +48,5 @@ async def start_bot():
         await idle
 
 if __name__ == "__main__":
+   bot.run()
    start_bot()
