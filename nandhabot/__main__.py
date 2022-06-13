@@ -20,4 +20,4 @@ y = x.result
 if __name__ == "__main__":
    bot.run()
    with bot:
-        bot.send_photo(f"@{SUPPORT_CHAT}",photo=random.choice(y).image_url,caption="Hello there I'm Now online")
+        bot.send_photo(f"@{SUPPORT_CHAT}",photo=random.choice(y).url_image,caption="Hello there I'm Now online")
