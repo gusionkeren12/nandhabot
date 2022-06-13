@@ -17,4 +17,5 @@ jikanpy
 wikipedia
 secureme
 countryinfo
-flag
+
+enums
