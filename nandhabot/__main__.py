@@ -1,9 +1,10 @@
+from nandhabot import bot, arq
 import logging
-import asyncio
-from nandhabot import arq, bot, SUPPORT_CHAT
-from uvloop import install
-from pyrogram import idle
-from contextlib import closing, suppress
+import random
+import nandhabot.plugins
+from nandhabot.config import SUPPORT_CHAT
+from nandhabot.utils.dbfunctions import clean_restart_stage
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
@@ -14,11 +15,11 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
-#loop = asyncio.get_event_loop()
 
-async def start_bot():
+if __name__ == "__main__":
+    bot.run()
     restart_data = await clean_restart_stage()
-    x = arq.wall("vegeta")
+    x = await arq.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
@@ -26,30 +27,22 @@ async def start_bot():
             await bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
-                media=random.choice(y).url_image,
+                random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Successfully Restarted With New Powers**",
             )
 
         else:
-            await bot.send_photo(
-                "@VegetaSupport",
-                photo=random.choice(y).url_image,
-                caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="[► Summon Me ◄]",
-                                url=f"https://t.me/VegetaRobot?startgroup=true",
-                            )
-                        ]
-                    ]
-                ),
-            )
-    except Exception as e:
-        await bot.send_message("@VegetaSupport", text=f"**ERROR:** `{e}`")
+            await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                   [                  
+                       InlineKeyboardButton(
+                             text="[► Summon Me ◄]",
+                             url=f"https://t.me/VegetaRobot?startgroup=true")
+                     ] 
+                ]
+            ),
+        ) 
+    except Exception:
         pass
-    await idle()
-
-if __name__ == "__main__":
-    start_bot()
+ 
