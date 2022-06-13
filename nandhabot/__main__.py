@@ -1,6 +1,8 @@
 import logging
-
+import asyncio
 from nandhabot import arq, bot, SUPPORT_CHAT
+from uvloop import install
+from contextlib import closing, suppress
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
@@ -11,8 +13,9 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
+loop = asyncio.get_event_loop()
 
-if __name__ == "__main__":
+def start_bot():
     bot.run()
     restart_data = clean_restart_stage()
     x = arq.wall("vegeta")
@@ -46,3 +49,10 @@ if __name__ == "__main__":
     except Exception as e:
         bot.send_message("@VegetaSupport", text=f"**ERROR:** `{e}`")
         pass
+
+if __name__ == "__main__":
+    install()
+    with closing(loop):
+        with suppress(asyncio.exceptions.CancelledError):
+            loop.run_until_complete(start_bot())
+        loop.run_until_complete(asyncio.sleep(3.0))  # task cancel wait
