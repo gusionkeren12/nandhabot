@@ -14,7 +14,7 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 
 if __name__ == "__main__":
     bot.run()
-    restart_data = await clean_restart_stage()
+    restart_data = clean_restart_stage()
     x = await arq.wall("vegeta")
     y = x.result
     try:
