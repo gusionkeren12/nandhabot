@@ -1,10 +1,6 @@
 import logging
-import random
-import nandhabot.plugins
 
-from nandhabot.utils.dbfunctions import clean_restart_stage
-from nandhabot import bot, arq, SUPPORT_CHAT
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from nandhabot import bot
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
