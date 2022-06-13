@@ -14,7 +14,7 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 
-x = arq.wall("vegeta")
+x = await arq.wall("vegeta")
 y = x.result
 
 if __name__ == "__main__":
