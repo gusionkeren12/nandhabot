@@ -17,5 +17,4 @@ jikanpy
 wikipedia
 secureme
 countryinfo
-
 enums
