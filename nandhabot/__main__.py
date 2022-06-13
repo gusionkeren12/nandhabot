@@ -17,7 +17,7 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 if __name__ == "__main__":
     bot.run()
     restart_data = clean_restart_stage()
-    x = await aasf.wall("vegeta")
+    x = await arq.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
