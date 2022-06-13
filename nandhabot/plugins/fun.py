@@ -7,11 +7,12 @@ import secureme
 
 @bot.on_message(filters.command("encrypt"))
 async def encrypt(_, m):
-           reply = m.reply_to_message.text
+           reply = m.reply_to_message
            if not reply:
-                await m.reply("reply to message encrypt")
+                rerun await m.reply_text("reply to message encrypt")
            if reply:
-                   encrypt = secureme.encrypt(reply)
+                   rtext = m.reply_to_message.text
+                   encrypt = secureme.encrypt(rtext)
                    text = await m.reply_text("encrypting....")
                    await text.edit(encrypt)
 
