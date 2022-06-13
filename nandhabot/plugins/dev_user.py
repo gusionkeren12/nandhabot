@@ -90,7 +90,7 @@ def sendfilecallback(_, query: CallbackQuery):
 
     if sender in dev_user:
         query.message.edit("`Sending...`")
-        query.message.reply_document("logs.txt")
+        query.message.reply_document("log.txt")
 
     else:
         query.answer(
