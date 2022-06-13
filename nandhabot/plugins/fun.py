@@ -18,13 +18,15 @@ async def encrypt(_, m):
 
 @bot.on_message(filters.command("decrypt"))
 async def decrypt(_, m):
-           reply = m.reply_to_message.text
+           reply = m.reply_to_message
            if not reply:
-                await m.reply("reply to message encrypt")
+                return await m.reply_text("reply to message decrypt")
            if reply:
-                   decrypt = secureme.decrypt(reply)
-                   text = await m.reply_text("encrypting....")
+                   rtext = m.reply_to_message.text
+                   decrypt = secureme.decrypt(rtext)
+                   text = await m.reply_text("decrypting....")
                    await text.edit(decrypt)
+
        
 
 @bot.on_message(filters.regex('good morning'))
@@ -62,7 +64,7 @@ async def gbams(_, m: Message):
       if not reply:
        return await m.reply("reply someone:\n/gban or /gbam")
       user1 = m.from_user
-      reason = m.text.split(None, 1)[1]
+      reason = m.text.split(None, 1)[1] else: None
       count = random.randint(10,30)
       user2 = reply.from_user
       chat = m.chat
