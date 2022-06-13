@@ -29,7 +29,7 @@ if __name__ == "__main__":
             )
 
         else:
-            await bot.send_phot(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**")
+            await bot.send_photo(f"@{SUPPORT_CHAT}", random.choice(y).url_image, caption="**Saiyan Prince Vegeta Was Successfully Deployed!**")
     except Exception:
         pass
  
