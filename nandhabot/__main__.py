@@ -14,7 +14,7 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 logging.getLogger("pyrogram").setLevel(logging.INFO)
-loop = asyncio.get_event_loop()
+#loop = asyncio.get_event_loop()
 
 async def start_bot():
     restart_data = await clean_restart_stage()
@@ -52,8 +52,4 @@ async def start_bot():
     await idle()
 
 if __name__ == "__main__":
-    install()
-    with closing(loop):
-        with suppress(asyncio.exceptions.CancelledError):
-            loop.run_until_complete(start_bot())
-        loop.run_until_complete(asyncio.sleep(3.0))  # task cancel wait
+    start_bot()
