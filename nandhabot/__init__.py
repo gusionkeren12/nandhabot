@@ -3,6 +3,7 @@ import time, os
 from aiohttp import ClientSession
 from Python_ARQ import ARQ
 from telegraph import Telegraph
+from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 
 
 StartTime = time.time()
@@ -18,7 +19,7 @@ UPDATES_CHANNEL = UPDATES_CHANNEL
 ARQ_API_KEY = ARQ_API_KEY
 ARQ_API_URL = ARQ_API_URL
 BOT_ID = BOT_ID
-
+MONGO_URL = MONGO_URL
 
 
 #main vars set your deploying app
@@ -32,6 +33,8 @@ aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
-
+print("Initializing MongoDB client")
+mongo_client = MongoClient(MONGO_URL)
+db = mongo_client.wbb
 
 dev_user = [1491497760]
