@@ -77,7 +77,7 @@ async def start(_, m: Message):
                 grps.insert_one(grp)
 
     except Exception as e:
-        bot.send_message(f"@{SUPPORT_CHAT}", f"Error Occurred In Adding Stats:\n\n{e}")
+          await bot.send_message(f"@{SUPPORT_CHAT}", f"Error Occurred In Adding Stats:\n\n{e}")
 
     if enums.ChatType.PRIVATE:
         await m.reply_photo(
