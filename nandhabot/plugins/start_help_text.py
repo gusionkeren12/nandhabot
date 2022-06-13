@@ -1,10 +1,13 @@
-from pyrogram import filters, __version__ as pyro
+from pyrogram import filters, enums, __version__ as pyro
 import random 
 import time
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
+from nandhabot.plugins.stats import col
+from nandhabot.plugins.stats import users_db, grps
+
 from pyrogram.types import CallbackQuery
 
 
@@ -36,7 +39,7 @@ async def alive(_, m: Message):
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
            "https://telegra.ph/file/94865dae2576a2fa52732.jpg" ]
-text = """
+pm_text = """
 Hello! Dear {}
 
 I'm An Anime themed Smart VegetaRobot make your group's
@@ -45,22 +48,45 @@ joyful Using /help commands!!
 powered by @PegaBots
 """
 
-
-@bot.on_message(filters.command(["start"], ["/", ".", "?"]))
-async def start(_, m: Message):
-    buttons = [
+buttons = [
         [
             InlineKeyboardButton(
                 "ADD ME", url="t.me/VegetaRobot?startgroup=true"),
             InlineKeyboardButton(
                 "HELP", callback_data='help_back'),]]
 
-    await m.reply_photo(
-        random.choice(BOT_IMG),
-        caption=text.format(m.from_user.mention),
-        reply_markup=InlineKeyboardMarkup(buttons),
-    )
+@bot.on_message(filters.command(["start"], ["/", ".", "?"]))
+async def start(_, m: Message):
+    try:
+        if enums.ChatType.PRIVATE:
+            users = col.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['user_id'])
+            if m.from_user.id not in mfs:
+                user = {"type": "user", "user_id": m.from_user.id}
+                col.insert_one(user)
 
+        else:
+            users = grps.find({})
+            mfs = []
+            for x in users:
+                mfs.append(x['chat_id'])
+            if message.chat.id not in mfs:
+                grp = {"type": "group", "chat_id": m.chat.id}
+                grps.insert_one(grp)
+
+    except Exception as e:
+        bot.send_message(f"@{SUPPORT_CHAt}", f"Error Occurred In Adding Stats:\n\n{e}")
+
+    if enums.ChatType.PRIVATE:
+        await m.reply_photo(
+            random.choice(BOT_IMG),
+            caption=pm_text.format(m.from_user.mention),
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+    if not enums.ChatType.PRIVATE:
+        m.reply_text("Hello There I'm Vegeta The Baka")
           
 HELP_TEXT = """
 **Hello Dear**!
