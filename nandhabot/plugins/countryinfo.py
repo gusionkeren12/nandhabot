@@ -1,6 +1,4 @@
 
-import flag
-import os
 from countryinfo import CountryInfo
 from nandhabot import bot
 from pyrogram import filters
@@ -48,7 +46,6 @@ async def countryinfo(_, m):
         iso += po + ",  "
     fla = iSo.get("alpha2")
     nox = fla.upper()
-    okie = flag.flag(nox)
 
     languages = a.get("languages")
     lMAO = ""
@@ -79,7 +76,6 @@ Borders:- {borders}
 Calling Codes:- {call}
 Country's Capital:- {capital}
 Country's currency:- {currencies}
-Country's Flag:- {okie}
 Demonym:- {HmM}
 Country Type:- {EsCoBaR}
 ISO Names:- {iso}
