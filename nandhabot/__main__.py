@@ -1,5 +1,5 @@
 from nandhabot import bot, arq
-import logging #aafe
+import logging #aasf
 import random
 import nandhabot.plugins
 from pyrogram import idle
@@ -46,4 +46,6 @@ async def start_bot():
     except Exception as e:
         await bot.send_message("@VegetaSupport", e)
         await idle
- 
+
+if __name__ == "__main__":
+   start_bot()
