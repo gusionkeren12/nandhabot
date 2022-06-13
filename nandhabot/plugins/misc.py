@@ -14,9 +14,9 @@ async def img(_, m):
     query = m.text.split(None, 1)[1]
     LOGO_API = f"https://single-developers.up.railway.app/wallpaper?search={query}"
     randc = (LOGO_API)
-    murl = requests.get(f"https://single-developers.up.railway.app/wallpaper?search={query}").history[1].url
+    muri = requests.get(f"https://single-developers.up.railway.app/wallpaper?search={query}").history[1].url
     img = Image.open(io.BytesIO(requests.get(randc).content))
-    fname = "szrosebot.png"
+    fname = "Vegetabot.png"
     img.save(fname, "png")
     await m.reply_photo(muri)
 
