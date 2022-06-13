@@ -6,6 +6,7 @@ import requests
         
         
 #in this plugins made by @NandhaxD in tg
+#Oruthu Ulagam
 
 @bot.on_message(filters.command(["ameme","animememe"]))
 async def animememes(_, m):
