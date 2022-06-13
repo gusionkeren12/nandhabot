@@ -9,7 +9,7 @@ import secureme
 async def encrypt(_, m):
            reply = m.reply_to_message.text
            if not reply:
-              return await m.reply("reply to message encrypt")
+                await m.reply("reply to message encrypt")
            if reply:
                    encrypt = secureme.encrypt(reply)
                    text = await m.reply_text("encrypting....")
@@ -19,7 +19,7 @@ async def encrypt(_, m):
 async def decrypt(_, m):
            reply = m.reply_to_message.text
            if not reply:
-              return await m.reply("reply to message encrypt")
+                await m.reply("reply to message encrypt")
            if reply:
                    decrypt = secureme.decrypt(reply)
                    text = await m.reply_text("encrypting....")
