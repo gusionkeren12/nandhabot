@@ -10,11 +10,14 @@ from urllib.parse import quote
 
 @bot.on_message(filters.command(["img","pic"]))
 async def img(_, m):
-       query = m.text.split(None, 1)[1]
-       api = requests.get(f"https://apibu.herokuapp.com/api/y-images?query={query}").json()
-       image_url = api['result']
-       await m.reply_photo(random.choice(image_url))
-       await m.reply_document(random.choice(image_url))
+    query = m.text.split(None, 1)[1]
+    LOGO_API = f"https://single-developers.up.railway.app/wallpaper?search={query}"
+    randc = (LOGO_API)
+    murl = requests.get(f"https://single-developers.up.railway.app/wallpaper?search={text}").history[1].url
+    img = Image.open(io.BytesIO(requests.get(randc).content))
+    fname = "szrosebot.png"
+    img.save(fname, "png")
+    await m.reply_photo(muri)
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
