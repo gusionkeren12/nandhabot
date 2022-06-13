@@ -1,5 +1,5 @@
 
-
+import flag
 
 from countryinfo import CountryInfo
 from nandhabot import bot
