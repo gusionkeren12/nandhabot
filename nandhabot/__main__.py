@@ -23,14 +23,14 @@ if __name__ == "__main__":
             bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
-                photo=random.choice(y).url_image,
+                media=random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Successfully Restarted With New Powers**",
             )
 
         else:
             bot.send_photo(
                 f"@VegetaSupport",
-                random.choice(y).url_image,
+                photo=random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
                 reply_markup=InlineKeyboardMarkup(
                     [
