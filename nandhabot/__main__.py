@@ -22,7 +22,7 @@ if __name__ == "__main__":
     try:
         print("Sending online status")
         if restart_data:
-                bot.edit_message_media(
+            bot.edit_message_media(
                 restart_data["chat_id"],
                 restart_data["message_id"],
                 random.choice(y).url_image,
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             )
 
         else:
-             bot.send_photo(
+            bot.send_photo(
                 f"@{SUPPORT_CHAT}",
                 random.choice(y).url_image,
                 caption="**Saiyan Prince Vegeta Was Successfully Deployed!**",
