@@ -1,6 +1,6 @@
 import logging
 
-from nandhabot import arq, bot
+from nandhabot import arq, bot,SUPPORT_CHAT
 
 aasf = arq
 
