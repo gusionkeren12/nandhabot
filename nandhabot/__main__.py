@@ -1,6 +1,8 @@
 import logging
 
-from nandhabot import bot
+from nandhabot import bot, arq
+
+aasf = arq
 
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
@@ -15,7 +17,7 @@ logging.getLogger("pyrogram").setLevel(logging.INFO)
 if __name__ == "__main__":
     bot.run()
     restart_data = clean_restart_stage()
-    x = await arq.wall("vegeta")
+    x = await aasf.wall("vegeta")
     y = x.result
     try:
         print("Sending online status")
