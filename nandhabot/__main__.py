@@ -14,10 +14,10 @@ logging.basicConfig(
     datefmt="[%X]",
 )
 
-x = await arq.wall("vegeta")
-y = x.result
 
 if __name__ == "__main__":
    bot.run()
    with bot:
+        x = await arq.wall("vegeta")
+        y = x.result
         bot.send_photo(f"@{SUPPORT_CHAT}",photo=random.choice(y).url_image,caption="Hello there I'm Now online")
