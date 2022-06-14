@@ -27,39 +27,6 @@ async def decrypt(_, m):
                    text = await m.reply_text("decrypting....")
                    await text.edit(decrypt)
 
-@bot.on_message(filters.command("truth"))
-async def truth(_, m):
-         reply = m.reply_to_message
-         if reply:
-               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
-               text = api["question"]
-               await m.reply_text(text)
-         else:
-               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
-               text = api["question"]
-               await m.reply_text(text)
-                      
-@bot.on_message(filters.command("dare"))
-async def dare(_, m):
-         reply = m.reply_to_message
-         if reply:
-               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
-               text = api["question"]
-               dare = f"""
-               Hey! {reply.from_user.mention}
-               {m.from_user.mention} give you a dare!
-               <bDare</b>: <code>{text}</code>
-               """
-               await m.reply_text(dare)
-         else:
-               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
-               text = api["question"]
-               dare = f"""
-               Hey! {m.from_user.mention} your dare here!
-               <bDare</b>: <code>{text}</code>
-               """
-               await m.reply_text(dare)
-
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
     reply = m.reply_to_message
