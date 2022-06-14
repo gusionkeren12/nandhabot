@@ -1,6 +1,7 @@
 
 import imghdr
 import os
+from bs4 import BeautifulSoup as bs
 import requests 
 from asyncio import gather
 from traceback import format_exc
