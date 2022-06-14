@@ -58,7 +58,7 @@ async def dare(_, m):
                Hey! {m.from_user.mention} your dare here!
                <bDare</b>: <code>{text}</code>
                """"
-               await m.reply_text(text)
+               await m.reply_text(dare)
 
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
