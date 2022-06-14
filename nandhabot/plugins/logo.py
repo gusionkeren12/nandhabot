@@ -2,7 +2,7 @@
 
 from nandhabot import bot
 from pyrogram import filters
-import requests 
+from requests import get
 
 
 @bot.on_message(filters.command("logo"))
