@@ -11,13 +11,15 @@ from urllib.parse import quote
 
 @bot.on_message(filters.command("spell"))
 async def spellcheck(_, m):
+      if len(message.command) < 2:
+        return await message.reply_text("**usage**:\n`/spell boou`")
       search = m.text.split(None, 1)[1]
       x = await arq.spellcheck(search)
       y = x.result
       text = f"""
 **{search}**:
 `{y.corrected}`
-"""
+"""      
       await m.reply_text(text)
 
 @bot.on_message(filters.command(["img","pic"]))
