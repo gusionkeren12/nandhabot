@@ -12,8 +12,8 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 BASE = "https://batbin.me/"
 
 
-async def paste(content: str):
-    resp = await post(f"{BASE}api/paste", data={"content": content})
+def paste(content: str):
+    resp = post(f"{BASE}api/paste", data={"content": content})
     if not resp["status"]:
         return
     return BASE + resp["message"]
