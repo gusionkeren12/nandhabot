@@ -76,7 +76,7 @@ async def stickers(_, m):
                if not results:
                        await m.reply_text("No results found :(.")
                        return
-               reply = f"Stickers for *{search}*:"
+               reply = f"Stickers for **{search}**:"
                for result, title in zip(results, titles):
                     link = result["href"]
                     reply += f"\n• [{title.get_text()}]({link})"
