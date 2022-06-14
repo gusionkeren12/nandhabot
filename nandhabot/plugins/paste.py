@@ -48,12 +48,11 @@ async def paste_func(_, message):
         os.remove(doc)
 
     link = await paste(content)
-    kb = ikb({"Paste Link": link})
     x = pastex(r.text)
     try:
         await message.reply_photo(
-            photo=link, quote=False, reply_markup=kb
+            photo=link, quote=False, caption=f"{link}"
         )
     except Exception:
-        await message.reply("Here's your paste", reply_markup=kb)
+        await message.reply(f"Here's your paste {link}")
     await m.delete()
