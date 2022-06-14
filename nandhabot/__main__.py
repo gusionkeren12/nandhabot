@@ -6,12 +6,7 @@ from nandhabot.config import SUPPORT_CHAT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # enable logging
-logging.basicConfig(
-    handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
-    level=logging.INFO,
-    format=FORMAT,
-    datefmt="[%X]",
-)
+
 
 
 if __name__ == "__main__":
