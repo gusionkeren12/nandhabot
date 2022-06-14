@@ -25,9 +25,9 @@ async def img(_, m):
     if len(m.command) < 2:
         return await m.reply_text("gime a text Baka!")
     query = m.text.split(None, 1)[1]
-     x = await arq.image(query)
-     y = x.result
-     await message.reply_photo(photo=random.choice(y).url, caption=y.title)
+    x = await arq.image(query)
+    y = x.result
+    await message.reply_photo(photo=random.choice(y).url, caption=y.title)
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
