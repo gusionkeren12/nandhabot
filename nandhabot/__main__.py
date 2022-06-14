@@ -6,7 +6,13 @@ from nandhabot.config import SUPPORT_CHAT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 # enable logging
-
+FORMAT = "[VEGETA ROBOT] %(message)s"
+logging.basicConfig(
+    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
+    level=logging.INFO,
+    format=FORMAT,
+    datefmt="[%X]",
+)
 
 
 if __name__ == "__main__":
