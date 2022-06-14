@@ -75,7 +75,7 @@ async def stickers(_, m):
                    return
                reply = f"Stickers for *{search}*:"
                for result, title in zip(results, titles):
-               link = result["href"]
-               reply += f"\n• [{title.get_text()}]({link})"
+                    link = result["href"]
+                    reply += f"\n• [{title.get_text()}]({link})"
                m.reply_text(reply)
 
