@@ -49,7 +49,7 @@ async def dare(_, m):
                Hey! {reply.from_user.mention}
                {m.from_user.mention} give you a dare!
                <bDare</b>: <code>{text}</code>
-               """"
+               """
                await m.reply_text(dare)
          else:
                get = requests.get("https://api.truthordarebot.xyz/v1/dare").json
