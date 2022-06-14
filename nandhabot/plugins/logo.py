@@ -14,3 +14,13 @@ async def logo(_, m):
              logo = get((f"https://single-developers.up.railway.app/logo?name={text}").replace(' ','%20')).history[1].url
              await m.reply_photo(logo,caption="Made by @VegetaRobot")
              await msg.delete()
+            
+@bot.on_message(filters.command("logohq"))
+async def logohq(_, m):
+             if len(m.command) < 2:
+                return await m.reply("<b>Usage:</b>\n<code>/logohq nandha</code>")
+             text = m.text.split(None, 1)[1]
+             msg = await m.reply_text("<b>Creating your logo</b>")
+             logo = get((f"https://single-developers.up.railway.app/logohq?name={text}").replace(' ','%20')).history[1].url
+             await m.reply_photo(logo,caption="Made by @VegetaRobot")
+             await msg.delete()
