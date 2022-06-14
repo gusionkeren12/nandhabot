@@ -17,4 +17,4 @@ jikanpy
 wikipedia
 secureme
 countryinfo
-enums
+lxml
