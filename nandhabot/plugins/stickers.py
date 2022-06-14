@@ -12,7 +12,7 @@ from pyrogram.errors import (PeerIdInvalid, ShortnameOccupyFailed,
                              StickerPngNopng, UserIsBlocked)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from nandhabot import BOT_USERNAME, bot as app
+from nandhabot import BOT_USERNAME, bot as app, bot
 from nandhabot.utils.errors import capture_err
 from nandhabot.utils.files import (get_document_from_file_id,
                              resize_file_to_sticker_size, upload_document)
