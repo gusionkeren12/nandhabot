@@ -9,6 +9,17 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
+@bot.on_message(filters.command("spell"))
+async def spellcheck(_, m):
+      search = m.text.split(None, 1)[1]
+      x = await arq.spellcheck(search)
+      y = x.result
+      text = f"""
+**{search}**:
+`{y.corrected}`
+"""
+      await m.reply_text(text)
+
 @bot.on_message(filters.command(["img","pic"]))
 async def img(_, m):
     query = m.text.split(None, 1)[1]
@@ -154,11 +165,3 @@ async def share_text(_, message: Message):
         )
         return
     await message.reply_text(share_link(input_text))
-
-help_plus = """ Here is Help for **Whois** -
-`whois` - get data of the user
-**Notes:**
-`/` `?` `.` `!` are supported prefixes.
-**Example:** `/addenf` or `?addenf` or `.addenf`
-"""
-__plugin_name__ = "misc"
