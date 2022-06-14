@@ -28,7 +28,7 @@ async def decrypt(_, m):
                    await text.edit(decrypt)
 
 @bot.on_message(filters.command("truth"))
-async def trauth(_, m):
+async def truth(_, m):
          reply = m.reply_to_message
            if reply:
                get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
@@ -39,7 +39,26 @@ async def trauth(_, m):
                text = get["question"]
                await m.reply_text(text)
                       
-                
+@bot.on_message(filters.command("dare"))
+async def dare(_, m):
+         reply = m.reply_to_message
+           if reply:
+               get = requests.get("https://api.truthordarebot.xyz/v1/dare").json
+               text = get["question"]
+               dare = f"""
+               Hey! {reply.from_user.mention}
+               {m.from_user.mention} give you a dare!
+               <bDare</b>: <code>{text}</code>
+               """"
+               await m.reply_text(dare)
+           else:
+               get = requests.get("https://api.truthordarebot.xyz/v1/dare").json
+               text = get["question"]
+               dare = f"""
+               Hey! {m.from_user.mention} your dare here!
+               <bDare</b>: <code>{text}</code>
+               """"
+               await m.reply_text(text)
 
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
