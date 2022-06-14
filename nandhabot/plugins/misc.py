@@ -18,7 +18,7 @@ async def spellcheck(_, m):
           x = await arq.spellcheck(reply.text)
           y = x.result
       text = await m.reply_text("Spelling...")
-      await text.edit(f"**spell**: {y.corrected}")
+      await text.edit(f"`{y.corrected}`")
       
 
 @bot.on_message(filters.command(["img","pic"]))
