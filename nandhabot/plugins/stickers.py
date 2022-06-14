@@ -59,3 +59,7 @@ async def sticker_image(_, message: Message):
 
     await m.delete()
     os.remove(f)
+
+@bot.on_message(filters.command("stickers"))
+async def stickers(_, m):
+               url = ""
