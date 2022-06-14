@@ -30,7 +30,7 @@ async def decrypt(_, m):
 @bot.on_message(filters.command("truth"))
 async def truth(_, m):
          reply = m.reply_to_message
-           if reply:
+         if reply:
                get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
                text = get["question"]
                await m.reply_text(text)
@@ -42,7 +42,7 @@ async def truth(_, m):
 @bot.on_message(filters.command("dare"))
 async def dare(_, m):
          reply = m.reply_to_message
-           if reply:
+         if reply:
                get = requests.get("https://api.truthordarebot.xyz/v1/dare").json
                text = get["question"]
                dare = f"""
