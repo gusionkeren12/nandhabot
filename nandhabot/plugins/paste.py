@@ -5,6 +5,8 @@ from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
+BASE = "https://batbin.me/"
+
 
 async def paste(content: str):
     resp = await post(f"{BASE}api/paste", data={"content": content})
