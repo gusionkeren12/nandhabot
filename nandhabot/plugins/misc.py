@@ -28,7 +28,7 @@ async def img(_, m):
     query = m.text.split(None, 1)[1]
     x = await arq.image(query)
     y = x.result
-    await m.reply_photo(photo=random.choice(y).url, caption=y.title)
+    await m.reply_photo(photo=random.choice(y).url)
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
