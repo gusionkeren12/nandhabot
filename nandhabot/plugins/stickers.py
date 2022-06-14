@@ -80,5 +80,5 @@ async def stickers(_, m):
                for result, title in zip(results, titles):
                     link = result["href"]
                     reply += f"\n• [{title.get_text()}]({link})"
-                await m.reply_text(reply)
+               await m.reply_text(reply)
 
