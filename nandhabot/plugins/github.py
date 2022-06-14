@@ -5,9 +5,9 @@ from nandhabot import bot
 
 
 @bot.on_message(filters.command(['git', 'github']))
-def git(_, message):
+async def git(_, message):
     if len(message.command) < 2:
-        return message.reply_text("gime github username")
+        return await message.reply_text("gime github username")
     user = message.text.split(None, 1)[1]
     res = get(f'https://api.github.com/users/{user}').json()
     data = f"""**Name**: {res['name']}
@@ -26,6 +26,6 @@ def git(_, message):
         kek = get(res['avatar_url']).content
         f.write(kek)
 
-    message.reply_photo(f"{user}.jpg", caption=data)
+    await message.reply_photo(f"{user}.jpg", caption=data)
     os.remove(f"{user}.jpg")
      
