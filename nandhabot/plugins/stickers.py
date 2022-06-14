@@ -72,7 +72,7 @@ async def stickers(_, m):
                requests.get(combot_stickers_url + search).text
                soup = bs(text, "lxml")
                results = soup.find_all("a", {"class": "sticker-pack__btn"})
-               titles = soup.find_all("div", "sticker-p
+               titles = soup.find_all("div", "sticker-pack__title")
                if not results:
                            m.reply_text("No results found :(.")
                    return
