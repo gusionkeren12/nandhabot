@@ -25,14 +25,14 @@ async def paste(_, m):
          msg = await m.reply_text("Pasting...")
          if reply.text:
                content = str(r.text)
-        elif r.document:
-           if r.document.file_size > 40000:
+      elif r.document:
+         if r.document.file_size > 40000:
                  return await m.edit("You can only paste files smaller than 40KB.")
-           if not pattern.search(reply.document.mime_type):
-            return await m.edit("Only text files can be pasted.")
-           doc = await m.reply_to_message.download()
-           async with aiofiles.open(doc, mode="r") as f:
+         if not pattern.search(reply.document.mime_type):
+              return await m.edit("Only text files can be pasted.")
+         doc = await m.reply_to_message.download()
+         async with aiofiles.open(doc, mode="r") as f:
                content = await f.read()
-           os.remove(doc)
-           link = await paste(reply.text)
-           await reply_text(f"{link})
+         os.remove(doc)
+         link = await paste(reply.text)
+         await reply_text(f"{link})
