@@ -70,3 +70,12 @@ async def stickers(_, m):
                soup = bs(text, "lxml")
                results = soup.find_all("a", {"class": "sticker-pack__btn"})
                titles = soup.find_all("div", "sticker-p
+               if not results:
+                           m.reply_text("No results found :(.")
+                   return
+               reply = f"Stickers for *{search}*:"
+               for result, title in zip(results, titles):
+               link = result["href"]
+               reply += f"\n• [{title.get_text()}]({link})"
+               m.reply_text(reply)
+
