@@ -31,13 +31,11 @@ async def decrypt(_, m):
 async def trauth(_, m):
          reply = m.reply_to_message
            if reply:
-               url = "https://api.truthordarebot.xyz/v1/truth"
-               get = requests.get(url).json
+               get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
                text = get["question"]
                await m.reply_text(text)
            else:
-               url = "https://api.truthordarebot.xyz/v1/truth"
-               get = requests.get(url).json
+               get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
                text = get["question"]
                await m.reply_text(text)
                       
