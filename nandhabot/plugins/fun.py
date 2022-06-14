@@ -34,8 +34,7 @@ async def truth(_, m):
                get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
                text = get["question"]
                await m.reply_text(text)
-         
-           else:
+        else:
                get = requests.get("https://api.truthordarebot.xyz/v1/truth").json
                text = get["question"]
                await m.reply_text(text)
@@ -52,8 +51,7 @@ async def dare(_, m):
                <bDare</b>: <code>{text}</code>
                """"
                await m.reply_text(dare)
-          
-           else:
+        else:
                get = requests.get("https://api.truthordarebot.xyz/v1/dare").json
                text = get["question"]
                dare = f"""
