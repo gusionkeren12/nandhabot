@@ -27,7 +27,21 @@ async def decrypt(_, m):
                    text = await m.reply_text("decrypting....")
                    await text.edit(decrypt)
 
-       
+@bot.on_message(filters.command("truth"))
+async def trauth(_, m):
+         reply = m.reply_to_message
+           if reply:
+               url = "https://api.truthordarebot.xyz/v1/truth"
+               get = requests.get(url).json
+               text = get["question"]
+               await m.reply_text(text)
+           else:
+               url = "https://api.truthordarebot.xyz/v1/truth"
+               get = requests.get(url).json
+               text = get["question"]
+               await m.reply_text(text)
+                      
+                
 
 @bot.on_message(filters.regex('good morning'))
 def gm(_, m: Message):
