@@ -11,14 +11,13 @@ from urllib.parse import quote
 
 @bot.on_message(filters.command("spell"))
 async def spellcheck(_, m):
-      if len(message.command) < 2:
+      if len(m.command) < 2:
         return await message.reply_text("**usage**:\n`/spell boou`")
       search = m.text.split(None, 1)[1]
       x = await arq.spellcheck(search)
       y = x.result
       text = f"""
-**{search}**:
-`{y.corrected}`
+**{search}**: `{y.corrected}`
 """      
       await m.reply_text(text)
 
@@ -35,6 +34,8 @@ async def img(_, m):
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
+       if len(m.command) < 2:
+           return await m.reply_text("gime a text Baka!")
        search = m.text.split(None, 1)[1]
        x = await arq.wall(search)
        y = x.result
