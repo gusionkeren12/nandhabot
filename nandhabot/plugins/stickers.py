@@ -1,6 +1,7 @@
 
 import imghdr
 import os
+import requests 
 from asyncio import gather
 from traceback import format_exc
 
@@ -15,6 +16,7 @@ from nandhabot.utils.errors import capture_err
 from nandhabot.utils.files import (get_document_from_file_id,
                              resize_file_to_sticker_size, upload_document)
 
+combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 MAX_STICKERS = (
     120  # would be better if we could fetch this limit directly from telegram
@@ -63,4 +65,7 @@ async def sticker_image(_, message: Message):
 @bot.on_message(filters.command("stickers"))
 async def stickers(_, m):
                search = m.text.split(None, 1)[1]
-               url = f"https://combot.org/telegram/stickers?q={search}"
+               requests.get(combot_stickers_url + search).text
+               soup = bs(text, "lxml")
+               results = soup.find_all("a", {"class": "sticker-pack__btn"})
+               titles = soup.find_all("div", "sticker-p
