@@ -31,11 +31,11 @@ async def decrypt(_, m):
 async def truth(_, m):
          reply = m.reply_to_message
          if reply:
-               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json
+               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
                text = api["question"]
                await m.reply_text(text)
          else:
-               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json
+               api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
                text = api["question"]
                await m.reply_text(text)
                       
@@ -43,7 +43,7 @@ async def truth(_, m):
 async def dare(_, m):
          reply = m.reply_to_message
          if reply:
-               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json
+               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
                text = api["question"]
                dare = f"""
                Hey! {reply.from_user.mention}
@@ -52,7 +52,7 @@ async def dare(_, m):
                """
                await m.reply_text(dare)
          else:
-               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json
+               api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
                text = api["question"]
                dare = f"""
                Hey! {m.from_user.mention} your dare here!
