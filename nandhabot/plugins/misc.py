@@ -15,8 +15,8 @@ async def spellcheck(_, m):
       if not reply:
           return await m.reply_text("reply to text")
       if reply:
-      x = await arq.spellcheck(reply.text)
-      y = x.result
+          x = await arq.spellcheck(reply.text)
+          y = x.result
       text = await m.reply_text("Spelling...")
       await text.edit(f"**spell**: {y.corrected}")
       
