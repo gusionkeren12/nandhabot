@@ -65,6 +65,9 @@ async def sticker_image(_, message: Message):
 
 @bot.on_message(filters.command("stickers"))
 async def stickers(_, m):
+               mrtm = m.reply_to_message
+               if len(m.command) < 2:
+                   return await m.reply("Gime a text baka!")
                search = m.text.split(None, 1)[1]
                requests.get(combot_stickers_url + search).text
                soup = bs(text, "lxml")
