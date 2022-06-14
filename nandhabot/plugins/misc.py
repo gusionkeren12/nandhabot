@@ -16,21 +16,18 @@ async def spellcheck(_, m):
       search = m.text.split(None, 1)[1]
       x = await arq.spellcheck(search)
       y = x.result
-      text = f"""
-**{search}**: `{y.corrected}`
-"""      
-      await m.reply_text(text)
+      text = await m.reply_text("Spelling...")
+      await text.edit(f"**spell**: {y.corrected}")
+      
 
 @bot.on_message(filters.command(["img","pic"]))
 async def img(_, m):
+    if len(m.command) < 2:
+        return await m.reply_text("gime a text Baka!")
     query = m.text.split(None, 1)[1]
-    LOGO_API = f"https://single-developers.up.railway.app/wallpaper?search={query}"
-    randc = (LOGO_API)
-    muri = requests.get(f"https://single-developers.up.railway.app/wallpaper?search={query}").history[1].url
-    img = Image.open(io.BytesIO(requests.get(randc).content))
-    fname = "Vegetabot.png"
-    img.save(fname, "png")
-    await m.reply_photo(muri)
+     x = await arq.image(query)
+     y = await x.result
+     await message.reply_photo(photo=random.choice(y).url, caption=y.title)
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
