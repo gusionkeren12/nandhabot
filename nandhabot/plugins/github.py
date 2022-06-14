@@ -17,6 +17,7 @@ def git(_, message):
 **Public Repos: {res['public_repos']}
 **Followers**: {res['followers']}
 **Following**: {res['following']}
+**Acc Created**: {res['created_at']}
 """
     with open(f"{user}.jpg", "wb") as f:
         kek = get(res['avatar_url']).content
