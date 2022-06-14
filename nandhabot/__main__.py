@@ -8,7 +8,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 # enable logging
 FORMAT = "[VEGETA ROBOT] %(message)s"
 logging.basicConfig(
-    handlers=[logging.FileHandler("log.txt"), logging.StreamHandler()],
+    handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
     level=logging.INFO,
     format=FORMAT,
     datefmt="[%X]",
