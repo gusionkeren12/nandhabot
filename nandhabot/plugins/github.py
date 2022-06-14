@@ -6,7 +6,9 @@ from nandhabot import bot
 
 @bot.on_message(filters.command(['git', 'github']))
 def git(_, message):
-    user = message.text.split(' ')[1]
+    if len(message.command) < 2:
+        return message.reply_text("gime github username")
+    user = message.text.split(None, 1)[1]
     res = get(f'https://api.github.com/users/{user}').json()
     data = f"""**Name**: {res['name']}
 **UserName**: {res['login']}
