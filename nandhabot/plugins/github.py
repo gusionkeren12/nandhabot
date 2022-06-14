@@ -13,8 +13,9 @@ def git(_, message):
 **Link**: [{res['login']}]({res['html_url']})
 **Bio**: {res['bio']}
 **Company**: {res['company']}
+**Blog**: {res['blog']}
 **Location**: {res['location']}
-**Public Repos: {res['public_repos']}
+**Public Repos**: {res['public_repos']}
 **Followers**: {res['followers']}
 **Following**: {res['following']}
 **Acc Created**: {res['created_at']}
