@@ -62,4 +62,5 @@ async def sticker_image(_, message: Message):
 
 @bot.on_message(filters.command("stickers"))
 async def stickers(_, m):
-               url = ""
+               search = m.text.split(None, 1)[1]
+               url = f"https://combot.org/telegram/stickers?q={search}"
