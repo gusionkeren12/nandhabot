@@ -29,12 +29,12 @@ async def truth(_, m):
          if reply:
                api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
                text = api["question"]
-               dare = f"""
+               truth = f"""
                Hey! {reply.from_user.mention}
                {m.from_user.mention} give you a Truth!
                **Truth**: `{text}`
                """
-               await m.reply_text(dare)
+               await m.reply_text(truth)
          else:
                api = requests.get("https://api.truthordarebot.xyz/v1/Truth").json()
                text = api["question"]
