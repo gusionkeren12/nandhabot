@@ -1,5 +1,5 @@
 from requests import post, get
-from nksama import bot
+from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
@@ -11,11 +11,11 @@ def paste(text):
 
 
 @bot.on_message(filters.command('paste'))
-def pastex(_, message: Message):
+def paste(_, message: Message):
     text = message.reply_to_message
     if text:
         x = paste(text.text)
-        message.reply_photo(photo=x,caption=x
+        message.reply_photo(photo=x,caption=x,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("Paste Link🔗 ", url=x)]]),
                       disable_web_page_preview=false)
