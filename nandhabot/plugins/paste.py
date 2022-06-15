@@ -9,6 +9,9 @@ from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
+pattern = re.compile(
+    r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$"
+)
 
 def paste(text):
     url = "https://spaceb.in/api/v1/documents/"
