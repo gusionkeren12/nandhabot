@@ -25,8 +25,8 @@ async def paste(_, m):
          msg = await m.reply_text("Pasting...")
          if reply.text:
                content = str(r.text)
-         if reply.document:
-         if reply.document.file_size > 40000:
+         elif reply.document:
+            if reply.document.file_size > 40000:
                  return await m.edit("You can only paste files smaller than 40KB.")
          if not pattern.search(reply.document.mime_type):
               return await m.edit("Only text files can be pasted.")
