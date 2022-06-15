@@ -11,7 +11,7 @@ def paste(text):
 
 
 @bot.on_message(filters.command('paste'))
-def paste(_, m):
+def pastex(_, m):
     reply = m.reply_to_message
     text = reply.text or reply.caption
     if reply:
