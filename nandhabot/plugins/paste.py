@@ -35,4 +35,4 @@ async def paste(_, m):
                content = await f.read()
          os.remove(doc)
          link = await paste(reply.text)
-         await reply_text(f"{link})
+         await reply_text(f"{link}")
