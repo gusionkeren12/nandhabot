@@ -9,7 +9,7 @@ from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
-pattern = r.compile(
+pattern = re.compile(
     r"^text/|json$|yaml$|xml$|toml$|x-sh$|x-shellscript$"
 )
 
