@@ -16,7 +16,7 @@ def paste(_, message: Message):
     text = reply.text or reply.caption
     if reply:
         x = paste(text)
-        message.reply_text(text=x,
+        message.reply(x,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("Paste Link🔗 ", url=x)]]))
 
