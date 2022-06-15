@@ -37,5 +37,5 @@ async def paste(_, m):
          async with aiofiles.open(doc, mode="reply") as f:
                content = await f.read()
          os.remove(doc)
-         link = await paste(reply.text)
+         link = await paste(reply.content)
          await reply_text(f"{link}")
