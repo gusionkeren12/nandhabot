@@ -11,14 +11,14 @@ def paste(text):
 
 
 @bot.on_message(filters.command('paste'))
-def paste(_, message: Message):
-    reply = message.reply_to_message
+def paste(_, m):
+    reply = m.reply_to_message
     text = reply.text or reply.caption
     if reply:
         x = paste(text)
-        message.reply(x,
+        m.reply(x,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("Paste Link🔗 ", url=x)]]))
 
     else:
-        message.reply_text("Reply to a message!")
+        m.reply_text("Reply to a message!")
