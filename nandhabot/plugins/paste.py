@@ -31,7 +31,7 @@ async def paste(_, m):
          if not pattern.search(reply.document.mime_type):
               return await m.edit("Only text files can be pasted.")
          doc = await m.reply_to_message.download()
-         async with aiofiles.open(doc, mode="r") as f:
+         async with aiofiles.open(doc, mode="reply") as f:
                content = await f.read()
          os.remove(doc)
          link = await paste(reply.text)
