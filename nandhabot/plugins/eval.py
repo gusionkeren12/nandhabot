@@ -1,4 +1,4 @@
-from nandhabot import tbot as client
+from nandhabot import tbot as client, dev_user
 import sys, io, os
 # Common imports for eval
 import textwrap
@@ -7,7 +7,7 @@ from contextlib import redirect_stdout
 from telethon.sync import events
 # telethon eval
 
-@client.on(events.NewMessage(from_users=[1491497760], pattern="^/teval ?(.*)"))
+@client.on(events.NewMessage(from_users(dev_user), pattern="^/teval ?(.*)"))
 async def eval(event):
     if event.fwd_from:
         return
