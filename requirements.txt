@@ -18,3 +18,4 @@ wikipedia
 secureme
 countryinfo
 lxml
+telethon
