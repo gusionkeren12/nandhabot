@@ -1,4 +1,4 @@
-from nandhabot import bot, arq, tbot,  TOKEN
+from nandhabot import bot, arq, tbot,  BOT_TOKEN
 import logging 
 import random
 import nandhabot.plugins
