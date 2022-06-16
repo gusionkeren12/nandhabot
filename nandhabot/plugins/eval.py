@@ -1,9 +1,13 @@
-from nandhabot import tbot
-import sys, io
-
+from nandhabot import tbot as client
+import sys, io, os
+# Common imports for eval
+import textwrap
+import traceback
+from contextlib import redirect_stdout
+from telethon.sync import events
 # telethon eval
 
-@tbot.on(events.NewMessage(from_users=[1491497760], pattern="^/teval ?(.*)"))
+@client.on(events.NewMessage(from_users=[1491497760], pattern="^/teval ?(.*)"))
 async def eval(event):
     if event.fwd_from:
         return
