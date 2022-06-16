@@ -20,6 +20,7 @@ ARQ_API_KEY = ARQ_API_KEY
 ARQ_API_URL = ARQ_API_URL
 BOT_ID = BOT_ID
 MONGO_URL = MONGO_URL
+TEMP_DOWNLOAD_DIRECTORY = "./" 
 
 
 #main vars set your deploying app
