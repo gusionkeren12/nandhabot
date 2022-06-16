@@ -7,7 +7,7 @@ import os
 import time
 
 from datetime import datetime
-from nandhabot import dev_users as DEV_USERS
+from nandhabot import dev_user as DEV_USERS
 from nandhabot import TEMP_DOWNLOAD_DIRECTORY as path
 from datetime import datetime
 water = './nandhabot/images/IMG_20220522_180127_083.jpg'
