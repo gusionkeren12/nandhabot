@@ -1,4 +1,4 @@
-from nandhabot import tbot, dev_user
+from nandhabot import tbot
 from nandhabot.events import register
 from nandhabot.config import OWNER_ID
 import os
@@ -7,7 +7,7 @@ import os
 import time
 
 from datetime import datetime
-from nandhabot import OWNER_ID, dev_users DEV_USERS
+from nandhabot import dev_users as DEV_USERS
 from nandhabot import TEMP_DOWNLOAD_DIRECTORY as path
 from datetime import datetime
 water = './nandhabot/images/IMG_20220522_180127_083.jpg'
