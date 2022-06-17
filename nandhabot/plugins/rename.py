@@ -29,7 +29,7 @@ async def converttwoimage(_, m):
                    msg = await m.reply_text("downloading")
                    file_id = reply.sticker.file_id
                    name = "image.png"
-                   file = await bot.download_media(file_id)
+                   file = await bot.download_media(file_id, file_name=name)
                    await msg.edit("uploading")
               await m.reply_document(file)
               await msg.delete()
