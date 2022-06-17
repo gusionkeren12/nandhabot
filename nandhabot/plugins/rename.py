@@ -23,9 +23,9 @@ def rename(_, message):
 @bot.on_message(filters.command("c2i"))
 async def converttwoimage(_, m):
               reply = m.reply_to_message
-              if not reply.sticker:
+              if not reply:
                        return await m.reply_text("reply to sticker")
-              if reply.sticker:
+              if reply:
                    file_id = reply.sticker.file_id
                    file = await bot.download_media(file_id)
-              await bot.send_document(file)
+              await m.reply_document(file)
