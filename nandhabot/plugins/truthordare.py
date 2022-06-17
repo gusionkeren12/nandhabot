@@ -2,6 +2,8 @@ from pyrogram import filters
 from nandhabot import bot
 import requests 
 
+#made by t.me/nandhaxd
+
 @bot.on_message(filters.command("dare"))
 async def dare(_, m):
          reply = m.reply_to_message
@@ -9,17 +11,17 @@ async def dare(_, m):
                api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
                text = api["question"]
                dare = f"""
-               Hey! {reply.from_user.mention}
-               {m.from_user.mention} give you a dare!
-               **Dare**: `{text}`
+Hey! {reply.from_user.mention}
+{m.from_user.mention} give you a dare!
+ **Dare**: `{text}`
                """
                await m.reply_text(dare)
          else:
                api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
                text = api["question"]
                dare = f"""
-               Hey! {m.from_user.mention} your dare here!
-               **Dare**: `{text}`
+ Hey! {m.from_user.mention} your dare here!
+ **Dare**: `{text}`
                """
                await m.reply_text(dare)
 
@@ -30,16 +32,16 @@ async def truth(_, m):
                api = requests.get("https://api.truthordarebot.xyz/v1/truth").json()
                text = api["question"]
                truth = f"""
-               Hey! {reply.from_user.mention}
-               {m.from_user.mention} give you a Truth!
-               **Truth**: `{text}`
+  Hey! {reply.from_user.mention}
+  {m.from_user.mention} give you a Truth!
+  **Truth**: `{text}`
                """
                await m.reply_text(truth)
          else:
                api = requests.get("https://api.truthordarebot.xyz/v1/Truth").json()
                text = api["question"]
                truth = f"""
-               Hey! {m.from_user.mention} your Truth here!
-               **Truth**: `{text}`
+    Hey! {m.from_user.mention} your Truth here!
+    **Truth**: `{text}`
                """
                await m.reply_text(truth)
