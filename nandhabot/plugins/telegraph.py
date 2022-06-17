@@ -7,7 +7,7 @@ from telegraph import upload_file
 
 
 @app.on_message(filters.command("txt"))
-async def paste(_, message: Message):
+async def txt(_, message: Message):
     reply = message.reply_to_message
 
     if not reply or not reply.text:
@@ -31,7 +31,9 @@ async def paste(_, message: Message):
 def tm(_,message):
     reply = message.reply_to_message
     if reply.media:
+        msg = message.reply_text("downloading")
         path = reply.download()
+        msg.edit("uploading")
         fk = upload_file(path)
         for x in fk:
             url = "https://telegra.ph" + x
@@ -39,3 +41,4 @@ def tm(_,message):
         message.reply_text(f"**Posted:** {url}",reply_markup=InlineKeyboardMarkup([ 
         [InlineKeyboardButton('View 💫' , url=f"{url}")]
     ]))
+        msg.delete()
