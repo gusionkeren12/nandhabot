@@ -28,6 +28,7 @@ async def converttwoimage(_, m):
               if reply.sticker:
                    msg = await m.reply_text("downloading")
                    file_id = reply.sticker.file_id
+                   name = "image.png"
                    file = await bot.download_media(file_id)
                    await msg.edit("uploading")
               await m.reply_document(file)
