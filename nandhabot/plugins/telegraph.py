@@ -31,7 +31,7 @@ async def txt(_, message: Message):
 def tm(_,message):
     reply = message.reply_to_message
     if not reply.media:
-          return message.reply_text("reply to media")
+          return message.reply_text("Reply to Media Baka!")
     if reply.media:
         msg = message.reply_text("downloading")
         path = reply.download()
