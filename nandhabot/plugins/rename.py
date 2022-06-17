@@ -26,6 +26,6 @@ async def converttwoimage(_, m):
               if not reply.sticker:
                        return await m.reply_text("reply to sticker")
               if reply.sticker:
-              file_id = reply.sticker.file_id
-              file = await bot.download_media(file_id)
+                   file_id = reply.sticker.file_id
+                   file = await bot.download_media(file_id)
               await bot.send_document(file)
