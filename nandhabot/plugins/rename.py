@@ -33,5 +33,5 @@ async def converttwoimage(_, m):
                    name = "image.png"
                    file = await bot.download_media(file_id, file_name=name)
                    await msg.edit("uploading")
-              await m.reply_document(file)
+              await m.reply_photo(file)
               await msg.delete()
