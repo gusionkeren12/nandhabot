@@ -20,18 +20,4 @@ def rename(_, message):
         message.reply_document(path)
         os.remove(path)
 
-@bot.on_message(filters.command("s2i"))
-async def converttwoimage(_, m):
-              reply = m.reply_to_message
-              if not reply:
-                   return await m.reply("reply to sticker")
-              if not reply.sticker:
-                    return await m.reply("reply to sticker")
-              if reply.sticker:
-                   msg = await m.reply("downloading")
-                   file_id = reply.sticker.file_id
-                   name = "image.png"
-                   file = await bot.download_media(file_id, file_name=name)
-                   await msg.edit("uploading")
-              await m.reply_photo(file)
-              await msg.delete()
+
