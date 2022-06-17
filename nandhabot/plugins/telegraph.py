@@ -30,6 +30,8 @@ async def txt(_, message: Message):
 @app.on_message(filters.command('tm'))
 def tm(_,message):
     reply = message.reply_to_message
+    if not reply.media:
+          return message.reply_text("reply to media")
     if reply.media:
         msg = message.reply_text("downloading")
         path = reply.download()
