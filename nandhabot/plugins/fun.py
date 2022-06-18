@@ -40,9 +40,13 @@ def gm(_, m: Message):
 def gn(_, m: Message):
     reply = m.reply_to_message
     if reply:
-        m.reply(f"good night! {reply.from_user.mention}")
+        api = requests.get("https://nekos.best/api/v2/sleep").json()
+        url = api["results"][0]['url']
+        m.reply_animation(url, caption=f"good night! {reply.from_user.mention}")
     else:
-        m.reply(f"good night! {m.from_user.mention}")
+        api = requests.get("https://nekos.best/api/v2/sleep").json()
+        url = api["results"][0]['url']
+        m.reply(url,caption=f"good night! {m.from_user.mention}")
     
 gbam_text = """
 #GBANNED
