@@ -8,7 +8,14 @@ from nandhabot.config import OWNER_ID
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
          if len(m.command) < 2:
-            return await m.reply_text("gime a feedback!")
+            await m.reply_text("gime a feedback!")
+            return 
+         if m.from_user.id in OWNER_ID:
+               await m.reply_text("owner Baka!")
+               return 
+         if m.chat.type == "private":
+                await m.reply_text("command work only groups")
+                return 
          text = m.text.split(None, 1)[1]
          user = m.from_user
          chat = m.chat
