@@ -20,3 +20,4 @@ countryinfo
 lxml
 telethon
 bing_image_downloader
+html2text
