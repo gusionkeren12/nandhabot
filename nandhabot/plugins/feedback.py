@@ -8,7 +8,7 @@ from nandhabot.config import OWNER_ID
 async def feedback(_, m):
          if len(m.command) < 2:
             return await m.reply_text("gime a feedback!")
-         text = m.text.split("", 1)
+         text = m.text.split(None, 1)[1]
          user = m.from_user
          chat = m.chat
          caption = f""" **#NewFeedBack**
