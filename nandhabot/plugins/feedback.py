@@ -29,7 +29,7 @@ async def feedback(_, m):
          datetimes_fmt = "%d-%m-%Y"
          datetimes = datetime.utcnow().strftime(datetimes_fmt)
          feedback = f""" **#NewFeedBack**
-FromChat: {chat.username}
+FromChat: @{chat.username}
 user_id: {user.id}
 mention: {user.mention}
 msg_date: {datetimes}
