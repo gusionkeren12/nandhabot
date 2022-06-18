@@ -44,3 +44,5 @@ def tm(_,message):
         [InlineKeyboardButton('View 💫' , url=f"{url}")]
     ]))
         msg.delete()
+        except Exception as e:
+             print(e)
