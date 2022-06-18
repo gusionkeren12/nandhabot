@@ -31,7 +31,7 @@ async def txt(_, message: Message):
 def tm(_,message):
     reply = message.reply_to_message
     if not reply:
-          return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.
+          return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     if not reply.media:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     if reply.media:
