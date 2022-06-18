@@ -35,9 +35,7 @@ Feedback: **{text}**
                     [
                         [
                             InlineKeyboardButton(
-                                "➡ View Bug", url=f"{m.link}")
-                        ],
-                        [
+                                "➡ View Bug", url=f"{m.link}"),
                             InlineKeyboardButton(
                                 "❌ Close", callback_data="close")
                         ]
