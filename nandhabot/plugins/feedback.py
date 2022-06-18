@@ -13,9 +13,7 @@ async def feedbak(_, m):
          text = m.text.split("", 1)
          user = m.from_user
          chat = m.chat
-         caption = 
-f"""
-**#NewFeedBack**
+         caption = f""" **#NewFeedBack**
 FromChat:{chat.title}
 user_id : {user.id}
 mention : {user.mention}
