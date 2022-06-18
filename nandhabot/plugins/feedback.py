@@ -1,5 +1,6 @@
 from nandhabot import bot, dev_user, SUPPORT_CHAT
 from pyrogram import filters
+import random
 from datetime import datetime
 from pyrogram.types import *
 from nandhabot.config import OWNER_ID
@@ -35,7 +36,7 @@ msg_date: {datetimes}
 Feedback: **{text}**
 """      
          await m.reply_text("Your feedback Successfully Reported On SupportChat!")
-         await bot.send_photo(f"@{SUPPORT_CHAT}",vegeta_img,caption=feedback,
+         await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
