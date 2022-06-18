@@ -6,7 +6,7 @@ from nandhabot.config import OWNER_ID
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def(_, m):
-      if not len(m.command) <2:
+      if len(m.command) <2:
           return await m.reply_text("gime a feedback!")
       if m.from_user.id in OWNER_ID or dev_user:
           return await m.rely_text("hey! baka this is your bot!")
