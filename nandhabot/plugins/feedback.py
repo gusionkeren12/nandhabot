@@ -12,7 +12,7 @@ async def feedback(_, m):
          user = m.from_user
          chat = m.chat
          caption = f""" **#NewFeedBack**
-FromChat:{chat.title}
+FromChat: @{chat.username}
 user_id : {user.id}
 mention : {user.mention}
 Feedback: **{text}**
