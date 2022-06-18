@@ -19,16 +19,6 @@ async def spellcheck(_, m):
           y = x.result
       text = await m.reply_text("Spelling...")
       await text.edit(f"`{y.corrected}`")
-      
-
-@bot.on_message(filters.command(["img","pic"]))
-async def img(_, m):
-    if len(m.command) < 2:
-        return await m.reply_text("gime a text Baka!")
-    query = m.text.split(None, 1)[1]
-    x = await arq.image(query)
-    y = x.result
-    await m.reply_photo(photo=random.choice(y).url)
 
 @bot.on_message(filters.command("wall")) 
 async def wall(_, m: Message):
