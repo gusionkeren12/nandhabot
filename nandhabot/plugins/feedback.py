@@ -10,7 +10,7 @@ async def feedback(_, m):
          if len(m.command) < 2:
             await m.reply_text("gime a feedback!")
             return 
-         if m.from_user.id in OWNER_ID:
+         if m.from_user.id == OWNER_ID:
                await m.reply_text("owner Baka!")
                return 
          if m.chat.type == "private":
