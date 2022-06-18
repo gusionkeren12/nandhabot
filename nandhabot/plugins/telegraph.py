@@ -30,8 +30,10 @@ async def txt(_, message: Message):
 @app.on_message(filters.command('tm'))
 def tm(_,message):
     reply = message.reply_to_message
+    if not reply:
+          return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.
     if not reply.media:
-          return message.reply_text("Reply to Media Baka!")
+          return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     if reply.media:
         msg = message.reply_text("downloading")
         path = reply.download()
@@ -44,5 +46,3 @@ def tm(_,message):
         [InlineKeyboardButton('View 💫' , url=f"{url}")]
     ]))
         msg.delete()
-        except Exception as e:
-             print(e)
