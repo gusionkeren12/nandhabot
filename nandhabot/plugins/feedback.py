@@ -1,6 +1,7 @@
 from nandhabot import bot, dev_user, SUPPORT_CHAT
 from pyrogram import filters
 from datetime import datetime
+from pyrogram.types import *
 from nandhabot.config import OWNER_ID
 
 #made by t.me/nandhaxd
@@ -8,7 +9,7 @@ from nandhabot.config import OWNER_ID
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
          if m.chat.type == "private":
-                await m.reply_text("command work only groups")
+                await m.reply_text("command work only groups!")
                 return 
          if len(m.command) < 2:
                await m.reply_text("gime a feedback!")
@@ -28,5 +29,18 @@ mention: {user.mention}
 msg_date: {datetimes}
 Feedback: **{text}**
 """      
-         await bot.send_message(f"@{SUPPORT_CHAT}", feedback)
+         await bot.send_message(f"@{SUPPORT_CHAT}", feedback,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "➡ View Bug", url=f"{msg.link}")
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                "❌ Close", callback_data="close")
+                        ]
+                    ]
+                )
+            )
     
