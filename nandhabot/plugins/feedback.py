@@ -7,10 +7,6 @@ from nandhabot.config import OWNER_ID
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if m.chat.username:
-        chat_username = (f"@{msg.chat.username}")
-    else:
-        chat_username = ("Private Group")
          if m.chat.type == "private":
                 await m.reply_text("command work only groups")
                 return 
@@ -22,10 +18,11 @@ async def feedback(_, m):
                return 
          text = m.text.split(None, 1)[1]
          user = m.from_user
+         chat = m.chat
          datetimes_fmt = "%d-%m-%Y"
          datetimes = datetime.utcnow().strftime(datetimes_fmt)
          feedback = f""" **#NewFeedBack**
-FromChat: {chat_username}
+FromChat: {chat.username}
 user_id: {user.id}
 mention: {user.mention}
 msg_date: {datetimes}
