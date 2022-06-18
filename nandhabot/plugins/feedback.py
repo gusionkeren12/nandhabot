@@ -7,7 +7,7 @@ from nandhabot.config import OWNER_ID
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if msg.chat.username:
+         if m.chat.username:
         chat_username = (f"@{msg.chat.username}")
     else:
         chat_username = ("Private Group")
