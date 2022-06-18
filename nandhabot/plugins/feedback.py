@@ -11,12 +11,12 @@ async def feedback(_, m):
         chat_username = (f"@{msg.chat.username}")
     else:
         chat_username = ("Private Group")
-         if len(m.command) < 2:
-               await m.reply_text("gime a feedback!")
-               return 
          if m.chat.type == "private":
                 await m.reply_text("command work only groups")
                 return 
+         if len(m.command) < 2:
+               await m.reply_text("gime a feedback!")
+               return 
          if m.from_user.id == OWNER_ID:
                await m.reply_text("owner Baka!")
                return 
