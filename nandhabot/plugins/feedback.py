@@ -9,7 +9,7 @@ async def feedback(_, m):
          if len(m.command) < 2:
             return await m.reply_text("gime a feedback!")
          if m.from_user.id in OWNER_ID:
-             return await m.rely_text("hey! baka this is your bot!")
+            return await m.rely_text("hey! baka this is your bot!")
          text = m.text.split("", 1)
          user = m.from_user
          chat = m.chat
