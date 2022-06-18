@@ -17,5 +17,5 @@ user_id : {user.id}
 mention : {user.mention}
 Feedback: **{text}**
 """      
-         await bot.send_message(f"@{SUPPORT_CHAT}", caption=feedback)
+         await bot.send_message(f"@{SUPPORT_CHAT}", feedback)
     
