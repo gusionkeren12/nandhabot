@@ -11,11 +11,11 @@ async def feedback(_, m):
          text = m.text.split(None, 1)[1]
          user = m.from_user
          chat = m.chat
-         caption = f""" **#NewFeedBack**
+         feedback = f""" **#NewFeedBack**
 FromChat: @{chat.username}
 user_id : {user.id}
 mention : {user.mention}
 Feedback: **{text}**
 """      
-         await bot.send_message(f"@{SUPPORT_CHAT}", caption=caption)
+         await bot.send_message(f"@{SUPPORT_CHAT}", caption=feedback)
     
