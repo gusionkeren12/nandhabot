@@ -22,11 +22,11 @@ async def hack(_, m):
                await m.reply_text("reply to someone hack!")
                return 
          if reply:
-         msg = await m.reply_text("Started Hacking...")
-         for x in range(9):
-                 await msg.edit_text(hack_ani[x%9])
-                 time.sleep(1)
-         await msg.edit_text(f"**Successfully hacked!**\n`{reply.id}`")
+                 msg = await m.reply_text("Started Hacking...")
+                 for x in range(9):
+                       await msg.edit_text(hack_ani[x%9])
+                       time.sleep(1)
+                       await msg.edit_text(f"**Successfully hacked!**\n`{reply.id}`")
 
 love_ani = [
              "1 ❤️ love story",
