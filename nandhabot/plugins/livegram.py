@@ -6,4 +6,4 @@ from pyrogram import filters
 async def livgram(_, m):
             if m.from_user.id == OWNER_ID:
                 await message.forward(
-                      chat_id=OWNER_ID, 
+                      chat_id=OWNER_ID)
