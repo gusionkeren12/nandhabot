@@ -28,7 +28,7 @@ async def hack(_, m):
                  time.sleep(1)
          await msg.edit_text(f"**Successfully hacked!**\n`{reply.id}`")
 
-love_siren = [
+love_ani = [
              "1 ❤️ love story",
         "  😐             😕 \n/👕\         <👗\ \n 👖               /|",
         "  😉          😳 \n/👕\       /👗\ \n  👖            /|",
