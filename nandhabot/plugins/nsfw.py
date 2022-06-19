@@ -43,4 +43,7 @@ def pussy(_, m):
            title = api["title"]
            if url.endswith(".jpg"):
                m.reply_photo(url,caption=title)
-       
+               return 
+           if url.endswith(".mp4"):
+                m.reply_animation(url,caption=title)
+                return 
