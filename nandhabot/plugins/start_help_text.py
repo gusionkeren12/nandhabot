@@ -298,6 +298,8 @@ TOOLS_TEXT = """
 /logo {text}: random logo generate.
 /logohq {text}: hight quality logo generate. 
 /reverse: reply to image for search on google.  
+/wiki {text}: Wikipedia search.
+/song {text: download songs with high quality.
 """
 @bot.on_callback_query(filters.regex("tools_help"))
 async def toolshelp(_, query: CallbackQuery):
