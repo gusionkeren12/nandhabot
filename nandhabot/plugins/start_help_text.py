@@ -232,10 +232,10 @@ async def mischelp(_, query: CallbackQuery):
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 MEME_TEXT = """
 **Memes & jokes:**
-/ameme - read a random anime memes.
-/meme - read a random memes.
-/hmeme - read a hentai based memes.
-/joke - read some random jokes.
+/ameme: read a random anime memes.
+/meme: read a random memes.
+/hmeme: read a hentai based memes.
+/joke: read some random jokes.
 """
 
 @bot.on_callback_query(filters.regex("meme_help"))
