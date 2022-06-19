@@ -101,7 +101,9 @@ HELP_BUTTON = [[
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
         InlineKeyboardButton('MISC', callback_data='misc_help'),
-        InlineKeyboardButton('INFO', callback_data='userinfo_help')]]
+        InlineKeyboardButton('INFO', callback_data='userinfo_help'),
+        ],[
+        InlineKeyboardButton('MEME', callback_data='meme_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -125,11 +127,8 @@ ANIME_TEXT = """
 anime themed fun & search:
 
 • `/anime {name}` - Search animes in myanimelist.net.
-
 • `/character {name}` - Search Character in myanimelist.net.
-
 • `/upcoming` - details in upcoming animes in myanimelist.net.
-
 • `/quotes` - random anime quotes.
 """
 
@@ -228,4 +227,16 @@ MISC_TEXT = """
 @bot.on_callback_query(filters.regex("misc_help"))
 async def mischelp(_, query: CallbackQuery):
      await query.message.edit_caption(MISC_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+MEME_TEXT = """
+**Memes & jokes:**
+/ameme - read a random anime memes.
+/meme - read a random memes.
+/hmeme - read a hentai based memes.
+/joke - read some random jokes.
+"""
+
+bot.on_callback_query(filters.regex("meme_help"))
+async def memehelp(_, query: CallbackQuery):
+     await query.message.edit_caption(MEME_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
