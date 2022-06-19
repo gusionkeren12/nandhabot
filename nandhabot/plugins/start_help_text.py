@@ -212,6 +212,7 @@ async def nsfwhelp(_, query: CallbackQuery):
 
 MISC_TEXT = """
 **random misc tools:**
+/pastet: reply to msg paste.
 /rename: rename files.
 /encrypt: reply to msg encrypt.
 /decrypt: reply to msg decrypt.
