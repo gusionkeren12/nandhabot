@@ -104,7 +104,8 @@ HELP_BUTTON = [[
         InlineKeyboardButton('INFO', callback_data='userinfo_help'),
         ],[
         InlineKeyboardButton('MEME', callback_data='meme_help'),
-         InlineKeyboardButton('STICKER & GIF', callback_data='sticker_help')]]
+        InlineKeyboardButton('FUN', callback_data='fun_help'),
+        InlineKeyboardButton('STICKER & GIF', callback_data='sticker_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -213,6 +214,8 @@ async def nsfwhelp(_, query: CallbackQuery):
 
 MISC_TEXT = """
 **random misc tools:**
+/tm: reply to media for upload telegraph.
+/txt{pagename}: reply to text for upload telegraph.
 /pastet: reply to msg paste.
 /rename: rename files.
 /encrypt: reply to msg encrypt.
@@ -252,4 +255,19 @@ STICKER_TEXT = """
 @bot.on_callback_query(filters.regex("sticker_help"))
 async def stickerhelp(_, query: CallbackQuery):
      await query.message.edit_caption(STICKER_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+FUN_TEXT = """
+**Fun commands:**
+/react: reply to msg react.
+/gban: fake gban for fun.
+`good morning`: regex cmd tell good morning.
+`good night`: regex cmd tell good night.
+/dare: reply to user give dare.
+/truth: reply to user give truth. 
+/write {text}: note written photo type.
+"""
+
+@bot.on_callback_query(filters.regex("fun_help"))
+async def funhelp(_, query: CallbackQuery):
+     await query.message.edit_caption(FUN_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
