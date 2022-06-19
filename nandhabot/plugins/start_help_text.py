@@ -107,7 +107,8 @@ HELP_BUTTON = [[
         InlineKeyboardButton('FUN', callback_data='fun_help'),
         InlineKeyboardButton('SG', callback_data='sticker_help'),
         ],[
-        InlineKeyboardButton('DEV', callback_data='dev_help')]]
+        InlineKeyboardButton('DEV', callback_data='dev_help'),
+        InlineKeyboardButton('TOOLS', callback_data='tools_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -289,4 +290,16 @@ DEV_TEXT = """
 @bot.on_callback_query(filters.regex("dev_help"))
 async def devhelp(_, query: CallbackQuery):
      await query.message.edit_caption(DEV_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+
+TOOLS_TEXT = """
+/feedback {text}: give feedback about bot.
+/img {text}: download img to google.
+/logo {text}: random logo generate.
+/logohq {text}: hight quality logo generate. 
+/reverse: reply to image for search on google.  
+"""
+@bot.on_callback_query(filters.regex("tools_help"))
+async def toolshelp(_, query: CallbackQuery):
+     await query.message.edit_caption(TOOLS_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
