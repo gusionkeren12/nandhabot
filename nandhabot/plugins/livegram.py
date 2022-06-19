@@ -7,6 +7,6 @@ async def livgram(_, m):
             if not m.from_user.id == OWNER_ID:
                  await m.forward(OWNER_ID)
             await m.reply_text("**⚠ Note!**:\n**Your all Dm Message Well Forward to @NandhaxD**")
-            text = m.text.split(None, 1)[1]
+            text = m.text
             if m.reply_to_message.forward:
                  await bot.send_message(m.forward.from_user.id, text) 
