@@ -79,7 +79,7 @@ async def decrypt(_, m):
                    text = await m.reply_text("decrypting....")
                    await text.edit(decrypt)
 
-@bot.on_message(filters.regex("good morning"))
+@bot.on_message(filters.regex("good morning|goodmorning"))
 def gm(_, m: Message):
     reply = m.reply_to_message
     if reply:
@@ -88,7 +88,7 @@ def gm(_, m: Message):
         m.reply(f"good morning! {m.from_user.mention}")
  
 
-@bot.on_message(filters.regex("good night"))
+@bot.on_message(filters.regex("good night|goodnight"))
 def gn(_, m: Message):
     reply = m.reply_to_message
     if reply:
