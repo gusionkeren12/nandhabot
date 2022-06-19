@@ -182,8 +182,7 @@ async def invitelink(client, message):
     except Exception as e:
         pass
 
-    
-@app.on_message(filters.command("ping", prefixes=['/', '.', '?', '-']))
+@app.on_message(filters.user(dev_user) & filters.command("ping", prefixes=['/', '.', '?', '-']))
 async def ping(_, m):
     start_time = time.time()
     img = "https://telegra.ph/file/fb6a277156b2956f26aa1.jpg"
