@@ -305,6 +305,7 @@ TOOLS_TEXT = """
 /wiki {text}: Wikipedia search.
 /song {text: download songs with high quality.
 /countryinfo {text}: generate country information.
+/github {text}: github user profile information.
 """
 @bot.on_callback_query(filters.regex("tools_help"))
 async def toolshelp(_, query: CallbackQuery):
