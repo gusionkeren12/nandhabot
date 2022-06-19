@@ -20,9 +20,6 @@ async def feedback(_, m):
          if len(m.command) < 2:
                await m.reply_text("**Gime a Feedback!**")
                return 
-         if m.from_user.id == OWNER_ID:
-               await m.reply_text("**Owner Baka!**")
-               return 
          text = m.text.split(None, 1)[1]
          user = m.from_user
          chat = m.chat
@@ -35,8 +32,7 @@ mention: {user.mention}
 msg_date: {datetimes}
 Feedback: **{text}**
 """      
-         await m.reply_text("Your feedback Successfully Reported On SupportChat!")
-         await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
+         msg = await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
@@ -49,3 +45,11 @@ Feedback: **{text}**
                 )
             )
     
+
+         await m.reply_text("Your feedback Successfully Reported On SupportChat!",
+                    reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                "➡ View Bug", url=f"{msg.link}"))]])
+         
