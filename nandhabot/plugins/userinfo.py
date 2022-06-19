@@ -127,6 +127,8 @@ def id(_,message):
 async def gifid(_, m):
             if not m.reply_to_message:
                    await m.reply_text("reply to gif")
+            if not m.reply_to_message.animation:
+                    await m.reply_text("reply to gif")
             if m.reply_to_message:
-                    await m.reply_text(f"{m.from_user.mention} here the gifid:\n`{m.reply_to_message.animation.file_id}`")
+                    await m.reply_text(f"{m.from_user.mention} here Gifid:\n`{m.reply_to_message.animation.file_id}`")
 
