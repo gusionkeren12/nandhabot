@@ -103,7 +103,8 @@ HELP_BUTTON = [[
         InlineKeyboardButton('MISC', callback_data='misc_help'),
         InlineKeyboardButton('INFO', callback_data='userinfo_help'),
         ],[
-        InlineKeyboardButton('MEME', callback_data='meme_help')]]
+        InlineKeyboardButton('MEME', callback_data='meme_help'),
+         InlineKeyboardButton('STICKER & GIF', callback_data='sticker_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -237,7 +238,18 @@ MEME_TEXT = """
 /joke - read some random jokes.
 """
 
-bot.on_callback_query(filters.regex("meme_help"))
+@bot.on_callback_query(filters.regex("meme_help"))
 async def memehelp(_, query: CallbackQuery):
      await query.message.edit_caption(MEME_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+
+STICKER_TEXT = """
+/getsticker: reply to sticker for get photo document type. 
+/stickers {text}: for search stickers.
+/stickerid: reply to sticker to get I'd.
+/gifid: reply to gif for get gif I'd 
+"""
+@bot.on_callback_query(filters.regex("sticker_help"))
+async def stickerhelp(_, query: CallbackQuery):
+     await query.message.edit_caption(STICKER_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
