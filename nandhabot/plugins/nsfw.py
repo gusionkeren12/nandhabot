@@ -31,14 +31,14 @@ def blowjob(_, m: Message):
 
 @bot.on_message(filters.command("lewd"))
 def lewd(_, m):
-          api = requests.get("https://meme-api.herokuapp.com/gimme/lewdanime").json()
+           api = requests.get("https://meme-api.herokuapp.com/gimme/lewdanime").json()
            url = api["url"]
            title = api["title"]
            m.reply_photo(url,caption=title)
     
 @bot.on_message(filters.command("pussy"))
 def pussy(_, m):
-          api = requests.get("https://meme-api.herokuapp.com/gimme/animepussy").json()
+           api = requests.get("https://meme-api.herokuapp.com/gimme/animepussy").json()
            url = api["url"]
            title = api["title"]
            m.reply_photo(url,caption=title)
