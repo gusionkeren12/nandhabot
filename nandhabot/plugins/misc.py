@@ -40,9 +40,10 @@ async def reddit(_, m):
           y = x.result
           url  = y["url"]
           title = y["title"]
-          if not x.result:
+          if not x.ok:
               await m.reply_text("I can't find anything!")
-          else:
+              return 
+          if x.ok:
                  await m.reply_photo(url,caption=title)
   
 @bot.on_message(filters.command(["lang", "langs"]))
