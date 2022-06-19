@@ -100,7 +100,7 @@ HELP_BUTTON = [[
         InlineKeyboardButton('NEKOS', callback_data='nekos_help'),
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
-        InlineKeyboardButton('', callback_data='_help'),
+        InlineKeyboardButton('MISC', callback_data='misc_help'),
         InlineKeyboardButton('INFO', callback_data='userinfo_help')]]
 
          
