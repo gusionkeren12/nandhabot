@@ -105,7 +105,9 @@ HELP_BUTTON = [[
         ],[
         InlineKeyboardButton('MEME', callback_data='meme_help'),
         InlineKeyboardButton('FUN', callback_data='fun_help'),
-        InlineKeyboardButton('STICKER & GIF', callback_data='sticker_help')]]
+        InlineKeyboardButton('SG', callback_data='sticker_help'),
+        ],[
+        InlineKeyboardButton('DEV', callback_data='dev_help')]]
 
          
 @bot.on_message(filters.command(["help"], ["/", ".", "?"]))
@@ -214,8 +216,9 @@ async def nsfwhelp(_, query: CallbackQuery):
 
 MISC_TEXT = """
 **random misc tools:**
+/font {text}: for style fonts.
 /tm: reply to media for upload telegraph.
-/txt{pagename}: reply to text for upload telegraph.
+/txt {pagename}: reply to text for upload telegraph.
 /pastet: reply to msg paste.
 /rename: rename files.
 /encrypt: reply to msg encrypt.
@@ -270,4 +273,17 @@ FUN_TEXT = """
 @bot.on_callback_query(filters.regex("fun_help"))
 async def funhelp(_, query: CallbackQuery):
      await query.message.edit_caption(FUN_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
+
+DEV_TEXT = """
+/logs: get bot logs.
+/eval: run codes.
+/ping: bot server start time & end time.
+/sh: run codes.
+/pyupload: get plugins document type.
+/devlist: list of developer.
+"""
+@bot.on_callback_query(filters.regex("dev_help"))
+async def devhelp(_, query: CallbackQuery):
+     await query.message.edit_caption(DEV_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
