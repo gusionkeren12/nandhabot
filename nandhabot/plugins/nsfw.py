@@ -41,5 +41,6 @@ def pussy(_, m):
            api = requests.get("https://meme-api.herokuapp.com/gimme/animepussy").json()
            url = api["url"]
            title = api["title"]
-           m.reply_photo(url,caption=title)
-    
+           if url endswith(".jpg"):
+               m.reply_photo(url,caption=title)
+       
