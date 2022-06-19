@@ -38,9 +38,8 @@ def lewd(_, m):
     
 @bot.on_message(filters.command("pussy"))
 def pussy(_, m):
-           send = m.reply_photo or m.reply_animation
            api = requests.get("https://meme-api.herokuapp.com/gimme/animepussy").json()
            url = api["url"]
            title = api["title"]
-           send(url,caption=title)
+           m.reply_photo(url,caption=title)
     
