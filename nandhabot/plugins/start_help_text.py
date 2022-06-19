@@ -100,6 +100,7 @@ HELP_BUTTON = [[
         InlineKeyboardButton('NEKOS', callback_data='nekos_help'),
         ],[
         InlineKeyboardButton('NSFW', callback_data='nsfw_help'),
+        InlineKeyboardButton('', callback_data='_help'),
         InlineKeyboardButton('INFO', callback_data='userinfo_help')]]
 
          
@@ -210,3 +211,21 @@ async def nsfwhelp(_, query: CallbackQuery):
      await query.message.edit_caption(NSFW_TEXT,
                                       reply_markup=InlineKeyboardMarkup(BUTTON),)
 
+MISC_TEXT = """
+**random misc tools:**
+/rename: rename files.
+/encrypt: reply to msg encrypt.
+/decrypt: reply to msg decrypt.
+/spell: reply to msg convert correct spelling.
+/wall {text}: get awesome wallpaper.
+/tr {code}: reply to msg translate.
+/lang: translate language codes.
+/reddit {text}: search on reddit.
+/ud {text}: ward definition.
+/share: reply to msg get share link.
+"""
+
+@bot.on_callback_query(filters.regex("misc_help"))
+async def mischelp(_, query: CallbackQuery):
+     await query.message.edit_caption(MISC_TEXT,
+                                      reply_markup=InlineKeyboardMarkup(BUTTON),)
