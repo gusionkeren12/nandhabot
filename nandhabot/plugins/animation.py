@@ -17,8 +17,37 @@ hack_ani = [
 
 @bot.on_message(filters.command("hack"))
 async def hack(_, m):
-         msg = await m.reply_text("started")
+         reply = m.reply_to_message
+         if not reply:
+               await m.reply_text("reply to someone hack!")
+               return 
+         if reply:
+         msg = await m.reply_text("Started Hacking...")
          for x in range(9):
                  await msg.edit_text(hack_ani[x%9])
                  time.sleep(1)
-         await msg.edit_text(f"Successfully hacked! `{m.reply_to_message.from_user.id}`")
+         await msg.edit_text(f"**Successfully hacked!**\n`{reply.id}`")
+
+love_siren = [
+             "1 ❤️ love story",
+        "  😐             😕 \n/👕\         <👗\ \n 👖               /|",
+        "  😉          😳 \n/👕\       /👗\ \n  👖            /|",
+        "  😚            😒 \n/👕\         <👗> \n  👖             /|",
+        "  😍         ☺️ \n/👕\      /👗\ \n  👖          /|",
+        "  😍          😍 \n/👕\       /👗\ \n  👖           /|",
+        "  😘   😊 \n /👕\/👗\ \n   👖   /|",
+        " 😳  😁 \n /|\ /👙\ \n /     / |",
+        "😈    /😰\ \n<|\      👙 \n /🍆    / |",
+        "😅 \n/(),✊😮 \n /\         _/\\/|",
+        "😎 \n/\\_,__😫 \n  //    //       \\",
+        "😖 \n/\\_,💦_😋  \n  //         //        \\",
+        "  😭      ☺️ \n  /|\   /(👶)\ \n  /!\   / \ "
+]
+
+@bot.on_message(filters.command("love"))
+async def love(_, m):
+         msg = await m.reply_text("💑")
+         for x in range(13):
+                 await msg.edit_text(love_ani[x%13])
+                 time.sleep(1)
+         await msg.edit_text("*the end 😂💔😂**")
