@@ -17,7 +17,7 @@ hack_ani = [
 @bot.on_message(filters.command("hack"))
 async def hack(_, m):
          msg = await m.reply_text("started")
-         for x in range(15):
+         for x in range(9):
                  await msg.edit_text(hack_ani[x%9])
                  time.sleep(1)
          await msg.edit_text(f"Successfully hacked! {m.reply_to_message.from_user.id}")
