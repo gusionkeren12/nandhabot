@@ -51,5 +51,5 @@ Feedback: **{text}**
                     [
                         [
                             InlineKeyboardButton(
-                                "➡ View Bug", url=f"{msg.link}"))]])
+                                "➡ View Bug", url=f"{msg.link}")]]))
          
