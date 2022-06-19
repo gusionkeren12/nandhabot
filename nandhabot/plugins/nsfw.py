@@ -41,9 +41,12 @@ def pussy(_, m):
            api = requests.get("https://meme-api.herokuapp.com/gimme/animepussy").json()
            url = api["url"]
            title = api["title"]
-           if url.endswith(".jpg"):
-               m.reply_photo(url,caption=title)
-               return 
-           if url.endswith(".mp4"):
-                m.reply_animation(url,caption=title)
-                return 
+           m.reply_photo(url,caption=title)
+         
+@bot.on_message(filters.command("ero"))
+def ero(_, m):
+           api = requests.get("https://meme-api.herokuapp.com/gimme/eroanime").json()
+           url = api["url"]
+           title = api["title"]
+           m.reply_photo(url,caption=title)
+         
