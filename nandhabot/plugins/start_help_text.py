@@ -14,7 +14,6 @@ from pyrogram.types import CallbackQuery
 
 ALIVE_TEXT = """
 BOT - {}
-DEV - @NandhaxD
 PYRO - {}
 """
 
