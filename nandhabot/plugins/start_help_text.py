@@ -268,6 +268,8 @@ FUN_TEXT = """
 /dare: reply to user give dare.
 /truth: reply to user give truth. 
 /write {text}: note written photo type.
+/hack: reply to user hack.
+/love: animation love story. 
 """
 
 @bot.on_callback_query(filters.regex("fun_help"))
