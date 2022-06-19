@@ -208,6 +208,9 @@ using: Waifu.pics
 • /hwaifu - hentai waifu img.
 • /blowjob - hentai blowjob gif.
 • /trap - hentai trap img.
+• /lewd - get anime lewd img.
+• /ero - get anime ero img. 
+• /pussy - get smile pussy img.
 """
 
 @bot.on_callback_query(filters.regex("nsfw_help"))
@@ -217,6 +220,7 @@ async def nsfwhelp(_, query: CallbackQuery):
 
 MISC_TEXT = """
 **random misc tools:**
+
 /font {text}: for style fonts.
 /tm: reply to media for upload telegraph.
 /txt {pagename}: reply to text for upload telegraph.
@@ -300,6 +304,7 @@ TOOLS_TEXT = """
 /reverse: reply to image for search on google.  
 /wiki {text}: Wikipedia search.
 /song {text: download songs with high quality.
+/countryinfo {text}: generate country information.
 """
 @bot.on_callback_query(filters.regex("tools_help"))
 async def toolshelp(_, query: CallbackQuery):
