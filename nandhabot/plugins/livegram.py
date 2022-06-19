@@ -8,4 +8,4 @@ async def livgram(_, m):
                  await m.forward(OWNER_ID)
             text = m.text
             if m.reply_to_message.forward:
-                 await bot.send_message(m.reply_to_message.forward_from_user.id, text) 
+                 await bot.send_message(m.reply_to_message.forward_from.id, text) 
