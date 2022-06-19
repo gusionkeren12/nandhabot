@@ -40,11 +40,10 @@ async def reddit(_, m):
           y = x.result
           url  = y["url"]
           title = y["title"]
-          except Exception as e:
-             await m.reply_text(e)
-             return
           await m.reply_photo(url,caption=title)
-       
+          except Exception as e:
+              print(e)
+
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
        #langs codes
