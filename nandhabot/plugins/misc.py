@@ -9,6 +9,16 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
+"""
+spell
+wall 
+tr 
+lang
+reddit 
+ud
+share
+"""
+
 @bot.on_message(filters.command("spell"))
 async def spellcheck(_, m):
       reply = m.reply_to_message
