@@ -32,7 +32,7 @@ async def wall(_, m: Message):
 
 @bot.on_message(filters.command("reddit"))
 async def reddit(_, m):
-          if len(m.command) <2:
+          if len(m.command) < 2:
               await m.reply_text("Gime text to search reddit!")
               return 
           text = m.text.split(None, 1)[1]
