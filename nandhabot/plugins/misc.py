@@ -40,7 +40,7 @@ async def reddit(_, m):
           y = x.result
           url  = y["url"]
           title = y["title"]
-          if not url:
+          if not x.result:
               await m.reply_text("I can't find anything!")
           else:
                  await m.reply_photo(url,caption=title)
