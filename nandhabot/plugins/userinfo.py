@@ -119,8 +119,14 @@ async def chat_info_func(_, message: Message):
 def id(_,message):
   reply = message.reply_to_message
   if reply:
-    message.reply_text(f"**Your id**: {message.from_user.id}\n**User id**: {reply.from_user.id}\n**chat id**: {message.chat.id}")
+    message.reply_text(f"**Your id**: `{message.from_user.id}`\n**User id**: `{reply.from_user.id}`\n**chat id**: `{message.chat.id}`")
   else:
-    message.reply(f"**Your id**: {message.from_user.id}\n**chat id**: {message.chat.id}")
+    message.reply(f"**Your id**:` {message.from_user.id}`\n**chat id**: `{message.chat.id}`")
 
+@bot.on_message(filters.command("gifid"))
+async def gifid(_, m):
+            if not m.reply_to_message:
+                   await m.reply_text("reply to gif")
+            if m.reply_to_message:
+                    await m.reply_text(f"{m.from_user.mention} here the gifid:\n`{m.reply_to_message.animation.file_id}`")
 
