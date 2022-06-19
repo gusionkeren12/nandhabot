@@ -1,5 +1,6 @@
 from nandhabot import bot
 from pyrogram import filters
+import time
 
 hack_ani = [
                 "`Hacking... 0%\n▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒ `\n\n\n  TERMINAL:\nDownloading Bruteforce-Telegram-0.1.tar.gz (9.3 kB)",
