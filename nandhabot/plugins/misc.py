@@ -41,7 +41,9 @@ async def reddit(_, m):
           url  = y["url"]
           title = y["title"]
           await m.reply_photo(url,caption=title)
-
+          else:
+                   m.reply_text("I can't find anything!")
+       
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
        #langs codes
