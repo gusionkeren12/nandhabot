@@ -50,4 +50,4 @@ async def love(_, m):
          for x in range(13):
                  await msg.edit_text(love_ani[x%13])
                  time.sleep(1)
-         await msg.edit_text("*the end 😂💔😂**")
+         await msg.edit_text("**the end 😂💔😂**")
