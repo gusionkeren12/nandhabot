@@ -6,4 +6,4 @@ from nandhabot.config import OWNER_ID
 async def livgram(_, m):
             if not m.from_user.id == OWNER_ID:
                  await m.forward(chat_id=OWNER_ID)
-            await m.reply_text("**⚠Note!**:\n**Your all Dm Well Forward to @NandhaxD**")
+            await m.reply_text("**⚠Note!**:\n**Your all Dm Message Well Forward to @NandhaxD**")
