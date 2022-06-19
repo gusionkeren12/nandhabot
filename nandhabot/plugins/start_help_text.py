@@ -280,6 +280,7 @@ DEV_TEXT = """
 /eval: run codes.
 /ping: bot server start time & end time.
 /sh: run codes.
+/leave: bot left the chat. 
 /pyupload: get plugins document type.
 /devlist: list of developer.
 """
