@@ -10,7 +10,7 @@ from pyrogram.types import (
 )
 
 @bot.on_message(filters.private & filters.incoming)
-async def livgram(_, m: Message):
-            if not m.from_user.id == OWNER_ID:
-                 await m.forward(OWNER_ID)
+async def livgram(client: Client, message: Message):
+            if not message.from_user.id == OWNER_ID:
+                 await message.forward(OWNER_ID)
             
