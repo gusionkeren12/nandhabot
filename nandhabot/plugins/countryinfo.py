@@ -7,6 +7,8 @@ from pyrogram import filters
 
 @bot.on_message(filters.command(["country", "countryinfo"]))
 async def countryinfo(_, m):
+    if len(m.command) < 2:
+        await m.reply("give me country name")
     search = m.text.split(None, 1)[1]
     country = CountryInfo(search)
     a = country.info()
