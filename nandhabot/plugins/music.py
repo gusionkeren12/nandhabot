@@ -5,6 +5,9 @@ from io import BytesIO
 from requests import get
 import youtube_dl
 import ffmpeg
+from asyncio import get_running_loop
+from functools import partial
+
 
 from nandhabot import aiohttpsession as session
 
