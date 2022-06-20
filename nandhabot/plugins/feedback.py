@@ -12,9 +12,9 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 "https://telegra.ph/file/51323082ef6051f3a9721.jpg",
 "https://telegra.ph/file/072bc7f5f9fdf7f04acb3.jpg"]
 
-@bot.on_message(filters.command(["feedback","bug"]) & filters.group)
+@bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if m.chat.type == "private":
+         if m.chattype == "private":
                 await m.reply_text("**Command work only groups!**")
                 return 
          if len(m.command) < 2:
