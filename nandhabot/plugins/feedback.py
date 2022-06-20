@@ -14,8 +14,8 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if enums.ChatType.PRIVATE:
-                await m.reply_text("**Command work only groups!**")
+         if not enums.ChatType.SUPERGROUP:
+                await m.reply_text("**Command work only supergroups!**")
                 return 
          if len(m.command) < 2:
                await m.reply_text("**Gime a Feedback!**")
