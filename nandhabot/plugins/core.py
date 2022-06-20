@@ -10,7 +10,7 @@ from datetime import datetime
 from nandhabot import dev_user as DEV_USERS
 from nandhabot import TEMP_DOWNLOAD_DIRECTORY as path
 from datetime import datetime
-water = './nandhabot/images/IMG_20220522_180127_083.jpg'
+water = "https://telegra.ph/file/a5005e20487831c9ad219.jpg"
 client = tbot
 
 @register(pattern=r"^/pyupload ?(.*)")
