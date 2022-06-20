@@ -20,3 +20,5 @@ countryinfo
 lxml
 telethon
 bing_image_downloader
+youtube_dl
+ffmpeg
