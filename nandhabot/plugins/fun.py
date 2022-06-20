@@ -52,7 +52,7 @@ reactions = [
 async def react(_, m):
          react = random.choice(reactions)
          if m.reply_to_message:
-               await m.reply_text(react)
+               await m.reply_to_message.reply_text(react)
          else:
                 await m.reply_text(react)
      
@@ -83,7 +83,7 @@ async def decrypt(_, m):
 def gm(_, m: Message):
     reply = m.reply_to_message
     if reply:
-        m.reply(f"good morning! {reply.from_user.mention}")
+        m.reply_to_message.reply_text(f"good morning! {reply.from_user.mention}")
     else:
         m.reply(f"good morning! {m.from_user.mention}")
  
@@ -94,7 +94,7 @@ def gn(_, m: Message):
     if reply:
         api = requests.get("https://nekos.best/api/v2/sleep").json()
         url = api["results"][0]['url']
-        m.reply_animation(url, caption=f"good night! {reply.from_user.mention}")
+        m.reply_to_message.reply_animation(url, caption=f"good night! {reply.from_user.mention}")
     else:
         api = requests.get("https://nekos.best/api/v2/sleep").json()
         url = api["results"][0]['url']
