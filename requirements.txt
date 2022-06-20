@@ -20,6 +20,6 @@ countryinfo
 lxml
 telethon
 bing_image_downloader
-youtube_dl
+yt-dlp==2021.11.10.1
 ffmpeg-python
 future
