@@ -26,7 +26,7 @@ async def hack(_, m):
                  for x in range(9):
                        await msg.edit_text(hack_ani[x%9])
                        time.sleep(1)
-                       await msg.edit_text(f"**Successfully hacked!**\n`{reply.id}`")
+                       await msg.edit_text(f"**Successfully hacked!**\n`[{reply.from_user.id}]({tg://userid?reply.from_user.id})`")
 
 love_ani = [
              "1 ❤️ love story",
