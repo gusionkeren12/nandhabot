@@ -14,7 +14,7 @@ from telethon import events, Button, custom, version
 
 from nandhabot.config import OWNER_ID, SUPPORT_CHAT, UPDATES_CHANNEL
 from nandhabot.events import register
-from nandhabot import telethn as tbot
+from nandhabot import tbot
 from PIL import Image, ImageDraw, ImageFont
 
 
