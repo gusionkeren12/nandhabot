@@ -1,5 +1,5 @@
 from nandhabot import bot, dev_user, SUPPORT_CHAT
-from pyrogram import filters
+from pyrogram import filters, enums
 import random
 from datetime import datetime
 from pyrogram.types import *
@@ -14,7 +14,7 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if ChatType.PRIVATE:
+         if enums.ChatType.PRIVATE:
                 await m.reply_text("**Command work only groups!**")
                 return 
          if len(m.command) < 2:
