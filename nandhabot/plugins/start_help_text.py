@@ -1,7 +1,8 @@
 from pyrogram import filters, __version__ as pyrogram_version
 import random 
 from telethon import __version__ as telethon_version
-import time, StartTime = time.time()
+import time
+StartTime = time.time()
 from pyrogram import enums
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
