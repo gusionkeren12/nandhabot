@@ -10,15 +10,22 @@ def paste(text):
     return f"https://spaceb.in/{res.json()['payload']['id']}"
 
 
+
 @bot.on_message(filters.command('paste'))
 def pastex(_, m):
     reply = m.reply_to_message
     text = reply.text or reply.caption
+    key = requests.post(
+        'https://nekobin.com/api/documents', json={
+            "content": text
+        }).json().get('result').get('key')
+    nekobin = f"https://nekobin.com/{key}"
     if reply:
         x = paste(text)
         m.reply(x,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("Paste Link🔗 ", url=x)]]))
+                          [[InlineKeyboardButton("SPACEBIN", url=x),
+                             InlineKeyboardButton("NEKOBIN", url=nekobin)]]))
 
     else:
         m.reply_text("Reply to a message!")
