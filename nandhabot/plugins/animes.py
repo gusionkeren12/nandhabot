@@ -125,7 +125,7 @@ async def quote(_, message: Message):
 @bot.on_message(filters.command("character"))
 async def character(_, msg):
     res = ""
-    query = msg.text.spilt(None, 1)[1]
+    query = msg.text.split(None, 1)[1]
     try:
         search = jikan.search("character", query).get("results")[0].get("mal_id")
     except APIException:
