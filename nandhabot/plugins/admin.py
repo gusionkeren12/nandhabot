@@ -24,8 +24,9 @@ def ban(_, message):
             message.chat.id, message.from_user.id
     ) and not reply.from_user.id in OWNER_ID:
         bot.ban_chat_member(message.reply_to_message.from_user.id)
+        except Exception as e
+        message.reply(e)
         bot.send_message(
             message.chat.id,
             f"Banned! {reply.from_user.username}")
-          except Exception as e
-            print(e)
+          
