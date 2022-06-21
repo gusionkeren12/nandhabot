@@ -13,12 +13,6 @@ from nandhabot.plugins.stats import users_db, grps
 from pyrogram.types import CallbackQuery
 
 
-ALIVE_TEXT = """
-Robot: {}
-Pyroversion: {}
-Televersion: {}
-"""
-
 @bot.on_message(filters.command("alive"))
 async def alive(_, m: Message):
     user = m.from_user
