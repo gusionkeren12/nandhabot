@@ -16,8 +16,8 @@ def spacebin(text):
 def paste(_, m):
     reply = m.reply_to_message
     if not reply:
-         await m.reply("reply to message")
-         return 
+           m.reply("reply to message")
+           return 
     text = reply.text or reply.caption
     key = requests.post(
         'https://nekobin.com/api/documents', json={
