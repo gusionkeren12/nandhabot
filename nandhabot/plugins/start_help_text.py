@@ -1,6 +1,6 @@
-from pyrogram import filters, __version__ as pyro
+from pyrogram import filters, __version__ as pyrogram_version
 import random 
-from telethon import __version__ as telever
+from telethon import __version__ as telethon_version
 import time
 from pyrogram import enums
 from pyrogram.types import Message
@@ -21,6 +21,7 @@ Televersion: {}
 
 @bot.on_message(filters.command("alive"))
 async def alive(_, m: Message):
+    user = m.from_user
     msg = await m.reply_text("Initialising")
     await msg.edit("Initialising ✪●●●●●")
     time.sleep(1)
@@ -35,8 +36,12 @@ async def alive(_, m: Message):
     await msg.edit("Initialising ✪✪✪✪✪✪")
     time.sleep(1)
     await msg.edit("✪︎Connection Successful✪")
-    await msg.delete()
-    await m.reply_text(text=ALIVE_TEXT.format(BOT_USERNAME, pyro, telever))
+    pm_caption = f"** ♡ Hey [{user.first_name}](tg://user?id={user.id}) I,m Vegeta 愛 **\n\n"
+    pm_caption += f"**♡ My Uptime :** `{uptime}`\n\n"
+    pm_caption += f"**♡ Telethon Version :** `{telethon_version}`\n\n"
+    pm_caption += f"**♡ Pyrogram Version :** `{pyrogram_version}`\n\n"
+    pm_caption += "**♡ My Master :** [Nandha](https://t.me/nandhaxd) "
+    await msg.edit_text(text=(pm_caption)
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
