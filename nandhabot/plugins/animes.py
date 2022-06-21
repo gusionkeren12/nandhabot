@@ -12,69 +12,6 @@ from jikanpy.exceptions import APIException
 jikan = Jikan()
 
 
-        
-
-@bot.on_message(filters.command("anime"))
-async def anime(_, msg: Message):
-    query = msg.text.split(None, 1)[1]
-    res = ""
-    res = jikan.search("anime", query)
-    res = res.get("results")[0].get("mal_id") # Grab first result
-    if res:
-        anime = jikan.anime(res)
-        title = anime.get("title")
-        japanese = anime.get("title_japanese")
-        type = anime.get("type")
-        duration = anime.get("duration")
-        synopsis = anime.get("synopsis")
-        source = anime.get("source")
-        status = anime.get("status")
-        episodes = anime.get("episodes")
-        score = anime.get("score")
-        rating = anime.get("rating")
-        genre_lst = anime.get("genres")
-        genres = "".join(genre.get("name") + ", " for genre in genre_lst)
-        genres = genres[:-2]
-        studio_lst = anime.get("studios")
-        studios = "".join(studio.get("name") + ", " for studio in studio_lst)
-        studios = studios[:-2]
-        duration = anime.get("duration")
-        premiered = anime.get("premiered")
-        image_url = anime.get("image_url")
-        url = anime.get("url")
-        trailer = anime.get("trailer_url")
-    else:
-        await msg.reply_text("No results found!")
-        return
-    rep = f"<b>{title} ({japanese})</b>\n"
-    rep += f"<b>Type:</b> <code>{type}</code>\n"
-    rep += f"<b>Source:</b> <code>{source}</code>\n"
-    rep += f"<b>Status:</b> <code>{status}</code>\n"
-    rep += f"<b>Genres:</b> <code>{genres}</code>\n"
-    rep += f"<b>Episodes:</b> <code>{episodes}</code>\n"
-    rep += f"<b>Duration:</b> <code>{duration}</code>\n"
-    rep += f"<b>Score:</b> <code>{score}</code>\n"
-    rep += f"<b>Studio(s):</b> <code>{studios}</code>\n"
-    rep += f"<b>Premiered:</b> <code>{premiered}</code>\n"
-    rep += f"<b>Rating:</b> <code>{rating}</code>\n\n"
-    rep += f"<a href='{image_url}'>\u200c</a>"
-    rep += f"<i>{synopsis}</i>\n"
-    
-    await msg.reply_text(rep)
-    
-    
-@bot.on_message(filters.command("upcoming"))
-async def upcoming(_, msg: Message):
-    rep = "<b>Upcoming anime</b>\n"
-    later = jikan.season_later()
-    anime = later.get("anime")
-    for new in anime:
-        name = new.get("title")
-        url = new.get("url")
-        rep += f"➛ <a href='{url}'>{name}</a>\n"
-        if len(rep) > 2000:
-            break
-    await msg.reply_text(rep)
     
 @bot.on_message(filters.command("manga"))
 async def manga(_, msg: Message):
@@ -153,4 +90,67 @@ async def character(_, msg):
         keyb = [[InlineKeyboardButton("More Information", url=url)]]
         await msg.reply_photo(photo=image,caption=rep,reply_markup=InlineKeyboardMarkup(keyb))
         
-        
+
+@bot.on_message(filters.command("anime"))
+async def anime(_, msg):
+    query = msg.text.split(None, 1)[1]
+    res = ""
+    try:
+        res = jikan.search("anime", query)
+    except APIException:
+        await msg.reply_text("Error connecting to the API. Please try again!")
+        return ""
+    try:
+        res = res.get("results")[0].get("mal_id") # Grab first result
+    except APIException:
+        await msg.reply_text("Error connecting to the API. Please try again!")
+        return ""
+    if res:
+        anime = jikan.anime(res)
+        title = anime.get("title")
+        japanese = anime.get("title_japanese")
+        type = anime.get("type")
+        duration = anime.get("duration")
+        synopsis = anime.get("synopsis")
+        source = anime.get("source")
+        status = anime.get("status")
+        episodes = anime.get("episodes")
+        score = anime.get("score")
+        rating = anime.get("rating")
+        genre_lst = anime.get("genres")
+        genres = "".join(genre.get("name") + ", " for genre in genre_lst)
+        genres = genres[:-2]
+        studio_lst = anime.get("studios")
+        studios = "".join(studio.get("name") + ", " for studio in studio_lst)
+        studios = studios[:-2]
+        duration = anime.get("duration")
+        premiered = anime.get("premiered")
+        image_url = anime.get("image_url")
+        url = anime.get("url")
+        trailer = anime.get("trailer_url")
+    else:
+        await msg.reply_text("No results found!")
+        return
+    rep = f"<b>{title} ({japanese})</b>\n"
+    rep += f"<b>Type:</b> <code>{type}</code>\n"
+    rep += f"<b>Source:</b> <code>{source}</code>\n"
+    rep += f"<b>Status:</b> <code>{status}</code>\n"
+    rep += f"<b>Genres:</b> <code>{genres}</code>\n"
+    rep += f"<b>Episodes:</b> <code>{episodes}</code>\n"
+    rep += f"<b>Duration:</b> <code>{duration}</code>\n"
+    rep += f"<b>Score:</b> <code>{score}</code>\n"
+    rep += f"<b>Studio(s):</b> <code>{studios}</code>\n"
+    rep += f"<b>Premiered:</b> <code>{premiered}</code>\n"
+    rep += f"<b>Rating:</b> <code>{rating}</code>\n\n"
+    rep += f"<a href='{image_url}'>\u200c</a>"
+    rep += f"<i>{synopsis}</i>\n"
+    if trailer:
+        keyb = [
+            [InlineKeyboardButton("More Information", url=url),
+           InlineKeyboardButton("Trailer", url=trailer)]
+        ]
+    else:
+        keyb = [
+             [InlineKeyboardButton("More Information", url=url)]]
+
+    await msg.reply_photo(photo=image_url,caption=rep,  reply_markup=InlineKeyboardMarkup(keyb))
