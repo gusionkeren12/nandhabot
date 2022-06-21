@@ -11,9 +11,6 @@ from jikanpy.exceptions import APIException
 
 jikan = Jikan()
 
-
-   
-
 @bot.on_message(filters.command(["quote","animequote","quotes"]))
 async def quote(_, message: Message):
     res = requests.get("https://animechan.vercel.app/api/random").json()
@@ -128,3 +125,52 @@ async def anime(_, msg):
              [InlineKeyboardButton("More Information", url=url)]]
 
     await msg.reply_text(rep, reply_markup=InlineKeyboardMarkup(keyb))
+
+@bot.on_message(filters.command("manga"))
+async def manga(_,  msg):
+    if len(msg.command) < 2:
+          await msg.reply("give a manga name")
+          return 
+    query = msg.text.split(None, 1)[1]
+    res = ""
+    manga = ""
+    try:
+        res = jikan.search("manga", query).get("results")[0].get("mal_id")
+    except APIException:
+        await msg.reply_text("Error connecting to the API. Please try again!")
+        return ""
+    if res:
+        try:
+            manga = jikan.manga(res)
+        except APIException:
+            await msg.reply_text("Error connecting to the API. Please try again!")
+            return ""
+        title = manga.get("title")
+        japanese = manga.get("title_japanese")
+        type = manga.get("type")
+        status = manga.get("status")
+        score = manga.get("score")
+        volumes = manga.get("volumes")
+        chapters = manga.get("chapters")
+        genre_lst = manga.get("genres")
+        genres = "".join(genre.get("name") + ", " for genre in genre_lst)
+        genres = genres[:-2]
+        synopsis = manga.get("synopsis")
+        image = manga.get("image_url")
+        url = manga.get("url")
+        rep = f"<b>{title} ({japanese})</b>\n"
+        rep += f"<b>Type:</b> <code>{type}</code>\n"
+        rep += f"<b>Status:</b> <code>{status}</code>\n"
+        rep += f"<b>Genres:</b> <code>{genres}</code>\n"
+        rep += f"<b>Score:</b> <code>{score}</code>\n"
+        rep += f"<b>Volumes:</b> <code>{volumes}</code>\n"
+        rep += f"<b>Chapters:</b> <code>{chapters}</code>\n\n"
+        rep += f"<a href='{image}'>\u200c</a>"
+        rep += f"<i>{synopsis}</i>"
+        keyb = [
+            [InlineKeyboardButton("More Information", url=url)]]
+
+
+        await msg.reply_text(rep, reply_markup=InlineKeyboardMarkup(keyb))
+        
+        
