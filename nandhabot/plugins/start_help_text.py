@@ -41,7 +41,7 @@ async def alive(_, m: Message):
     pm_caption += f"**♡ Telethon Version :** `{telethon_version}`\n\n"
     pm_caption += f"**♡ Pyrogram Version :** `{pyrogram_version}`\n\n"
     pm_caption += "**♡ My Master :** [Nandha](https://t.me/nandhaxd) "
-    await msg.edit_text(text=(pm_caption)
+    await msg.edit_text(text=(pm_caption))
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
