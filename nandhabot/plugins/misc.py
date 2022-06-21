@@ -9,15 +9,16 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-"""
-spell
-wall 
-tr 
-lang
-reddit 
-ud
-share
-"""
+@bot.on_message(filters.command(["echo","send"]))
+async def echo(_, m):
+           reply = m.reply_to_message
+           if not reply:
+                await m.reply_text(m.text)
+                await m.delete()
+            if reply:
+                   text = m.text.split(None, 1)[1]
+                   await reply.reply_text(text)
+                   await m.delete()
 
 @bot.on_message(filters.command("spell"))
 async def spellcheck(_, m):
