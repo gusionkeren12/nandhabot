@@ -1,7 +1,7 @@
 from pyrogram import filters, __version__ as pyrogram_version
 import random 
 from telethon import __version__ as telethon_version
-import time
+import time, StartTime = time.time()
 from pyrogram import enums
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
@@ -9,13 +9,14 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeybo
 from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
 from nandhabot.plugins.stats import col
 from nandhabot.plugins.stats import users_db, grps
-
+from nandhabot.plugins.dev_user import get_readable_time
 from pyrogram.types import CallbackQuery
 
 
 @bot.on_message(filters.command("alive"))
 async def alive(_, m: Message):
     user = m.from_user
+    uptime = get_readable_time((time.time() - StartTime))
     msg = await m.reply_text("Initialising")
     await msg.edit("Initialising ✪●●●●●")
     time.sleep(1)
