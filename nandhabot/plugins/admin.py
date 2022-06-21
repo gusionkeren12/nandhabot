@@ -11,5 +11,12 @@ admin_fliter = filters.create(
     name="AdminFilter"
 )
 
-@bot.on_message(filters.command("ban"))
+@bot.on_message(filters.command("ban") & admin_filter)
 async def ban(_, m):
+          if not m.reply_to_message:
+                await m.reply_text("reply to user")
+                return 
+          if m.reply_to_message:
+                 user = m.from_user
+                 await bot.ban_chat_member(m.chat.id, user.id)
+                 await m.reply_text(f"banned! {user.mention}")
