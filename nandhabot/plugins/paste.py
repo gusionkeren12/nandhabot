@@ -26,7 +26,7 @@ def paste(_, m):
     nekobin_url = f"https://nekobin.com/{key}"
     if reply:
         spacebin_url = spacebin(text)
-        caption = f"[NEKOBIN]({nekobin}) | [SPACEBIN]({spacebin})"
+        caption = f"[NEKOBIN]({nekobin_url}) | [SPACEBIN]({spacebin_url})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
