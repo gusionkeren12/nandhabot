@@ -130,6 +130,9 @@ async def jsonify(_, message):
        
 @bot.on_message(filters.command("ud"))
 async def ud(_, message: Message):
+        if len(message.command) < 2:
+             await message.reply("gime a ward")
+             return
         text = message.text.split(None, 1)[1]
         results = requests.get(
         f'https://api.urbandictionary.com/v0/define?term={text}').json()
