@@ -6,3 +6,16 @@ def is_admin(group_id: int, user_id: int):
     try:
         user_data = bot.get_chat_member(group_id, user_id)
         if user_data.status == 'administrator' or user_data.status == 'creator':
+
+
+@bot.on_message(filters.command('ban'))
+def ban(_, message):
+    # scammer = reply.from_user.id
+    reply = message.reply_to_message
+    if is_admin(
+            message.chat.id, message.from_user.id
+    ) and not reply.from_user.id in sudos and reply.from_user.id != 825664681:
+        message.chat.ban_member(message.reply_to_message.from_user.id)
+        bot.send_message(
+            message.chat.id,
+            f"Banned! {reply.from_user.username}")
