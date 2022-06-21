@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
 
-def paste(text):
+def spacebin(text):
     url = "https://spaceb.in/api/v1/documents/"
     res = post(url, data={"content": text, "extension": "txt"})
     return f"https://spaceb.in/{res.json()['payload']['id']}"
@@ -15,6 +15,9 @@ def paste(text):
 @bot.on_message(filters.command('paste'))
 def pastex(_, m):
     reply = m.reply_to_message
+    if not reply:
+         await m.reply("reply to message")
+         return 
     text = reply.text or reply.caption
     key = requests.post(
         'https://nekobin.com/api/documents', json={
@@ -22,12 +25,9 @@ def pastex(_, m):
         }).json().get('result').get('key')
     nekobin = f"https://nekobin.com/{key}"
     if reply:
-        x = paste(text)
-        caption = f"[NEKOBIN]({nekobin}) | [SPACEBIN]({x})"
+        spacebin = spacebin(text)
+        caption = f"[NEKOBIN]({nekobin}) | [SPACEBIN]({spacebin})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=x),
-                             InlineKeyboardButton("NEKOBIN", url=nekobin)]]))
-
-    else:
-        m.reply_text("Reply to a message!")
+                             InlineKeyboardButton("NEKOBIN", url=nekobin)]]),disable_web_page_preview=True)
