@@ -1,5 +1,6 @@
 from pyrogram import filters, __version__ as pyro
 import random 
+from telethon import __version__ as telever
 import time
 from pyrogram import enums
 from pyrogram.types import Message
@@ -13,8 +14,9 @@ from pyrogram.types import CallbackQuery
 
 
 ALIVE_TEXT = """
-BOT - {}
-PYRO - {}
+Robot: {}
+Pyroversion: {}
+Televersion: {}
 """
 
 @bot.on_message(filters.command("alive"))
@@ -34,7 +36,7 @@ async def alive(_, m: Message):
     time.sleep(1)
     await msg.edit("✪︎Connection Successful✪")
     await msg.delete()
-    await m.reply_text(text=ALIVE_TEXT.format(BOT_USERNAME, pyro))
+    await m.reply_text(text=ALIVE_TEXT.format(BOT_USERNAME, pyro, telever))
 
            
 BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
