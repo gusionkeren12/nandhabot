@@ -23,7 +23,7 @@ def ban(_, message):
     if is_admin(
             message.chat.id, message.from_user.id
     ) and not reply.from_user.id in OWNER_ID:
-        bot.chat.ban_member(message.reply_to_message.from_user.id)
+        bot.ban_chat_member(message.reply_to_message.from_user.id)
         bot.send_message(
             message.chat.id,
             f"Banned! {reply.from_user.username}")
