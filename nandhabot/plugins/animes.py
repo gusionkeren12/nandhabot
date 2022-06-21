@@ -61,6 +61,9 @@ async def quote(_, message: Message):
 
 @bot.on_message(filters.command("character"))
 async def character(_, msg):
+    if len(msg.command) < 2:
+          await msg.reply_text("gime character name baka!")
+          return
     res = ""
     query = msg.text.split(None, 1)[1]
     try:
@@ -93,6 +96,9 @@ async def character(_, msg):
 
 @bot.on_message(filters.command("anime"))
 async def anime(_, msg):
+    if len(msg.command) < 2:
+          await msg.reply_text("gime anime name baka!")
+          return 
     query = msg.text.split(None, 1)[1]
     res = ""
     try:
@@ -140,9 +146,7 @@ async def anime(_, msg):
     rep += f"<b>Duration:</b> <code>{duration}</code>\n"
     rep += f"<b>Score:</b> <code>{score}</code>\n"
     rep += f"<b>Studio(s):</b> <code>{studios}</code>\n"
-    rep += f"<b>Premiered:</b> <code>{premiered}</code>\n"
     rep += f"<b>Rating:</b> <code>{rating}</code>\n\n"
-    rep += f"<a href='{image_url}'>\u200c</a>"
     rep += f"<i>{synopsis}</i>\n"
     if trailer:
         keyb = [
