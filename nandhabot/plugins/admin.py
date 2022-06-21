@@ -27,5 +27,5 @@ def ban(_, message):
         bot.send_message(
             message.chat.id,
             f"Banned! {reply.from_user.username}")
-        except Exception as e
-           print(e)
+          except Exception as e
+            print(e)
