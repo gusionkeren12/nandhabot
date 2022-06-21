@@ -13,7 +13,7 @@ def spacebin(text):
 
 
 @bot.on_message(filters.command('paste'))
-def pastex(_, m):
+def paste(_, m):
     reply = m.reply_to_message
     if not reply:
          await m.reply("reply to message")
@@ -29,5 +29,5 @@ def pastex(_, m):
         caption = f"[NEKOBIN]({nekobin}) | [SPACEBIN]({spacebin})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=x),
+                          [[InlineKeyboardButton("SPACEBIN", url=spacebin),
                              InlineKeyboardButton("NEKOBIN", url=nekobin)]]),disable_web_page_preview=True)
