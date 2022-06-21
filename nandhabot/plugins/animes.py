@@ -150,11 +150,7 @@ async def character(_, msg):
         rep = f"<b>{name} ({kanji})</b>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{about}</i>"
-        keyb = [
-            [InlineKeyboardButton("More Information", url=url),
-           InlineKeyboardButton("Close", callback_data="close")]]
-        
-        
+        keyb = [[InlineKeyboardButton("More Information", url=url)]]
         await msg.reply_photo(photo=image,caption=rep,reply_markup=InlineKeyboardMarkup(keyb))
         
         
