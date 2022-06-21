@@ -23,11 +23,11 @@ def paste(_, m):
         'https://nekobin.com/api/documents', json={
             "content": text
         }).json().get('result').get('key')
-    nekobin = f"https://nekobin.com/{key}"
+    nekobin_url = f"https://nekobin.com/{key}"
     if reply:
-        spacebin = spacebin(text)
+        spacebin_url = spacebin(text)
         caption = f"[NEKOBIN]({nekobin}) | [SPACEBIN]({spacebin})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=spacebin),
-                             InlineKeyboardButton("NEKOBIN", url=nekobin)]]),disable_web_page_preview=True)
+                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                             InlineKeyboardButton("NEKOBIN", url=nekobin_url)]]),disable_web_page_preview=True)
