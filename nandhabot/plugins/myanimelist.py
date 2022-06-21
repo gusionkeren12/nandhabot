@@ -174,3 +174,16 @@ async def manga(_,  msg):
         await msg.reply_text(rep, reply_markup=InlineKeyboardMarkup(keyb))
         
         
+@bot.on_message(filters.command("upcoming"))
+async def upcoming(_, msg):
+    rep = "<b>Upcoming anime</b>\n"
+    later = jikan.season_later()
+    anime = later.get("anime")
+    for new in anime:
+        name = new.get("title")
+        url = new.get("url")
+        rep += f"➛ <a href='{url}'>{name}</a>\n"
+        if len(rep) > 2000:
+            break
+    await msg.reply_text(rep, disable_web_page_preview=True)
+    
