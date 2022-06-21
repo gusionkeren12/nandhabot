@@ -146,7 +146,9 @@ async def anime(_, msg):
     rep += f"<b>Duration:</b> <code>{duration}</code>\n"
     rep += f"<b>Score:</b> <code>{score}</code>\n"
     rep += f"<b>Studio(s):</b> <code>{studios}</code>\n"
+    rep += f"<b>Premiered:</b> <code>{premiered}</code>\n"
     rep += f"<b>Rating:</b> <code>{rating}</code>\n\n"
+    rep += f"<a href='{image_url}'>\u200c</a>"
     rep += f"<i>{synopsis}</i>\n"
     if trailer:
         keyb = [
@@ -157,4 +159,4 @@ async def anime(_, msg):
         keyb = [
              [InlineKeyboardButton("More Information", url=url)]]
 
-    await msg.reply_photo(photo=image_url,caption=rep,  reply_markup=InlineKeyboardMarkup(keyb))
+    await msg.reply_text(rep, reply_markup=InlineKeyboardMarkup(keyb))
