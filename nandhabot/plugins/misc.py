@@ -15,7 +15,7 @@ async def echo(_, m):
            if not reply:
                 await m.reply_text(m.text)
                 await m.delete()
-            if reply:
+           if reply:
                    text = m.text.split(None, 1)[1]
                    await reply.reply_text(text)
                    await m.delete()
