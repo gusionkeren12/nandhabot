@@ -11,29 +11,7 @@ from jikanpy.exceptions import APIException
 
 jikan = Jikan()
 
-@bot.on_message(filters.command("character"))
-async def character(_, msg: Message):
-    res = ""
-    query = msg.text.split(None, 1)[1]
-    search = jikan.search("character", query).get("results")[0].get("mal_id")
-    res = jikan.character(search)
-    if res:
-        name = res.get("name")
-        kanji = res.get("name_kanji")
-        about = res.get("about")
-        about = re.sub(r"\\n", r"\n", about)
-        about = re.sub(r"\r\n", r"", about)
-        if len(about) > 4096:
-            about = about[:4000] + "..."
-        image = res.get("image_url")
-        url = res.get("url")
-        rep = f"<b>{name} ({kanji})</b>\n\n"
-        rep += f"<a href='{image}'>\u200c</a>"
-        rep += f"<i>{about}</i>"
-        
-        await msg.reply_text(rep,reply_markup=InlineKeyboardMarkup([ 
-        [InlineKeyboardButton('View 💫' , url=f"{url}")]
-    ]))
+
         
 
 @bot.on_message(filters.command("anime"))
@@ -143,3 +121,40 @@ async def quote(_, message: Message):
     rep += f"**Quote** - `{quote}`"
     
     await message.reply_text(rep)
+
+@bot.on_message(filters.command("character"))
+async def character(_, msg):
+    res = ""
+    query = msg.text.spilt(None, 1)[1]
+    try:
+        search = jikan.search("character", query).get("results")[0].get("mal_id")
+    except APIException:
+        await msg.reply_text("No results found!")
+        return
+    if search:
+        try:
+            res = jikan.character(search)
+        except APIException:
+            await msg.reply_text("Error connecting to the API. Please try again!")
+            return
+    if res:
+        name = res.get("name")
+        kanji = res.get("name_kanji")
+        about = res.get("about")
+        about = re.sub(r"\\n", r"\n", about)
+        about = re.sub(r"\r\n", r"", about)
+        if len(about) > 4096:
+            about = about[:4000] + "..."
+        image = res.get("image_url")
+        url = res.get("url")
+        rep = f"<b>{name} ({kanji})</b>\n\n"
+        rep += f"<a href='{image}'>\u200c</a>"
+        rep += f"<i>{about}</i>"
+        keyb = [
+            [InlineKeyboardButton("More Information", url=url),
+           InlineKeyboardButton("Close", callback_data="close")]]
+        
+        
+        await msg.reply_photo(photo=image,caption=rep,reply_markup=InlineKeyboardMarkup(keyb))
+        
+        
