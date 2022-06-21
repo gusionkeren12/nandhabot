@@ -12,39 +12,7 @@ from jikanpy.exceptions import APIException
 jikan = Jikan()
 
 
-    
-@bot.on_message(filters.command("manga"))
-async def manga(_, msg: Message):
-    query = msg.text.split(None, 1)[1]
-    res = ""
-    manga = ""
-    res = jikan.search("manga", query).get("results")[0].get("mal_id")
-    if res:
-        manga = jikan.manga(res)
-        title = manga.get("title")
-        japanese = manga.get("title_japanese")
-        type = manga.get("type")
-        status = manga.get("status")
-        score = manga.get("score")
-        volumes = manga.get("volumes")
-        chapters = manga.get("chapters")
-        genre_lst = manga.get("genres")
-        genres = "".join(genre.get("name") + ", " for genre in genre_lst)
-        genres = genres[:-2]
-        synopsis = manga.get("synopsis")
-        image = manga.get("image_url")
-        url = manga.get("url")
-        rep = f"<b>{title} ({japanese})</b>\n"
-        rep += f"<b>Type:</b> <code>{type}</code>\n"
-        rep += f"<b>Status:</b> <code>{status}</code>\n"
-        rep += f"<b>Genres:</b> <code>{genres}</code>\n"
-        rep += f"<b>Score:</b> <code>{score}</code>\n"
-        rep += f"<b>Volumes:</b> <code>{volumes}</code>\n"
-        rep += f"<b>Chapters:</b> <code>{chapters}</code>\n\n"
-        rep += f"<a href='{image}'>\u200c</a>"
-        rep += f"<i>{synopsis}</i>"
-        
-        await msg.reply_text(rep)
+   
 
 @bot.on_message(filters.command(["quote","animequote","quotes"]))
 async def quote(_, message: Message):
