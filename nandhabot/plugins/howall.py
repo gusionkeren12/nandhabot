@@ -17,7 +17,7 @@ async def wish(_, m):
                   wish += f"✨ Your wish: {text} 😃"
                   wish += f"✨ Possible to {wish_count}"
                   await m.reply_animation(url,caption=(wish))
-           else:
+         else:
                   api = requests.get("https://nekos.best/api/v2/poke").json()
                   url = api["results"][0]['url']
                   wish_count = random.randint(1,100)
