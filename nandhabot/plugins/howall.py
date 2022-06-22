@@ -15,16 +15,16 @@ async def wish(_, m):
                        await m.reply("give a wish 🌠")
                        return 
                        text = m.text.split(None, 1)[1]
-                       wish_text = f""" Hey Dear {m.from_user.mention}
-Your Wish: {text}
-Possible to Your Wish Cost: {wish_count} 🌠"""
-                       await m.reply_text(text=wish_text)
+                       wish_text = f"Hey Dear {m.from_user.mention}"
+                       wish_text += f" Your Wish: {text}"
+                       wish_text += "Possible to Your Wish Cost: {wish_count} 🌠"
+                       await m.reply_text(text=(wish_text))
             if reply:
                   text = reply.text
-                  wish_text = f""" Hey Dear {m.from_user.mention}
-Your Wish: {text}
-Possible to Your Wish Cost: {wish_count} 🌠"""
-            await m.reply_text(text=wish_text)
+                  wish_text = f"Hey Dear {m.from_user.mention}"
+                  wish_text += f" Your Wish: {text}"
+                  wish_text += "Possible to Your Wish Cost: {wish_count} 🌠"
+                  await m.reply_text(text=(wish_text))
 
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
