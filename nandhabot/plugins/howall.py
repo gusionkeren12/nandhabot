@@ -12,20 +12,18 @@ async def wish(_, m):
             wish_count = random.randit(1,100)
             if not reply:
                 if len(m.command) < 2:
-                       await m.reply("give a wish 🌠"
+                       await m.reply("give a wish 🌠")
                        return 
             text = m.text.split(None, 1)[1]
             wish = f""" Hey Dear {m.from_user.mention}
 Your Wish: {text}
 Possible to Your Wish Cost: {wish_count} 🌠"""
-
             await m.reply(wish)
             if reply:
                   text = m.text
                   wish = f""" Hey Dear {m.from_user.mention}
 Your Wish: {text}
 Possible to Your Wish Cost: {wish_count} 🌠"""
-"""
             await m.reply(wish)
 
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
