@@ -10,22 +10,13 @@ from pyrogram import filters
 async def wish(_, m):
             api = requests.get("https://nekos.best/api/v2/poke").json()
             url = api["results"][0]['url']
-            reply = m.reply_to_message
+            text = m.text.split("", 1)[1]
             wish_count = random.randint(1,100)
-            if reply:
-                  wish = f"✨ hey! {m.from_user.first_name}! 🤗"
-                  wish += f"✨ Your wish: {text} 😃"
-                  wish += f"✨ Possible to {wish_count}"
-                  await m.reply_animation(url,caption=(wish))
-         else:
-                  api = requests.get("https://nekos.best/api/v2/poke").json()
-                  url = api["results"][0]['url']
-                  wish_count = random.randint(1,100)
-                  wish = f"✨ hey! {m.from_user.first_name}! 🤗"
-                  wish += f"✨ Your wish: {text} 😃"
-                  wish += f"✨ Possible to {wish_count}"
-                  await m.reply_animation(url,caption=(wish))
-
+            wish = f"✨ hey! {m.from_user.first_name}! 🤗"
+            wish += f"✨ Your wish: {text} 😃"
+            wish += f"✨ Possible to {wish_count}"
+            await m.reply_animation(url,caption=(wish))
+         
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
 SMEXY = "https://telegra.ph/file/a23e9fd851fb6bc771686.gif"
