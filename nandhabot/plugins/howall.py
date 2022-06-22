@@ -14,13 +14,21 @@ CUTIE = "https://64.media.tumblr.com/d701f53eb5681e87a957a547980371d2/tumblr_nbj
 
 @asst.on(events.NewMessage(pattern="/horny ?(.*)"))
 async def horny(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
-         await e.reply(HORNY, buttons=BUTTON, file=HOT)
-
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
+              await e.reply(HORNY, buttons=BUTTON, file=HOT)
+         if e.is_reply:
+               user = (await event.get_reply_message())
+               user_id = user.user_id
+               user_name = user.first_name
+               mention = f"[{user_name}](tg://user?id={str(user_id)})"
+               mm = random.randint(1,100)
+               HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
+               await e.reply(HORNY, buttons=BUTTON, file=HOT)
 @asst.on(events.NewMessage(pattern="/gay ?(.*)"))
 async def gay(e):
          user_id = e.sender.id
