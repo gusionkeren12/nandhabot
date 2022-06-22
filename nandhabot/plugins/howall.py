@@ -21,8 +21,9 @@ async def wish(_, m):
             file_id = "CAACAgIAAx0CXss_8QABBpFuYrMigIRzrvu0BLalDGPgfyhzqNsAAgIVAAI6wVBJt0ySCb_oqBMeBA"
             msg = await bot.send_sticker(m.chat.id, sticker=file_id)
             time.sleep(2)
+            await msg.delete()
             await m.reply_animation(url,caption=(wish))
-            msg.delete()
+            
          
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
