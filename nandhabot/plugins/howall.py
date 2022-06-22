@@ -8,13 +8,16 @@ from pyrogram import filters
 #credits to t.me/nandhaxd
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
+            if len(m.command) <  2:
+                  await m.reply("😉 Add wish!")
+                  return 
             api = requests.get("https://nekos.best/api/v2/happy").json()
             url = api["results"][0]['url']
             text = m.text.split(None, 1)[1]
             wish_count = random.randint(1,100)
-            wish = f"✨ hey! {m.from_user.first_name}! 🤗"
-            wish += f"✨ Your wish: {text} 😃"
-            wish += f"✨ Possible to {wish_count}"
+            wish = f"✨~~ **hey! {m.from_user.first_name}!** ~~🤗"
+            wish += f"✨ ~~Your wish:~~ **{text}** 😃"
+            wish += f"✨ ~~ **Possible to {wish_count}** ~~"
             await m.reply_animation(url,caption=(wish))
          
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
