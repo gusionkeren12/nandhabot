@@ -19,7 +19,7 @@ async def wish(_, m):
             wish += f"✨ ~~**Your wish**:~~ **{text}** 😃"
             wish += f"✨ ~~ **Possible to: {wish_count}%** ~~"
             file_id = "CAACAgIAAx0CXss_8QABBpFuYrMigIRzrvu0BLalDGPgfyhzqNsAAgIVAAI6wVBJt0ySCb_oqBMeBA"
-            msg = await m.reply_sticker(m.chat.id, sticker=file_id)
+            msg = await m.reply_sticker(file_id)
             time.sleep(2)
             await msg.delete()
             await m.reply_animation(url,caption=(wish),
