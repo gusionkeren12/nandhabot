@@ -1,5 +1,5 @@
 
-import random, requests
+import random, requests, time
 from nandhabot import tbot as asst,bot
 from telethon import Button, events
 from nandhabot.events import register
