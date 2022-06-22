@@ -20,7 +20,7 @@ Your Wish: {text}
 Possible to Your Wish Cost: {wish_count} 🌠"""
             await m.reply(wish)
             if reply:
-                  text = m.text
+                  text = reply.m.text
                   wish = f""" Hey Dear {m.from_user.mention}
 Your Wish: {text}
 Possible to Your Wish Cost: {wish_count} 🌠"""
