@@ -1,11 +1,11 @@
 
 import random
-from nandhabot import tbot as asst
+from nandhabot import tbot as asst,bot
 from telethon import Button, events
 from nandhabot.events import register
+from pyrogram import filters
 
-#pyrogram wish 
-
+#credits to t.me/nandhaxd
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
             reply = m.reply_to_message
