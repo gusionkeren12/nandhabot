@@ -8,9 +8,9 @@ from pyrogram import filters
 #credits to t.me/nandhaxd
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
-            api = requests.get("https://nekos.best/api/v2/poke").json()
+            api = requests.get("https://nekos.best/api/v2/happy").json()
             url = api["results"][0]['url']
-            text = m.text.split("")[1]
+            text = m.text.split(None, 1)[1]
             wish_count = random.randint(1,100)
             wish = f"✨ hey! {m.from_user.first_name}! 🤗"
             wish += f"✨ Your wish: {text} 😃"
