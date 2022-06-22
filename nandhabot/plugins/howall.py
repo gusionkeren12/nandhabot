@@ -10,7 +10,7 @@ from pyrogram import filters
 async def wish(_, m):
             api = requests.get("https://nekos.best/api/v2/poke").json()
             url = api["results"][0]['url']
-            text = m.text.split("", 1)[1]
+            text = m.text.split("")[1]
             wish_count = random.randint(1,100)
             wish = f"✨ hey! {m.from_user.first_name}! 🤗"
             wish += f"✨ Your wish: {text} 😃"
