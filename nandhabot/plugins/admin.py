@@ -6,7 +6,7 @@ from pyrogram import filters
 async def ban(_, message):
     chat_id = message.chat.id
     msg = message.reply_to_message
-    member = bot.get_chat_member(chat_id, message.from_user.id)
+    member = await bot.get_chat_member(chat_id, message.from_user.id)
     if member.status in ("administrator", "creator"):
         txt = message.text.split(" ")[1]
         if msg:
