@@ -9,7 +9,7 @@ from pyrogram import filters
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
             reply = m.reply_to_message
-            wish_count = random.randit(1,100)
+            wish_count = random.randint(1,100)
             if not reply:
                 if len(m.command) < 2:
                        await m.reply("give a wish 🌠")
