@@ -22,7 +22,9 @@ async def wish(_, m):
             msg = await bot.send_sticker(m.chat.id, sticker=file_id)
             time.sleep(2)
             await msg.delete()
-            await m.reply_animation(url,caption=(wish))
+            await m.reply_animation(url,caption=(wish),
+              reply_markup=InlineKeyboardMarkup(
+                    [ [InlineKeyboardButton("❓ What is This", url=f"https://t.me/vegetaSupport/64304")]]))
             
          
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
