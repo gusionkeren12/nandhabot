@@ -48,7 +48,7 @@ Hello! Dear {}
 I'm An Anime themed Smart VegetaRobot make your group's
 joyful Using /help commands!!
 
-powered by @PegaBots
+powered by @NandhaBots
 """
 
 buttons = [
