@@ -4,6 +4,30 @@ from nandhabot import tbot as asst
 from telethon import Button, events
 from nandhabot.events import register
 
+#pyrogram wish 
+
+@bot.on_message(filters.command("wish"))
+async def wish(_, m):
+            reply = m.reply_to_message
+            wish_count = random.randit(1,100)
+            if not reply:
+                if len(m.command) < 2:
+                       await m.reply("give a wish 🌠"
+                       return 
+            text = m.text.split(None, 1)[1]
+            wish = f""" Hey Dear {m.from_user.mention}
+Your Wish: {text}
+Possible to Your Wish Cost: {wish_count} 🌠"""
+"""
+            await m.reply(wish)
+            if reply:
+                  text = m.text
+                  wish = f""" Hey Dear {m.from_user.mention}
+Your Wish: {text}
+Possible to Your Wish Cost: {wish_count} 🌠"""
+"""
+            await m.reply(wish)
+
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
 SMEXY = "https://telegra.ph/file/a23e9fd851fb6bc771686.gif"
