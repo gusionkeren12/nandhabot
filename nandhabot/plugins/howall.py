@@ -1,5 +1,5 @@
 
-import random
+import random, requests
 from nandhabot import tbot as asst,bot
 from telethon import Button, events
 from nandhabot.events import register
@@ -8,24 +8,23 @@ from pyrogram import filters
 #credits to t.me/nandhaxd
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
+            api = requests.get("https://nekos.best/api/v2/poke").json()
+            url = api["results"][0]['url']
             reply = m.reply_to_message
             wish_count = random.randint(1,100)
-            if not reply:
-                if len(m.command) < 2:
-                       await m.reply("give a wish 🌠")
-                       return 
-            text = m.text.split(None, 1)[1]
-            wish_text = f"Hey Dear {m.from_user.mention}"
-            wish_text += f" Your Wish: {text}"
-            wish_text += f"Possible to Your Wish Cost: {wish_count} 🌠"
-            await m.reply_text(text=(wish_text))
-            return 
             if reply:
-                  text = reply.text
-                  wish_text = f"Hey Dear {m.from_user.mention}"
-                  wish_text += f" Your Wish: {text}"
-                  wish_text += f"Possible to Your Wish Cost: {wish_count} 🌠"
-                  await m.reply_text(text=(wish_text))
+                  wish = f"✨ hey! {m.from_user.first_name}! 🤗"
+                  wish += f"✨ Your wish: {text} 😃"
+                  wish += f"✨ Possible to {wish_count}"
+                  await m.reply_animation(url,caption=(wish))
+           else:
+                  api = requests.get("https://nekos.best/api/v2/poke").json()
+                  url = api["results"][0]['url']
+                  wish_count = random.randint(1,100)
+                  wish = f"✨ hey! {m.from_user.first_name}! 🤗"
+                  wish += f"✨ Your wish: {text} 😃"
+                  wish += f"✨ Possible to {wish_count}"
+                  await m.reply_animation(url,caption=(wish))
 
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
