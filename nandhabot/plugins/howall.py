@@ -17,7 +17,7 @@ async def wish(_, m):
             wish_count = random.randint(1,100)
             wish = f"✨~~ **hey! {m.from_user.first_name}!** ~~🤗"
             wish += f"✨ ~~**Your wish**:~~ **{text}** 😃"
-            wish += f"✨ ~~ **Possible to: {wish_count}** ~~"
+            wish += f"✨ ~~ **Possible to: {wish_count}%** ~~"
             file_id = "CAACAgIAAx0CXss_8QABBpFuYrMigIRzrvu0BLalDGPgfyhzqNsAAgIVAAI6wVBJt0ySCb_oqBMeBA"
             msg = await bot.send_sticker(m.chat.id, sticker=file_id)
             time.sleep(2)
