@@ -9,7 +9,7 @@ from pyrogram import filters
 @bot.on_message(filters.command("wish"))
 async def wish(_, m):
             if len(m.command) <  2:
-                  await m.reply("😉 Add wish!")
+                  await m.reply("😉 ~~**Add~~ wish!**")
                   return 
             api = requests.get("https://nekos.best/api/v2/happy").json()
             url = api["results"][0]['url']
@@ -18,7 +18,11 @@ async def wish(_, m):
             wish = f"✨~~ **hey! {m.from_user.first_name}!** ~~🤗"
             wish += f"✨ ~~**Your wish**:~~ **{text}** 😃"
             wish += f"✨ ~~ **Possible to: {wish_count}** ~~"
+            file_id = "CAACAgIAAx0CXss_8QABBpFuYrMigIRzrvu0BLalDGPgfyhzqNsAAgIVAAI6wVBJt0ySCb_oqBMeBA"
+            msg = await bot.send_sticker(m.chat.id, sticker=file_id)
+            time.sleep(2)
             await m.reply_animation(url,caption=(wish))
+            msg.delete()
          
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
