@@ -32,7 +32,7 @@ async def alive(_, m: Message):
     await msg.edit("Initialising ✪✪✪✪✪✪")
     time.sleep(1)
     await msg.edit("✪︎Connection Successful✪")
-    pm_caption = f"** ♡ Hey [{user.first_name}](tg://user?id={user.id}) I,m Vegeta 愛 **\n\n"
+    pm_caption = f"** ♡ Hey [{user.first_name}](tg://user?id={user.id}) \nI,m Vegeta ✨ **\n\n"
     pm_caption += f"**♡ My Uptime :** `{uptime}`\n\n"
     pm_caption += f"**♡ Telethon Version :** `{telethon_version}`\n\n"
     pm_caption += f"**♡ Pyrogram Version :** `{pyrogram_version}`\n\n"
