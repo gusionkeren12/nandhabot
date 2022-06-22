@@ -84,7 +84,7 @@ async def boobs(e):
                BOOBS = f"**🍒** {mention}**'s Boobs Size Is** {mm}**!**"
                await e.reply(BOOBS, buttons=BUTTON, file=BIGBALL)
 
-@aast.on(events.NewMessage(pattern="/cock ?(.*)"))
+@asst.on(events.NewMessage(pattern="/cock ?(.*)"))
 async def cock(e):
          if not e.is_reply:
               user_id = e.sender.id
@@ -102,7 +102,7 @@ async def cock(e):
                COCK = f"**🍆** {mention}**'s Cock Size Is** {mm}**cm**"
                await e.reply(COCK, buttons=BUTTON, file=LANG)
 
-.on(events.NewMessage(pattern="/cute ?(.*)"))
+@asst.on(events.NewMessage(pattern="/cute ?(.*)"))
 async def cute(e):
          if not e.is_reply:
               user_id = e.sender.id
