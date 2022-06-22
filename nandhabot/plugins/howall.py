@@ -19,6 +19,7 @@ async def wish(_, m):
             wish_text += f" Your Wish: {text}"
             wish_text += f"Possible to Your Wish Cost: {wish_count} 🌠"
             await m.reply_text(text=(wish_text))
+            return 
             if reply:
                   text = reply.text
                   wish_text = f"Hey Dear {m.from_user.mention}"
