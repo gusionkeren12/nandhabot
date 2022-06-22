@@ -29,6 +29,7 @@ async def horny(e):
                mm = random.randint(1,100)
                HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
                await e.reply(HORNY, buttons=BUTTON, file=HOT)
+
 @asst.on(events.NewMessage(pattern="/gay ?(.*)"))
 async def gay(e):
          user_id = e.sender.id
