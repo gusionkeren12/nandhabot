@@ -4,7 +4,7 @@ from nandhabot import tbot as asst
 from telethon import Button, events
 from nandhabot.events import register
 
-BUTTON = [[Button.url("❓ What Is This", "https://t.me/Black_Knights_Union/195")]]
+BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
 HOT = "https://telegra.ph/file/daad931db960ea40c0fca.gif"
 SMEXY = "https://telegra.ph/file/a23e9fd851fb6bc771686.gif"
 LEZBIAN = "https://telegra.ph/file/5609b87f0bd461fc36acb.gif"
@@ -66,31 +66,57 @@ async def lezbian(e):
                FEK = f"**💜** {mention} **Is** {mm}**% Lezbian!**"
                await e.reply(FEK, buttons=BUTTON, file=LEZBIAN)
 
-
-
 @asst.on(events.NewMessage(pattern="/boobs ?(.*)"))
 async def boobs(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         BOOBS = f"**🍒** {mention}**'s Boobs Size Is** {mm}**!**"
-         await e.reply(BOOBS, buttons=BUTTON, file=BIGBALL)
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              BOOBS = f"**🍒** {mention}**'s Boobs Size Is** {mm}**!**"
+              await e.reply(BOOBS, buttons=BUTTON, file=BIGBALL)
+         if e.is_reply:
+               replied = (await e.get_reply_message())
+               id = replied.sender.id
+               name = replied.sender.first_name
+               mention = f"[{name}](tg://user?id={str(id)})"
+               mm = random.randint(1,100)
+               BOOBS = f"**🍒** {mention}**'s Boobs Size Is** {mm}**!**"
+               await e.reply(BOOBS, buttons=BUTTON, file=BIGBALL)
 
-@asst.on(events.NewMessage(pattern="/cock ?(.*)"))
+@aast.on(events.NewMessage(pattern="/cock ?(.*)"))
 async def cock(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         COCK = f"**🍆** {mention}**'s Cock Size Is** {mm}**cm**"
-         await e.reply(COCK, buttons=BUTTON, file=LANG)
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              COCK = f"**🍆** {mention}**'s Cock Size Is** {mm}**cm**"
+              await e.reply(COCK, buttons=BUTTON, file=LANG)
+         if e.is_reply:
+               replied = (await e.get_reply_message())
+               id = replied.sender.id
+               name = replied.sender.first_name
+               mention = f"[{name}](tg://user?id={str(id)})"
+               mm = random.randint(1,100)
+               COCK = f"**🍆** {mention}**'s Cock Size Is** {mm}**cm**"
+               await e.reply(COCK, buttons=BUTTON, file=LANG)
 
-@asst.on(events.NewMessage(pattern="/cute ?(.*)"))
+.on(events.NewMessage(pattern="/cute ?(.*)"))
 async def cute(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         CUTE = f"**🍑** {mention} {mm}**% Cute**"
-         await e.reply(CUTE, buttons=BUTTON, file=CUTIE)
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              CUTE = f"**🍑** {mention} {mm}**% Cute**"
+              await e.reply(CUTE, buttons=BUTTON, file=CUTIE)
+         if e.is_reply:
+               replied = (await e.get_reply_message())
+               id = replied.sender.id
+               name = replied.sender.first_name
+               mention = f"[{name}](tg://user?id={str(id)})"
+               mm = random.randint(1,100)
+               CUTE = f"**🍑** {mention} {mm}**% Cute**"
+               await e.reply(CUTE, buttons=BUTTON, file=CUTIE)
+
