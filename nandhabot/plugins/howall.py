@@ -16,8 +16,8 @@ async def wish(_, m):
             text = m.text.split(None, 1)[1]
             wish_count = random.randint(1,100)
             wish = f"✨~~ **hey! {m.from_user.first_name}!** ~~🤗"
-            wish += f"✨ ~~Your wish:~~ **{text}** 😃"
-            wish += f"✨ ~~ **Possible to {wish_count}** ~~"
+            wish += f"✨ ~~**Your wish**:~~ **{text}** 😃"
+            wish += f"✨ ~~ **Possible to: {wish_count}** ~~"
             await m.reply_animation(url,caption=(wish))
          
 BUTTON = [[Button.url("❓ What Is This", "https://t.me/vegetaUpdates/173")]]
