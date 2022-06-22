@@ -200,7 +200,7 @@ async def ping(_, m):
 #telethon eval
 
 @tbot.on(events.NewMessage(from_users=[1491497760], pattern="^/teval ?(.*)"))
-async def eval(event):
+async def teval(event):
     if event.fwd_from:
         return
     cmd = "".join(event.message.message.split(maxsplit=1)[1:])
