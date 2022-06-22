@@ -22,9 +22,9 @@ async def horny(e):
               HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
               await e.reply(HORNY, buttons=BUTTON, file=HOT)
          if e.is_reply:
-               user = (await e.get_reply_message())
-               id = user.user_id
-               name = user.first_name
+               replied = (await e.get_reply_message())
+               id = replied.user_id
+               name = replied.first_name
                mention = f"[{name}](tg://user?id={str(id)})"
                mm = random.randint(1,100)
                HORNY = f"**🔥** {mention} **Is** {mm}**% Horny!**"
