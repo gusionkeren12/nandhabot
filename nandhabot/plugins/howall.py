@@ -32,21 +32,41 @@ async def horny(e):
 
 @asst.on(events.NewMessage(pattern="/gay ?(.*)"))
 async def gay(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         GAY = f"**🏳‍🌈** {mention} **Is** {mm}**% Gay!**"
-         await e.reply(GAY, buttons=BUTTON, file=SMEXY)
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              GAY = f"**🏳‍🌈** {mention} **Is** {mm}**% Gay!**"
+              await e.reply(GAY, buttons=BUTTON, file=SMEXY)
+         if e.is_reply:
+               replied = (await e.get_reply_message())
+               id = replied.sender.id
+               name = replied.sender.first_name
+               mention = f"[{name}](tg://user?id={str(id)})"
+               mm = random.randint(1,100)
+               GAY = f"**🏳‍🌈** {mention} **Is** {mm}**% Gay!**"
+               await e.reply(GAY, buttons=BUTTON, file=SMEXY)
 
 @asst.on(events.NewMessage(pattern="/lezbian ?(.*)"))
 async def lezbian(e):
-         user_id = e.sender.id
-         user_name = e.sender.first_name
-         mention = f"[{user_name}](tg://user?id={str(user_id)})"
-         mm = random.randint(1,100)
-         FEK = f"**💜** {mention} **Is** {mm}**% Lezbian!**"
-         await e.reply(FEK, buttons=BUTTON, file=LEZBIAN)
+         if not e.is_reply:
+              user_id = e.sender.id
+              user_name = e.sender.first_name
+              mention = f"[{user_name}](tg://user?id={str(user_id)})"
+              mm = random.randint(1,100)
+              FEK = f"**💜** {mention} **Is** {mm}**% Lezbian!**"
+              await e.reply(FEK, buttons=BUTTON, file=LEZBIAN)
+         if e.is_reply:
+               replied = (await e.get_reply_message())
+               id = replied.sender.id
+               name = replied.sender.first_name
+               mention = f"[{name}](tg://user?id={str(id)})"
+               mm = random.randint(1,100)
+               FEK = f"**💜** {mention} **Is** {mm}**% Lezbian!**"
+               await e.reply(FEK, buttons=BUTTON, file=LEZBIAN)
+
+
 
 @asst.on(events.NewMessage(pattern="/boobs ?(.*)"))
 async def boobs(e):
