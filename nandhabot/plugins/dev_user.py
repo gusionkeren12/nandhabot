@@ -1,11 +1,15 @@
 import io
 import sys
+import io
+import os
+import textwrap
+from contextlib import redirect_stdout
+from telethon.sync import events
 import time
 import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
-
 from pyrogram import filters
 from pyrogram.types import (
     CallbackQuery,
@@ -18,7 +22,7 @@ from requests import post
 from nandhabot import dev_user
 from nandhabot.config import OWNER_ID
 from nandhabot import bot as app
-from nandhabot import bot
+from nandhabot import bot, tbot
 
 
 def get_readable_time(seconds: int) -> str:
