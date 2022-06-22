@@ -14,11 +14,11 @@ async def wish(_, m):
                 if len(m.command) < 2:
                        await m.reply("give a wish 🌠")
                        return 
-            text = m.text.split(None, 1)[1]
-            wish = f""" Hey Dear {m.from_user.mention}
+                       text = m.text.split(None, 1)[1]
+                       wish = f""" Hey Dear {m.from_user.mention}
 Your Wish: {text}
 Possible to Your Wish Cost: {wish_count} 🌠"""
-            await m.reply(wish)
+                       await m.reply(wish)
             if reply:
                   text = reply.m.text
                   wish = f""" Hey Dear {m.from_user.mention}
