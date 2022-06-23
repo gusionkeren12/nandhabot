@@ -10,7 +10,7 @@ from pyrogram.types import (InlineKeyboardMarkup,
 from nandhabot import bot as pgram, telegraph
 from nandhabot.utils.errors import capture_err
 
-@pgram.on_message(filters.me & filters.command('nhentai', prefixes='/'), group=8)
+@pgram.on_message(filters.command("nhentai"))
 @capture_err
 async def nhentai(client, message):
     if message.from_user:
@@ -67,7 +67,7 @@ def nhentai_data(noombers):
     post = telegraph.create_page(
         f"{title}",
         html_content=post_content,
-        author_name="@MikuXProBot", 
-        author_url="https://t.me/MikuXProBot"
+        author_name="@Nandhabots 
+        author_url="https://nandhabots"
     )
     return title,tags,artist,total_pages,post['url'],links[0]
