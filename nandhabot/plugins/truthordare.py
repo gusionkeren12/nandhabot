@@ -13,7 +13,7 @@ async def test(_, m):
              if text.endswith("bn"):
                    await m.reply(bn)
                    return 
-             if text.endswith("de")
+             if text.endswith("de"):
                    await m.reply(de)
 
 
