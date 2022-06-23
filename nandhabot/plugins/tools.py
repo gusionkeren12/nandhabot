@@ -128,7 +128,7 @@ async def okgoogle(img):
             pass
         BUTTON = [[Button.url("image src", url=f"{fetchUrl}"),
                                   Button.url("google src", url=f"{imgspage}")]]
-        await dev.edit("**below click the buttons**!",BUTTON
+        await img.reply("**below click the buttons**!",BUTTON
         )
 
 
