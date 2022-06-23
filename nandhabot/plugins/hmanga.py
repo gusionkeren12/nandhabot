@@ -67,7 +67,7 @@ def nhentai_data(noombers):
     post = telegraph.create_page(
         f"{title}",
         html_content=post_content,
-        author_name="@Nandhabots 
+        author_name="@Nandhabots",
         author_url="https://nandhabots"
     )
     return title,tags,artist,total_pages,post['url'],links[0]
