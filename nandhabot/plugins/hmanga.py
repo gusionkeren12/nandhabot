@@ -8,13 +8,11 @@ from pyrogram.types import (InlineKeyboardMarkup,
                             )
 
 from nandhabot import bot as pgram, telegraph
-from nandhabot.utils.errors import capture_err
 
 @pgram.on_message(filters.command("nhentai"))
-@capture_err
 async def nhentai(client, message):
     if message.from_user:
-        query = message.text.split(" ")[1]
+        query = message.text.split(None, 1)[1]
         title, tags, artist, total_pages, post_url, cover_image = nhentai_data(query)
         await message.reply_text(
             f"<code>{title}</code>\n\n<b>Tags:</b>\n{tags}\n<b>Artists:</b>\n{artist}\n<b>Pages:</b>\n{total_pages}",
