@@ -4,6 +4,19 @@ import requests
 
 #made by t.me/nandhaxd
 
+@bot.on_message(filters.command("test"))
+async def test(_, m):
+             api = requests.get("https://api.truthordarebot.xyz/v1/dare").json()
+             text = m.text.split(None, 1)[1]
+             bn = api["translations"]["bn"]
+             de = api["translations"]["de"]
+             if text.endswith("bn"):
+                   await m.reply(bn)
+                   return 
+             if text.endswith("de")
+                   await m.reply(de)
+
+
 @bot.on_message(filters.command("dare"))
 async def dare(_, m):
          reply = m.reply_to_message
