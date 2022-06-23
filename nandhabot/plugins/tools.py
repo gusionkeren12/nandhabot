@@ -126,8 +126,9 @@ async def okgoogle(img):
             )
         except TypeError:
             pass
-        await dev.edit(
-            f"[{guess}]({fetchUrl})\n\n[Visually similar images]({imgspage})"
+        BUTTON = [[Button.url("image src", url=f"{fetchUrl}"),
+                                  Button.url("google src", url=f"{imgspage}")]]
+        await dev.edit("**below click the buttons**!",BUTTON
         )
 
 
