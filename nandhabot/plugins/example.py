@@ -16,7 +16,8 @@ OWO = (
 
 def waku(update, context):
       msg = update.effective_message
-      neko = random.choice(OWO)
-      msg.reply_text(neko)
+      waku = random.choice(OWO)
+      msg.reply_text(waku)
 
-dispatcher.add_handler(waku)
+WAKU_HANDLER = CommandHandler("waku", waku)
+dispatcher.add_handler(WAKU_HANDLER)
