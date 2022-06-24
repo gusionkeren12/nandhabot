@@ -1,4 +1,4 @@
-from nandhabot import bot, arq, tbot,  BOT_TOKEN
+from nandhabot import bot, arq, tbot,  BOT_TOKEN,WEBHOOK,LOGGER,updater,PORT
 import logging 
 import random
 import nandhabot.plugins
@@ -17,7 +17,7 @@ logging.basicConfig(
 
     if WEBHOOK:
         LOGGER.info("Using webhooks.")
-        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=BOT_TOKEN)
 
 
 if __name__ == "__main__":
