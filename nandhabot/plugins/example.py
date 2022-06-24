@@ -1,4 +1,4 @@
-from telegram.ext import run_async, CommandHandler
+from telegram.ext import run_async, CommandHandler,MessageHandler
 from nandhabot import dispatcher
 
 import random 
@@ -19,5 +19,5 @@ def waku(update, context):
       waku = random.choice(OWO)
       msg.reply_text(waku)
 
-WAKU_HANDLER = CommandHandler("waku", waku)
+WAKU_HANDLER = MessageHandler("waku", waku)
 dispatcher.add_handler(WAKU_HANDLER)
