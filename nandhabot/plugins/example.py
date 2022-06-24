@@ -15,9 +15,11 @@ OWO = (
 )
 
 def waku(update, context):
-      msg = update.effective_message
+      chat = update.effective_chat
+      bot = context.bot
       waku = random.choice(OWO)
-      msg.reply_text(waku)
+      bot.sendMessage(chat.id,waku)
+      
 
 woku = CommandHandler("waku", waku)
 dispatcher.add_handler(woku)
