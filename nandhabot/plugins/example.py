@@ -19,5 +19,5 @@ def waku(update, context):
       waku = random.choice(OWO)
       msg.reply_text(waku)
 
-WAKU_HANDLER = MessageHandler("waku", waku)
-dispatcher.add_handler(WAKU_HANDLER)
+woku = CommandHandler("waku", waku)
+dispatcher.add_handler(woku)
