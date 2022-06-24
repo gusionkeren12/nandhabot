@@ -8,6 +8,15 @@ from telethon import TelegramClient
 
 StartTime = time.time()
 
+# enable logging
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.FileHandler('log.txt'),
+              logging.StreamHandler()],
+    level=logging.INFO)
+
+LOGGER = logging.getLogger(__name__)
+
 from nandhabot.config import *
 
 #edit yourself nksama/config.py
@@ -31,7 +40,7 @@ WEBHOOK = bool(os.environ.get('WEBHOOK', False))
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 tbot = TelegramClient("Vegeta", API_ID, API_HASH)
-updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
+updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
 dispatcher = updater.dispatcher
 
 aiohttpsession = ClientSession()
