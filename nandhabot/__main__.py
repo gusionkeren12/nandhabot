@@ -5,15 +5,6 @@ import nandhabot.plugins
 from nandhabot.config import SUPPORT_CHAT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
-# enable logging
-FORMAT = "[VEGETA ROBOT] %(message)s"
-logging.basicConfig(
-    handlers=[logging.FileHandler("logs.txt"), logging.StreamHandler()],
-    level=logging.INFO,
-    format=FORMAT,
-    datefmt="[%X]",
-)
-
 
     if WEBHOOK:
         LOGGER.info("Using webhooks.")
