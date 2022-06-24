@@ -15,6 +15,11 @@ logging.basicConfig(
 )
 
 
+    if WEBHOOK:
+        LOGGER.info("Using webhooks.")
+        updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+
+
 if __name__ == "__main__":
    tbot.start(bot_token=BOT_TOKEN)
    bot.run()
