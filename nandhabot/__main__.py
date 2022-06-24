@@ -6,7 +6,7 @@ from nandhabot.config import SUPPORT_CHAT
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-    if WEBHOOK:
+if WEBHOOK:
         LOGGER.info("Using webhooks.")
         updater.start_webhook(listen="0.0.0.0", port=PORT, url_path=BOT_TOKEN)
 
