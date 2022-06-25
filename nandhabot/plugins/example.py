@@ -54,6 +54,7 @@ def unban_btn(update: Update, context: CallbackContext) -> str:
     bot = context.bot
     query = update.callback_query
     chat = update.effective_chat
+    message = update.effective_message
     user = update.effective_user
     if query.data != "unbanb_del":
         splitter = query.data.split("=")
