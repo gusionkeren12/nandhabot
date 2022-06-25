@@ -38,7 +38,7 @@ def unban(update: Update, context):
            return 
     TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
-┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.usernme})
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
@@ -72,7 +72,7 @@ def unbanb_btn(update: Update, context):
                chat.unban_member(user_id)
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
-┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.usernme})
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
