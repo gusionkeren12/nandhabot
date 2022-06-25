@@ -556,14 +556,14 @@ def kayo(update: Update, context: CallbackContext):
     site_search(update, context, "kayo")
 
 
-ANIME_HANDLER = DisableAbleCommandHandler("anime", anime)
-AIRING_HANDLER = DisableAbleCommandHandler("airing", airing)
-CHARACTER_HANDLER = DisableAbleCommandHandler("character", character)
-MANGA_HANDLER = DisableAbleCommandHandler("manga", manga)
-USER_HANDLER = DisableAbleCommandHandler("user", user)
-UPCOMING_HANDLER = DisableAbleCommandHandler("upcoming", upcoming)
-KAIZOKU_SEARCH_HANDLER = DisableAbleCommandHandler("kaizoku", kaizoku)
-KAYO_SEARCH_HANDLER = DisableAbleCommandHandler("kayo", kayo)
+ANIME_HANDLER = CommandHandler("anime", anime)
+AIRING_HANDLER = CommandHandler("airing", airing)
+CHARACTER_HANDLER = CommandHandler("character", character)
+MANGA_HANDLER = CommandHandler("manga", manga)
+USER_HANDLER = CommandHandler("user", user)
+UPCOMING_HANDLER = CommandHandler("upcoming", upcoming)
+KAIZOKU_SEARCH_HANDLER = CommandHandler("kaizoku", kaizoku)
+KAYO_SEARCH_HANDLER = CommandHandler("kayo", kayo)
 BUTTON_HANDLER = CallbackQueryHandler(button, pattern='anime_.*')
 
 dispatcher.add_handler(BUTTON_HANDLER)
