@@ -17,7 +17,7 @@ def ban(update: Update, context):
 ┗━━━━━━━━┛
 """
     user_member = chat.get_member(user.id)
-    if user_member.status == 'administrator' or user_member.status == 'creator':
+    if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,parse_mode=ParseMode.MARKDOWN)
     if message.reply_to_message.from_user.id in dev_user:
