@@ -11,7 +11,7 @@ def ban(update: Update, context):
            return 
     TEXT= f"""❕* EVENT BANNED:*
 ┏━━━━━━━━┓
-┃ ➢ : [ᴄʜᴀᴛ ʟɪɴᴋ](https://t.me/{chat.username})
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/c/{chat.id})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
@@ -22,6 +22,7 @@ def ban(update: Update, context):
              message.reply_text(TEXT,parse_mode=ParseMode.MARKDOWN)
     if message.reply_to_message.from_user.id in dev_user:
              message.reply_text("that's my developer nigga!")
+             return 
     else:
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})")
 
