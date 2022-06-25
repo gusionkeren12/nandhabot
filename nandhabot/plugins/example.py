@@ -11,7 +11,7 @@ def ban(update: Update, context):
            return 
     TEXT= f"""❕* EVENT BANNED:*
 ┏━━━━━━━━┓
-┃ ➢ : [ᴄʜᴀᴛ](https://t.me/c/{chat.id})
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
@@ -36,7 +36,7 @@ def unban(update: Update, context):
            return 
     TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
-┃ ➢ : [ᴄʜᴀᴛ](https://t.me/c/{chat.id})
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.usernme})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
