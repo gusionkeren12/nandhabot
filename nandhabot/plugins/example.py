@@ -68,7 +68,7 @@ def unban_btn(update: Update, context):
                     text="You don't have enough rights to unmute people",
                     show_alert=True,
                 )
-          if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+         if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
                chat.unban_member(user_id)
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
