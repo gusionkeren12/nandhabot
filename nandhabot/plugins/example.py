@@ -54,7 +54,6 @@ def unbanb_btn(update: Update, context):
     bot = context.bot
     query = update.callback_query
     chat = update.effective_chat
-    message = update.effective_message
     user = update.effective_user
     if query.data != "unbanb_del":
         splitter = query.data.split("=")
@@ -73,11 +72,11 @@ def unbanb_btn(update: Update, context):
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
 ┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
-┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
-┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
+┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={query.message.from_user.id})
+┃➢ : [ᴜsᴇʀ](tg://user?id={query.message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
 """
-               query.edit(TEXT)
+               query.message.edit_text(TEXT)
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
