@@ -279,7 +279,7 @@ def character(update: Update, context: CallbackContext):
             update.effective_message.reply_photo(
                 photo=image,
                 caption=msg.replace('<b>', '</b>'),
-                parse_mode=ParseMode.HTML)
+                parse_mode=ParseMode.MARKDOWN)
         else:
             update.effective_message.reply_text(
                 msg.replace('<b>', '</b>'), parse_mode=ParseMode.MARKDOWN)
