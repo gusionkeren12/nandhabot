@@ -61,15 +61,23 @@ def unban_btn(update: Update, context):
         query_match = splitter[0]
         if query_match == "unbanb_unban":
             user_id = splitter[1]
-            chat.unban_member(user_id)
-            TEXT= f"""❕* EVENT UN-BANNED:*
+        user_member = chat.get_member(user.id)
+        if not user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+                bot.answer_callback_query(
+                    query.id,
+                    text="You don't have enough rights to unmute people",
+                    show_alert=True,
+                )
+          if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+               chat.unban_member(user_id)
+               TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
 ┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.usernme})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
 """
-            query.message.edit(TEXT)
+                 query.message.edit(TEXT)
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
