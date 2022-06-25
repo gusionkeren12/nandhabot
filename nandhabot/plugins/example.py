@@ -10,6 +10,9 @@ def ban(update, context):
       bot = context.bot
       user_id = message.reply_to_message.from_user.id
       user_member = chat.get_member(user_id)
+      if not message.reply_to_message:
+           message.reply_text("reply to someone ban")
+           return 
       if not user_member.status == 'administrator' or user_member.status == 'creator':
           message.reply_text("your not admin")
           return 
