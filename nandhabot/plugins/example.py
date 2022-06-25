@@ -23,7 +23,7 @@ def ban(update: Update, context):
     if message.reply_to_message.from_user.id in dev_user:
              return message.reply_text("that's my developer nigga!")
     else:
-             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN")
+             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
    
 def unban(update: Update, context):
@@ -45,7 +45,7 @@ def unban(update: Update, context):
              chat.unban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,parse_mode=ParseMode.MARKDOWN)
     else:
-             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN")
+             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
 
  
