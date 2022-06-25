@@ -1,6 +1,6 @@
 from telegram import Update
 from nandhabot import dispatcher
-from telegram.ext import CallbackContext, CommandHadler
+from telegram.ext import CallbackContext, CommandHadler, run_async
 
 def ban(update: Update, context: CallbackContext):
           message = update.effective_message
@@ -13,6 +13,6 @@ def ban(update: Update, context: CallbackContext):
                        message.reply_text("banned!")
 
 
-ban_cmd = CommandHandler("ban", ban) 
+ban_cmd = CommandHandler("ban", ban,run_async=True) 
 
 dispatcher.add_handler(ban_cmd)
