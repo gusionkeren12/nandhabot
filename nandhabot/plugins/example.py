@@ -8,6 +8,7 @@ def ban(update: Update, context):
     user = update.effective_user
     if not message.reply_to_message:
            message.reply_text("reply to someone!")
+           return 
     TEXT= f"""❕* EVENT BANNED:*
 ┏━━━━━━━━━━━━━━━━┓
 ┃ ➢ : @{chat.username}
