@@ -1,9 +1,9 @@
 from telegram import Update
 from nandhabot import dispatcher
-from telegram.ext import CallbackContext, CommandHadler, run_async
+from telegram.ext import CommandHadler, run_async
 
 @run_async
-def ban(update: Update, context: CallbackContext):
+def ban(update: Update, context):
           message = update.effective_message
           chat = update.effective_chat
           member = update.effective_chat.get_member
