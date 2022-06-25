@@ -21,4 +21,4 @@ lxml
 telethon
 bing_image_downloader
 faker
-python-telegram-bot==13.9
+python-telegram-bot
