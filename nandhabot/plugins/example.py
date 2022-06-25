@@ -8,11 +8,14 @@ def ban(update: Update, context):
     user = update.effective_user
 
     user_member = chat.get_member(user.id)
-    if not user_member.status == 'administrator' or user_member.status == 'creator':
-            message.reply_text("Your not admin")
-            return 
     if user_member.status == 'administrator' or user_member.status == 'creator':
              message.reply_text("yes you can")
+             return 
+
+    if not user_member.status == 'administrator' or user_member.status == 'creator':
+            message.reply_text("Your not admin")
+            
+
  
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
