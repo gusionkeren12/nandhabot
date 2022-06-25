@@ -248,7 +248,7 @@ def anime(update: Update, context: CallbackContext):
         else:
             update.effective_message.reply_text(
                 msg,
-                parse_mode=ParseMode.MARKDOWN,
+                parse_mode=ParseMode.HTML,
                 reply_markup=InlineKeyboardMarkup(buttons))
 
 def character(update: Update, context: CallbackContext):
