@@ -1,5 +1,6 @@
-from telegram import run_async
-from telegram.ext import CommandHandler
+from telegram import Update
+from telegram.ext import CommandHandler,run_async
+from nandhabot import dispatcher
 
 def ban(update: Update, context):
     message = update.effective_message
