@@ -76,7 +76,7 @@ def unbanb_btn(update: Update, context):
 ┃➢ : [ᴜsᴇʀ](tg://user?id={query.message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
 """
-               query.message.edit_text(TEXT)
+               query.message.edit_text(TEXT,parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
