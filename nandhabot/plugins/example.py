@@ -24,7 +24,7 @@ def ban(update: Update, context):
              message.reply_text("that's my developer nigga!")
              return 
     else:
-             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})")
+             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id}),parse_mode=ParseMode.MARKDOWN")
 
    
             
