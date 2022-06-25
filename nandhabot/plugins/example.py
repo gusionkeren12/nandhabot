@@ -46,8 +46,7 @@ def unban(update: Update, context):
              chat.unban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,reply_msg,
             reply_markup=InlineKeyboardMarkup([[
-                        InlineKeyboardButton(text="❕Unban", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}"
-                        )]],parse_mode=ParseMode.MARKDOWN)
+                        InlineKeyboardButton(text="❕Unban", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN)
     else:
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
