@@ -62,13 +62,13 @@ def unbanb_btn(update: Update, context):
         if query_match == "unbanb_unban":
             user_id = splitter[1]
         user_member = chat.get_member(user.id)
-        if not user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+        if not query.from_user.id in dev_user:
                 bot.answer_callback_query(
                     query.id,
                     text="You don't have enough rights to unmute people",
                     show_alert=True,
                 )
-        if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+        if query.from_user.id in dev_user:
                chat.unban_member(user_id)
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
