@@ -1,5 +1,5 @@
 from telegram import Update, ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.ext import CommandHandler,run_async
+from telegram.ext import CommandHandler,run_async,CallbackQueryHandler
 from nandhabot import dispatcher, dev_user
 
 def ban(update: Update, context):
