@@ -1,6 +1,7 @@
 from pyrogram import filters, __version__ as pyrogram_version
 import random 
 from telethon import __version__ as telethon_version
+from telegram import __version__ as ptbver
 import time
 StartTime = time.time()
 from pyrogram import enums
@@ -36,6 +37,7 @@ async def alive(_, m: Message):
     pm_caption += f"**♡ My Uptime :** `{uptime}`\n\n"
     pm_caption += f"**♡ Telethon Version :** `{telethon_version}`\n\n"
     pm_caption += f"**♡ Pyrogram Version :** `{pyrogram_version}`\n\n"
+    pm_caption += f"**♡ PTB Version :** `{ptbver}`\n\n"
     pm_caption += "**♡ My Master :** [Nandha](https://t.me/nandhaxd) "
     await msg.edit_text(text=(pm_caption),disable_web_page_preview=True)
 
