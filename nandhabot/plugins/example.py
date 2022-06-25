@@ -6,7 +6,7 @@ import random
 
 def ban(update, context):
       chat = update.effective_chat
-      message = chat = update.effective_message
+      message = update.effective_message
       bot = context.bot
       user_id = message.reply_to_message.from_user.id
       user_member = chat.get_member(user_id)
