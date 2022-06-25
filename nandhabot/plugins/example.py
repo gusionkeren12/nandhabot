@@ -27,9 +27,31 @@ def ban(update: Update, context):
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id}),parse_mode=ParseMode.MARKDOWN")
 
    
-            
+def unban(update: Update, context):
+    message = update.effective_message
+    chat = update.effective_chat
+    user = update.effective_user
+    if not message.reply_to_message:
+           message.reply_text("reply to someone!")
+           return 
+    TEXT= f"""❕* EVENT UN-BANNED:*
+┏━━━━━━━━┓
+┃ ➢ : [ᴄʜᴀᴛ](https://t.me/c/{chat.id})
+┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
+┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
+┗━━━━━━━━┛
+"""
+    user_member = chat.get_member(user.id)
+    if user_member.status == 'administrator' or user_member.status == 'creator':
+             chat.ban_member(message.reply_to_message.from_user.id)
+             message.reply_text(TEXT,parse_mode=ParseMode.MARKDOWN)
+    else:
+             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id}),parse_mode=ParseMode.MARKDOWN")
+
 
  
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
+UNBAN_CMD = CommandHandler("unban", unban,run_async=True) 
+dispatcher.add_handler(UNBAN_CMD)
