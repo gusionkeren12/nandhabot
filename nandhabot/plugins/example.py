@@ -6,11 +6,13 @@ def ban(update: Update, context):
     message = update.effective_message
     chat = update.effective_chat
     user = update.effective_user
+    if not message.reply_to_message:
+           message.reply_text("reply to someone!")
     TEXT= f"""❕* EVENT BANNED:*
 ┏━━━━━━━━━━━━━━━━┓
 ┃ ➢ : @{chat.username}
-┃➢ : [Admin](tg://user?id={message.from_user.id})
-┃➢ : [User](tg://user?id={message.reply_to_message.from_user.id}]
+┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={message.from_user.id})
+┃➢ : [ᴜsᴇʀ](tg://user?id={message.reply_to_message.from_user.id})
 ┗━━━━━━━━━━━━━━━━┛
 """
     user_member = chat.get_member(user.id)
