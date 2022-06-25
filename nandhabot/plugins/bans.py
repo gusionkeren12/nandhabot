@@ -2,6 +2,7 @@ from telegram import Update
 from nandhabot import dispatcher
 from telegram.ext import CallbackContext, CommandHadler, run_async
 
+@run_async
 def ban(update: Update, context: CallbackContext):
           message = update.effective_message
           chat = update.effective_chat
