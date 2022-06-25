@@ -11,7 +11,7 @@ def ban(update: Update, context):
     if user_member.status == 'administrator' or user_member.status == 'creator':
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text("yes you can\banned!")
-     else:
+    else:
              message.reply_text("your not admin")
 
    
