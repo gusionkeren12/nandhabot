@@ -50,7 +50,7 @@ def unban(update: Update, context):
     else:
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
-def unban_btn(update: Update, context: CallbackContext) -> str:
+def unban_btn(update: Update, context):
     bot = context.bot
     query = update.callback_query
     chat = update.effective_chat
