@@ -20,7 +20,7 @@ def ban(update: Update, context):
     if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,reply_markup=InlineKeyboardMarkup([[
-                        InlineKeyboardButton(text="❕Unban", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN)
+                        InlineKeyboardButton(text="❕Unban", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True )
 
     if message.reply_to_message.from_user.id in dev_user:
               message.reply_text("that's my developer nigga!")
@@ -50,7 +50,7 @@ def unban(update: Update, context):
     else:
          message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
-def unban_btn(update: Update, context):
+def unbanb_btn(update: Update, context):
     bot = context.bot
     query = update.callback_query
     chat = update.effective_chat
@@ -83,3 +83,5 @@ BAN_CMD = CommandHandler("ban", ban,run_async=True)
 dispatcher.add_handler(BAN_CMD)
 UNBAN_CMD = CommandHandler("unban", unban,run_async=True) 
 dispatcher.add_handler(UNBAN_CMD)
+UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
+dispatcher.add_handler(UNBAN_BUTTON_HANDLER)
