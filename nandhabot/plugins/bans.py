@@ -13,6 +13,6 @@ def ban(update: Update, context: CallbackContext):
                        message.reply_text("banned!")
 
 
-ban_cmd = CommandHandler("ban", ban,run_async=True) 
+ban_cmd = CommandHandler("ban", ban) 
 
 dispatcher.add_handler(ban_cmd)
