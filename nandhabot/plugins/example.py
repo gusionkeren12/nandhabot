@@ -21,7 +21,8 @@ def ban(update: Update, context):
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,parse_mode=ParseMode.MARKDOWN)
     if message.reply_to_message.from_user.id in dev_user:
-             return message.reply_text("that's my developer nigga!")
+              message.reply_text("that's my developer nigga!")
+              return ""
     else:
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
