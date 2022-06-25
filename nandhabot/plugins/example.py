@@ -3,23 +3,20 @@ from nandhabot import dispatcher
 
 import random 
 
-OWO = (
-    "*Neko pats {} on the head.",
-    "*gently rubs {}'s head*.",
-    "*Neko mofumofus {}'s head*",
-    "*Neko messes up {}'s head*",
-    "*Neko intensly rubs {}'s head*",
-    "*{}'s waifu pats their head*",
-    "*{}'s got free headpats*",
-    "No pats for {}!",
-)
 
-def waku(update, context):
+def ban(update, context):
       chat = update.effective_chat
+      message = chat = update.effective_message
       bot = context.bot
-      waku = random.choice(OWO)
-      bot.sendMessage(chat.id,waku)
-      
+      user = update.effective_user
+      user_id = bot.get_chat(user).id
+      user_member = chat.get_member(user_id)
+      if not user_member.status == 'administrator' or user_member.status == 'creator':
+          message.reply_text("your not admin")
+          return 
+      if user_member.status == 'administrator' or user_member.status == 'creator':
+          chat.kick_member(user_id)
+          message.reply_text("banned!")
 
-woku = CommandHandler("waku", waku)
-dispatcher.add_handler(woku)
+ban_cmd = CommandHandler("ban", ban)
+dispatcher.add_handler(ban_cmd)
