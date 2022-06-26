@@ -40,14 +40,12 @@ def ban(update: Update, context):
     if user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,reply_markup=InlineKeyboardMarkup([[
-                        InlineKeyboardButton(text="! ᴜɴʙᴀɴ", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True )
-
+                        InlineKeyboardButton(text="! ᴜɴʙᴀɴ", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+     if not user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
+             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
     if message.reply_to_message.from_user.id in dev_user:
               message.reply_text("that's my developer nigga!")
-              return ""
-    if not user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
-             message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
-
+             
    
 def unban(update: Update, context):
     message = update.effective_message
