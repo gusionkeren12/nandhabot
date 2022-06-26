@@ -76,16 +76,16 @@ def unban_btn(_, query: CallbackQuery):
            splitter = query.split("=")
            query_match = splitter[0]
            if query_match == "unbanb_unban":
-           user_id = splitter[1]
-           bot.unban_chat_member(query.chat.id, user_id)
-           TEXT= f"""❕* EVENT UN-BANNED:*
+                user_id = splitter[1]
+                bot.unban_chat_member(query.chat.id, user_id)
+                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
 ┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
 ┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={query.message.from_user.id})
 ┃➢ : [ᴜsᴇʀ](tg://user?id={query.message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
 """
-           query.edit(TEXT, disable_web_page_preview=True)
+                  query.edit(TEXT, disable_web_page_preview=True)
                
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
