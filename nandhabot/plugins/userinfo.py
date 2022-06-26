@@ -42,7 +42,7 @@ async def cinfo(_, m):
             text += f"✪ USERNAME: @{username}\n\n"
             text += f"✪ MENTION: [link](t.me/{username})"
             await m.reply_photo(photo,caption=(text))
-        await message.delete()
+            await message.delete()
             
 async def get_user_info(user, already=False):
     if not already:
