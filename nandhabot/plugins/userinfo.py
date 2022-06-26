@@ -21,6 +21,7 @@ async def cinfo(_, m):
             await m.reply_text("yoo! ultra noob reply to channel")
             return 
        if reply.sender_chat:
+             message = m.reply_text("information gathering!!!")
              pfp = reply.sender_chat.photo.big_file_id
              id = reply.sender_chat.id
              type = reply.sender_chat.type
@@ -28,19 +29,20 @@ async def cinfo(_, m):
              username = reply.sender_chat.username
        if pfp:
             photo = await bot.download_media(pfp)
-            text = f"✪ TYPE: {type}\n"
-            text += f"✪ ID: {id}\n"
-            text += f"✪ NAME: {name}\n"
-            text += f"✪ USERNAME: @{username}\n"
+            text = f"✪ TYPE: {type}\n\n"
+            text += f"✪ ID: {id}\n\n"
+            text += f"✪ NAME: {name}\n\n"
+            text += f"✪ USERNAME: @{username}\n\n"
             text += f"✪ MENTION: [link](t.me/{username})"
             await m.reply_photo(photo,caption=(text))
        if not pfp:
-            text = f"✪ TYPE: {type}\n"
-            text += f"✪ ID: {id}\n"
-            text += f"✪ NAME: {name}\n"
-            text += f"✪ USERNAME: @{username}\n"
-            text += f"✪ MENTION: [link](tg://user?id={id})"
-            await m.reply_photo(text)
+            text = f"✪ TYPE: {type}\n\n"
+            text += f"✪ ID: {id}\n\n"
+            text += f"✪ NAME: {name}\n\n"
+            text += f"✪ USERNAME: @{username}\n\n"
+            text += f"✪ MENTION: [link](t.me/{username})"
+            await m.reply_text(text)
+            await message.delete()
             
 async def get_user_info(user, already=False):
     if not already:
