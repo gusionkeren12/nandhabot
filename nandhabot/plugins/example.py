@@ -2,6 +2,22 @@ from telegram import Update, ParseMode, InlineKeyboardButton, InlineKeyboardMark
 from telegram.ext import CommandHandler,run_async,CallbackQueryHandler
 from nandhabot import dispatcher, dev_user
 
+from cachetools import TTLCache
+
+# stores admemes in memory for 10 min.
+ADMIN_CACHE = TTLCache(maxsize=512, ttl=60 * 10, timer=perf_counter)
+
+def refresh_admin(update, _):
+    try:
+        ADMIN_CACHE.pop(update.effective_chat.id)
+    except KeyError:
+        pass
+
+    update.effective_message.reply_text("Admins cache refreshed!")
+         
+
+
+
 def ban(update: Update, context):
     message = update.effective_message
     chat = update.effective_chat
@@ -84,3 +100,5 @@ UNBAN_CMD = CommandHandler("unban", unban,run_async=True)
 dispatcher.add_handler(UNBAN_CMD)
 UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
 dispatcher.add_handler(UNBAN_BUTTON_HANDLER)
+refresh_admin_cmd = CommandHandler(["reload","admincache"], refresh_admin,run_async=True)
+dispatcher.add_handler(refresh_admin_cmd)
