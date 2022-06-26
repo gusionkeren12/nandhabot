@@ -92,7 +92,8 @@ def unban_btn(_, query: CallbackQuery):
             
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
-UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
-dispatcher.add_handler(UNBAN_BUTTON_HANDLER)
+
+UNBAN_CMD = CommandHandler("unban", unban,run_async=True) 
+dispatcher.add_handler(UNBAN_CMD)
 refresh_admin_cmd = CommandHandler(["reload","admincache"], refresh_admin,run_async=True)
 dispatcher.add_handler(refresh_admin_cmd)
