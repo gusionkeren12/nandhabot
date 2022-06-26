@@ -22,6 +22,7 @@ async def cinfo(_, m):
             return 
        if reply.sender_chat:
              message = m.reply_text("information gathering!!!")
+             return 
              pfp = reply.sender_chat.photo.big_file_id
              id = reply.sender_chat.id
              type = reply.sender_chat.type
