@@ -1,6 +1,7 @@
 from telegram import user,Chat,ChatMember,dispatcher
 from nandhabot import dev_user, 
 from threading import RLock
+from cachetools import TTLCache
 
 
 def user_can_changeinfo(chat: Chat, user: User, bot_id: int) -> bool:
