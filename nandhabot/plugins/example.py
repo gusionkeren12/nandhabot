@@ -85,7 +85,7 @@ def unban_btn(_, query: CallbackQuery):
 ┃➢ : [ᴜsᴇʀ](tg://user?id={query.message.reply_to_message.from_user.id})
 ┗━━━━━━━━┛
 """
-                  query.edit(TEXT, disable_web_page_preview=True)
+                 query.edit(TEXT, disable_web_page_preview=True)
                
 
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
