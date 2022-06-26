@@ -35,8 +35,9 @@ async def cinfo(_, m):
             text += f"✪ MENTION: [link](t.me/{username})"
             await m.reply_text(text)
             return 
-       image = await bot.download_media(reply.sender_chat.photo.big_file_id)
+       image = reply.sender_chat.photo
        if image:
+            photo = await bot.download_media(image.big_file_id)
             text = f"✪ TYPE: {type}\n\n"
             text += f"✪ ID: {id}\n\n"
             text += f"✪ NAME: {name}\n\n"
