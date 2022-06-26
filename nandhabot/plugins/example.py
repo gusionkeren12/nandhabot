@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import *
 from telegram import Update, ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler,run_async,CallbackQueryHandler
-from nandhabot import dispatcher, dev_user
+from nandhabot import dispatcher, dev_user, bot
 
 from cachetools import TTLCache
 
