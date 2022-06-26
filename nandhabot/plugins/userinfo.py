@@ -26,8 +26,7 @@ async def cinfo(_, m):
              type = reply.sender_chat.type
              name = reply.sender_chat.title
              username = reply.sender_chat.username
-             pfp = reply.sender_chat.photo.big_file_id
-             photo = await bot.download_media(pfp)
+             pfp = reply.sender_chat.photo
        if not pfp:
             text = f"✪ TYPE: {type}\n\n"
             text += f"✪ ID: {id}\n\n"
@@ -35,7 +34,9 @@ async def cinfo(_, m):
             text += f"✪ USERNAME: @{username}\n\n"
             text += f"✪ MENTION: [link](t.me/{username})"
             await m.reply_text(text)
-       if pfp:
+            return 
+       image = await bot.download_media(reply.sender_chat.photo.big_file_id)
+       if image:
             text = f"✪ TYPE: {type}\n\n"
             text += f"✪ ID: {id}\n\n"
             text += f"✪ NAME: {name}\n\n"
