@@ -45,7 +45,7 @@ def ban(update: Update, context):
     if message.reply_to_message.from_user.id in dev_user:
               message.reply_text("that's my developer nigga!")
               return ""
-    else:
+    if not user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
              message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
    
