@@ -5,6 +5,40 @@ from pyrogram.types import Message
 from nandhabot import dev_user, bot
 from nandhabot.utils.sections import section
 
+C_INFO = """
+"✪ ID": user_id,
+"✪ Name": [first_name],
+"✪ Username": [("@" + username) if username else "Null"],
+        "✪ Mention": [mention],
+"""
+@bot.on_message(filters.command("cinfo"))
+async def cinfo(_, m):
+       reply = m.reply_to_message
+       if not reply.sender_chat:
+            await m.reply_text("reply to a channel")
+            return 
+       if reply.sender_chat:
+             pfp = reply.sender_chat.photo.big_file_id
+             id = reply.sender_chat.id
+             type = reply.sender_chat.type
+             name = reply.sender_chat.title
+             username = reply.sender_chat.username
+       if pfp:
+            photo = await bot.download_media(pfp)
+            text = f"✪ TYPE: {type}"
+            text = f"✪ ID: {id}"
+            text += f"✪ NAME: {name}"
+            text += f"✪ USERNAME: @{username}"
+            text += f"✪ MENTION: [link](tg://user?id={id})"
+            await m.reply_photo(photo,caption=(text))
+       if not pfp:
+            text = f"✪ TYPE: {type}"
+            text = f"✪ ID: {id}"
+            text += f"✪ NAME: {name}"
+            text += f"✪ USERNAME: @{username}"
+            text += f"✪ MENTION: [link](tg://user?id={id})"
+            await m.reply_photo(text)
+            
 async def get_user_info(user, already=False):
     if not already:
         userss = await bot.get_chat(user)
