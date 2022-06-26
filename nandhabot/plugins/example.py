@@ -71,7 +71,7 @@ def unban(update: Update, context):
          message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
 @bot.on_callback_query(filters.regex("unbn_btn"))
-def unban_btn(_, query: CallbackQuery)
+def unban_btn(_, query: CallbackQuery):
            query = query.message
            splitter = query.split("=")
            query_match = splitter[0]
