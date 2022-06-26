@@ -70,23 +70,34 @@ def unban(update: Update, context):
     else:
          message.reply_text(f"[ʏᴏᴜʀ ɴᴏᴛ ᴀᴅᴍɪɴ 🙄](tg://user?id={message.from_user.id})",parse_mode=ParseMode.MARKDOWN)
 
-@bot.on_callback_query(filters.regex("unbn_btn"))
-def unban_btn(_, query: CallbackQuery):
-           query = query.message
-           splitter = query.split("=")
-           query_match = splitter[0]
-           if query_match == "unbanb_unban":
-                user_id = splitter[1]
-                bot.unban_chat_member(query.chat.id, user_id)
-           TEXT= f"""❕* EVENT UN-BANNED:*
+def unbanb_btn(update: Update, context):
+    bot = context.bot
+    query = update.callback_query
+    chat = update.effective_chat
+    user = update.effective_user
+    if query.data != "unbanb_del":
+        splitter = query.data.split("=")
+        query_match = splitter[0]
+        if query_match == "unbanb_unban":
+            user_id = splitter[1]
+        user_member = chat.get_member(user.id)
+        if not query.from_user.id in dev_user:
+                bot.answer_callback_query(
+                    query.id,
+                    text="You don't have enough rights to unmute people",
+                    show_alert=True,
+                )
+        if query.from_user.id in dev_user:
+               chat.unban_member(user_id)
+               TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
 ┃ ➢ : [ᴄʜᴀᴛ](https://t.me/{chat.username})
-┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={query.message.from_user.id})
-┃➢ : [ᴜsᴇʀ](tg://user?id={query.message.reply_to_message.from_user.id})
+┃➢ : [ᴀᴅᴍɪɴ](tg://user?id={query.message.reply_to_message.from_user.id})
+┃➢ : [ᴜsᴇʀ](tg://user?id={user_id})
 ┗━━━━━━━━┛
 """
-           query.edit(TEXT, disable_web_page_preview=True)
-               
+               query.message.edit_text(TEXT,parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
 
                 
             
@@ -97,3 +108,5 @@ UNBAN_CMD = CommandHandler("unban", unban,run_async=True)
 dispatcher.add_handler(UNBAN_CMD)
 refresh_admin_cmd = CommandHandler(["reload","admincache"], refresh_admin,run_async=True)
 dispatcher.add_handler(refresh_admin_cmd)
+UNBAN_BUTTON_HANDLER = CallbackQueryHandler(unbanb_btn, pattern=r"unbanb_")
+dispatcher.add_handler(UNBAN_BUTTON_HANDLER)
