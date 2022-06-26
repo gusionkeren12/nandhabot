@@ -1,3 +1,6 @@
+
+from time import perf_counter
+
 from telegram import Update, ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import CommandHandler,run_async,CallbackQueryHandler
 from nandhabot import dispatcher, dev_user
