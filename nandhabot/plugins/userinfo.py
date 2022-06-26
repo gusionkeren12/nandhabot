@@ -35,7 +35,7 @@ async def cinfo(_, m):
             text += f"✪ USERNAME: @{username}\n\n"
             text += f"✪ MENTION: [link](t.me/{username})"
             await m.reply_photo(photo,caption=(text))
-       if not pfp:
+       if not reply.sender_chat.photo:
             text = f"✪ TYPE: {type}\n\n"
             text += f"✪ ID: {id}\n\n"
             text += f"✪ NAME: {name}\n\n"
