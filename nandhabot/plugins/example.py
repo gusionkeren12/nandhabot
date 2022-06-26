@@ -37,7 +37,7 @@ def ban(update: Update, context):
 ┗━━━━━━━━┛
 """
     user_member = chat.get_member(user.id)
-    if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+    if user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
              chat.ban_member(message.reply_to_message.from_user.id)
              message.reply_text(TEXT,reply_markup=InlineKeyboardMarkup([[
                         InlineKeyboardButton(text="! ᴜɴʙᴀɴ", callback_data=f"unbanb_unban={message.reply_to_message.from_user.id}")]]),parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True )
@@ -64,7 +64,7 @@ def unban(update: Update, context):
 ┗━━━━━━━━┛
 """
     user_member = chat.get_member(user.id)
-    if user_member.status == 'administrator' or user_member.status == 'creator' and message.from_user.id in dev_user:
+    if user_member.status == 'administrator' or user_member.status == 'creator' or message.from_user.id in dev_user:
          chat.unban_member(message.reply_to_message.from_user.id)
          message.reply_text(TEXT)
     else:
