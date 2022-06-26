@@ -21,7 +21,7 @@ async def cinfo(_, m):
             await m.reply_text("yoo! ultra noob reply to channel")
             return 
        if reply.sender_chat:
-             message = m.reply_text("information gathering!!!")
+             message = await m.reply_text("information gathering!!!")
              return 
              pfp = reply.sender_chat.photo.big_file_id
              id = reply.sender_chat.id
