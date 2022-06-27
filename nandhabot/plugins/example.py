@@ -79,10 +79,10 @@ def unbanb_btn(update: Update, context):
         if query_match == "unbanb_unban":
             user_id = splitter[1]
         user_member = chat.get_member(user.id)
-        if not query.from_user.id in dev_user:
+        if not user_member.status in ['administrator', 'creator'] and not dev_user:
                 bot.answer_callback_query(
                     query.id,
-                    text="You don't have enough rights to unmute people",
+                    text="You are not admin!",
                     show_alert=True,
                 )
         if query.from_user.id in dev_user:
