@@ -39,5 +39,5 @@ async def banned(_, m):
              ban = reply.from_user or reply.sender_chat
              if ban:
                     await bot.ban_chat_member(chat.id, ban.id)
-                     await m.reply_text("banned!")
+                    await m.reply_text("banned!")
                     
