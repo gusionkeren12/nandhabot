@@ -85,7 +85,7 @@ def unbanb_btn(update: Update, context):
                     text="You are not admin!",
                     show_alert=True,
                 )
-        if user_member.status in ['administrator', 'creator'] and query.message.from_user.id in dev_user:
+        if user_member.status in ['administrator', 'creator'] or query.message.from_user.id in dev_user:
                chat.unban_member(user_id)
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
@@ -101,7 +101,6 @@ def unbanb_btn(update: Update, context):
             
 BAN_CMD = CommandHandler("ban", ban,run_async=True) 
 dispatcher.add_handler(BAN_CMD)
-
 UNBAN_CMD = CommandHandler("unban", unban,run_async=True) 
 dispatcher.add_handler(UNBAN_CMD)
 refresh_admin_cmd = CommandHandler(["reload","admincache"], refresh_admin,run_async=True)
