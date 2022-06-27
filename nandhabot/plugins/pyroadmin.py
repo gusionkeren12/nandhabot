@@ -40,5 +40,5 @@ async def banned(_, m):
              chat_name = m.chat.title
              if ban:
                     await bot.ban_chat_member(chat.id, ban.id)
-                    await m.reply_text(f"[banned]({tg://user?id=ban.id}) successfully from {chat_name}")
+                    await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}")
                     
