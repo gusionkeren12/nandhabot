@@ -2,7 +2,7 @@ from pyrogram import filters
 from nandhabot import bot
 
 @bot.on_message(filters.command("del"))
-async def del(_, m):
+async def delete(_, m):
      reply = m.reply_to_message
      chat = m.chat
      user = m.from_user
@@ -21,7 +21,7 @@ async def del(_, m):
                await m.reply_text("deleted!")
       
 @bot.on_message(filters.command("ban"))
-async def ban(_, m):
+async def banned(_, m):
      reply = m.reply_to_message
      chat = m.chat
      user = m.from_user
