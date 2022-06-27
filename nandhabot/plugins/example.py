@@ -85,7 +85,7 @@ def unbanb_btn(update: Update, context):
                     text="You are not admin!",
                     show_alert=True,
                 )
-        if query.from_user.id in dev_user:
+        if user_member.status in ['administrator', 'creator'] or query.message.from_user.id in dev_user:
                chat.unban_member(user_id)
                TEXT= f"""❕* EVENT UN-BANNED:*
 ┏━━━━━━━━┓
