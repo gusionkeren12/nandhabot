@@ -30,7 +30,7 @@ async def banned(_, m):
             await m.reply_text("Your not admin")
             return 
      if not reply:
-             await m.reply_text("reply to msg for deleting")
+             await m.reply_text("reply to user or channel")
              return 
      if not user_stats.privileges.can_restrict_members:
                await m.reply_text("**your don't having the permission of**:\n`can_restrict_members`")
