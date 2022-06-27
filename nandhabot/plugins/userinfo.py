@@ -28,6 +28,7 @@ async def cinfo(_, m):
             text += f"✪ **USERNAME:** @{username}\n\n"
             text += f"✪ **MENTION:** [link](t.me/{username})"
             await m.reply_text(text)
+            await message.delete()
             return 
        image = reply.sender_chat.photo
        if image:
