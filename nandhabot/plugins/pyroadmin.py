@@ -21,7 +21,7 @@ async def del(_, m):
                await m.reply_text("deleted!")
       
 @bot.on_message(filters.command("ban"))
-async def del(_, m):
+async def ban(_, m):
      reply = m.reply_to_message
      chat = m.chat
      user = m.from_user
