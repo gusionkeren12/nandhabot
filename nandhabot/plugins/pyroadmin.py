@@ -66,17 +66,17 @@ async def banned(_, m):
             ]))
 
 @bot.on_callback_query(filters.regex("admin"))
-def admeme_callback(_, query: CallbackQuery):
+async def admeme_callback(_, query: CallbackQuery):
     scammer = query.data.split(":")[2]
     user = query.message.from_user
     chat = query.message.chat
-    user_stats = bot.get_chat_member(chat.id, user.id)
+    user_stats = await bot.get_chat_member(chat.id, user.id)
     if user_stats.privileges.can_restrict_members:
-                   bot.unban_chat_member(chat.id, scammer)
-                   query.answer("unbanned!")
-                   query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
+                  await  bot.unban_chat_member(chat.id, scammer)
+                  await query.answer("unbanned!")
+                   await query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
     else:
-            query.answer("Your not admin")
+          await query.answer("Your not admin")
 
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
