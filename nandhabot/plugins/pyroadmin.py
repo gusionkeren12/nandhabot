@@ -76,10 +76,6 @@ async def setgrouptitle(_, m):
                await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
                return 
      if user_stats.privileges.can_manage_chat:
-               old_title  = m.chat.title
                new_title = m.text.split(" ")[1]
                await m.chat.set_title(new_title)
-               text = "__ **Successfully Changed New Group title** __\n\n"
-               text = f"**Old title**: {old_title}\n"
-               text += f"**New title**: {new_title}"
-               await m.reply_text(text)
+               await m.reply_text(f"Successfully set {new_title} as new chat title!")
