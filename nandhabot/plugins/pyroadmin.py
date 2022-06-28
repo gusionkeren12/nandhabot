@@ -61,7 +61,7 @@ async def banned(_, m):
                     InlineKeyboardButton(
                         "ᴜɴʙᴀɴ",
                         callback_data=
-                        f"admin:unban:{message.reply_to_message.from_user.id}")
+                        f"admin:unban:{m.reply_to_message.from_user.id}")
                 ],
             ]))
 
