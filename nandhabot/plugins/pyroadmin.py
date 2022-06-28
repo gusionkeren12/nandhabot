@@ -71,7 +71,7 @@ def admeme_callback(_, query: CallbackQuery):
     user = query.message.from_user
     chat = query.message.chat
     user_stats = bot.get_chat_member(chat.id, user.id)
-    if user_stats.privileges:
+    if user_stats.privileges.can_restrict_members:
                    bot.unban_chat_member(chat.id, scammer)
                    query.answer("unbanned!")
                    query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
