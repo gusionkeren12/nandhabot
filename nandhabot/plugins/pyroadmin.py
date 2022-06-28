@@ -74,7 +74,7 @@ async def admeme_callback(_, query: CallbackQuery):
     if user_stats.privileges.can_restrict_members:
                   await  bot.unban_chat_member(chat.id, scammer)
                   await query.answer("unbanned!")
-                   await query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
+                  await query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
     else:
           await query.answer("Your not admin")
 
