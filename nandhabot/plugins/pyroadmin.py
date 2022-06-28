@@ -1,5 +1,6 @@
 from pyrogram import filters
 from nandhabot import bot
+from pyrogram.types import *
 
 @bot.on_message(filters.command("del"))
 async def delete(_, m):
@@ -54,7 +55,30 @@ async def banned(_, m):
              chat_name = m.chat.title
              if ban:
                     await bot.ban_chat_member(chat.id, ban.id)
-                    await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}")
+                    await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}",
+                      reply_markup=InlineKeyboardMarkup([
+                [
+                    InlineKeyboardButton(
+                        "ᴜɴʙᴀɴ",
+                        callback_data=
+                        f"admin:unban:{message.reply_to_message.from_user.id}")
+                ],
+            ]))
+
+@bot.on_callback_query(call_back_in_filter("admin"))
+def admeme_callback(_, query):
+    scammer = query.data.split(":")[2]
+    user = query.message.from_user
+    chat = query.message.chat
+    user_stats = await bot.get_chat_member(chat.id, user.id)
+    if not user_stats.privileges:
+            query.answer("Make Me Admin REEE!!")
+            return 
+    if user_stats.privileges:
+            bot.unban_chat_member(chat.id, scammer)
+            query.answer("unbanned!")
+            query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
+            
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
