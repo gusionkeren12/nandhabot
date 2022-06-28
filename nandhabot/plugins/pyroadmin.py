@@ -59,10 +59,8 @@ async def banned(_, m):
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
      reply = m.reply_to_message
-     title  = m.chat.title
      user = m.from_user
      chat = m.chat
-     text = m.text.split(" ")[1]
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
      if not bot_stats.privileges:
@@ -78,8 +76,10 @@ async def setgrouptitle(_, m):
                await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
                return 
      if user_stats.privileges.can_manage_chat:
+               old_title  = m.chat.title
+               new_title = m.text.split(" ")[1]
                await m.chat.set_title(text)
                text = "__ **Successfully Changed New Group title** __\n\n"
-               text = f"**Old title**: {title}\n"
-               text += f"**New title**: {m.chat.title}"
+               text = f"**Old title**: {old_title}\n"
+               text += f"**New title**: {new_title}"
                await m.reply_text(text)
