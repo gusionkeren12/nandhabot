@@ -55,28 +55,7 @@ async def banned(_, m):
              chat_name = m.chat.title
              if ban:
                     await bot.ban_chat_member(chat.id, ban.id)
-                    await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}",
-                      reply_markup=InlineKeyboardMarkup([
-                [
-                    InlineKeyboardButton(
-                        "ᴜɴʙᴀɴ",
-                        callback_data=
-                        f"admin:unban:{m.reply_to_message.from_user.id}")
-                ],
-            ]))
-
-@bot.on_callback_query(filters.regex("admin"))
-async def admeme_callback(_, query: CallbackQuery):
-    scammer = query.data.split(":")[2]
-    user = query.message.from_user
-    chat = query.message.chat
-    user_stats = await bot.get_chat_member(chat.id, user.id)
-    if user_stats.privileges.can_restrict_members:
-                  await  bot.unban_chat_member(chat.id, scammer)
-                  await query.answer("unbanned!")
-                  await query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
-    else:
-          await query.answer("Your not admin")
+                    await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}")
 
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
@@ -102,3 +81,35 @@ async def setgrouptitle(_, m):
      if user_stats.privileges.can_manage_chat:
                await m.chat.set_title(new_title)
                await m.reply_text(f"Successfully set {new_title} as new chat title!")
+
+@bot.on_message(filters.command(["setgpic","setchatpic"]))
+async def setgrouptitle(_, m):
+     reply = m.reply_to_message
+     user = m.from_user
+     chat = m.chat
+     new_title = m.text.split(None, 1)[1]
+     user_stats = await bot.get_chat_member(chat.id, user.id)
+     bot_stats = await bot.get_chat_member(chat.id, "self")
+     if not bot_stats.privileges:
+            await m.reply_text("Make Me Admin REEE!!")
+            return 
+     if not user_stats.privileges:
+            await m.reply_text("Only Admins are allowed to use this command!")
+            return 
+     if not bot_stats.privileges.can_manage_chat:
+               await m.reply_text("**I'm missing the permission of**:\n`can_manage_chat`")
+               return 
+     if not user_stats.privileges.can_manage_chat:
+               await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
+               return 
+     if not reply:
+                await m.reply_text("reply only document or photo")
+                return 
+     file = reply.document or reply.photo
+     if not file:
+               await m.reply_text("reply only document or photo")
+     photo = await reply.download_media()
+     if user_stats.privileges.can_manage_chat:
+               photo = await reply.download_media()
+               await chat.set_photo(photo)
+               await m.reply_text("*Successfully group new photo changed!")
