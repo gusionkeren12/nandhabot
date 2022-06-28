@@ -81,5 +81,5 @@ async def setgrouptitle(_, m):
                await m.chat.set_title(text)
                text = "__ **Successfully Changed New Group title** __\n\n"
                text = f"**Old title**: {title}\n"
-               text += f"**New title**: {text}"
+               text += f"**New title**: {m.chat.title}"
                await m.reply_text(text)
