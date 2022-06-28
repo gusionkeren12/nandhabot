@@ -111,6 +111,6 @@ async def setgrouptitle(_, m):
                return 
      if user_stats.privileges.can_manage_chat:
                photo = await bot.download_media(file)
-               await chat.set_photo(m.chat.id, photo)
+               await bot.set_chat_photo(photo)
                await m.reply_text("*Successfully group new photo changed!")
-               os.remove(photo)
+
