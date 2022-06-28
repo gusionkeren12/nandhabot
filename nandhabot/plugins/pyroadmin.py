@@ -25,7 +25,7 @@ async def delete(_, m):
                return 
      if user_stats.privileges.can_delete_messages:
                await reply.delete()
-               await m.reply_text("replied message deleted!")
+               await m.delete()
       
 @bot.on_message(filters.command("ban"))
 async def banned(_, m):
