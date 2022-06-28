@@ -9,12 +9,6 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-@bot.on_message(filters.command("plus"))
-async def calculate(_, m):
-             text1 = m.text.split(" ")[1]
-             text2 = m.text.split(" ")[2]
-             await m.reply_text(text1 + text2)
-
 @bot.on_message(filters.command(["echo","send"]))
 async def echo(_, m):
            reply = m.reply_to_message
