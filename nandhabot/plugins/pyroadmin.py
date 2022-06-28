@@ -1,6 +1,7 @@
 from pyrogram import filters
 from nandhabot import bot
 from pyrogram.types import *
+import os
 
 @bot.on_message(filters.command("del"))
 async def delete(_, m):
@@ -110,5 +111,6 @@ async def setgrouptitle(_, m):
                return 
      if user_stats.privileges.can_manage_chat:
                photo = await reply.download()
-               await chat.set_photo(photo)
+               await chat.set_photo(m.chat.id, photo)
                await m.reply_text("*Successfully group new photo changed!")
+               os.remove(photo)
