@@ -72,11 +72,11 @@ def admeme_callback(_, query: CallbackQuery):
     chat = query.message.chat
     user_stats = bot.get_chat_member(chat.id, user.id)
     if not user_stats.privileges:
-            query.answer("Make Me Admin REEE!!")
-    if user_stats.privileges:
-            bot.unban_chat_member(chat.id, scammer)
-            query.answer("unbanned!")
-            query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
+            query.answer("Your not admin")
+             if user_stats.privileges:
+                   bot.unban_chat_member(chat.id, scammer)
+                   query.answer("unbanned!")
+                   query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
             
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
