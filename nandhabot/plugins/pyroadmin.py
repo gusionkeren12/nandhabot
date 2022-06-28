@@ -109,6 +109,6 @@ async def setgrouptitle(_, m):
                await m.reply_text("reply only document or photo")
                return 
      if user_stats.privileges.can_manage_chat:
-               photo = await reply.download_media()
+               photo = await reply.download()
                await chat.set_photo(photo)
                await m.reply_text("*Successfully group new photo changed!")
