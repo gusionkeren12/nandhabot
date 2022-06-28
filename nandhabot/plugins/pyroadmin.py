@@ -61,6 +61,7 @@ async def setgrouptitle(_, m):
      reply = m.reply_to_message
      title  = m.chat.title
      user = m.from_user
+     chat = m.chat
      text = m.text.split(" ")[1]
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
