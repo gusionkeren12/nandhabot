@@ -32,13 +32,20 @@ async def banned(_, m):
      reply = m.reply_to_message
      chat = m.chat
      user = m.from_user
+     bot_stats = await bot.get_chat_member(chat.id, "self")
+     if not bot_stats.privileges:
+            await m.reply_text("Make Me Admin REEE!!")
+            return 
      user_stats = await bot.get_chat_member(chat.id, user.id)
      if not user_stats.privileges:
-            await m.reply_text("Your not admin")
+            await m.reply_text("Only Admins are allowed to use this command!")
             return 
      if not reply:
              await m.reply_text("reply to user or channel")
              return 
+     if not bot_stats.privileges.can_delete_messages:
+               await m.reply_text("**I'm missing the permission of**:\n`can_delete_messages`")
+               return 
      if not user_stats.privileges.can_restrict_members:
                await m.reply_text("**your don't having the permission of**:\n`can_restrict_members`")
                return 
