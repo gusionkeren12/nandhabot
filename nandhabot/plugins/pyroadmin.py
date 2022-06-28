@@ -70,7 +70,7 @@ def admeme_callback(_, query):
     scammer = query.data.split(":")[2]
     user = query.message.from_user
     chat = query.message.chat
-    user_stats = await bot.get_chat_member(chat.id, user.id)
+    user_stats = bot.get_chat_member(chat.id, user.id)
     if not user_stats.privileges:
             query.answer("Make Me Admin REEE!!")
             return 
