@@ -87,7 +87,6 @@ async def setgrouptitle(_, m):
      reply = m.reply_to_message
      user = m.from_user
      chat = m.chat
-     new_title = m.text.split(None, 1)[1]
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
      if not bot_stats.privileges:
