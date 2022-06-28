@@ -65,8 +65,8 @@ async def banned(_, m):
                 ],
             ]))
 
-@bot.on_callback_query(call_back_in_filter("admin"))
-def admeme_callback(_, query):
+@bot.on_callback_query(filter.regex("admin"))
+def admeme_callback(_, query: CallbackQuery):
     scammer = query.data.split(":")[2]
     user = query.message.from_user
     chat = query.message.chat
