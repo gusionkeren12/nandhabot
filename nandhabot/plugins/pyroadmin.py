@@ -15,7 +15,7 @@ async def delete(_, m):
              await m.reply_text("reply to msg for deleting")
              return 
      If not bot_stats.privileges.can_delete_messages:
-               await m.reply_text("**your are missing the permission of**:\n`can_delete_messages`")
+               await m.reply_text("**I'm missing the permission of**:\n`can_delete_messages`")
                return 
      if not user_stats.privileges.can_delete_messages:
                await m.reply_text("**your are missing the permission of**:\n`can_delete_messages`")
