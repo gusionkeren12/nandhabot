@@ -56,3 +56,29 @@ async def banned(_, m):
                     await bot.ban_chat_member(chat.id, ban.id)
                     await m.reply_text(f"[banned](tg://user?id={ban.id}) successfully from {chat_name}")
                     
+@bot.on_message(filters.command(["setgtitle","setchattitle"]))
+async def setgrouptitle(_, m):
+     reply = m.reply_to_message
+     title  = m.chat.title
+     user = m.from_user
+     text = m.text.split(" ")[1]
+     user_stats = await bot.get_chat_member(chat.id, user.id)
+     bot_stats = await bot.get_chat_member(chat.id, "self")
+     if not bot_stats.privileges:
+            await m.reply_text("Make Me Admin REEE!!")
+            return 
+     if not user_stats.privileges:
+            await m.reply_text("Only Admins are allowed to use this command!")
+            return 
+     if not bot_stats.privileges.can_manage_chat:
+               await m.reply_text("**I'm missing the permission of**:\n`can_manage_chat`")
+               return 
+     if not user_stats.privileges.can_manage_chat:
+               await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
+               return 
+     if user_stats.privileges.can_manage_chat:
+               await m.chat.set_title(text)
+               text = "__ **Successfully Changed New Group title** __"
+               text = f"**Old title**: {title}"
+               text += f"**New title**: {text}"
+               await m.reply_text(text)
