@@ -71,13 +71,13 @@ def admeme_callback(_, query: CallbackQuery):
     user = query.message.from_user
     chat = query.message.chat
     user_stats = bot.get_chat_member(chat.id, user.id)
-    if not user_stats.privileges:
-            query.answer("Your not admin")
-             if user_stats.privileges:
+    if user_stats.privileges:
                    bot.unban_chat_member(chat.id, scammer)
                    query.answer("unbanned!")
                    query.message.edit(f'unbanned [{scammer}](tg://user?id={scammer})')
-            
+    else:
+            query.answer("Your not admin")
+
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
