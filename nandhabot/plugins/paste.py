@@ -40,13 +40,12 @@ async def paste(_, m):
     reply = m.reply_to_message
     if not reply:
            text = m.text.split(None, 1)[1]
-           no_reply = await m.reply_text("**Pasting...**")
            spacebin_url = spacebin(text)
            link = await ezup(text)
-           await m.reply_text(f"{link}\n\n{spacebin_url}",reply_markup=InlineKeyboardMarkup(
+           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+           await m.reply_text(text=caption, reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-           on_reply.delete()
            return 
     normal_text = reply.text or reply.caption
     replied = reply.document or reply.text
@@ -56,7 +55,6 @@ async def paste(_, m):
           file_text = await f.read()
         os.remove(doc)
         text = file_text or normal_text
-        no_reply = await m.reply_text("**Pasting...**")
         spacebin_url = spacebin(text)
         link = await ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
@@ -64,4 +62,4 @@ async def paste(_, m):
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-        no_reply.delete()
+
