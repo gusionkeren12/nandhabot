@@ -22,5 +22,3 @@ telethon
 bing_image_downloader
 faker
 python-telegram-bot
-cachetools
-socket
