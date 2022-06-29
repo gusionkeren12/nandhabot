@@ -2,7 +2,7 @@ from requests import post, get
 import requests 
 import socket
 from asyncio import get_running_loop
-import partial 
+from functools import partial
 from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
