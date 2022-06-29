@@ -53,6 +53,6 @@ telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
 print("Initializing MongoDB client")
 mongo_client = MongoClient(MONGO_URL)
-db = mongo_client.aasf
+db = mongo_client.nandha
 
 dev_user = [1491497760, 597384270]
