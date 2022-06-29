@@ -41,8 +41,8 @@ HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
     reply = m.reply_to_message
-    text = reply.text or reply.caption
-    if not reply:
+    text = reply.text or reply.caption and not reply.document
+    if not text:
            wrong_format = """ **Something You did wrong read the rules of paste:**\n
         ~ Only text files or text only paste.
         ~ Text file Only support lower then 1mb.
@@ -60,7 +60,8 @@ async def paste(_, m):
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
+    text = reply.text or reply.caption
     elif text:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
