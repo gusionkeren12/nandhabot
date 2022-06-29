@@ -46,4 +46,4 @@ def tm(_,message):
              message.reply_photo(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
     elif x.endswith("mp4"):
              message.reply_animation(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
-        msg.delete()
+        
