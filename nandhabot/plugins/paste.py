@@ -16,18 +16,14 @@ def spacebin(text):
 def paste(_, m):
     reply = m.reply_to_message
     if not reply:
-           m.reply("reply to message")
+           text = m.text.split(None, 1)[1]
+           spacebin_url = spacebin(text)
+           m.reply_text(spacebin_url,disable_web_page_preview=True)
            return 
     text = reply.text or reply.caption
-    key = requests.post(
-        'https://nekobin.com/api/documents', json={
-            "content": text
-        }).json().get('result').get('key')
-    nekobin_url = f"https://nekobin.com/{key}"
     if reply:
         spacebin_url = spacebin(text)
-        caption = f"[NEKOBIN]({nekobin_url}) | [SPACEBIN]({spacebin_url})"
+        caption = f"[SPACEBIN]({spacebin_url})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                             InlineKeyboardButton("NEKOBIN", url=nekobin_url)]]),disable_web_page_preview=True)
+                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url)]]),disable_web_page_preview=True)
