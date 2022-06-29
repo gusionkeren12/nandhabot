@@ -45,7 +45,7 @@ def paste(_, m):
     text = reply.text or reply.caption
     if reply:
         spacebin_url = spacebin(text)
-        link = await ezup(text)
+        link = ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [ezup.dev]({link})"
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
