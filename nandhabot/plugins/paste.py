@@ -54,6 +54,6 @@ async def devpaste(content):
 
 @bot.on_message(filters.command("test"))
 async def test(_, m):
-    text = message.reply_to_message.text
+    text = m.reply_to_message.text
     link = await devpaste(text)
-    await message.reply_text(link)
+    await m.reply_text(link)
