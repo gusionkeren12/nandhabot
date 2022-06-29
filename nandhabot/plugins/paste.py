@@ -26,7 +26,7 @@ def _netcat(host, port, content):
         return data
     s.close()
     
-async def ezup(content):
+async def ezuppaste(content):
     loop = get_running_loop()
     link = await loop.run_in_executor(
         None, partial(_netcat, "ezup.dev", 9999, content)
@@ -39,13 +39,13 @@ def paste(_, m):
     if not reply:
            text = m.text.split(None, 1)[1]
            spacebin_url = spacebin(text)
-           link = await ezup(text)
+           link = await ezuppaste(text)
            m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
            return 
     text = reply.text or reply.caption
     if reply:
         spacebin_url = spacebin(text)
-        link = await ezup(text)
+        link = await ezuppaste(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [ezup.dev]({link})"
         m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
