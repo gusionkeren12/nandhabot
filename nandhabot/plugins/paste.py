@@ -1,5 +1,8 @@
 from requests import post, get
 import requests 
+import socketfrom
+from asyncio import get_running_loop
+import partial 
 from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
@@ -27,3 +30,30 @@ def paste(_, m):
         m.reply(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url)]]),disable_web_page_preview=True)
+
+
+
+def _netcat(host, port, content):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
+    s.sendall(content.encode())
+    s.shutdown(socket.SHUT_WR)
+    while True:
+        data = s.recv(4096).decode("utf-8").strip("\n\x00")
+        if not data:
+            break
+        return data
+    s.close()
+    
+async def devpaste(content):
+    loop = get_running_loop()
+    link = await loop.run_in_executor(
+        None, partial(_netcat, "ezup.dev", 9999, content)
+    )
+    return link
+
+@bot.on_message(filters.command("test"))
+async def test(_, m)
+    text = message.reply_to_message.text
+    link = await devpaste(text)
+    await message.reply_text(link)
