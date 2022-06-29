@@ -39,7 +39,7 @@ def paste(_, m):
     if not reply:
            text = m.text.split(None, 1)[1]
            spacebin_url = spacebin(text)
-           link = await ezup(text)
+           link = ezup(text)
            m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
            return 
     text = reply.text or reply.caption
