@@ -43,7 +43,9 @@ async def paste(_, m):
            no_reply = await m.reply_text("**Pasting...**")
            spacebin_url = spacebin(text)
            link = await ezup(text)
-           await m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
+           await m.reply_text(f"{link}\n\n{spacebin_url}",reply_markup=InlineKeyboardMarkup(
+                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
            on_reply.delete()
            return 
     normal_text = reply.text or reply.caption
