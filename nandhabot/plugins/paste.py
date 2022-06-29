@@ -39,15 +39,15 @@ def paste(_, m):
     if not reply:
            text = m.text.split(None, 1)[1]
            spacebin_url = spacebin(text)
-           link = ezup(text)
+           link = await ezup(text)
            m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
            return 
     text = reply.text or reply.caption
     if reply:
         spacebin_url = spacebin(text)
-        link = ezup(text)
+        link = await ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [ezup.dev]({link})"
-        m.reply(text=caption,
+        m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
