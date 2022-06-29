@@ -59,12 +59,12 @@ async def paste(_, m):
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-       elif reply.text:
-          text = reply.text or reply.caption
-          spacebin_url = spacebin(text)
-          link = await ezup(text)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
-          await m.reply_text(text=caption,
+     elif reply.text:
+        text = reply.text or reply.caption
+        spacebin_url = spacebin(text)
+        link = await ezup(text)
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+        await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
