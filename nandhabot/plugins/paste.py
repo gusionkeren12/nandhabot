@@ -42,18 +42,12 @@ HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 async def paste(_, m):
     reply = m.reply_to_message
     if not reply:
-           text = m.text.split(None, 1)[1]
-           spacebin_url = spacebin(text)
-           link = await ezup(text)
-           key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
-           key = key.get("key") 
-           url = HASTEBIN.format(key)
-           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
-           await m.reply_text(text=caption, reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                           ],[InlineKeyboardButton("HASTEBIN", url=url),
-                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-           return 
+           wrong_format = """ **Something You did wrong read the rules of paste:**\n
+        ~ Only text files or text only paste.
+        ~ Text file Only support lower then 1mb.
+        ~ You did Verything right but you got this msg most report on SupportChat
+        """
+            await m.reply_text(wrong_format)
     if reply.document:
         doc = await m.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
@@ -61,14 +55,10 @@ async def paste(_, m):
         os.remove(doc)
         spacebin_url = spacebin(file_text)
         link = await ezup(file_text)
-        key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
-        key = key.get("key") 
-        url = HASTEBIN.format(key)
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                           ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
         
     elif reply.text:
@@ -78,18 +68,12 @@ async def paste(_, m):
           key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
           key = key.get("key") 
           url = HASTEBIN.format(key)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n         [HASTEBIN]({url})"
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-    else:
-        wrong_format = """ **Something You did wrong read the rules of paste:**
-        ~ Only text files or text only paste.
-        ~ Text file Only support lower then 1mb.
-        ~ You did Verything right but you got this msg most report on SupportChat
-        """
-        await m.reply_text(wrong_format)
+    
         
         
