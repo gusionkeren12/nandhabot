@@ -70,3 +70,12 @@ async def paste(_, m):
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
 
+    else:
+        wrong_format = """ **Something You did wrong read the rules of paste:**
+        ~ Only text files or text only paste.
+        ~ Text file Only support lower then 1mb.
+        ~ You did Verything right but you got this msg most report on SupportChat
+        """
+        await m.reply_text(wrong_format)
+        
+        
