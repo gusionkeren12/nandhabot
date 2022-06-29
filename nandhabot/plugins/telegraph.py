@@ -42,7 +42,7 @@ def tm(_,message):
         for x in fk:
            url = "https://telegra.ph" + x
     buttons = [[InlineKeyboardButton('View 💫' , url=f"{url}")]] 
-    elif x.endswith("jpg"):
+    if x.endswith("jpg"):
              message.reply_photo(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
     elif x.endswith("mp4"):
              message.reply_animation(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
