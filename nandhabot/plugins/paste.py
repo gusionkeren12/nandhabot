@@ -47,7 +47,7 @@ async def paste(_, m):
         ~ Text file Only support lower then 1mb.
         ~ You did Verything right but you got this msg most report on SupportChat
         """
-            await m.reply_text(wrong_format)
+           await m.reply_text(wrong_format)
     if reply.document:
         doc = await m.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
