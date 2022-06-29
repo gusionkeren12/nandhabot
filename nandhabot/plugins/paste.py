@@ -62,6 +62,7 @@ async def paste(_, m):
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                          ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
     text = reply.text or reply.caption
+    
     elif text:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
