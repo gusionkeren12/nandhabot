@@ -1,6 +1,6 @@
 from requests import post, get
 import requests 
-import socketfrom
+import socket
 from asyncio import get_running_loop
 import partial 
 from nandhabot import bot
