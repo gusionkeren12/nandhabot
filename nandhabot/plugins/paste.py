@@ -26,7 +26,7 @@ def _netcat(host, port, content):
         return data
     s.close()
     
-async def ezuppaste(content):
+async def ezup(content):
     loop = get_running_loop()
     link = await loop.run_in_executor(
         None, partial(_netcat, "ezup.dev", 9999, content)
@@ -34,24 +34,25 @@ async def ezuppaste(content):
     return link
 
 @bot.on_message(filters.command('paste'))
-def paste(_, m):
+async def paste(_, m):
     reply = m.reply_to_message
     if not reply:
            text = m.text.split(None, 1)[1]
            spacebin_url = spacebin(text)
-           link = await ezuppaste(text)
-           m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
+           link = await ezup(text)
+           await m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
            return 
     text = reply.text or reply.caption
     if reply:
         spacebin_url = spacebin(text)
-        link = await ezuppaste(text)
+        link = await ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [ezup.dev]({link})"
-        m.reply_text(text=caption,
+        await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-
+     else:
+          await m.reply_text("reply to msg or gime a text")
 
 
 
