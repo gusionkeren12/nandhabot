@@ -47,14 +47,20 @@ async def paste(_, m):
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
            return 
-    normal_text = reply.text or reply.caption
-    replied = reply.document or reply.text
-    if replied:
+    if reply.document:
         doc = await m.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
-        text = file_text or normal_text
+        spacebin_url = spacebin(file_text)
+        link = await ezup(file_text)
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+        await m.reply_text(text=caption,
+                      reply_markup=InlineKeyboardMarkup(
+                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
+      elif reply.text:
+        text = reply.text or reply.caption
         spacebin_url = spacebin(text)
         link = await ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
