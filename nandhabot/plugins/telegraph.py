@@ -41,8 +41,9 @@ def tm(_,message):
         fk = upload_file(path)
         for x in fk:
             url = "https://telegra.ph" + x
-        
-        message.reply_text(f"**Posted:** {url}",reply_markup=InlineKeyboardMarkup([ 
-        [InlineKeyboardButton('View 💫' , url=f"{url}")]
-    ]))
+     buttons = [[InlineKeyboardButton('View 💫' , url=f"{url}")]]
+     elif x.endswith("jpg"):
+             message.reply_photo(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
+     elif x.endswith("mp4"):
+             message.reply_animation(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
         msg.delete()
