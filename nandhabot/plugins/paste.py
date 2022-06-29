@@ -48,7 +48,7 @@ async def paste(_, m):
     if replied:
         doc = await message.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
-        file_text = await f.read()
+          file_text = await f.read()
         os.remove(doc)
         text = file_text or normal_text
         spacebin_url = spacebin(text)
