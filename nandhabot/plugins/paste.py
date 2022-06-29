@@ -46,7 +46,7 @@ async def paste(_, m):
     normal_text = reply.text or reply.caption
     replied = reply.document or reply.text
     if replied:
-        doc = await message.reply_to_message.download()
+        doc = await m.reply_to_message.download()
         async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
