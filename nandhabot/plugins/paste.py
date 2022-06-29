@@ -41,8 +41,7 @@ HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
     reply = m.reply_to_message
-    text = reply.text or reply.caption and not reply.document
-    if not text:
+    if not reply:
            wrong_format = """ **Something You did wrong read the rules of paste:**\n
         ~ Only text files or text only paste.
         ~ Text file Only support lower then 1mb.
