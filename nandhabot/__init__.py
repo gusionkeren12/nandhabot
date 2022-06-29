@@ -55,4 +55,4 @@ print("Initializing MongoDB client")
 mongo_client = MongoClient(MONGO_URL)
 db = mongo_client.aasf
 
-dev_user = [14914977605 597384270]
+dev_user = [14914977605,597384270]
