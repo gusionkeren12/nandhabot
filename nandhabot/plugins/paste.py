@@ -35,6 +35,9 @@ async def ezup(content):
     )
     return link
 
+HASTEBIN_URL = "https://www.toptal.com/developers/hastebin/documents"
+HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
+
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
     reply = m.reply_to_message
@@ -42,9 +45,13 @@ async def paste(_, m):
            text = m.text.split(None, 1)[1]
            spacebin_url = spacebin(text)
            link = await ezup(text)
-           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+           key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
+           key = key.get("key") 
+           url = HASTEBIN.format(key)
+           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
            await m.reply_text(text=caption, reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                           ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
            return 
     if reply.document:
@@ -54,22 +61,29 @@ async def paste(_, m):
         os.remove(doc)
         spacebin_url = spacebin(file_text)
         link = await ezup(file_text)
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+        key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
+        key = key.get("key") 
+        url = HASTEBIN.format(key)
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                           ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
         
     elif reply.text:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
           link = await ezup(text)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+          key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
+          key = key.get("key") 
+          url = HASTEBIN.format(key)
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n   [HASTEBIN]({url})"
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                           ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
-
     else:
         wrong_format = """ **Something You did wrong read the rules of paste:**
         ~ Only text files or text only paste.
