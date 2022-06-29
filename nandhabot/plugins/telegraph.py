@@ -35,12 +35,12 @@ def tm(_,message):
     if not reply.media:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     if reply.media:
-       msg = message.reply_text("downloading")
+        msg = message.reply_text("downloading")
         path = reply.download()
         msg.edit("uploading")
         fk = upload_file(path)
         for x in fk:
-            url = "https://telegra.ph" + x
+           url = "https://telegra.ph" + x
     buttons = [[InlineKeyboardButton('View 💫' , url=f"{url}")]] 
     elif x.endswith("jpg"):
              message.reply_photo(x,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
