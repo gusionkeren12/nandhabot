@@ -1,4 +1,5 @@
 from requests import post, get
+import aiofiles
 import requests 
 import socket
 from asyncio import get_running_loop
@@ -42,8 +43,14 @@ async def paste(_, m):
            link = await ezup(text)
            await m.reply_text(f"{link} +\n{spacebin_url}",disable_web_page_preview=True)
            return 
-    text = reply.text or reply.caption
-    if reply:
+    normal_text = reply.text or reply.caption
+    replied = reply.document or reply.text
+    if replied:
+        doc = await message.reply_to_message.download()
+        async with aiofiles.open(doc, mode="r") as f:
+        file_text = await f.read()
+        os.remove(doc)
+        text = file_text or normal_text
         spacebin_url = spacebin(text)
         link = await ezup(text)
         caption = f"[SPACEBIN]({spacebin_url}) | [ezup.dev]({link})"
