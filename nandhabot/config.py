@@ -9,5 +9,4 @@ SUPPORT_CHAT = "vegetasupport"
 LOG_GROUP_ID = "-1001690512977"
 ARQ_API_KEY = "EXRDLG-UIJPNE-XGERYB-EUGFCY-ARQ"
 ARQ_API_URL = "https://arq.hamker.in"
-MONGO_URL = "mongodb+srv://Music:Music@cluster0.f9x4i.mongodb.net/Cluster0?retryWrites=true&w=majority"
-
+MONGO_URL = "mongodb+srv://DrStranger:DrStrangerXD@cluster0.wn4h3ub.mongodb.net/?retryWrites=true&w=majority'
