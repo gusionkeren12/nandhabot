@@ -2,7 +2,7 @@ import os
 
 from pyrogram import filters
 from pyrogram.types import Message
-from nandhabot import dev_user, bot, ubot
+from nandhabot import dev_user, bot, ubot, CMD
 from nandhabot.utils.sections import section
 
 @ubot.on_message(filters.command("cinfo",prefixes=CMD) & filters.user(dev_user))
