@@ -2,9 +2,10 @@ import os
 
 from pyrogram import filters
 from pyrogram.types import Message
-from nandhabot import dev_user, bot
+from nandhabot import dev_user, bot, ubot
 from nandhabot.utils.sections import section
 
+@ubot.on_message(filters.command("cinfo",prefixes=CMD) & filters.user(dev_user))
 @bot.on_message(filters.command("cinfo"))
 async def cinfo(_, m):
        reply = m.reply_to_message
@@ -98,7 +99,7 @@ async def get_chat_info(chat, already=False):
     caption = section("Chat info", body)
     return [caption, photo_id]
 
-
+@ubot.on_message(filters.command("info",prefixes=CMD) & filters.user(dev_user))
 @bot.on_message(filters.command("info"))
 async def info_func(_, message: Message):
     if message.reply_to_message:
@@ -123,7 +124,7 @@ async def info_func(_, message: Message):
     await m.delete()
     os.remove(photo)
 
-
+@ubot.on_message(filters.command("ginfo",prefixes=CMD) & filters.user(dev_user))
 @bot.on_message(filters.command("ginfo"))
 async def chat_info_func(_, message: Message):
     try:
@@ -150,7 +151,8 @@ async def chat_info_func(_, message: Message):
         os.remove(photo)
     except Exception as e:
         await m.edit(e)
-        
+
+@ubot.on_message(filters.command("id",prefixes=CMD) & filters.user(dev_user))   
 @bot.on_message(filters.command('id'))
 def id(_,message):
   reply = message.reply_to_message
