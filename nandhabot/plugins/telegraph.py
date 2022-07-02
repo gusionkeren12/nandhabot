@@ -2,10 +2,10 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-from nandhabot import bot as app, telegraph
+from nandhabot import bot as app, telegraph, ubot, dev_user
 from telegraph import upload_file
 
-
+@ubot.on_message(filters.command("txt",prefixes=CMD) & filters.user(dev_user))
 @app.on_message(filters.command("txt"))
 async def txt(_, message: Message):
     reply = message.reply_to_message
@@ -26,7 +26,7 @@ async def txt(_, message: Message):
     ]),disable_web_page_preview=True,
     )
         
-
+@ubot.on_message(filters.command("tm",prefixes=CMD) & filters.user(dev_user))
 @app.on_message(filters.command('tm'))
 def tm(_,message):
     reply = message.reply_to_message
