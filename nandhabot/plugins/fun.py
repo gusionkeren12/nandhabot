@@ -148,7 +148,7 @@ async def catfacts(_, m):
 async def animals(_, m):
           api = get("https://axoltlapi.herokuapp.com/").json()
           await m.reply_photo(
-        api["url"], caption=somerandomvariable["facts"])
+        api["url"], caption=api["facts"])
             
 @bot.on_message(filters.command("dogfact"))
 async def dogfacts(_, m):
