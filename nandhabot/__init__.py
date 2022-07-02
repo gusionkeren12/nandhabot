@@ -31,6 +31,7 @@ ARQ_API_KEY = ARQ_API_KEY
 ARQ_API_URL = ARQ_API_URL
 BOT_ID = BOT_ID
 MONGO_URL = MONGO_URL
+SESSION = SESSION
 TEMP_DOWNLOAD_DIRECTORY = "./" 
 
 
@@ -46,6 +47,7 @@ bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN,
 tbot = TelegramClient("Vegeta", API_ID, API_HASH)
 updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
 dispatcher = updater.dispatcher
+ubot = Client(session_string=SESSION, api_id=API_ID, api_hash=API_HASH, name="nandhabot”)
 
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
