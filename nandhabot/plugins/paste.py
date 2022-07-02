@@ -5,7 +5,7 @@ import requests
 import socket
 from asyncio import get_running_loop
 from functools import partial
-from nandhabot import bot
+from nandhabot import bot, ubot, dev_user
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
@@ -38,6 +38,7 @@ async def ezup(content):
 HASTEBIN_URL = "https://www.toptal.com/developers/hastebin/documents"
 HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 
+@ubot.on_messae(filters.command("paste"))
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
     reply = m.reply_to_message
