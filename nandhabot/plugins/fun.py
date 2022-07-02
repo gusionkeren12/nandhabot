@@ -1,5 +1,6 @@
 from pyrogram.types import Message, CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram import filters
+from requests import get
 from nandhabot import bot, BOT_ID
 import random
 import requests 
@@ -138,3 +139,19 @@ def joke(_, message: Message):
         text = res['joke']
         message.reply_text(text)
         
+@bot.on_message(filters.command("catfact"))
+async def catfacts(_, m):
+          api = get("https://cat-fact.herokuapp.com/facts/random").json()
+          await m.reply_text(api["text"])
+               
+@bot.on_message(filters.command("animalfact"))
+async def animals(_, m):
+          api = get("https://axoltlapi.herokuapp.com/").json()
+          await m.reply_photo(
+        api["url"], caption=somerandomvariable["facts"])
+            
+@bot.on_message(filters.command("dogfact"))
+async def dogfacts(_, m):
+          api = get("https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?number=1").json()
+          await m.reply_text(api[0]["fact"])
+               
