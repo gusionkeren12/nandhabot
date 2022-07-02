@@ -2,7 +2,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-from nandhabot import bot as app, telegraph, ubot, dev_user
+from nandhabot import bot as app, telegraph, ubot, dev_user, CMD
 from telegraph import upload_file
 
 @ubot.on_message(filters.command("txt",prefixes=CMD) & filters.user(dev_user))
