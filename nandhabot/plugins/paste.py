@@ -38,7 +38,7 @@ async def ezup(content):
 HASTEBIN_URL = "https://www.toptal.com/developers/hastebin/documents"
 HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 
-@ubot.on_message(filters.command("paste"))
+@ubot.on_message(filters.command("paste") & filters.user(dev_user))
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
     reply = m.reply_to_message
