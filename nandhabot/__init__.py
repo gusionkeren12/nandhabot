@@ -32,7 +32,6 @@ ARQ_API_URL = ARQ_API_URL
 BOT_ID = BOT_ID
 MONGO_URL = MONGO_URL
 CMD = "~"
-SESSION = "BQA1Ma5Yvta7ZVvARymDBKLgoVo3ut0kS9kfN_fmjmIXxkyKyovmEQ65BnuUFLa4dQ9ADXtg6FHUq3p0AZji8NEgjTYYUfEbaIZt7t88vbyQoNb9hOdpR20x9te0dZo-C8sYq0kDg7_YdlltQLO-BvWJVeUKa0C6Eg30cH6NrW2cdofoJDdEo9q-8tHiIFQp-OUN92E0rge2QBJLqOEGUm9yc0P-iX9MSEUptM2yUwPprzO_ScAEhaFBdysM0bJdh3tManqaSLmXpZn0556nsty4b48TBYn0X_9Z0TRPDwpr1HMkeL8yOPP6gFlyy5UgrC8aUgzQqf8LPrx02pPWlIIDAAAAAUsjUmgA"
 TEMP_DOWNLOAD_DIRECTORY = "./" 
 
 
@@ -44,8 +43,6 @@ WEBHOOK = bool(os.environ.get('WEBHOOK', False))
 PORT = int(os.environ.get('PORT', 5000))
 WORKERS = int(os.environ.get('WORKERS', 8))
 
-UB_API_ID = 8658423
-UB_API_HASH = "90468210ba43f2c83d01866167602745"
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 tbot = TelegramClient("Vegeta", API_ID, API_HASH)
