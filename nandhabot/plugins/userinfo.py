@@ -123,7 +123,6 @@ async def info_func(_, message: Message):
     await m.delete()
     os.remove(photo)
 
-@ubot.on_message(filters.command("ginfo",prefixes=CMD) & filters.user(dev_user))
 @bot.on_message(filters.command("ginfo"))
 async def chat_info_func(_, message: Message):
     try:
