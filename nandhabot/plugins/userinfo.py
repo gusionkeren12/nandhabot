@@ -180,5 +180,5 @@ async def id(_, m):
                 _reply += f"**ᴠɪᴅᴇᴏ ɪᴅ**: `{reply.video.file_id}`"
          elif reply.photo:
                 _reply += f"**ᴘʜᴏᴛᴏ ɪᴅ**: `{reply.photo.file_id}`"
-         await reply.reply_text(_reply)
-         await m.delete()
+         await m.reply_text(_reply)
+        
