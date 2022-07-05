@@ -1,4 +1,4 @@
-from nandhabot import ubot, bot, arq, tbot,  BOT_TOKEN, updater
+from nandhabot import  bot, arq, tbot,  BOT_TOKEN, updater
 import logging 
 import random
 import nandhabot.plugins
