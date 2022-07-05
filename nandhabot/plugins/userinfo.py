@@ -21,7 +21,7 @@ async def cinfo(_, message):
     photo = info.photo.big_file_id
     msg = await message.reply_text("ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴘʀᴏᴄᴇssɪɴɢ...")
     if info.photo:
-        channel_photo = await bot.download_media(photo,file_name=id)
+        channel_photo = await bot.download_media(photo)
         await message.reply_photo(channel_photo,caption = (
                        f"ɪᴅ: `{id}`"
                        f"ɴᴀᴍᴇ: {name}"
