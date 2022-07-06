@@ -2,7 +2,7 @@ from nandhabot import db
 from nandhabot import bot
 from pyrogram import filters
 import json
-from nandhabots.utils.sendlog import send_log
+from nandhabot.utils.sendlog import send_log
 
 
 @bot.on_message(filters.command('addnote'))
