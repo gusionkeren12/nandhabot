@@ -45,7 +45,7 @@ def tm(_,message):
            fk = upload_file(path)
            for x in fk:
                url = "https://telegra.ph" + x
-        msg.edit("uploading")
+    msg.edit("uploading")
     buttons = [[InlineKeyboardButton('View 💫' , url=f"{url}")]] 
     if url.endswith("jpg"):
              message.reply_photo(url,caption=f"{url}",reply_markup=InlineKeyboardMarkup(buttons))
