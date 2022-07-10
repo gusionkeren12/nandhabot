@@ -59,7 +59,7 @@ async def banned(_, m):
 
      elif reply.sender_chat:
              chat_name = m.chat.title
-             await bot.ban_chat_member(chat.id, ban.id)
+             await bot.ban_chat_member(chat.id, reply.sender_chat.id)
              await m.reply_text(f"{reply.sender_chat.title} Successfully from {chat_name}")
 
                     
