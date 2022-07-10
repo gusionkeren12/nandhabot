@@ -34,17 +34,17 @@ def tm(_,message):
     if reply.text:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     msg = message.reply_text("downloading")
-    if reply.media:
-        path = reply.download()
-        fk = upload_file(path)
-        for x in fk:
-           url = "https://telegra.ph" + x
-    if reply.sticker or document:
+    if reply.sticker or reply.document:
            path = reply.sticker.file_id or reply.document.file_id
            download = reply.download_media(path)
            fk = upload_file(download)
            for x in fk:
                url = "https://telegra.ph" + x
+    elif reply.media:
+        path = reply.download()
+        fk = upload_file(path)
+        for x in fk:
+           url = "https://telegra.ph" + x
     msg.edit("uploading")
     buttons = [[InlineKeyboardButton('View 💫' , url=f"{url}")]] 
     if url.endswith("jpg"):
