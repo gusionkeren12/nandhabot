@@ -34,8 +34,8 @@ def tm(_,message):
     if reply.text:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     msg = message.reply_text("downloading")
-    if reply.sticker or reply.document:
-           path = reply.sticker.file_unique_id or reply.document.file_id
+    if reply.sticker:
+           path = reply.sticker.file_unique_id
            download = app.download_media(path)
            fk = upload_file(download)
            for x in fk:
