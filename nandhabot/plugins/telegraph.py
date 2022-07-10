@@ -31,7 +31,7 @@ def tm(_,message):
     reply = message.reply_to_message
     if not reply:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
-    if not reply.media:
+    if reply.text:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     msg = message.reply_text("downloading")
     if reply.media:
