@@ -29,7 +29,6 @@ async def txt(_, message: Message):
 @app.on_message(filters.command('tm'))
 def tm(_,message):
     reply = message.reply_to_message
-    name = "telegraph.jpg"
     if not reply:
           return message.reply_text("Reply to a **Media** to get a permanent telegra.ph link.")
     if reply.text:
@@ -37,7 +36,7 @@ def tm(_,message):
     msg = message.reply_text("downloading")
     if reply.sticker or reply.document:
            path = reply.sticker.file_unique_id or reply.document.file_id
-           download = app.download_media(path,file_name=name)
+           download = app.download_media(path)
            fk = upload_file(download)
            for x in fk:
                url = "https://telegra.ph" + x
