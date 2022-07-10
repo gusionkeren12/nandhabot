@@ -42,7 +42,7 @@ def tm(_,message):
     elif reply.sticker or document:
            path = reply.sticker.file_id or reply.document.file_id
            download = reply.download_media(path)
-           fk = upload_file(path)
+           fk = upload_file(download)
            for x in fk:
                url = "https://telegra.ph" + x
     msg.edit("uploading")
