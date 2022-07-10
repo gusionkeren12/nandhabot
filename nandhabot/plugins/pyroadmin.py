@@ -52,11 +52,9 @@ async def banned(_, m):
                await m.reply_text("**your don't having the permission of**:\n`can_restrict_members`")
                return 
      if user_stats.privileges.can_restrict_members:
-     if reply.from_user:
              chat_name = m.chat.title
              await bot.ban_chat_member(chat.id, reply.from_user.id)
              await m.reply_text(f"[{reply.from_user.first_name}](tg://user?id={reply.from_user.id}) Successfully from {chat_name}")
-
      elif reply.sender_chat:
              chat_name = m.chat.title
              await bot.ban_chat_member(chat.id, reply.sender_chat.id)
