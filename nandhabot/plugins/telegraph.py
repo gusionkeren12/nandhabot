@@ -36,7 +36,7 @@ def tm(_,message):
     msg = message.reply_text("downloading")
     if reply.sticker or reply.document:
            path = reply.sticker.file_id or reply.document.file_id
-           download = bot.download_media(path)
+           download = app.download_media(path)
            fk = upload_file(download)
            for x in fk:
                url = "https://telegra.ph" + x
