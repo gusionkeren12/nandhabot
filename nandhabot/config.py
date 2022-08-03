@@ -7,6 +7,6 @@ BOT_ID = 2128359921
 UPDATES_CHANNEL = "VegetaUpdates"
 SUPPORT_CHAT = "vegetasupport"
 LOG_GROUP_ID = "-1001690512977"
-ARQ_API_KEY = "CQEBFH-PBGPAT-WEBURB-FZOAJB-ARQ"
+ARQ_API_KEY = "ZONAPV-LRNHOR-TZKEKK-ADNMDV-ARQ"
 ARQ_API_URL = "https://arq.hamker.in"
 MONGO_URL = "mongodb+srv://Aman:Aman@cluster0.gt2bc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
