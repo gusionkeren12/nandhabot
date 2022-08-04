@@ -54,7 +54,7 @@ def devlist(_, m):
           m.reply("only Devs can access this command!")
   
         
-@app.on_message(filters.user(OWNER_ID) & filters.command("sh", prefixes=['/', '.', '?', '-']))
+@app.on_message(filters.user(dev_user) & filters.command("sh", prefixes=['/', '.', '?', '-']))
 def sh(_, m):
     if m.from_user.id in dev_user:
         code = m.text.replace(m.text.split(" ")[0], "")
