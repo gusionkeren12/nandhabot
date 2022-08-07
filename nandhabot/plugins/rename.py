@@ -14,10 +14,12 @@ def rename(_, message):
         send_log(e)
 
     if reply := message.reply_to_message:
-            buttons = [[InlineKeyboardButton('FILE' , callback_data="videotype"),
-                                InlineKeybordButton('VIDEO',  callback_data='filetype')]] 
+            buttons = [[InlineKeyboardButton("FILE" , callback_data="videotype"),
+                                InlineKeybordButton("VIDEO",  callback_data="filetype")]] 
             message.reply_text("Choose the below Button Which Type You Want!",
             reply_markup=inlineKeybordMarkup(buttons))
+    elif not reply: = message.reply_to_message:
+           message.reply_text("reply to document")
         
 
 
