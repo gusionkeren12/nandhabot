@@ -24,8 +24,8 @@ def rename(_, message):
            message.reply_text("reply to document")
         
 
-@bot.on_message(filters.regex("filetype"))
-def filetype(_, m):
+@bot.on_callback_query(filters.regex("filetype"))
+def filtypes(_, query: CallbackQuery):
         x = message.reply_text("Downloading.....")
         path = reply.download()
         x.edit("uploading now..... ")
