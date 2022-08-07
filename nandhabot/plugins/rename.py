@@ -17,8 +17,8 @@ def rename(_, message):
     if reply := message.reply_to_message:
             buttons = [[InlineKeyboardButton('FILE' , callback_data="videotype"),
                                 InlineKeybordButton('VIDEO',  callback_data='filetype')]] 
-        message.reply_text("Choose the below Button Which Type You Want!",
-        reply_markup=inlineKeybordMarkup(buttons))
+            message.reply_text("Choose the below Button Which Type You Want!",
+            reply_markup=inlineKeybordMarkup(buttons))
         
 
 
