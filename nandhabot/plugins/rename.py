@@ -16,8 +16,8 @@ def rename(_, message):
     reply = message.reply_to_message
     if reply:
             buttons = [[ 
-                                InlineKeyboardButton("FILE" , callback_data="videotype"),
-                                InlineKeyboardButton("VIDEO",  callback_data="filetype")]] 
+                                InlineKeyboardButton("FILE" , callback_data="filetype"),
+                                InlineKeyboardButton("VIDEO",  callback_data="videotype")]] 
             message.reply_text("Choose the below Button Which Type You Want!",
             reply_markup=InlineKeyboardMarkup(buttons))
     else:
@@ -27,7 +27,7 @@ def rename(_, message):
 @bot.on_message(filters.regex("filetype"))
 def filetype(_, m):
         x = message.reply_text("Downloading.....")
-        path = reply.download(file_name=filename)
+        path = reply.download()
         x.edit("uploading now..... ")
         message.reply_document(path)
         os.remove(path)
