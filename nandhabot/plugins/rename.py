@@ -15,14 +15,14 @@ def rename(_, message):
         send_log(e)
     reply = message.reply_to_message
     if reply:
-            buttons = [[ InlineKeyboardButton("FILE" , callback_data="videotype"),
+            buttons = [[ 
+                                InlineKeyboardButton("FILE" , callback_data="videotype"),
                                 InlineKeybordButton("VIDEO",  callback_data="filetype")]] 
             message.reply_text("Choose the below Button Which Type You Want!",
             reply_markup=inlineKeybordMarkup(buttons))
     else:
            message.reply_text("reply to document")
         
-
 
 @bot.on_message(filters.regex("filetype"))
 def filetype(_, m):
