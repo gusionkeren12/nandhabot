@@ -4,7 +4,7 @@ from nandhabot.utils.sendlog import send_log
 from pyrogram import filters
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
-
+from pyrogram.types import CallbackQuery
 @bot.on_message(filters.command('rename'))
 def rename(_, message):
 
