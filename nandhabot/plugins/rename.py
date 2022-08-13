@@ -5,9 +5,10 @@ from pyrogram import filters
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types import CallbackQuery
+
 @bot.on_message(filters.command('rename'))
 def rename(_, message):
-
+    global reply
     try:
         filename = message.text.replace(message.text.split(" ")[0], "")
 
@@ -26,7 +27,6 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-        reply = query.message.reply_to_message.reply_to_message
         dl = reply.download()
         x = query.message.reply_text("uploading now...")
         message.reply_document(dl)
