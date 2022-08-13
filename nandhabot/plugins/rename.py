@@ -30,19 +30,19 @@ def rename(_, message):
 def filtypes(_, query: CallbackQuery):
            dl = reply.download(file_name=filename)
            x = query.message.reply_text("uploading now...")
-           query.message.reply_document(dl)
-           x.edit("**Made by @VegetaRobot**")
+           query.message.reply_document(dl,caption="**Made by @VegetaRobot**")
+           x.delete()
 
 @bot.on_callback_query(filters.regex("videotype"))
 def videotypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
-        query.message.reply_video(dl)
-        x.edit(f"**Made by @VegetaRobot**")
+        query.message.reply_video(dl,caption="**Made by @VegetaRobot**")
+        x.delete()
 
 @bot.on_callback_query(filters.regex("phototype"))
 def phototypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
-        query.message.reply_photo(dl)
-        x.edit(f"**Made by @VegetaRobot**")
+        query.message.reply_photo(dl,caption="**Made by @VegetaRobot**")
+        x.delete()
