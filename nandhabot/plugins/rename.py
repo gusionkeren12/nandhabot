@@ -8,14 +8,13 @@ from pyrogram.types import CallbackQuery
 
 @bot.on_message(filters.command('rename'))
 def rename(_, message):
-    global reply, filename, user_id
+    global reply, filename
     try:
         filename = message.text.replace(message.text.split(" ")[0], "")
 
     except Exception as e:
         message.reply_text(e)
     reply = message.reply_to_message
-    user_id = message.from_user.id
     if reply:
             buttons = [[ 
                                 InlineKeyboardButton("FILE" , callback_data="filetype"),
