@@ -13,13 +13,13 @@ def rename(_, message):
         filename = message.text.replace(message.text.split(" ")[0], "")
 
     except Exception as e:
-        send_log(e)
+        message.reply_text(e)
     reply = message.reply_to_message
     if reply:
             buttons = [[ 
                                 InlineKeyboardButton("FILE" , callback_data="filetype"),
                                 InlineKeyboardButton("VIDEO",  callback_data="videotype"),
-                           ],[ InlineKeyboardButton("FILE" , callback_data="phototype")]] 
+                           ],[ InlineKeyboardButton("PHOTO" , callback_data="phototype")]] 
             message.reply_text("Choose the below Button Which Type You Want!",
             reply_markup=InlineKeyboardMarkup(buttons))
     else:
