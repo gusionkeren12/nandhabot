@@ -25,6 +25,7 @@ async def inline_query_handler(client, query):
                         disable_web_page_preview=True,
                     ),
                     thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
+                    photo_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"🔥 How horny are U?",
                     description=f"Send Your Current hornyess To This Chat.",
                     reply_markup=InlineKeyboardMarkup(
