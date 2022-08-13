@@ -19,7 +19,7 @@ async def inline_query_handler(client, query):
         await client.answer_inline_query(
             query.id,
             results=[
-                InlineQueryResultArticle(
+                InlineQueryResultPhoto(
                     input_message_content=InputTextMessageContent(
                         f"<b>🔥I am</b> {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}<b>% Horny!</b>",
                         disable_web_page_preview=True,
