@@ -35,8 +35,6 @@ async def ezup(content):
     )
     return link
 
-HASTEBIN_URL = "https://www.toptal.com/developers/hastebin/documents"
-HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 
 
 @bot.on_message(filters.command('paste'))
@@ -46,7 +44,7 @@ async def paste(_, m):
            await m.reply_text("Reply to Message or Text-File")
     if reply.document:
        doc = await m.reply_to_message.download()
-       async with aiofiles.open(doc, mode="r") as f:
+        async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
         spacebin_url = spacebin(file_text)
