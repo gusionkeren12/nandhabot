@@ -5,7 +5,7 @@ from nandhabot import bot as Rias
 from libgen_api import LibgenSearch
 prefixes = ["/","!","?","."]
 
-@Rias.on_message(filters.command(["search"] , prefixes))
+@Rias.on_message(filters.command(["bsearch"] , prefixes))
 async def search (client , message:Message):
     global chat_id
     chat_id = message.chat.id
