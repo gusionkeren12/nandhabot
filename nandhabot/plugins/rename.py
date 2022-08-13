@@ -8,7 +8,7 @@ from pyrogram.types import CallbackQuery
 
 @bot.on_message(filters.command('rename'))
 def rename(_, message):
-    global reply
+    global reply, filename
     try:
         filename = message.text.replace(message.text.split(" ")[0], "")
 
