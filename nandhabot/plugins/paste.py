@@ -62,7 +62,6 @@ async def paste(_, m):
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                           ],[InlineKeyboardButton("HASTEBIN", url=url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
     
         
