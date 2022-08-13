@@ -31,17 +31,21 @@ def filtypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
         query.message.reply_document(dl)
-        
+        x.edit(f"**Successfully Uploaded:\nxD {query.message.from_user.mention}")
+     
 
 @bot.on_callback_query(filters.regex("videotype"))
 def videotypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
         query.message.reply_video(dl)
+        x.edit(f"**Successfully Uploaded:\nxD {query.message.from_user.mention}")
      
 @bot.on_callback_query(filters.regex("phototype"))
 def phototypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
         query.message.reply_photo(dl)
+        x.edit(f"**Successfully Uploaded:\nxD {query.message.from_user.mention}")
+     
 
