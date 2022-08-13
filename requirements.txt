@@ -21,5 +21,4 @@ lxml
 telethon
 bing_image_downloader
 faker
-python-telegram-bot
 libgen_api
