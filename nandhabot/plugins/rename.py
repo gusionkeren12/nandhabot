@@ -29,5 +29,5 @@ def rename(_, message):
 def filtypes(_, query: CallbackQuery):
         dl = reply.download()
         x = query.message.reply_text("uploading now...")
-        message.reply_document(dl)
+        query.message.reply_document(dl)
         
