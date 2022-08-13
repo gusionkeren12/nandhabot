@@ -20,20 +20,13 @@ async def inline_query_handler(client, query):
             query.id,
             results=[
                 InlineQueryResultPhoto(
-                    input_message_content=InputTextMessageContent(
-                        f"<b>🔥I am</b> {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}<b>% Horny!</b>",
-                        disable_web_page_preview=True,
-                    ),
-                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
-                    photo_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
-                    title=f"🔥 How horny are U?",
-                    description=f"Send Your Current hornyess To This Chat.",
+                    photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                    thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                    title=f"🤝 Help",
+                    description=f" 😎 About @VegetaRobot",
                     reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton(
-                                    "Share your hornyness! 🔥", switch_inline_query="alive"
-                                )
+                        [[InlineKeyboardButton("Support",url="t.me/VegetaSupport", ),
+                          InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"),
                             ]
                         ]
                     ))])
