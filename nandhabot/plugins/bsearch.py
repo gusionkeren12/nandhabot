@@ -1,6 +1,6 @@
 from pyrogram import *
 from pyrogram.types import *
-from nandhabot bot as Rias 
+from nandhabot import bot as Rias 
 
 from libgen_api import LibgenSearch
 
