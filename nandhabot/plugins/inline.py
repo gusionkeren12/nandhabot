@@ -22,7 +22,7 @@ async def inline_query_handler(client, query):
                         f"test"),
                     thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"userinfo!",
-                    description=f"Userinformatiom searcher"]
+                    description=f"Userinformatiom searcher"])
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
