@@ -11,19 +11,6 @@ from pyrogram.types import (
     InlineQueryResultPhoto,
 )
 
-@bot.on_inline_query()
-async def inline_query_handler(client, query):
-    string = query.query.lower()
-    if string == "info":
-        await client.answer_inline_query(
-            query.id,
-            results=[
-                InlineQueryResultArticle(
-                input_message_content=InputTextMessageContent(
-                        f"test"),
-                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
-                    title=f"userinfo!",
-                    description=f"Userinformatiom searcher")])
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
@@ -51,3 +38,16 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
               
+@bot.on_inline_query()
+async def inline_query_handler(client, query):
+    string = query.query.lower()
+    if string == "info":
+        await client.answer_inline_query(
+            query.id,
+            results=[
+                InlineQueryResultArticle(
+                input_message_content=InputTextMessageContent(
+                        f"test"),
+                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
+                    title=f"userinfo!",
+                    description=f"Userinformatiom searcher")])
