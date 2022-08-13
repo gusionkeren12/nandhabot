@@ -29,26 +29,21 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-        if query.message.from_user.id == user_id:
            dl = reply.download(file_name=filename)
            x = query.message.reply_text("uploading now...")
            query.message.reply_document(dl)
-           x.edit(f"**Successfully Uploaded:**\n**xD** {query.message.reply_to_message.from_user.mention}")
-
-        else:
-                query.answer("this is not your requested")
+           x.edit("**Made by @VegetaRobot**")
 
 @bot.on_callback_query(filters.regex("videotype"))
 def videotypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
         query.message.reply_video(dl)
-        x.edit(f"**Successfully Uploaded:**\n**xD** {query.message.reply_to_message.from_user.mention}")
-     
+        x.edit(f"**Made by @VegetaRobot**")
+
 @bot.on_callback_query(filters.regex("phototype"))
 def phototypes(_, query: CallbackQuery):
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
         query.message.reply_photo(dl)
-        x.edit(f"**Successfully Uploaded:**\n**xD** {query.message.reply_to_message.from_user.mention}")
-     
+        x.edit(f"**Made by @VegetaRobot**")
