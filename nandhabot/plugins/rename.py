@@ -18,7 +18,8 @@ def rename(_, message):
     if reply:
             buttons = [[ 
                                 InlineKeyboardButton("FILE" , callback_data="filetype"),
-                                InlineKeyboardButton("VIDEO",  callback_data="videotype")]] 
+                                InlineKeyboardButton("VIDEO",  callback_data="videotype"),
+                           ],[ InlineKeyboardButton("FILE" , callback_data="phototype")]] 
             message.reply_text("Choose the below Button Which Type You Want!",
             reply_markup=InlineKeyboardMarkup(buttons))
     else:
@@ -31,3 +32,16 @@ def filtypes(_, query: CallbackQuery):
         x = query.message.reply_text("uploading now...")
         query.message.reply_document(dl)
         
+
+@bot.on_callback_query(filters.regex("videotype"))
+def videotypes(_, query: CallbackQuery):
+        dl = reply.download(file_name=filename)
+        x = query.message.reply_text("uploading now...")
+        query.message.reply_video(dl)
+     
+@bot.on_callback_query(filters.regex("phototype"))
+def phototypes(_, query: CallbackQuery):
+        dl = reply.download(file_name=filename)
+        x = query.message.reply_text("uploading now...")
+        query.message.reply_photo(dl)
+
