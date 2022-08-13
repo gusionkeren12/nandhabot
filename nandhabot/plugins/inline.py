@@ -1,6 +1,6 @@
-from pyrogram import filters , version as pyro
+from pyrogram import filters , __version__ as pyro
 import random
-from telethon import version as telever
+from telethon import __version__ as telever
 from nandhabot import bot
 
 from pyrogram.types import (
