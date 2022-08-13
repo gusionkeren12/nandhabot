@@ -43,15 +43,10 @@ HASTEBIN = "https://www.toptal.com/developers/hastebin/{}"
 async def paste(_, m):
     reply = m.reply_to_message
     if not reply:
-           wrong_format = """ **Something You did wrong read the rules of paste:**\n
-        ~ Only text files or text only paste.
-        ~ Text file Only support lower then 1mb.
-        ~ You did Verything right but you got this msg most report on SupportChat
-        """
-           await m.reply_text(wrong_format)
+           await m.reply_text("Reply to Message or Text-File")
     if reply.document:
-        doc = await m.reply_to_message.download()
-        async with aiofiles.open(doc, mode="r") as f:
+       doc = await m.reply_to_message.download()
+       async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
         spacebin_url = spacebin(file_text)
@@ -65,10 +60,7 @@ async def paste(_, m):
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
           link = await ezup(text)
-          key = requests.post(HASTEBIN_URL, data=text.encode("UTF-8"), ).json()
-          key = key.get("key") 
-          url = HASTEBIN.format(key)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n         [HASTEBIN]({url})"
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
