@@ -5,7 +5,6 @@ from Python_ARQ import ARQ
 from telegraph import Telegraph
 from motor.motor_asyncio import AsyncIOMotorClient as MongoClient
 from telethon import TelegramClient
-import telegram.ext as tg
 import logging
 
 StartTime = time.time()
@@ -46,8 +45,7 @@ WORKERS = int(os.environ.get('WORKERS', 8))
 
 bot = Client("nandhabot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN, plugins=dict(root="{}/plugins".format(__name__)))
 tbot = TelegramClient("Vegeta", API_ID, API_HASH)
-updater = tg.Updater(BOT_TOKEN, workers=WORKERS, use_context=True)
-dispatcher = updater.dispatcher
+
 
 aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
