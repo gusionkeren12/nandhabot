@@ -21,4 +21,3 @@ lxml
 telethon
 bing_image_downloader
 faker
-libgen_api
