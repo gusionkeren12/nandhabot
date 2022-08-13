@@ -29,7 +29,7 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-        if query.message.from_user.id in user_id:
+        if query.message.from_user.id == user_id:
            dl = reply.download(file_name=filename)
            x = query.message.reply_text("uploading now...")
            query.message.reply_document(dl)
