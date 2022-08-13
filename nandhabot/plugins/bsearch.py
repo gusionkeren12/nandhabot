@@ -3,6 +3,7 @@ from pyrogram.types import *
 from nandhabot import bot as Rias 
 
 from libgen_api import LibgenSearch
+prefixes = ["/","!","?","."]
 
 @Rias.on_message(filters.command(["search"] , prefixes))
 async def search (client , message:Message):
