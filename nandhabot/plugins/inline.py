@@ -35,5 +35,5 @@ async def inline_query_handler(client, query):
                                 )
                             ]
                         ]
-                    ))
+                    ))]))
               
