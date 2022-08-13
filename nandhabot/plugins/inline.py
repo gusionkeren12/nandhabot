@@ -1,7 +1,7 @@
 from pyrogram import filters 
 import random
 
-from nandha import bot
+from nandhabot import bot
 
 from pyrogram.types import (
     InlineKeyboardButton,
