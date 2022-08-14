@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallBackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from nandhabot import bot
 
 from faker import Faker
@@ -25,7 +25,7 @@ async def fakeit(_, m):
            
   
 @bot.on_callback_query(filters.regex("fakeit_query"))
-async def fakeitgen(_, query: CallBackQuery):
+async def fakeitgen(_, query: CallbackQuery):
         fake = Faker()
         name = str(fake.name())
         fake.add_provider(internet)
