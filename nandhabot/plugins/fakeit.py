@@ -25,7 +25,7 @@ async def fakeit(_, m):
            
   
 @bot.on_callback_query(filters.regex("fakeit_query"))
-async def (_, query: CallBackQuery):
+async def fakeitgen(_, query: CallBackQuery):
         fake = Faker()
         name = str(fake.name())
         fake.add_provider(internet)
