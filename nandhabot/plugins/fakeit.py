@@ -24,7 +24,7 @@ async def fakeit(_, m):
                     [ [InlineKeyboardButton("ᴄʟᴏsᴇ", callback_data="close"),InlineKeyboardButton("ɴᴇxᴛ", callback_data="fakeit_query")]]))
            
   
-@bot.on_callback_query(filters.regex"fakeit_query")
+@bot.on_callback_query(filters.regex("fakeit_query"))
 async def (_, query: CallBackQuery):
         fake = Faker()
         name = str(fake.name())
