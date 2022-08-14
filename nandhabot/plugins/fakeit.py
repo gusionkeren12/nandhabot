@@ -1,5 +1,5 @@
 from pyrogram import filters
-from pyrogram.tyeps import InlineKeyboardButton, InlineKeyboardMarkup, CallBackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallBackQuery
 from nandhabot import bot
 
 from faker import Faker
