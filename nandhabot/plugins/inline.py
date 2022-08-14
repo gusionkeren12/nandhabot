@@ -38,7 +38,7 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
     elif string == "info":
-        user_id = query.query.split(" ")[1]
+        user_id = string.query.split(" ")[2]
         await client.answer_inline_query(
             query.id,
             results=[
