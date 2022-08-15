@@ -49,7 +49,7 @@ async def feedback(_, m):
 @bot.on_callback_query(filters.regex("reject"))
 async def rejected(_, query: CallbackQuery):
          try:
-              mm = query.data.split("=")
+             mm = query.data.split("=")
              user_id = mm[1]
              text = mm[2]
              name = mm[3]
