@@ -55,7 +55,7 @@ Feedback: **{text}**
 
 @bot.on_callback_query(filters.regex("refeed"))
 async def replyfeedback(_, query: CallbackQuery):
-          await bot.send_message(query.message.chat.id. "Give me a text to reply feed-user")
+          await bot.send_message(query.message.chat.id, "Give me a text to reply feed-user")
           await bot.send_message(user.id, "ok")
                                 
   
