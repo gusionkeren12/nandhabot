@@ -58,7 +58,7 @@ async def rejected(_, query: CallbackQuery):
               await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
            else:
          except Exception as e:
-              await bot.send_message(query.message.chat.id, "Error: {e}")
+              await bot.send_message(query.message.chat.id, f"Error: {e}")
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
