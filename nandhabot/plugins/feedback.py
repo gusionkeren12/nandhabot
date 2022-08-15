@@ -21,7 +21,7 @@ async def feedback(_, m):
                return
          text = m.text.split(None, 1)[1]
          feedback = "**#NewFeedBack*\n"
-         if message.chat:
+         if m.chat:
              feedback += f"From chat: @{m.chat.username}\n"
          feedback+= f"user_id: {USER.id}\n"
          feedback+= f"mention: {USER.mention}"
