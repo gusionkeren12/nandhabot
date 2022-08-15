@@ -64,7 +64,8 @@ async def approved(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          if user_id in dev_user and OWNER_ID:
+          query_user_id = query.message.from_user.id
+          if query_user_id in dev_user or OWNER_ID:
               await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
               await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
           else:
