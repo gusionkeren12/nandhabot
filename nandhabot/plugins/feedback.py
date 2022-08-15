@@ -1,3 +1,4 @@
+
 from nandhabot import bot, dev_user, SUPPORT_CHAT
 from pyrogram import filters, enums
 import random
@@ -5,7 +6,7 @@ from datetime import datetime
 from pyrogram.types import *
 from nandhabot.config import OWNER_ID
 
-#made by t.me/nandhaxd
+#made by t.me/nandhaxd | t.me/hodackaX
 
 vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg", 
 "https://telegra.ph/file/be242e647504b5b253f79.jpg",
@@ -14,32 +15,28 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 
 @bot.on_message(filters.group & filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         global user, chat
+         USER = m.from_user
          if len(m.command) < 2:
                await m.reply_text("**Gime a Feedback!**")
-               return 
+               return
          text = m.text.split(None, 1)[1]
-         user = m.from_user
-         chat = m.chat
-         datetimes_fmt = "%d-%m-%Y"
-         datetimes = datetime.utcnow().strftime(datetimes_fmt)
-         feedback = f""" **#NewFeedBack**
-FromChat: @{chat.username}
-user_id: {user.id}
-mention: {user.mention}
-msg_date: {datetimes}
-Feedback: **{text}**
-"""      
+         feedback = "**#NewFeedBack*\n"
+         if message.chat:
+             feedback += f"From chat: @{m.chat.username}\n"
+         feedback+= f"user_id: {USER.id}\n"
+         feedback+= f"mention: {USER.mention}"
+         feedback += "Feedback: **{text}**"
+     
          msg = await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
                 reply_markup=InlineKeyboardMarkup(
                     [
+                        [    InlineKeyboardButton("Approve ✅", callback_data=f"approve={user.id}"),
+                            InlineKeyboardButton("Reject ❌", callback_data=f"reject={user.id}")
+                        ],
                         [
                             InlineKeyboardButton(
-                                "View", url=f"{m.link}"),
-                            InlineKeyboardButton(
                                 "Close", callback_data="close"),
-                       ],[ InlineKeyboardButton("Reply to User", callback_data="refeed")
-                        ]
+                       ],
                     ]
                 )
             )
@@ -53,14 +50,18 @@ Feedback: **{text}**
                                 "➡ View Report", url=f"{msg.link}")]]))
   
 
-@bot.on_callback_query(filters.regex("refeed"))
-async def replyfeedback(_, query: CallbackQuery):
-          await bot.send_message(query.message.chat.id, "Give me a text to reply feed-user")
-          await bot.send_message(user.id, "ok")
+@bot.on_callback_query(filters.regex("reject"))
+async def rejected(_, query: CallbackQuery):
+          mm = query.data.split("=")
+          user_id = mm[1]
+          await query.edit_message_caption("This Feedback Is Rejected ❌")
+          await bot.send_message(user_id, "Your Feedback Has been rejected ❌")
+
+@bot.on_callback_query(filters.regex("approve"))
+async def approved(_, query: CallbackQuery):
+          mm = query.data.split("=")
+          user_id = mm[1]
+          await query.edit_message_caption("This Feedback Is Approved ✅")
+          await bot.send_message(user_id, "Your Feedback Has Been Approved ✅")
                                 
   
-
-
-
-
-
