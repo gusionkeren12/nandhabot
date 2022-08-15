@@ -1,8 +1,9 @@
 
 from nandhabot.events import register
-from nandhabot import tbot, SUPPORT_CHAT
+from nandhabot import tbot,bot, SUPPORT_CHAT
 from telethon import Button
-
+from pyrogram import filters
+import requests
 import requests
 import json
 
@@ -51,3 +52,30 @@ async def animelink(event):
     button_list = [[Button.url('Download Link', anime['AnimeLink'])], [Button.url('Search Query', anime['Search_Query'])]]
     
     await tbot.send_file(event.chat_id, anime['AnimeImg'], caption=text, buttons=button_list, parse_mode='html', reply_to=event.id)
+
+    
+
+@bot.on_message(filters.command('anilatest'))
+def schedule(_, message):
+    results = requests.get('https://subsplease.org/api/?f=schedule&h=true&tz=Japan').json()
+    text = None
+    for result in results['schedule']:
+        title = result['title']
+        time = result['time']
+        aired = bool(result['aired'])
+        title = f"**[{title}](https://subsplease.org/shows/{result['page']})**" if not aired else f"**~~[{title}](https://subsplease.org/shows/{result['page']})~~**"
+        data = f"{title} - **{time}**"
+        
+        if text:
+            text = f"{text}\n{data}"
+        else:
+            text = data
+
+    message.reply_text(f"**Today's Schedule:**\nTime-Zone: Tokyo (GMT +9)\n\n{text}")
+
+
+
+    
+    
+    
+    
