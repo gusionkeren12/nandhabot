@@ -14,7 +14,7 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 
 @bot.on_message(filters.group & filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         global user
+         global user, chat
          if len(m.command) < 2:
                await m.reply_text("**Gime a Feedback!**")
                return 
@@ -53,9 +53,11 @@ Feedback: **{text}**
                                 "➡ View Report", url=f"{msg.link}")]]))
   
 
-@bot.on_callback_query(filters.regex("refeed") & filters.text)
+@bot.on_callback_query(filters.regex("refeed"))
 async def replyfeedback(_, query: CallbackQuery):
-          await bot.send_text(user.id, text)
+          msg = await query.message.relpy_text("Give me a text to reply feed-user")
+          await bot.send_message(user.id, "ok")
+                                
   
 
 
