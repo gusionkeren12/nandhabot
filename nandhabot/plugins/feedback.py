@@ -48,17 +48,15 @@ async def feedback(_, m):
 
 @bot.on_callback_query(filters.regex("reject"))
 async def rejected(_, query: CallbackQuery):
-         try:
-             mm = query.data.split("=")
-             user_id = mm[1]
-             text = mm[2]
-             name = mm[3]
-             if user_id in dev_user and OWNER_ID:
-                  await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
-                  await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
-             else:
-                   except Exception as e:
-                        await bot.send_message(query.message.chat.id, f"Error: {e}")
+          mm = query.data.split("=")
+          user_id = mm[1]
+          text = mm[2]
+          name = mm[3]
+          if query.from_user.id in dev_user:
+              await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
+              await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
+          else:
+              await query.answer("Only devs can Reject this feedback.", show_alert=True)
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
@@ -66,9 +64,10 @@ async def approved(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
-          await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
+          if query.from_user.id in dev_user:
+              await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
+              await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
           else:
-              await query.answer("Only Rank User Can Approve this Feedback.", show_alert=True)
+              await query.answer("Only devs can Approve this feedback.", show_alert=True)
                                 
   
