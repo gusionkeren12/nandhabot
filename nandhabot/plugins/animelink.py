@@ -40,7 +40,7 @@ async def animelink(event):
     try:
         anime = animedev_client.search(' '.join(animename[1:]))
         anime['Search_Query'] = anime['Search_Query'].replace(' ', '+')
-    except exceptions.NotFound:
+    except NotFound:
         await event.reply('Anime not found.')
         return
     except Exception as e:
