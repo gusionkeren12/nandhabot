@@ -30,8 +30,8 @@ async def feedback(_, m):
          msg = await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [    InlineKeyboardButton("Approve ✅", callback_data=f"approve={user.id}"),
-                            InlineKeyboardButton("Reject ❌", callback_data=f"reject={user.id}")
+                        [    InlineKeyboardButton("Approve ✅", callback_data=f"approve={USER.id}"),
+                            InlineKeyboardButton("Reject ❌", callback_data=f"reject={USER.id}")
                         ],
                         [
                             InlineKeyboardButton(
