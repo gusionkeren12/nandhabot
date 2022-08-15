@@ -53,12 +53,12 @@ async def rejected(_, query: CallbackQuery):
              user_id = mm[1]
              text = mm[2]
              name = mm[3]
-          if user_id in dev_user and OWNER_ID:
-              await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
-              await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
-           else:
-         except Exception as e:
-              await bot.send_message(query.message.chat.id, f"Error: {e}")
+             if user_id in dev_user and OWNER_ID:
+                  await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
+                  await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
+             else:
+                    except Exception as e:
+                        await bot.send_message(query.message.chat.id, f"Error: {e}")
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
