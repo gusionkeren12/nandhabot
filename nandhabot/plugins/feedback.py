@@ -52,8 +52,11 @@ async def rejected(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
-          await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
+          if user_id in dev_user:
+              await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
+              await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
+          else:
+              await query.answer("Only devs can Reject this feedback.", show_alert=True)
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
@@ -61,7 +64,10 @@ async def approved(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
-          await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
+          if user_id in dev_user:
+              await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
+              await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
+          else:
+              await query.answer("Only devs can Approve this feedback.", show_alert=True)
                                 
   
