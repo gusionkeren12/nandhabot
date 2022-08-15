@@ -20,23 +20,19 @@ async def feedback(_, m):
                await m.reply_text("**Gime a Feedback!**")
                return
          text = m.text.split(None, 1)[1]
-         feedback = "**#NewFeedBack*\n"
+         feedback = "**#NewFeedBack**\n"
          if m.chat:
-             feedback += f"From chat: @{m.chat.username}\n"
-         feedback+= f"user_id: {USER.id}\n"
-         feedback+= f"mention: {USER.mention}"
-         feedback += "Feedback: **{text}**"
+             feedback += f"**From chat:** `@{m.chat.username}`\n"
+         feedback+= f"**user id**: `{USER.id}`\n"
+         feedback+= f"**mention**: {USER.mention}\n"
+         feedback += f"**Feedback**: `{text}`"
      
          msg = await bot.send_photo(f"@{SUPPORT_CHAT}",random.choice(vegeta_img),caption=feedback,
                 reply_markup=InlineKeyboardMarkup(
                     [
-                        [    InlineKeyboardButton("Approve ✅", callback_data=f"approve={USER.id}"),
-                            InlineKeyboardButton("Reject ❌", callback_data=f"reject={USER.id}")
+                        [    InlineKeyboardButton("Approve ✅", callback_data=f"approve={USER.id}=text={USER.first_name}"),
+                            InlineKeyboardButton("Reject ❌", callback_data=f"reject={USER.id}=text={USER.first_name}")
                         ],
-                        [
-                            InlineKeyboardButton(
-                                "Close", callback_data="close"),
-                       ],
                     ]
                 )
             )
@@ -54,14 +50,18 @@ async def feedback(_, m):
 async def rejected(_, query: CallbackQuery):
           mm = query.data.split("=")
           user_id = mm[1]
-          await query.edit_message_caption("This Feedback Is Rejected ❌")
-          await bot.send_message(user_id, "Your Feedback Has been rejected ❌")
+          text = mm[2]
+          name = mm[3]
+          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected ❌**")
+          await bot.send_message(user_id, "**Your Feedback:** `{text}` **Has been Rejected ❌**")
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
           mm = query.data.split("=")
           user_id = mm[1]
-          await query.edit_message_caption("This Feedback Is Approved ✅")
-          await bot.send_message(user_id, "Your Feedback Has Been Approved ✅")
+          text = mm[2]
+          name = mm[3]
+          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved ✅**")
+          await bot.send_message(user_id, "**Your Feedback:** `{text}` **Has been Approved ✅**")
                                 
   
