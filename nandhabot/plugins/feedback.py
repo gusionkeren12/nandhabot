@@ -52,8 +52,8 @@ async def rejected(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected ❌**")
-          await bot.send_message(user_id, "**Your Feedback:** `{text}` **Has been Rejected ❌**")
+          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Rejected by {query.from_user.mention} ❌**")
+          await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Rejected by {query.from_user.mention} ❌**")
 
 @bot.on_callback_query(filters.regex("approve"))
 async def approved(_, query: CallbackQuery):
@@ -61,7 +61,7 @@ async def approved(_, query: CallbackQuery):
           user_id = mm[1]
           text = mm[2]
           name = mm[3]
-          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved ✅**")
-          await bot.send_message(user_id, "**Your Feedback:** `{text}` **Has been Approved ✅**")
+          await query.edit_message_caption(f"**Feedback:** `{text}` **from** `{name}` | `{user_id}` **is Approved by {query.from_user.mention} ✅**")
+          await bot.send_message(user_id, f"**Your Feedback:** `{text}` **Has been Approved by {query.from_user.mention} ✅**")
                                 
   
