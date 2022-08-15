@@ -28,7 +28,7 @@ class client:
 
 __version__ = '1.0.0'
 
-client = animedev_client
+animedev_client = client
 
 @register(pattern='/anilink')
 async def animelink(event):
