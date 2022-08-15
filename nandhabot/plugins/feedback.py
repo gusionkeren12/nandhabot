@@ -6,7 +6,7 @@ from datetime import datetime
 from pyrogram.types import *
 from nandhabot.config import OWNER_ID
 
-#made by t.me/nandhaxd | t.me/hodackaX
+#made by t.me/nandhaxd |- t.me/hodackaX
 
 vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg", 
 "https://telegra.ph/file/be242e647504b5b253f79.jpg",
