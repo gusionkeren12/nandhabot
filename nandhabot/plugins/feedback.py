@@ -35,9 +35,10 @@ Feedback: **{text}**
                     [
                         [
                             InlineKeyboardButton(
-                                "➡ View Report", url=f"{m.link}"),
+                                "View", url=f"{m.link}"),
                             InlineKeyboardButton(
-                                "❌ Close", callback_data="close")
+                                "Close", callback_data="close"),
+                       ],[ InlineKeyboardButton("Reply to User", callback_data="refeed")
                         ]
                     ]
                 )
@@ -50,7 +51,8 @@ Feedback: **{text}**
                         [
                             InlineKeyboardButton(
                                 "➡ View Report", url=f"{msg.link}")]]))
-         
+  
+
 @bot.on_callback_query(filters.regex("refeed") & filters.text)
 async def replyfeedback(_, query: CallbackQuery):
           await bot.send_text(user.id, text)
