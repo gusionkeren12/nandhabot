@@ -19,4 +19,4 @@ async def userdb(_, message):
         
 @bot.on_message(filters.command("stats"))
 async def stats(_, message):
-         await message.reply_text(f"total users {}\ntotal groups {}")
+         await message.reply_text(f"total users {store_user.chat}\ntotal groups {}")
