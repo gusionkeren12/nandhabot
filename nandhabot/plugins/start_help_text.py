@@ -9,8 +9,6 @@ from pyrogram.types import Message
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
-from nandhabot.plugins.stats import col
-from nandhabot.plugins.stats import users_db, grps
 from nandhabot.plugins.dev_user import get_readable_time
 from pyrogram.types import CallbackQuery
 
@@ -61,37 +59,12 @@ buttons = [
 
 @bot.on_message(filters.command(["start"], ["/", ".", "?"]))
 async def start(_, m: Message):
-    try:
-        if enums.ChatType.PRIVATE:
-            users = col.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['user_id'])
-            if m.from_user.id not in mfs:
-                user = {"type": "user", "user_id": m.from_user.id}
-                col.insert_one(user)
-
-        else:
-            users = grps.find({})
-            mfs = []
-            for x in users:
-                mfs.append(x['chat_id'])
-            if message.chat.id not in mfs:
-                grp = {"type": "group", "chat_id": m.chat.id}
-                grps.insert_one(grp)
-
-    except Exception as e:
-          await bot.send_message(f"@{SUPPORT_CHAT}", f"Error Occurred In Adding Stats:\n\n{e}")
-
-    if enums.ChatType.PRIVATE:
         await m.reply_photo(
             random.choice(BOT_IMG),
             caption=pm_text.format(m.from_user.mention),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
-    if not enums.ChatType.PRIVATE:
-        m.reply_text("Hello There I'm Vegeta The Baka")
-          
+   
 HELP_TEXT = """
 **Hello Dear**!
 **I'm prince Vegeta I will manage your groups and make your group joyful bellow check my
