@@ -21,4 +21,4 @@ async def userdb(_, message):
 async def stats(_, message):
          await message.reply_text(
              f"total users {}"
-             f"total groups {}")
+              "total groups {}")
