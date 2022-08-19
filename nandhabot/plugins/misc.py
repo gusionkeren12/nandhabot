@@ -1,7 +1,7 @@
 import os, random , io
 import requests
 from PIL import Image
-from pyrogram import filters
+from pyrogram import filters, enums
 from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeyboardButton
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types import Message
@@ -14,10 +14,10 @@ async def echo(_, m):
            reply = m.reply_to_message
            text = m.text.split(None, 1)[1]
            if not reply:
-                await m.reply_text(text)
+                await m.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN)
                 await m.delete()
            if reply:
-                   await reply.reply_text(text)
+                   await reply.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN)
                    await m.delete()
 
 @bot.on_message(filters.command("spell"))
