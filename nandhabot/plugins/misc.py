@@ -9,15 +9,15 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-@bot.on_message(filters.command(["echo","send"]))
+@bot.on_message(filters.command(["echo","text"]))
 async def echo(_, m):
            reply = m.reply_to_message
            text = m.text.split(None, 1)[1]
            if not reply:
-                await m.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN)
+                await m.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN,disable_web_page_preview=True)
                 await m.delete()
            if reply:
-                   await reply.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN)
+                   await reply.reply_text(text,parse_mode=enums.ParseMode.MARKDOWN, disable_web_page_preview=True)
                    await m.delete()
 
 @bot.on_message(filters.command("spell"))
