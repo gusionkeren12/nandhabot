@@ -22,7 +22,7 @@ class client:
     def search(anime_name):
         r = requests.get(base_url + '/anime?search=' + anime_name)
         if r.status_code == 404:
-            raise exceptions.NotFound('Not Found.')
+            raise NotFound('Not Found.')
         elif r.status_code != 200:
             raise Exception(r.content)
         return json.loads(json.dumps(r.json(), indent=4))
@@ -44,7 +44,7 @@ async def animelink(event):
         await event.reply('Anime not found.')
         return
     except Exception as e:
-        await event.reply(f'*Error*: Contact @{SUPPORT_CHAT}.\nERROR: {e}')
+        await event.reply(f'**Error**: Contact @{SUPPORT_CHAT}.\nERROR: {e}')
         return
     text = f'''
 <b>Anime Title:</b> <code>{anime['AnimeTitle']}</code>
