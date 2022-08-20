@@ -1,5 +1,6 @@
 from pyrogram import filters , __version__ as pyro
 import random
+import requests 
 from telethon import __version__ as telever
 from nandhabot import bot
 
@@ -8,9 +9,16 @@ from pyrogram.types import (
     InlineKeyboardMarkup,
     InputTextMessageContent,
     InlineQueryResultArticle,
+    InlineQueryResultAnimation,
     InlineQueryResultPhoto,
 )
 
+
+
+wish_text = """✨~~ **hey! {}!** ~~🤗
+✨ ~~**Your wish**:~~ **{}** 😃
+✨ ~~ **Possible to: {}%** ~~
+"""
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
@@ -19,8 +27,8 @@ async def inline_query_handler(client, query):
         await client.answer_inline_query(
             query.id,
             results=[
-                InlineQueryResultPhoto(
-                    photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                InlineQueryResultAnimation(
+                    animation_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
                     thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
                     caption = f""" Iam At Least Version 
                     Pyrogram Based @TrunksRobot I Can Help And Hope Your Groups ❕❕
@@ -37,14 +45,16 @@ Thanks for using and keep support my channels!""",
                             ]
                         ]
                     ))])
-    elif string == "info":
-        user_id = string.query.split(" ")[2]
+    elif string == "wish":
+        wish_count = random.randint(1,100)
+        api = requests.get("https://nekos.best/api/v2/happy").json()
+        url = api["results"][0]['url']
         await client.answer_inline_query(
             query.id,
             results=[
-                InlineQueryResultArticle(
-                input_message_content=InputTextMessageContent(
-                        f"{user_id}"),
-                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
-                    title=f"userinfo!",
-                    description=f"Userinformatiom searcher")])
+                InlineQueryResultPhoto(
+                photo_url=url,
+                thumb_url=url,
+                caption =wish_text.format(query.message.from_user.first_name, wish_count),
+                title=f"userinfo!",
+                description=f"Userinformatiom searcher")])
