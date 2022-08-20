@@ -55,6 +55,6 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultPhoto(
                 photo_url=url,
                 thumb_url=url,
-                caption =wish_text.format(query.message.from_user.first_name, wish_count),
+                caption =wish_text.format(query.from_user.first_name, wish_count),
                 title=f"userinfo!",
                 description=f"Userinformatiom searcher")])
