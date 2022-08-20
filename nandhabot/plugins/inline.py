@@ -15,10 +15,7 @@ from pyrogram.types import (
 
 
 
-wish_text = """✨~~ **hey! {}!** ~~🤗
-✨ ~~**Your wish**:~~ **{}** 😃
-✨ ~~ **Possible to: {}%** ~~
-"""
+wish_text = "✨~~ **yoo!** ~~🤗 ✨ ~~**Your wish Possible to: {}%** ~~"
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
@@ -55,6 +52,6 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultAnimation(
                 animation_url=url,
                 thumb_url=url,
-                caption=wish_text,
+                caption=wish_text.format(wish_count),
                 title="Your Wish 😍",
                 description="Chance's of Your Wish")])
