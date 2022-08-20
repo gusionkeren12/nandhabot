@@ -21,7 +21,7 @@ inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_
 
 @bot.on_callback_query(filters.regex("inlinecmds"))
 async def inlinecmds(_, query):
-            query.message.edit_caption(inlinecmds_text,
+            query.edit_caption(inlinecmds_text,
             reply_markup=InlineKeyboardMarkup(inlinebuttons))
 
 
