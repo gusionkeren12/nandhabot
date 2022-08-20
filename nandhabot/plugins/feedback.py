@@ -16,8 +16,8 @@ vegeta_img = [ "https://telegra.ph/file/03ba8fea3c3ed2b98b68a.jpg",
 
 @bot.on_message(filters.command(["feedback","bug"]))
 async def feedback(_, m):
-         if message.chat.type == ChatType.PRIVATE:
-               return await message.reply_text("**plz give your feedback or bug report in groups")
+         if m.chat.type == ChatType.PRIVATE:
+               return await m.reply_text("**plz give your feedback or bug report in groups")
          USER = m.from_user
          if len(m.command) < 2:
                await m.reply_text("**Gime a Feedback!**")
