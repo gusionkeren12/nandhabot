@@ -13,8 +13,7 @@ from pyrogram.types import (
     InlineQueryResultPhoto,
 )
 
-inlinecmds_text = """ **Here you find moi inline functions
-commands!**
+inlinecmds_text = """ **Here you find moi inline functions commands!**
 """
 
 inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat="wish")]]
