@@ -55,6 +55,6 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultAnimation(
                 animation_url=url,
                 thumb_url=url,
-                caption=wish_text.format(query.from_user.first_name,wish_count),
+                caption=wish_text,
                 title="Your Wish 😍",
                 description="Chance's of Your Wish")])
