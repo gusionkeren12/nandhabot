@@ -15,7 +15,6 @@ from pyrogram.types import (
 
 
 
-wish_text = "✨~~ **yoo!** ~~🤗 ✨ ~~**Your wish Possible to: {}%** ~~"
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
@@ -43,7 +42,7 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
     elif string == "wish":
-        wish_count = random.randint(1,100)
+        wish_text = f"✨~~ **yoo!** ~~🤗 ✨\n~~**Your wish Possible to:  {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}%** ~~"
         api = requests.get("https://nekos.best/api/v2/happy").json()
         url = api["results"][0]['url']
         await client.answer_inline_query(
@@ -52,6 +51,6 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultAnimation(
                 animation_url=url,
                 thumb_url=url,
-                caption=wish_text.format(wish_count),
+                caption=wish_text,
                 title="Your Wish 😍",
                 description="Chance's of Your Wish")])
