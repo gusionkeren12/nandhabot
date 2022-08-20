@@ -11,7 +11,7 @@ from urllib.parse import quote
 
 owner_id = [1491497760]
 
-@pyrobot.on_message(filters.private, filters.incoming)
+@bot.on_message(filters.private, filters.incoming)
 async def livegram(_, message):
         if message.from_user.id not in owner_id:
           return await message.forward(chat_id=1491497760)
