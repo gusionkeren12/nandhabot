@@ -27,8 +27,8 @@ async def inline_query_handler(client, query):
         await client.answer_inline_query(
             query.id,
             results=[
-                InlineQueryResultAnimation(
-                    animation_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
+                InlineQueryResultPhoto(
+                    photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
                     thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
                     caption = f""" Iam At Least Version 
                     Pyrogram Based @TrunksRobot I Can Help And Hope Your Groups ❕❕
@@ -52,8 +52,8 @@ Thanks for using and keep support my channels!""",
         await client.answer_inline_query(
             query.id,
             results=[
-                InlineQueryResultPhoto(
-                photo_url=url,
+                InlineQueryResultAnimation(
+                animation_url=url,
                 thumb_url=url,
                 caption =wish_text.format(query.from_user.first_name,wish_count),
                 title="Your Wish 😍",
