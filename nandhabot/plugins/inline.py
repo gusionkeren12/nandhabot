@@ -19,9 +19,9 @@ commands!**
 
 inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat="wish")]]
 
-@bot.on_inline_query(filters.regex("inlinecmds"))
-async def inlinecmds(_, query):
-            query.edit_caption(inlinecmds_text,
+@bot.on_message(filters.command("inlinecmds"))
+async def inlinecmds(_, message):
+            await message.reply_text(inlinecmds_text,
             reply_markup=InlineKeyboardMarkup(inlinebuttons))
 
 
@@ -47,7 +47,6 @@ Thanks for using and keep support my channels!""",
                     reply_markup=InlineKeyboardMarkup(
                         [[InlineKeyboardButton("Support",url="t.me/VegetaSupport", ),
                           InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"),
-                         ],[InlineKeyboardButton("Inline commands",callback_data="inlinecmds")
                             ]
                         ]
                     ))])
