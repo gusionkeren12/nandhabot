@@ -30,7 +30,7 @@ async def inline_query_handler(client, query):
                 InlineQueryResultPhoto(
                     photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
                     thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
-                    caption = f""" Iam At Least Version 
+                    caption=f""" Iam At Least Version 
                     Pyrogram Based @TrunksRobot I Can Help And Hope Your Groups ❕❕
 
 Pyrogram Version: {pyro}
@@ -55,6 +55,6 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultAnimation(
                 animation_url=url,
                 thumb_url=url,
-                caption =wish_text.format(query.from_user.first_name,wish_count),
+                caption=wish_text.format(query.from_user.first_name,wish_count),
                 title="Your Wish 😍",
                 description="Chance's of Your Wish")])
