@@ -9,13 +9,7 @@ from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
 
-owner_id = [1491497760]
 
-@bot.on_message(filters.private, filters.incoming)
-async def livegram(_, message):
-        if message.from_user.id not in owner_id:
-          return await message.forward(chat_id=1491497760)
-         
 
 @bot.on_message(filters.command(["echo","text"]))
 async def echo(_, m):
