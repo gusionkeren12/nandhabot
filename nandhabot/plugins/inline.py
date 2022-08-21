@@ -61,10 +61,7 @@ Thanks for using and keep support my channels!""",
             results=[
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
-                    f""" ⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions\n
- • **Word**: {ud_text}\n
- • **Meaning**: {results["list"][0]["definition"]}\n
- • **Example**: {results["list"][0]["example"]}\n
+                    f""" ⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions\n• **Word**: {ud_text}\n • **Meaning**: {results["list"][0]["definition"]}\n• **Example**: {results["list"][0]["example"]}\n
                     """),thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"🔥 How horny are U?",
                     description=f"Send Your Current hornyess To This Chat.")])
