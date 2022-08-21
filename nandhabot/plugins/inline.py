@@ -13,8 +13,11 @@ from pyrogram.types import (
     InlineQueryResultPhoto,
 )
 
-inlinecmds_text = """ **Here you find moi inline functions commands!**
-"""
+
+
+
+
+inlinecmds_text = "**Here you find moi inline functions commands!**"
 
 inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat=".wish")]]
 
@@ -52,15 +55,20 @@ Thanks for using and keep support my channels!""",
         
     elif string.split()[0] == "ud":
          ud_text = string.split(None, 1)[1].strip()
-         search = PyDictionary()
-         defin = search.meaning(ud_text)
+         results = requests.get( f'https://api.urbandictionary.com/v0/define?term={ud_text}').json() 
          await client.answer_inline_query(
             query.id,
             results=[
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
-                        f"Definition of: {ud_text}\nDefinition: {defin}"),
-                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
+                    text=""" ⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions
+                    
+                    • **Word**: {ud_text}
+                    
+                    • **Meaning**: {results["list"][0]["definition"]}
+                    
+                    • **Example**: {results["list"][0]["example"]}
+                    """),thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"🔥 How horny are U?",
                     description=f"Send Your Current hornyess To This Chat.")])
                     
