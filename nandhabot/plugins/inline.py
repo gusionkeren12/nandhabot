@@ -3,7 +3,7 @@ import random
 import requests 
 from telethon import __version__ as telever
 from nandhabot import bot
-
+from PyDictionary import PyDictionary
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -16,7 +16,7 @@ from pyrogram.types import (
 inlinecmds_text = """ **Here you find moi inline functions commands!**
 """
 
-inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat="wish")]]
+inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat=".wish")]]
 
 @bot.on_message(filters.command("inlinecmds"))
 async def inlinecmds(_, message):
@@ -49,7 +49,23 @@ Thanks for using and keep support my channels!""",
                             ]
                         ]
                     ))])
-    elif string == "wish":
+        
+    elif string == ".ud":
+         text = string[2]
+         search = PyDictionary()
+         defin = search.meaning(text)
+         await client.answer_inline_query(
+            query.id,
+            results=[
+                InlineQueryResultArticle(
+                    input_message_content=InputTextMessageContent(
+                        f"definition of: {text}\nDefinition: {defin}"),
+                    thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
+                    title=f"🔥 How horny are U?",
+                    description=f"Send Your Current hornyess To This Chat.",
+                    
+                    
+    elif string == ".wish":
         wish_text = f"✨~~ **yoo!** ~~🤗 ✨\n~~**Your wish Possible to:  {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}%** ~~"
         api = requests.get("https://nekos.best/api/v2/happy").json()
         url = api["results"][0]['url']
