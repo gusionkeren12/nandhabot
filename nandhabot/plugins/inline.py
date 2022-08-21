@@ -19,8 +19,8 @@ from pyrogram.types import (
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
 
-inlinebuttons = [[InlineKeyboardButton(text="ᴡɪsʜ", switch_inline_query_current_chat=".wish"),
-                  InlineKeyboardButton(text="ᴜᴅ", switch_inline_query_current_chat=".wish")]]
+inlinebuttons = [[InlineKeyboardButton(text="ᴡɪsʜ", switch_inline_query_current_chat="wish"),
+                  InlineKeyboardButton(text="ᴜᴅ", switch_inline_query_current_chat="ud")]]
 
 @bot.on_message(filters.command("inlinecmds"))
 async def inlinecmds(_, message):
