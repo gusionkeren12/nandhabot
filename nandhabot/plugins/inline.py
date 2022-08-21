@@ -59,7 +59,7 @@ Thanks for using and keep support my channels!""",
             results=[
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
-                        f"Definition of: {text}\nDefinition: {defin}"),
+                        f"Definition of: {ud_text}\nDefinition: {defin}"),
                     thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"🔥 How horny are U?",
                     description=f"Send Your Current hornyess To This Chat.")])
