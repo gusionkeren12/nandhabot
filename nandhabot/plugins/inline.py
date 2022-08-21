@@ -19,7 +19,8 @@ from pyrogram.types import (
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
 
-inlinebuttons = [[InlineKeyboardButton(text="Wish", switch_inline_query_current_chat=".wish")]]
+inlinebuttons = [[InlineKeyboardButton(text="ᴡɪsʜ", switch_inline_query_current_chat=".wish"),
+                  InlineKeyboardButton(text="ᴜᴅ", switch_inline_query_current_chat=".wish")]]
 
 @bot.on_message(filters.command("inlinecmds"))
 async def inlinecmds(_, message):
@@ -62,9 +63,9 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
                     f"""⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions\n• **Word**: {ud_text}\n• **Meaning**: {results["list"][0]["definition"]}\n• **Example**: {results["list"][0]["example"]}\n
-                    """),thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
-                    title=f"🔥 How horny are U?",
-                    description=f"Send Your Current hornyess To This Chat.")])
+                    """),thumb_url="https://telegra.ph/file/a463337cb8063fe15684f.jpg",
+                    title=f"Urban Dictionary 📝",
+                    description=f"Urban Dictionary For Ward's")])
                     
                     
     elif string.split()[0] == "wish":
