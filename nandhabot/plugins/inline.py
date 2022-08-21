@@ -51,7 +51,7 @@ Thanks for using and keep support my channels!""",
                     ))])
         
     elif string.split()[0] == "ud":
-         ud_text = text.split(None, 1)[1].strip()
+         ud_text = string.split(None, 1)[1].strip()
          search = PyDictionary()
          defin = search.meaning(ud_text)
          await client.answer_inline_query(
