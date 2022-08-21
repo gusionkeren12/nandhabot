@@ -61,7 +61,7 @@ Thanks for using and keep support my channels!""",
             results=[
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
-                    text=f""" ⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions
+                    f""" ⚠️** Warning**: Urban Dictionary does not always provide accurate descriptions
                     
                     • **Word**: {ud_text}
                     
