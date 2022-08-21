@@ -26,7 +26,7 @@ async def inlinecmds(_, message):
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
-    string = query.query.lower()
+    string = query.query.strip().lower()
     if string == "":
         await client.answer_inline_query(
             query.id,
@@ -50,22 +50,22 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
         
-    elif string == ".ud":
-         text = string.split(None, 2)[2]
+    elif string.split()[0] == "ud":
+         ud_text = text.split(None, 1)[1].strip()
          search = PyDictionary()
-         defin = search.meaning(text)
+         defin = search.meaning(ud_text)
          await client.answer_inline_query(
             query.id,
             results=[
                 InlineQueryResultArticle(
                     input_message_content=InputTextMessageContent(
-                        f"definition of: {text}\nDefinition: {defin}"),
+                        f"Definition of: {text}\nDefinition: {defin}"),
                     thumb_url="https://telegra.ph/file/fab6e21499ac634c02e00.jpg",
                     title=f"🔥 How horny are U?",
                     description=f"Send Your Current hornyess To This Chat.")])
                     
                     
-    elif string == ".wish":
+    elif string.split()[0] == "wish":
         wish_text = f"✨~~ **yoo!** ~~🤗 ✨\n~~**Your wish Possible to:  {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}%** ~~"
         api = requests.get("https://nekos.best/api/v2/happy").json()
         url = api["results"][0]['url']
