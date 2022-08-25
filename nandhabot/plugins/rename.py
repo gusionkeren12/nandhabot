@@ -31,21 +31,27 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-           dl = reply.download(file_name=filename)
+           a = ".mkv"
+           name = file_name+a
+           dl = reply.download(file_name=name)
            x = query.message.reply_text("uploading now...")
-           query.message.reply_document(dl,caption="**Made by @VegetaRobot**")
+           query.message.reply_document(dl,caption=f"**{name} @Nandhabots**")
            x.delete()
 
 @bot.on_callback_query(filters.regex("videotype"))
 def videotypes(_, query: CallbackQuery):
+        a = ".mp4"
+        name = file_name+a
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
-        query.message.reply_video(dl,caption="**Made by @VegetaRobot**")
+        query.message.reply_video(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
 
 @bot.on_callback_query(filters.regex("phototype"))
 def phototypes(_, query: CallbackQuery):
+        a = ".png"
+        name = file_name+a
         dl = reply.download(file_name=filename)
         x = query.message.reply_text("uploading now...")
-        query.message.reply_photo(dl,caption="**Made by @VegetaRobot**")
+        query.message.reply_photo(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
