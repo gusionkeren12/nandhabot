@@ -32,7 +32,7 @@ def rename(_, message):
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
            a = ".mkv"
-           name = file_name+a
+           name = filename+a
            dl = reply.download(file_name=name)
            x = query.message.reply_text("uploading now...")
            query.message.reply_document(dl,caption=f"**{name} @Nandhabots**")
@@ -41,8 +41,8 @@ def filtypes(_, query: CallbackQuery):
 @bot.on_callback_query(filters.regex("videotype"))
 def videotypes(_, query: CallbackQuery):
         a = ".mp4"
-        name = file_name+a
-        dl = reply.download(file_name=filename)
+        name = filename+a
+        dl = reply.download(file_name=name)
         x = query.message.reply_text("uploading now...")
         query.message.reply_video(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
@@ -50,8 +50,8 @@ def videotypes(_, query: CallbackQuery):
 @bot.on_callback_query(filters.regex("phototype"))
 def phototypes(_, query: CallbackQuery):
         a = ".png"
-        name = file_name+a
-        dl = reply.download(file_name=filename)
+        name = filename+a
+        dl = reply.download(file_name=name)
         x = query.message.reply_text("uploading now...")
         query.message.reply_photo(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
