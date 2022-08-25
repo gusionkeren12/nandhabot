@@ -31,7 +31,7 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-           dl = reply.download(file_name=filename.endswith("mkv"),progress=progress)
+           dl = reply.download(file_name=filename.endswith(".mkv"))
            x = query.message.reply_text("uploading now...")
            query.message.reply_document(dl,caption="**Made by @VegetaRobot**")
            x.delete()
