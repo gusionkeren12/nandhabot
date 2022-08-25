@@ -6,6 +6,9 @@ from pyrogram.types.bots_and_keyboards.inline_keyboard_button import InlineKeybo
 from pyrogram.types.bots_and_keyboards.inline_keyboard_markup import InlineKeyboardMarkup
 from pyrogram.types import CallbackQuery
 
+async def progress(current, total): 
+   print(f"{current * 100 / total:.1f}%") 
+
 @bot.on_message(filters.command('rename'))
 def rename(_, message):
     global reply, filename
@@ -28,7 +31,7 @@ def rename(_, message):
 
 @bot.on_callback_query(filters.regex("filetype"))
 def filtypes(_, query: CallbackQuery):
-           dl = reply.download(file_name=filename)
+           dl = reply.download(file_name=filename.endswith("mkv"),progress=progress)
            x = query.message.reply_text("uploading now...")
            query.message.reply_document(dl,caption="**Made by @VegetaRobot**")
            x.delete()
