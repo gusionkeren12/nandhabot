@@ -15,7 +15,27 @@ from pyrogram.types import (
 
 
 
-
+async def wall_func(answers, text):
+    results = await arq.wall(text)
+    if not results.ok:
+        answers.append(
+            InlineQueryResultArticle(
+                title="Error",
+                description=results.result,
+                input_message_content=InputTextMessageContent(results.result),
+            )
+        )
+        return answers
+    results = results.result[0:48]
+    for i in results:
+        answers.append(
+            InlineQueryResultPhoto(
+                photo_url=i.url_image,
+                thumb_url=i.url_thumb,
+                caption=f"here the [Source]({i.url_image})",
+            )
+        )
+    return answers
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
 
@@ -53,12 +73,25 @@ Thanks for using and keep support my channels!""",
                             ]
                         ]
                     ))])
-        
+    elif string.split()[0] == "wall":
+        await client.answer_inline_query(
+        query.id,
+        results=answers,
+        is_gallery=True,
+        switch_pm_text="Wallpapers Search | wall [QUERY]",
+        switch_pm_parameter="inline",
+                )
+            tex = text.split(None, 1)[1].strip()
+            answerss = await wall_func(answers, tex)
+            await client.answer_inline_query(
+                query.id, results=answerss)
+            
     elif string.split()[0] == "ud":
         if len(string.split()) < 2:
             return await client.answer_inline_query(
                     query.id,
-                    results=[text="Urban Dictionary | ud [QUERY]"])
+                    switch_pm_text="Urban Dictionary | ud [QUERY]"
+                    switch_pm_parameter="inline",)
         ud_text = string.split(None, 1)[1].strip()
         results = requests.get( f'https://api.urbandictionary.com/v0/define?term={ud_text}').json() 
         await client.answer_inline_query(
