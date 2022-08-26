@@ -50,6 +50,7 @@ async def inlinecmds(_, message):
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
+    answers = []
     string = query.query.strip().lower()
     if string == "":
         await client.answer_inline_query(
