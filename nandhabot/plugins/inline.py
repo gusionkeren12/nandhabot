@@ -85,7 +85,7 @@ Thanks for using and keep support my channels!""",
         tex = string.split(None, 1)[1].strip()
         answerss = await wall_func(answers, tex)
         await client.answer_inline_query(
-              query.id, results=answerss)
+              query.id, results=answerss,cache_time=2)
             
     elif string.split()[0] == "ud":
         if len(string.split()) < 2:
