@@ -55,7 +55,6 @@ Thanks for using and keep support my channels!""",
                     ))])
     elif string.split()[0] == "wall":
         answers = []
-        results = await arq.wall(text)
         await client.answer_inline_query(
         query.id,
         results=answers,
