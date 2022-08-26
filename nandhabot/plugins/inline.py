@@ -16,9 +16,7 @@ from pyrogram.types import (
 
     
 
-    await message.reply_photo(f"{user}.jpg", caption=data)
-    os.remove(f"{user}.jpg")
-
+    
 
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
@@ -124,7 +122,7 @@ Thanks for using and keep support my channels!""",
                 InlineQueryResultPhoto(
                     photo_url=f"{user}.jpg",
                     thumb_url=f"{user}.jpg",
-                    caption=wish_text,
+                    caption=data,
                     title="github userinfo 😍",
                     description="github userinfo check!")])
 
