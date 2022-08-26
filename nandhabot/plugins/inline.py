@@ -81,10 +81,10 @@ Thanks for using and keep support my channels!""",
         switch_pm_text="Wallpapers Search | wall [QUERY]",
         switch_pm_parameter="inline",
                 )
-            tex = text.split(None, 1)[1].strip()
-            answerss = await wall_func(answers, tex)
-            await client.answer_inline_query(
-                query.id, results=answerss)
+        tex = text.split(None, 1)[1].strip()
+        answerss = await wall_func(answers, tex)
+        await client.answer_inline_query(
+              query.id, results=answerss)
             
     elif string.split()[0] == "ud":
         if len(string.split()) < 2:
