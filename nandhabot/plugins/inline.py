@@ -62,7 +62,7 @@ Thanks for using and keep support my channels!""",
         switch_pm_parameter="inline",
                 )
         text = string.split(None, 1)[1].strip()
-        x = await arq.wall(text)
+        y = await arq.wall(text)
         for y in x.result:
           image = y.url_image
         await client.answer_inline_query(
