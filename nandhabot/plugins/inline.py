@@ -15,27 +15,7 @@ from pyrogram.types import (
 
 
 
-async def wall_func(answers, text):
-    results = await arq.wall(text)
-    if not results.ok:
-        answers.append(
-            InlineQueryResultArticle(
-                title="Error",
-                description=results.result,
-                input_message_content=InputTextMessageContent(results.result),
-            )
-        )
-        return answers
-    results = results.result[0:48]
-    for i in results:
-        answers.append(
-            InlineQueryResultPhoto(
-                photo_url=i.url_image,
-                thumb_url=i.url_thumb,
-                caption=f"here the [Source]({i.url_image})",
-            )
-        )
-    return answers
+
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
 
@@ -75,22 +55,32 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
     elif string.split()[0] == "wall":
+        results = await arq.wall(text)
         await client.answer_inline_query(
         query.id,
         results=answers,
-        is_gallery=True,
         switch_pm_text="Wallpapers Search | wall [QUERY]",
         switch_pm_parameter="inline",
                 )
-        tex = string.split(None, 1)[1].strip()
-        answerss = await wall_func(answers, tex)
+        text = string.split(None, 1)[1].strip()
+        x = await arq.wall(text)
+        y = x.result
+        image = random.choice(y).url_image
         await client.answer_inline_query(
-              query.id, results=answerss,cache_time=2)
+              query.id, 
+              results=[ 
+                InlineQueryResultAnimation(
+                animation_url=image,
+                thumb_url=image,
+                caption=f"Scores for [Image]({image})",
+                title="Your Wall is Ready 😍",
+                description="Walls from alpha coders")])
             
     elif string.split()[0] == "ud":
         if len(string.split()) < 2:
             return await client.answer_inline_query(
                     query.id,
+                    results=answers,
                     switch_pm_text="Urban Dictionary | ud [QUERY]",
                     switch_pm_parameter="inline",)
         ud_text = string.split(None, 1)[1].strip()
