@@ -8,6 +8,7 @@ from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
     InputTextMessageContent,
+    InlineQueryResultDocument,
     InlineQueryResultArticle,
     InlineQueryResultAnimation,
     InlineQueryResultPhoto,
