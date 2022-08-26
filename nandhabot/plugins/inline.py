@@ -72,7 +72,8 @@ Thanks for using and keep support my channels!""",
                 photo_url=image,
                 thumb_url=image,
                 title="Your Wall is Ready 😍",
-                description="Walls from alpha coders")],reply_markup=InlineKeyboardMarkup(button))
+                description="Walls from alpha coders")
+                reply_markup=InlineKeyboardMarkup(button)])
             
     elif string.split()[0] == "ud":
         answers = []
