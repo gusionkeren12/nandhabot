@@ -100,7 +100,7 @@ Thanks for using and keep support my channels!""",
                     
     elif string.split()[0] == "git":
         user = string.split(None, 1)[1].strip()
-        res = get(f'https://api.github.com/users/{user}').json()
+        res = requests.get(f'https://api.github.com/users/{user}').json()
         data = f"""**Name**: {res['name']}
 **UserName**: {res['login']}
 **Link**: [{res['login']}]({res['html_url']})
