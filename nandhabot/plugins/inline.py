@@ -55,7 +55,7 @@ Thanks for using and keep support my channels!""",
                     ))])
         
     elif string.split()[0] == "ud":
-        if len(text.split()) < 2:
+        if len(string.split()) < 2:
             return await client.answer_inline_query(
                     query.id,
                     results=answers,
