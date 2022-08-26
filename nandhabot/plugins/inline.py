@@ -55,6 +55,13 @@ Thanks for using and keep support my channels!""",
                     ))])
         
     elif string.split()[0] == "ud":
+        if len(text.split()) < 2:
+                return await client.answer_inline_query(
+                    query.id,
+                    results=answers,
+                    switch_pm_text="Urban Dictionary | ud [QUERY]",
+                    switch_pm_parameter="inline",
+                )
          ud_text = string.split(None, 1)[1].strip()
          results = requests.get( f'https://api.urbandictionary.com/v0/define?term={ud_text}').json() 
          await client.answer_inline_query(
