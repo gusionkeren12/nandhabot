@@ -90,7 +90,7 @@ Thanks for using and keep support my channels!""",
         if len(string.split()) < 2:
             return await client.answer_inline_query(
                     query.id,
-                    switch_pm_text="Urban Dictionary | ud [QUERY]"
+                    switch_pm_text="Urban Dictionary | ud [QUERY]",
                     switch_pm_parameter="inline",)
         ud_text = string.split(None, 1)[1].strip()
         results = requests.get( f'https://api.urbandictionary.com/v0/define?term={ud_text}').json() 
