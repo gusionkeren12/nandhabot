@@ -63,18 +63,16 @@ Thanks for using and keep support my channels!""",
                 )
         text = string.split(None, 1)[1].strip()
         results = await arq.wall(text)
-        results = results.result[0:48]
-        for y in results:
-          image = y.url_image
+        image = random.choice(rasults).url_image
+        button = [InlineKeyboardButton(text="Scores Link 🔗", url=image)] 
         await client.answer_inline_query(
               query.id, 
               results=[ 
                 InlineQueryResultPhoto(
                 photo_url=image,
                 thumb_url=image,
-                caption=f"Scores for [Image]({image})",
                 title="Your Wall is Ready 😍",
-                description="Walls from alpha coders")])
+                description="Walls from alpha coders")],reply_markup=InlineKeyboardMarkup(button))
             
     elif string.split()[0] == "ud":
         answers = []
