@@ -57,14 +57,15 @@ Thanks for using and keep support my channels!""",
         answers = []
         await client.answer_inline_query(
         query.id,
+        is_gallery,
         results=answers,
         switch_pm_text="Wallpapers Search | wall [QUERY]",
         switch_pm_parameter="inline",
                 )
         text = string.split(None, 1)[1].strip()
         x = await arq.wall(text)
-        y = x.result
-        image = y.url_image
+        for y in x.result:
+          url = y.url_image
         await client.answer_inline_query(
               query.id, 
               results=[ 
