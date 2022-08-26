@@ -82,7 +82,7 @@ Thanks for using and keep support my channels!""",
         switch_pm_text="Wallpapers Search | wall [QUERY]",
         switch_pm_parameter="inline",
                 )
-        tex = text.split(None, 1)[1].strip()
+        tex = string.split(None, 1)[1].strip()
         answerss = await wall_func(answers, tex)
         await client.answer_inline_query(
               query.id, results=answerss)
