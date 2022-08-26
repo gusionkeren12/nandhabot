@@ -57,7 +57,6 @@ Thanks for using and keep support my channels!""",
         answers = []
         await client.answer_inline_query(
         query.id,
-        is_gallery,
         results=answers,
         switch_pm_text="Wallpapers Search | wall [QUERY]",
         switch_pm_parameter="inline",
