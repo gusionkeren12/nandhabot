@@ -35,7 +35,7 @@ def filtypes(_, query: CallbackQuery):
            name = filename+a
            x = query.message.reply("downloading now...")
            dl = reply.download(file_name=name)
-           x.query.message.edit("uploading now...")
+           x.edit("uploading now...")
            query.message.reply_document(dl,caption=f"**{name} @Nandhabots**")
            x.delete()
 
@@ -45,7 +45,7 @@ def videotypes(_, query: CallbackQuery):
         name = filename+a
         x = query.message.reply("downloading now... ")
         dl = reply.download(file_name=name)
-        x.query.message.edit("uploading now...")
+        x.edit("uploading now...")
         query.message.reply_video(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
 
@@ -55,6 +55,6 @@ def phototypes(_, query: CallbackQuery):
         name = filename+a
         x = query.message.reply("downloading now...")
         dl = reply.download(file_name=name)
-        x.query.message.edit("uploading now...")
+        x.edit("uploading now...")
         query.message.reply_photo(dl,caption=f"**{name} @Nandhabots**")
         x.delete()
