@@ -63,8 +63,9 @@ Thanks for using and keep support my channels!""",
         switch_pm_parameter="inline",
                 )
         text = string.split(None, 1)[1].strip()
-        results = await arq.wall(text)
-        image = random.choice(results).url_image
+        x = await arq.wall(text)
+        y = x.result
+        image = random.choice(y).url_image
         button = [[InlineKeyboardButton("Scores Link", url=f"{image}")]]
         await client.answer_inline_query(
               query.id, 
