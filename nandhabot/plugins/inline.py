@@ -2,7 +2,7 @@ from pyrogram import filters , __version__ as pyro
 import random
 import requests 
 from telethon import __version__ as telever
-from nandhabot import bot
+from nandhabot import bot, arq
 from PyDictionary import PyDictionary
 from pyrogram.types import (
     InlineKeyboardButton,
