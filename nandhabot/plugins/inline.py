@@ -30,7 +30,6 @@ async def inlinecmds(_, message):
 
 @bot.on_inline_query()
 async def inline_query_handler(client, query):
-    answers = []
     string = query.query.strip().lower()
     if string == "":
         await client.answer_inline_query(
@@ -55,6 +54,7 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
     elif string.split()[0] == "wall":
+        answers = []
         results = await arq.wall(text)
         await client.answer_inline_query(
         query.id,
@@ -69,14 +69,15 @@ Thanks for using and keep support my channels!""",
         await client.answer_inline_query(
               query.id, 
               results=[ 
-                InlineQueryResultAnimation(
-                animation_url=image,
+                InlineQueryResultPhoto(
+                photo_url=image,
                 thumb_url=image,
                 caption=f"Scores for [Image]({image})",
                 title="Your Wall is Ready 😍",
                 description="Walls from alpha coders")])
             
     elif string.split()[0] == "ud":
+        answers = []
         if len(string.split()) < 2:
             return await client.answer_inline_query(
                     query.id,
