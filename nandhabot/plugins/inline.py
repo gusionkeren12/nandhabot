@@ -64,7 +64,7 @@ Thanks for using and keep support my channels!""",
         text = string.split(None, 1)[1].strip()
         results = await arq.wall(text)
         image = random.choice(results).url_image
-        button = [InlineKeyboardButton(text="Scores Link 🔗", url=image)] 
+        button = [[InlineKeyboardButton(text="Scores Link 🔗", url=image)]]
         await client.answer_inline_query(
               query.id, 
               results=[ 
