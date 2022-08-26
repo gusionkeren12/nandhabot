@@ -64,12 +64,12 @@ Thanks for using and keep support my channels!""",
         text = string.split(None, 1)[1].strip()
         results = await arq.wall(text)
         image = random.choice(results).url_image
-        button = [[InlineKeyboardButton("Scores Link", url=image)]]
+        button = [[InlineKeyboardButton("Scores Link", url=f"{image}")]]
         await client.answer_inline_query(
               query.id, 
               results=[ 
-                InlineQueryResultPhoto(
-                photo_url=image,
+                InlineQueryResultDocument(
+                document_url=image,
                 thumb_url=image,
                 title="Your Wall is Ready 😍",
                 description="Walls from alpha coders",
