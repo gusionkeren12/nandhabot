@@ -24,5 +24,5 @@ async def whisper(_, message):
 Your Not Allow To See Other Personal Messages!**
 """
       await bot.send_message(message.chat.id,whisper,
-               reply_markup=InlineKeyboardMarkUp(button))
+               reply_markup=InlineKeyboardMarkup(button))
          
