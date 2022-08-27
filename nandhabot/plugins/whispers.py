@@ -17,7 +17,7 @@ async def whisper(_, message):
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
       bot_stats = await bot.get_chat_member(message.chat.id, "self")
-         if bot_stats.privileges:
+      if bot_stats.privileges:
             return await message.delete()
              
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
