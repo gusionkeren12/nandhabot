@@ -16,7 +16,7 @@ async def whisper(_, message):
           return await message.reply("ɢɪᴠᴇ  ᴍᴇssᴀɢᴇ  ᴛᴏ  ᴄʀᴇᴀᴛᴇ  ᴡʜɪsᴘᴇʀ ᴍᴇssᴀɢᴇ!")
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
-      bot_stats = await bot.get_chat_member(chat.id, "self")
+      bot_stats = await bot.get_chat_member(message.chat.id, "self")
       if bot_stats.privileges:
            await message.delete()
            return 
