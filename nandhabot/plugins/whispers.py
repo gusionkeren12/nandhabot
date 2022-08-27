@@ -14,7 +14,7 @@ Your Not Allow To See Other Personal Messages!**
 @bot.on_message(filters.command("whisper"))
 async def whisper(_, message):
       global user_id
-      mention = message.from_user.meniton
+      mention = message.from_user.mention
       if len(message.command) <2:
           return await message.reply("ɢɪᴠᴇ  ᴀ  ᴜsᴇʀɪᴅ  ᴡʜᴏ  ᴡᴀɴᴛ  sᴇᴇ  ʏᴏᴜʀ  ʜɪᴅᴅᴇɴ  ᴍᴇssᴀɢᴇ")
       elif len(message.command) <3:
