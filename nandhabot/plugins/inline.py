@@ -114,7 +114,7 @@ Thanks for using and keep support my channels!""",
 **Acc Created**: {res['created_at']}
 """
         with open(f"{user}.jpg", "wb") as f:
-           kek = get(res['avatar_url']).content
+           kek = requests.get(res['avatar_url']).content
            f.write(kek)
         await client.answer_inline_query(
             query.id,
