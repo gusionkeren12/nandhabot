@@ -28,6 +28,7 @@ Your Not Allow To See Other Personal Messages!**
       await bot.send_message(message.chat.id,whisper,
                reply_markup=InlineKeyboardMarkup(button))
          
+
 @bot.on_callback_query(filters.regex("whisper_data")
 async def whisperdata(_, query):
        user = await bot.get_users(user_id)
