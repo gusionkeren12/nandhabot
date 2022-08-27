@@ -56,6 +56,13 @@ Thanks for using and keep support my channels!""",
                         ]
                     ))])
     elif string.split()[0] == "git":
+        answers = []
+        await client.answer_inline_query(
+        query.id,
+        results=answers,
+        switch_pm_text="github Search | git [QUERY]",
+        switch_pm_parameter="inline",
+                )
         user = string.split(None, 1)[1].strip()
         res = requests.get(f'https://api.github.com/users/{user}').json()
         data = f"""Name: {res['name']}
