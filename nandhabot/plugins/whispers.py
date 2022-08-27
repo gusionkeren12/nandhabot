@@ -32,7 +32,7 @@ Your Not Allow To See Other Personal Messages!**
 @bot.on_callback_query(filters.regex("whisper_data"))
 async def whisperdata(_, query):
        user = await bot.get_users(user_id)
-       if query.from_user.id == user_id:
+       if query.from_user.id in user_id:
           WHISPER = f"""hey! {user.first_name},
           here your message from {name} Message: {text}"""
           await query.answer(WHISPER, show_alert=True)
