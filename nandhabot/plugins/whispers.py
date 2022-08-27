@@ -3,13 +3,7 @@ from pyrogram.types import *
 
 from nandhabot import bot
 
-whisper = """**🕵 New Whisper Message!**
-**From User:** {}
-**To UserID:** `{}`
 
-**Note: this Message only can open the To UserID
-Your Not Allow To See Other Personal Messages!**
-"""
 
 @bot.on_message(filters.command("whisper"))
 async def whisper(_, message):
@@ -22,6 +16,13 @@ async def whisper(_, message):
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
-      await bot.send_message(message.chat.id,whisper.format(message.from_user.mention,user_id),
+      whisper = f"""**🕵 New Whisper Message!**
+**From User:** {mention}
+**To UserID:** `{user_id}`
+
+**Note: this Message only can open the To UserID
+Your Not Allow To See Other Personal Messages!**
+"""
+      await bot.send_message(message.chat.id,whisper,
                reply_markup=InlineKeyboardMarkUp(button))
          
