@@ -55,7 +55,7 @@ Thanks for using and keep support my channels!""",
                             ]
                         ]
                     ))])
-   elif string.split()[0] == "git":
+    elif string.split()[0] == "git":
         user = string.split(None, 1)[1].strip()
         res = requests.get(f'https://api.github.com/users/{user}').json()
         data = f"""Name: {res['name']}
