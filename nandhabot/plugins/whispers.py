@@ -14,12 +14,12 @@ Your Not Allow To See Other Personal Messages!**
 @bot.on_message(filters.command("whisper"))
 async def whisper(_, message):
       global user_id
-         if len(message.command) <2:
-              return await message.reply("ɢɪᴠᴇ  ᴀ  ᴜsᴇʀɪᴅ  ᴡʜᴏ  ᴡᴀɴᴛ  sᴇᴇ  ʏᴏᴜʀ  ʜɪᴅᴅᴇɴ  ᴍᴇssᴀɢᴇ")
-         elif len(message.command) <3:
+            if len(message.command) <2:
+                 return await message.reply("ɢɪᴠᴇ  ᴀ  ᴜsᴇʀɪᴅ  ᴡʜᴏ  ᴡᴀɴᴛ  sᴇᴇ  ʏᴏᴜʀ  ʜɪᴅᴅᴇɴ  ᴍᴇssᴀɢᴇ")
+            elif len(message.command) <3:
                return await message.reply("ɢɪᴠᴇ  ᴍᴇssᴀɢᴇ  ᴛᴏ  ᴄʀᴇᴀᴛᴇ  ᴡʜɪsᴘᴇʀ ᴍᴇssᴀɢᴇ!")
-         user_id = message.text.split(" ")[1]
-         text = message.text.split(" ")[2]
-         button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
-         await bot.send_message(message.chat.id, whisper,reply_markup=InlineKeyboardMarkUp(button))
+            user_id = message.text.split(" ")[1]
+            text = message.text.split(" ")[2]
+            button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
+            await bot.send_message(message.chat.id, whisper,reply_markup=InlineKeyboardMarkUp(button))
          
