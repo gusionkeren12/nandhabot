@@ -98,34 +98,6 @@ Thanks for using and keep support my channels!""",
                     title=f"Urban Dictionary 📝",
                     description=f"Urban Dictionary For Ward's")])
                     
-    elif string.split()[0] == "git":
-        user = string.split(None, 1)[1].strip()
-        res = requests.get(f'https://api.github.com/users/{user}').json()
-        data = f"""**Name**: {res['name']}
-**UserName**: {res['login']}
-**Link**: [{res['login']}]({res['html_url']})
-**Bio**: {res['bio']}
-**Company**: {res['company']}
-**Blog**: {res['blog']}
-**Location**: {res['location']}
-**Public Repos**: {res['public_repos']}
-**Followers**: {res['followers']}
-**Following**: {res['following']}
-**Acc Created**: {res['created_at']}
-"""
-        with open(f"{user}.jpg", "wb") as f:
-           kek = requests.get(res['avatar_url']).content
-           f.write(kek)
-        await client.answer_inline_query(
-            query.id,
-            results=[
-                InlineQueryResultPhoto(
-                    photo_url=f"{user}.jpg",
-                    thumb_url=f"{user}.jpg",
-                    caption=data,
-                    title="github userinfo 😍",
-                    description="github userinfo check!")])
-
     elif string.split()[0] == "wish":
         wish_text = f"✨~~ **yoo!** ~~🤗 ✨\n~~**Your wish Possible to:  {random.choice([random.randint(1, 100), random.randint(1, 100), random.randint(1, 100)])}%** ~~"
         api = requests.get("https://nekos.best/api/v2/happy").json()
