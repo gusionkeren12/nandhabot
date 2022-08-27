@@ -21,8 +21,11 @@ from pyrogram.types import (
 
 inlinecmds_text = "**Here you find moi inline functions commands!**"
 
+
 inlinebuttons = [[InlineKeyboardButton(text="ᴡɪsʜ", switch_inline_query_current_chat="wish"),
-                  InlineKeyboardButton(text="ᴜᴅ", switch_inline_query_current_chat="ud")]]
+                  InlineKeyboardButton(text="ᴜᴅ", switch_inline_query_current_chat="ud"),
+                  InlineKeyboardButton(text="ɢɪᴛ", switch_inline_query_current_chat="git"),
+                 ],[ InlineKeyboardButton(text="ᴡᴀʟʟ", switch_inline_query_current_chat="wall"),]]
 
 @bot.on_message(filters.command("inlinecmds"))
 async def inlinecmds(_, message):
@@ -38,23 +41,12 @@ async def inline_query_handler(client, query):
             query.id,
             results=[
                 InlineQueryResultPhoto(
-                    photo_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
-                    thumb_url="https://telegra.ph/file/c9c62179fef22450bb342.jpg",
-                    caption=f""" Iam At Least Version 
-                    Pyrogram Based @TrunksRobot I Can Help And Hope Your Groups ❕❕
-
-Pyrogram Version: {pyro}
-Telethon Version: {telever}
-
-Thanks for using and keep support my channels!""",
-                    title=f"🤝 Help",
-                    description=f" 😎 Alive & About @VegetaRobot",
-                    reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("Support",url="t.me/VegetaSupport", ),
-                          InlineKeyboardButton("Updates",url="t.me/VegetaUpdates"),
-                            ]
-                        ]
-                    ))])
+                    photo_url="https://telegra.ph/file/b4769f8358a6de4794a59.jpg",
+                    thumb_url="https://telegra.ph/file/b4769f8358a6de4794a59.jpg",
+                    caption="Available Inline Futures!",
+                    title=f"commandslist 😍😍",
+                    description=f"Available commandslist for @TrunksRobot 📝 ",
+                    reply_markup=InlineKeyboardMarkup(inlinebuttons))])
     elif string.split()[0] == "git":
         answers = []
         await client.answer_inline_query(
