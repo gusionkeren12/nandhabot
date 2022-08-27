@@ -47,17 +47,7 @@ async def inline_query_handler(client, query):
                     title=f"commandslist 😍😍",
                     description=f"Available commandslist for @TrunksRobot 📝 ",
                     reply_markup=InlineKeyboardMarkup(inlinebuttons))])
-    elif string.split()[0] == "whisper":
-        answers = []
-        await client.answer_inline_query(
-        query.id,
-        results=answers,
-        switch_pm_text="Send Whisper Msg | Whisper [USER] |TEXT|",
-        switch_pm_parameter="inline",
-                )
-        user_id = string(None, 1)[1].strip()
-        text = string(None, 2)[2].strip()
-        
+    
     elif string.split()[0] == "git":
         answers = []
         await client.answer_inline_query(
