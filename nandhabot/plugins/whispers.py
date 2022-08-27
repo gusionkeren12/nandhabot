@@ -22,5 +22,6 @@ async def whisper(_, message):
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
-      await bot.send_message(message.chat.id, text=whisper.format(mention, user_id),reply_markup=InlineKeyboardMarkUp(button))
+      await bot.send_message(message.chat.id,whisper.format(message.from_user.mention,user_id),
+               reply_markup=InlineKeyboardMarkUp(button))
          
