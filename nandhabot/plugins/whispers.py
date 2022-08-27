@@ -16,9 +16,7 @@ async def whisper(_, message):
           return await message.reply("ɢɪᴠᴇ  ᴍᴇssᴀɢᴇ  ᴛᴏ  ᴄʀᴇᴀᴛᴇ  ᴡʜɪsᴘᴇʀ ᴍᴇssᴀɢᴇ!")
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
-      bot_stats = await bot.get_chat_member(message.chat.id, "self")
-      if bot_stats.privileges:
-            return await message.delete()
+      
              
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
       whisper = f"""** 🕵 New Whisper Message!**
@@ -31,7 +29,9 @@ Your Not Allow To See Other Personal Messages!**
 """
       await bot.send_message(message.chat.id,whisper,
                reply_markup=InlineKeyboardMarkup(button))
-         
+      bot_stats = await bot.get_chat_member(message.chat.id, "self")
+      if bot_stats.privileges:
+            return await message.delete()
 
 @bot.on_callback_query(filters.regex("whisper_data"))
 async def whisperdata(_, query):
