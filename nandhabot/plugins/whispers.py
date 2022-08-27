@@ -29,7 +29,7 @@ Your Not Allow To See Other Personal Messages!**
                reply_markup=InlineKeyboardMarkup(button))
          
 
-@bot.on_callback_query(filters.regex("whisper_data")
+@bot.on_callback_query(filters.regex("whisper_data"))
 async def whisperdata(_, query):
        user = await bot.get_users(user_id)
        if message.from.user.id == user_id:
