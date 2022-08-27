@@ -70,15 +70,12 @@ Followers: {res['followers']}
 Following: {res['following']}
 Acc Created: {res['created_at']}
 """
-        with open(f"{user}.jpg", "wb") as f:
-           kek = requests.get(res['avatar_url']).content
-           f.write(kek)
         await client.answer_inline_query(
             query.id,
             results=[
                 InlineQueryResultPhoto(
-                    photo_url=f"{user}.jpg",
-                    thumb_url=f"{user}.jpg",
+                    photo_url="http://telegra.ph/file/33868544d263e0a065b9e.jpg",
+                    thumb_url="http://telegra.ph/file/33868544d263e0a065b9e.jpg",
                     caption=data,
                     title="github userinfo 😍",
                     description="github userinfo check!")])
