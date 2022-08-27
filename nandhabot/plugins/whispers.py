@@ -16,6 +16,7 @@ async def whisper(_, message):
           return await message.reply("ɢɪᴠᴇ  ᴍᴇssᴀɢᴇ  ᴛᴏ  ᴄʀᴇᴀᴛᴇ  ᴡʜɪsᴘᴇʀ ᴍᴇssᴀɢᴇ!")
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
+      await message.delete()
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
       whisper = f"""** 🕵 New Whisper Message!**
       
