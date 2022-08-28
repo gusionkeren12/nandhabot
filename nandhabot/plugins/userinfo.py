@@ -157,14 +157,14 @@ async def id(_, m):
          reply = m.reply_to_message
          _reply = ""
          if not reply: 
-               no_reply = f"**ʏᴏᴜʀ ɪᴅ**: `{m.from_user.id}`\n\n"
-               no_reply += f"**ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
-               no_reply += f"**ᴍsɢ ɪᴅ**: `{m.id}`"
+               no_reply = f"**ʏᴏᴜʀ ᴜsᴇʀɪᴅ**: `{m.from_user.id}`\n\n"
+               no_reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
+               no_reply += f"**ʏᴏᴜʀ ᴍsɢ ɪᴅ**: `{m.id}`"
                await m.reply_text(text=(no_reply)) 
          if reply.from_user:
-               _reply += f"**ʏᴏᴜʀ ɪᴅ**: `{m.from_user.id}`\n\n"
-               _reply += f"**ʀᴇᴘʟɪᴇᴅ ɪᴅ**: `{reply.from_user.id}`\n\n"
-               _reply += f"**ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
+               _reply += f"**ʏᴏᴜʀ ᴜsᴇʀɪᴅ**: `{m.from_user.id}`\n\n"
+               _reply += f"**ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀɪᴅ**: `{reply.from_user.id}`\n\n"
+               _reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
                _reply += f"**ʀᴇᴘʟɪᴇᴅ ᴍsɢ ɪᴅ**: `{reply.id}`\n\n"
          if reply.sender_chat:
                 _reply += f"\n\n**ᴄʜᴀɴɴᴇʟ  ɪᴅ**: `{reply.sender_chat.id}`\n\n"
