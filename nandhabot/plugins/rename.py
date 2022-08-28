@@ -34,7 +34,7 @@ def filtypes(_, query: CallbackQuery):
            a = ".mkv"
            name = filename+a
            x = query.message.reply("downloading now...")
-           dl = reply.download(file_name=name)
+           dl = reply.download(file_name=name, progress=progress)
            x.edit("uploading now...")
            query.message.reply_document(dl,caption=f"**{name} @Nandhabots**")
            x.delete()
