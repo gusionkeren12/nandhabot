@@ -7,6 +7,7 @@ from nandhabot import bot
 
 @bot.on_message(filters.command("rename"))
 async def rename(_, message):
+          try:
              if not message.reply_to_message and not message.reply_to_message.media:
                      return await message.reply("reply to media's")
              elif len(message.command) <2:
@@ -18,3 +19,6 @@ async def rename(_, message):
                  await msg.edit("`download complete!\n now uploading to telegram")
                  return await message.reply_document(downloads)
                  await msg.delete()
+          except Exception as error:
+                 await message.reply("**ERROR**: {error}")
+             
