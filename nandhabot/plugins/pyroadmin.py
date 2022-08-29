@@ -39,17 +39,17 @@ async def banned(_, message):
          from_user_stats = await bot.get_chat_member(message.chat.id, from_user.id)
          reply_user_stats = await bot.get_chat_member(message.chat.id, reply_user.id)
          if not bot_stats.privileges:
-                  await message.reply("Make Me Admin with (`can_restrict_members`) power!")
+                  return await message.reply("Make Me Admin with (`can_restrict_members`) power!")
          elif not from_user_stats.privileges:
-                  await message.reply("Only Admins Can Use This Commands")
+                 return await message.reply("Only Admins Can Use This Commands")
          elif not bot_stats.privileges.can_restrict_members and not from_user_stats.can_restrict_members:
-                  await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
+                  return await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
          elif reply_user_stats.privileges:
-                    await message.reply("Sorry son I can't ban administrators")
+                   return await message.reply("Sorry son I can't ban administrators")
          elif not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}")
-         
+                     return 
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
