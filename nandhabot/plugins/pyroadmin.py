@@ -33,14 +33,14 @@ async def delete(_, m):
 async def banned(_, message):
          reply_user = message.reply_to_message.from_user
          from_user = message.from_user
-         bot = await bot.get_chat_member(message.chat.id, "self")
+         bot_stats = await bot.get_chat_member(message.chat.id, "self")
          from_user_stats = await bot.get_chat_member(message.chat.id, from_user.id)
          reply_user_stats = await bot.get_chat_member(message.chat.id, reply_user.id)
-         if not bot.privileges:
+         if not bot_stats.privileges:
                   await message.reply("Make Me Admin with (`can_restrict_members`) power!")
          elif not from_user_stats.privileges:
                   await message.reply("Only Admins Can Use This Commands")
-         elif not bot.privileges.can_restrict_members and from_user_stats.can_restrict_members:
+         elif not bot_stats.privileges.can_restrict_members and from_user_stats.can_restrict_members:
                   await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
          elif not reply_user:
                     await message.reply("Reply to Someone to BAN")
