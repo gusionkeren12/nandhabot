@@ -49,9 +49,7 @@ async def banned(_, message):
          if not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}")
-         else:
-               await message.reply("plz something wrong report to @NandhaSupport")
-
+         
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
