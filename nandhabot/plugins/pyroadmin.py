@@ -28,37 +28,29 @@ async def delete(_, m):
      if user_stats.privileges.can_delete_messages:
                await reply.delete()
                await m.delete()
-      
+
 @bot.on_message(filters.command("ban"))
-async def banned(_, m):
-     reply = m.reply_to_message
-     chat = m.chat
-     user = m.from_user
-     bot_stats = await bot.get_chat_member(chat.id, "self")
-     if not bot_stats.privileges:
-            await m.reply_text("Make Me Admin REEE!!")
-            return 
-     user_stats = await bot.get_chat_member(chat.id, user.id)
-     if not user_stats.privileges:
-            await m.reply_text("Only Admins are allowed to use this command!")
-            return 
-     if not reply:
-             await m.reply_text("reply to user or channel")
-             return 
-     if not bot_stats.privileges.can_restrict_members:
-               await m.reply_text("**I'm missing the permission of**:\n`can_restrict_members`")
-               return 
-     if not user_stats.privileges.can_restrict_members:
-               await m.reply_text("**your don't having the permission of**:\n`can_restrict_members`")
-               return 
-     if user_stats.privileges.can_restrict_members:
-             chat_name = m.chat.title
-             await bot.ban_chat_member(chat.id, reply.from_user.id)
-             await m.reply_text(f"[{reply.from_user.first_name}](tg://user?id={reply.from_user.id}) Successfully from {chat_name}")
-     elif reply.sender_chat:
-             chat_name = m.chat.title
-             await bot.ban_chat_member(chat.id, reply.sender_chat.id)
-             await m.reply_text(f"{reply.sender_chat.title} Successfully from {chat_name}")
+async def banned(_, message):
+         reply_user = message.reply_to_message.from_user
+         from_user = message.from_user
+         bot = await bot.get_chat_member(message.chat.id, "self")
+         from_user_stats = await bot.get_chat_member(message.chat.id, from_user.id)
+         reply_user_stats = await bot.get_chat_member(message.chat.id, reply_user.id)
+         if not bot.privileges:
+                  await message.reply("Make Me Admin with (`can_restrict_members`) power!")
+         elif not from_user_stats.privileges:
+                  await message.reply("Only Admins Can Use This Commands")
+         elif not bot.privileges.can_restrict_members and from_user_stats.can_restrict_members:
+                  await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
+         elif not reply_user:
+                    await message.reply("Reply to Someone to BAN")
+         elif reply_user_stats.privileges:
+                      return await message.reply("Sorry son I can't ban administrators")
+         if not reply_user_stats.privileges:
+                     await bot.ban_chat_member(message.chat.id, reply_user.id)
+                     await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}")
+         else:
+               await message.reply("plz something wrong report to @NandhaSupport")
 
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
