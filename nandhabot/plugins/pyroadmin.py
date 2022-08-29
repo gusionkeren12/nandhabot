@@ -42,8 +42,10 @@ async def banned(_, message):
                   return await message.reply("Make Me Admin with (`can_restrict_members`) power!")
          elif not from_user_stats.privileges:
                  return await message.reply("Only Admins Can Use This Commands")
-         elif not bot_stats.privileges.can_restrict_members and not from_user_stats.can_restrict_members:
-                  return await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
+         elif not bot_stats.privileges.can_restrict_members:
+                 return await message.reply("Give Me (`can_restrict_members`) Permission")
+         elif not from_user_stats.can_restrict_members:
+                  return await message.reply("Your missing the rights (`can_restrict_members`)")
          elif reply_user_stats.privileges:
                    return await message.reply("Sorry son I can't ban administrators")
          elif not reply_user_stats.privileges:
