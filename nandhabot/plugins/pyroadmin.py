@@ -45,8 +45,8 @@ async def banned(_, message):
          elif not bot_stats.privileges.can_restrict_members and from_user_stats.can_restrict_members:
                   await message.reply("Something wrong happened plz Check Admin rights (you/me) can_restrict_members")
          elif reply_user_stats.privileges:
-                      return await message.reply("Sorry son I can't ban administrators")
-         if not reply_user_stats.privileges:
+                    await message.reply("Sorry son I can't ban administrators")
+         elif not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}")
          
