@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import *
 from nandhabot import bot
-from telegraph import path
+from telegraph import upload_file
 
 
 @bot.on_message(filters.command("write"))
