@@ -1,6 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import *
 from nandhabot import bot
+from telegraph import path
 
 
 @bot.on_message(filters.command("write"))
@@ -15,9 +16,9 @@ async def handwriting(_, message):
     )
     hand = "https://apis.xditya.me/write?text=" + name
     path = hand.download()
-        fk = upload_file(path)
-        for x in fk:
-           url = "https://telegra.ph" + x
+    fk = upload_file(path)
+    for x in fk:
+       url = "https://telegra.ph" + x
     await m.edit("» Uploading...")
     await message.reply_photo(hand, caption="🖊 Written by @VegetaRobot",
     reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text="Telegraph Link", url=url)]]))
