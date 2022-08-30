@@ -15,7 +15,7 @@ async def handwriting(_, message):
         else message.text.split(None, 1)[1].replace(" ", "%20")
     )
     hand = "https://apis.xditya.me/write?text=" + name
-    path = bot.download_media(hand)
+    path = await bot.download_media(hand)
     fk = upload_file(path)
     for x in fk:
        url = "https://telegra.ph" + x
