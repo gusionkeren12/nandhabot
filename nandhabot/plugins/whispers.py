@@ -7,7 +7,7 @@ from nandhabot import bot
 
 @bot.on_message(filters.command("whisper"))
 async def whisper(_, message):
-      global user_id, name, text
+      global name, text, user
       name = message.from_user.first_name
       mention = message.from_user.mention
       if len(message.command) <2:
@@ -16,13 +16,14 @@ async def whisper(_, message):
           return await message.reply("ɢɪᴠᴇ  ᴍᴇssᴀɢᴇ  ᴛᴏ  ᴄʀᴇᴀᴛᴇ  ᴡʜɪsᴘᴇʀ ᴍᴇssᴀɢᴇ!")
       user_id = message.text.split(" ")[1]
       text = message.text.split(" ")[2]
+      user = await bot.get_users(user_id)
       
              
       button = [[ InlineKeyboardButton(text="Open Whisper Message!", callback_data="whisper_data")]]
       whisper = f"""** 🕵 New Whisper Message!**
       
 **From User:** {mention}
-**To UserID:** `{user_id}`
+**To UserID:** {user.mention}
 
 **Note: this Message only can open the: To UserID
 Your Not Allow To See Other Personal Messages!**
@@ -35,10 +36,8 @@ Your Not Allow To See Other Personal Messages!**
 
 @bot.on_callback_query(filters.regex("whisper_data"))
 async def whisperdata(_, query):
-       user = await bot.get_users(user_id)
        if query.from_user.id == user.id:
-          WHISPER = f"""hey! {user.first_name},
-          here your message from {name} Message: {text}"""
+          WHISPER = f"""{user.first_name}, here your message from {name} Message: {text}"""
           await query.answer(WHISPER, show_alert=True)
        else:
            await query.answer("YOUR NOT ALLOWED")
