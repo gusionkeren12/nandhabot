@@ -1,5 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import *
+import requests 
 from nandhabot import bot
 from telegraph import upload_file
 
