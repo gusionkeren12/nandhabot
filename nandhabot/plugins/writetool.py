@@ -2,8 +2,6 @@ from pyrogram import filters
 from pyrogram.types import *
 import requests 
 from nandhabot import bot
-from telegraph import upload_file
-
 
 @bot.on_message(filters.command("write"))
 async def handwriting(_, message):
@@ -19,4 +17,4 @@ async def handwriting(_, message):
     url = requests.get(API).url
     await m.edit("» Uploading...")
     await message.reply_photo(url, caption="🖊 Written by @VegetaRobot",
-    reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text="Telegraph Link", url=url)]]))
+    reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text="Download Link", url=url)]]))
