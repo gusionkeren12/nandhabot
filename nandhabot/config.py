@@ -1,9 +1,15 @@
-OWNER_ID = 1491497760
-API_ID = 7126006
-API_HASH = "f92b05be529835381859ead64a195fa2"
-BOT_TOKEN = "5380977231:AAHhb9dBAeVm8wsDFk9YY1a_NT6sEiIePys"
-BOT_USERNAME = "TrunksRobot"
-BOT_ID = 2128359921
+from nandhabot import bot
+
+x = bot.get_me()
+BOT_USERNAME = x.username
+BOT_ID = x.id
+BOT_MENTION = x.mention
+
+
+OWNER_ID = 
+API_ID = 
+API_HASH = ""
+BOT_TOKEN = ""
 UPDATES_CHANNEL = "TrunksUpdates"
 SUPPORT_CHAT = "TrunksSupport"
 LOG_GROUP_ID = "-1001690512977"
