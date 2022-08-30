@@ -14,11 +14,8 @@ async def handwriting(_, message):
         if len(message.command) < 3
         else message.text.split(None, 1)[1].replace(" ", "%20")
     )
-    hand = "https://apis.xditya.me/write?text=" + name
-    path = await bot.download_media(hand)
-    fk = upload_file(path)
-    for x in fk:
-       url = "https://telegra.ph" + x
+    API = "https://apis.xditya.me/write?text=" + name
+    url = requests.get(API).url
     await m.edit("» Uploading...")
-    await message.reply_photo(hand, caption="🖊 Written by @VegetaRobot",
+    await message.reply_photo(url, caption="🖊 Written by @VegetaRobot",
     reply_markup=InlineKeyboardMarkup([[ InlineKeyboardButton(text="Telegraph Link", url=url)]]))
