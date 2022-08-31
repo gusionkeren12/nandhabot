@@ -13,5 +13,6 @@ async def apps(_, message):
            apps = await api.apps(text)
            app_text = ""
            for app in apps.results:
-                   app_text += f"Results of {text}\n\n~ [{app.title}]({app.link})\n"
+                   app_text += f"**Results of**` {text}`"
+                   app_text += f"~ [{app.title}]({app.link})\n"
            await message.reply_text(app_text,disable_web_page_preview=True)
