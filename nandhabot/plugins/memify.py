@@ -6,7 +6,7 @@ import os
 
 from nandhabot.events import register
 
-from nandhabot.config import TEMP_DOWNLOAD_DIRECTORY
+from nandhabot import TEMP_DOWNLOAD_DIRECTORY
 
 
 from nandhabot import tbot as bot
