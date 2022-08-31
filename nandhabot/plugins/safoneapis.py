@@ -8,7 +8,7 @@ api = SafoneAPI()
 @bot.on_message(filters.command("app"))
 async def apps(_, message):
            if len(message.command) <2:
-                retrun await message.reply("**Give A App Name**\n**- /app telegram**")
+                return await message.reply("**Give A App Name**\n**- /app telegram**")
            text = message.text.split(None, 1)[1]
            apps = await api.apps(text)
            app_text = ""
