@@ -1,10 +1,5 @@
-from nandhabot import bot as app
 
 
-x = app.get_me()
-BOT_USERNAME = x.username
-BOT_ID = x.id
-BOT_MENTION = x.mention
 
 
 OWNER_ID = 1491497760
