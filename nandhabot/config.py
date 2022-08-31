@@ -1,10 +1,13 @@
 from pyrogram import Client as bot
 
-x = bot.get_me(self)
 
-BOT_USERNAME = x.username
-BOT_ID = x.id
-BOT_MENTION = x.mention
+
+bottie = bot.get_me()
+
+BOT_ID = bottie.id
+BOT_USERNAME = bottie.username
+BOT_NAME = bottie.first_name
+BOT_MENTION = bottie.mention
 
 OWNER_ID = 1491497760
 API_ID = 56678
