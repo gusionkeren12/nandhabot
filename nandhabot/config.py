@@ -2,7 +2,7 @@ from pyrogram import Client as bot
 
 
 
-bottie = bot.get_me()
+bottie = await bot.get_me()
 
 BOT_ID = bottie.id
 BOT_USERNAME = bottie.username
