@@ -1,10 +1,11 @@
-from program import Client as bot
+from pyrogram import Client as bot
 
 x = bot.get_me()
 
 BOT_USERNAME = x.username
 BOT_ID = x.id
 BOT_MENTION = x.mention
+
 OWNER_ID = 1491497760
 API_ID = 56678
 API_HASH = "nou"
