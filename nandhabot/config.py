@@ -1,6 +1,6 @@
 from pyrogram import Client as bot
 
-x = bot.get_me("self")
+x = bot.get_me(self)
 
 BOT_USERNAME = x.username
 BOT_ID = x.id
