@@ -2,12 +2,12 @@ from pyrogram import Client as bot
 
 
 
+self = bot.get_users(5515671520)
 
-
-BOT_ID = bot.get_me().id
-BOT_USERNAME = bot.get_me().username
-BOT_NAME = bot.get_me().first_name
-BOT_MENTION = bot.get_me().mention
+BOT_ID = self.id
+BOT_USERNAME = self.username
+BOT_NAME = self.first_name
+BOT_MENTION = self.mention
 
 OWNER_ID = 1491497760
 API_ID = 56678
