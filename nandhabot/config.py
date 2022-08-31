@@ -1,7 +1,7 @@
+from nandhabot import bot as app
 
-from nandhabot import bot
 
-x = bot.get_me()
+x = app.get_me()
 BOT_USERNAME = x.username
 BOT_ID = x.id
 BOT_MENTION = x.mention
