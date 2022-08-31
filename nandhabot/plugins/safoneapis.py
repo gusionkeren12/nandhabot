@@ -11,7 +11,7 @@ async def apps(_, message):
                 return await message.reply("**Give A App Name**\n**- /app telegram**")
            text = message.text.split(None, 1)[1]
            apps = await api.apps(text)
-           app_text = f"Results of {text}\n"
+           app_text = f"Results of {text}:\n\n"
            for app in apps.results:
                    app_text += f"~ [{app.title}]({app.link})\n"
            await message.reply_text(app_text)
