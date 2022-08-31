@@ -2,12 +2,11 @@ from pyrogram import Client as bot
 
 
 
-self = bot.get_users(user_ids=5515671520)
 
-BOT_ID = self.id
-BOT_USERNAME = self.username
-BOT_NAME = self.first_name
-BOT_MENTION = self.mention
+BOT_ID = 5515671520
+BOT_USERNAME = "TrunksRobot"
+BOT_NAME = "TrunksRobot"
+BOT_MENTION = "[TrunksRobot](tg://user?id=5515671520)"
 
 OWNER_ID = 1491497760
 API_ID = 56678
