@@ -14,4 +14,4 @@ async def apps(_, message):
            app_text = ""
            for app in apps.results:
                    app_text += f" ~ [{app.title}]({app.link})\n"
-           await message.reply_text(app_text)
+           await message.reply_text(app_text,disable_web_page_preview=True)
