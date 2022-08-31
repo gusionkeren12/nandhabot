@@ -12,7 +12,7 @@ from nandhabot import TEMP_DOWNLOAD_DIRECTORY
 from nandhabot import tbot as bot
 
 
-Credit = "UNKNOWN"
+Credit = "NandhaxD"
 
 
 @register(pattern="^/mmf ?(.*)")
@@ -40,7 +40,7 @@ async def handler(event):
 
     msg = await event.reply("```Memifying this image! ✊🏻 ```")
 
-    if "AnonymousBoy1025" in Credit:
+    if "NandhaxD" in Credit:
         pass
 
     else:
