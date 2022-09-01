@@ -73,7 +73,7 @@ async def paste(_, m):
         code = resp["message"]
         bat_link = f"{BASE}{code}"
         await msg.edit("**Process Complete**")                  
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link}) [BATBIN]({bat_link})"
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link}) | [BATBIN]({bat_link})"
         await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
@@ -88,7 +88,7 @@ async def paste(_, m):
           code = resp["message"]
           bat_link = f"{BASE}{code}"
           await msg.edit("**Process Complete**")                 
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link}) [BATBIN]({bat_link}) "
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link}) | [BATBIN]({bat_link}) "
           await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
