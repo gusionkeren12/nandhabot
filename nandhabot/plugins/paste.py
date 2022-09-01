@@ -24,7 +24,8 @@ async def pastebin(_, m):
               resp = await post(f"{BASE}api/v2/paste", data=content)
               code = resp["message"]
               link = f"{BASE}{code}"
-              await m.reply_photo(photo=link,caption=link)
+              button = [[ InlineKeyboardButton(text="BATBIN", url=link)]]
+              await m.reply_photo(photo=link,caption=link,reply_markup=InlineKeyboardMarkup(button))
 
       
 def spacebin(text):
