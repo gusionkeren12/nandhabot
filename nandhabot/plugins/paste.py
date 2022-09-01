@@ -80,7 +80,7 @@ async def paste(_, m):
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
-          resp = await post(f"{BASE}api/v2/paste", data=file_text)
+          resp = await post(f"{BASE}api/v2/paste", data=text)
           code = resp["message"]
           bat_link = f"{BASE}{code}"
           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link}) "
