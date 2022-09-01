@@ -8,7 +8,7 @@ from functools import partial
 from nandhabot import bot, dev_user
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
-
+from pyrogram.types import Message
 from SafoneAPI import SafoneAPI
 
 Safone = SafoneAPI()
@@ -25,7 +25,7 @@ async def paste(content: str):
     return BASE + resp["message"]
 
 @bot.on_message(filters.command("batbin"))
-async def pastebin(_, m):
+async def pastebin(m: Message):
           if m.reply_to_message:
               content = m.reply_to_message.text
               link = await paste(content)
