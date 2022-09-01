@@ -18,7 +18,6 @@ from nandhabot.utils.http import post
 BASE = "https://batbin.me/"
 
 
-async def paste(content: str):
     
 @bot.on_message(filters.command("batbin"))
 async def pastebin(_, m: Message):
