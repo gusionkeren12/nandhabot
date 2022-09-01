@@ -3,6 +3,13 @@ from nandhabot import bot
 from pyrogram.types import *
 import os
 
+@bot.on_message(filters.command("admins"))
+async def admins(_, message):
+        administrators = []
+        async for m in app.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+        administrators.append(m)
+        await message.reply(str(administrators))
+
 @bot.on_message(filters.command("del"))
 async def delete(_, m):
      reply = m.reply_to_message
