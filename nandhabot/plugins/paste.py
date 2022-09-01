@@ -18,15 +18,17 @@ from nandhabot.utils.http import post
 BASE = "https://batbin.me/"
 
 
-async def batbin(content: str):
+async def paste(content: str):
     resp = await post(f"{BASE}api/v2/paste", data=content)
-
+    if not resp["success"]:
+        return
+    return BASE + resp["message"]
 
 @bot.on_message(filters.command("batbin"))
-async def batbin(_, message):
+async def pastebin(_, message):
           if message.reply_to_message:
               content = message.reply_to_message.text
-              link = await batbin(content)
+              link = await paste(content)
               await message.reply(link)
 
       
