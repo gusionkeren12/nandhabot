@@ -1,16 +1,10 @@
 from pyrogram import filters, enums
 from nandhabot import bot
 from pyrogram.types import *
-import os, io
+import os, io, json
 
 
-import json
 
-administrators = [] 
-with myClient:
-     for m in myClient.get_chat_members(chatid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-      
-      
    
       
       
