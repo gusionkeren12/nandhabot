@@ -55,6 +55,7 @@ async def pastebin(_, m):
 
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
+ try:
     reply = m.reply_to_message
     if not reply:
            await m.reply_text("Reply to Message or Text-File")
@@ -95,3 +96,6 @@ async def paste(_, m):
     
         
         
+
+ except Exception as e:
+       await m.reply(f"**ERROR**: {e}")
