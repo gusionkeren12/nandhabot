@@ -25,11 +25,11 @@ async def paste(content: str):
     return BASE + resp["message"]
 
 @bot.on_message(filters.command("batbin"))
-async def pastebin(_, message):
-          if message.reply_to_message:
-              content = message.reply_to_message.text
+async def pastebin(_, m):
+          if m.reply_to_message:
+              content = m.reply_to_message.text
               link = await paste(content)
-              await message.reply(link)
+              await m.reply(link)
 
       
 def spacebin(text):
