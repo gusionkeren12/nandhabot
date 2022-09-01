@@ -79,7 +79,7 @@ async def paste(_, m):
                          ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]))
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
-          msg = await message.reply("**Starting to Past All**")                
+          msg = await m.reply("**Starting to Past All**")                
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
