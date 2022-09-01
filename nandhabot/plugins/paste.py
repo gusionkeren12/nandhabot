@@ -17,16 +17,6 @@ from nandhabot.utils.http import post
 
 BASE = "https://batbin.me/"
     
-@bot.on_message(filters.command("batbin"))
-async def pastebin(_, m):
-          if m.reply_to_message:
-              content = m.reply_to_message.text or m.reply_to_message.caption
-              resp = await post(f"{BASE}api/v2/paste", data=content)
-              code = resp["message"]
-              link = f"{BASE}{code}"
-              button = [[ InlineKeyboardButton(text="BATBIN", url=link)]]
-              await m.reply_photo(photo=link,caption=link,reply_markup=InlineKeyboardMarkup(button))
-
       
 def spacebin(text):
     url = "https://spaceb.in/api/v1/documents/"
@@ -54,6 +44,14 @@ async def ezup(content):
     return link
 
 
+@bot.on_message(filters.command("batbin"))
+async def pastebin(_, m):
+          if m.reply_to_message:
+              content = m.reply_to_message.text or m.reply_to_message.caption
+              
+              button = [[ InlineKeyboardButton(text="BATBIN", url=link)]]
+              await m.reply_photo(photo=link,caption=link,reply_markup=InlineKeyboardMarkup(button))
+
 
 @bot.on_message(filters.command('paste'))
 async def paste(_, m):
@@ -67,21 +65,28 @@ async def paste(_, m):
         os.remove(doc)
         spacebin_url = spacebin(file_text)
         safone_url = await Safone.paste(file_text)
-        link = await ezup(file_text)
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})"
-        await m.reply_text(text=caption,
+        
+        ezup_link = await ezup(file_text)
+        resp = await post(f"{BASE}api/v2/paste", data=file_text)
+        code = resp["message"]
+        bat_link = f"{BASE}{code}"
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link})"
+        await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
+                          [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE.PASTE]({safone_url.link}) "
-          await m.reply_text(text=caption,
+          resp = await post(f"{BASE}api/v2/paste", data=file_text)
+          code = resp["message"]
+          bat_link = f"{BASE}{code}"
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link}) "
+          await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                          [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
     
         
