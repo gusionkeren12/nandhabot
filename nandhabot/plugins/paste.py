@@ -16,8 +16,6 @@ Safone = SafoneAPI()
 from nandhabot.utils.http import post
 
 BASE = "https://batbin.me/"
-
-
     
 @bot.on_message(filters.command("batbin"))
 async def pastebin(_, m):
@@ -25,8 +23,8 @@ async def pastebin(_, m):
               content = m.reply_to_message.text or m.reply_to_message.caption
               resp = await post(f"{BASE}api/v2/paste", data=content)
               code = resp["message"]
-              await m.reply(f"{BASE}{code}")
-              await m.reply_photo(link,caption=link)
+              link = f"{BASE}{code}"
+              await m.reply_photo(photo=link,caption=link)
 
       
 def spacebin(text):
