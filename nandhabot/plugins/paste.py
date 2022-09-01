@@ -63,7 +63,7 @@ async def paste(_, m):
         async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
-        msg = await m.reply("**Starting to Past All**)
+        msg = await m.reply("**Starting to Past All**")
         spacebin_url = spacebin(file_text)
         safone_url = await Safone.paste(file_text)
         
