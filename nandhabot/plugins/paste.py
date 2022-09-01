@@ -13,7 +13,26 @@ from SafoneAPI import SafoneAPI
 
 Safone = SafoneAPI()
 
+from nandhabot.utils.http import post
 
+BASE = "https://batbin.me/"
+
+
+async def batbin(content: str):
+    resp = await post(f"{BASE}api/v2/paste", data=content)
+    if not resp["success"]:
+        return
+    return BASE + resp["message"]
+
+
+@bot.on_message(filters.command("batbin"))
+async def batbin(_, message):
+          if message.reply_to_message:
+              content = message.reply_to_message.text
+              link = await batbin(content)
+              await message.reply(link)
+
+      
 def spacebin(text):
     url = "https://spaceb.in/api/v1/documents/"
     res = post(url, data={"content": text, "extension": "txt"})
