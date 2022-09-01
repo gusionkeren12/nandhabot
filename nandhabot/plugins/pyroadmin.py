@@ -10,7 +10,12 @@ async def admins(_, message):
         administrators = []
         async for m in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
                       administrators.append(m)
-        await message.reply(str(administrators))
+        with io.BytesIO(str.encode(str(administrators))) as adminlist:
+            adminlist.name = "admins.txt"
+            message.reply_document(
+                document=logs,
+            )
+        
 
 @bot.on_message(filters.command("del"))
 async def delete(_, m):
