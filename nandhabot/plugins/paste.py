@@ -20,12 +20,12 @@ BASE = "https://batbin.me/"
 
     
 @bot.on_message(filters.command("batbin"))
-async def pastebin(_, m: Message):
+async def pastebin(_, m):
           if m.reply_to_message:
-              content = message.reply_to_message.text or message.reply_to_message.caption
+              content = m.reply_to_message.text or m.reply_to_message.caption
               resp = await post(f"{BASE}api/v2/paste", data=content)
               code = resp["message"]
-              await message.reply(f"{BASE}{code}")
+              await m.reply(f"{BASE}{code}")
               await m.reply_photo(link,caption=link)
 
       
