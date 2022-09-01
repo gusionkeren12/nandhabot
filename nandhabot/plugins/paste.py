@@ -24,7 +24,8 @@ async def pastebin(_, m: Message):
           if m.reply_to_message:
               content = message.reply_to_message.text or message.reply_to_message.caption
               resp = await post(f"{BASE}api/v2/paste", data=content)
-              await message.reply(f"{BASE}{resp["message"]}")
+              code = resp["message"]
+              await message.reply(f"{BASE}{code}")
               await m.reply_photo(link,caption=link)
 
       
