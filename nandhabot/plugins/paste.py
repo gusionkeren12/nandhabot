@@ -13,7 +13,7 @@ from SafoneAPI import SafoneAPI
 
 Safone = SafoneAPI()
 
-from nandhabot.utils.http import post
+from nandhabot.utils.http import post as send
 
 BASE = "https://batbin.me/"
     
@@ -67,7 +67,7 @@ async def paste(_, m):
         safone_url = await Safone.paste(file_text)
         
         ezup_link = await ezup(file_text)
-        resp = await post(f"{BASE}api/v2/paste", data=file_text)
+        resp = await send(f"{BASE}api/v2/paste", data=file_text)
         code = resp["message"]
         bat_link = f"{BASE}{code}"
         caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link})"
@@ -80,7 +80,7 @@ async def paste(_, m):
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
-          resp = await post(f"{BASE}api/v2/paste", data=text)
+          resp = await send(f"{BASE}api/v2/paste", data=text)
           code = resp["message"]
           bat_link = f"{BASE}{code}"
           caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link}) "
