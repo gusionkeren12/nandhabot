@@ -63,6 +63,7 @@ async def paste(_, m):
         async with aiofiles.open(doc, mode="r") as f:
           file_text = await f.read()
         os.remove(doc)
+        msg = await m.reply("**Starting to Past All**)
         spacebin_url = spacebin(file_text)
         safone_url = await Safone.paste(file_text)
         
@@ -70,20 +71,23 @@ async def paste(_, m):
         resp = await send(f"{BASE}api/v2/paste", data=file_text)
         code = resp["message"]
         bat_link = f"{BASE}{code}"
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link})"
+        await msg.edit("**Process Complete**")                  
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link}) [BATBIN]({bat_link})"
         await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                          ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]))
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
+          msg = await message.reply("**Starting to Past All**")                
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
           resp = await send(f"{BASE}api/v2/paste", data=text)
           code = resp["message"]
           bat_link = f"{BASE}{code}"
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})\n [BATBIN]({bat_link}) "
+          await msg.edit("**Process Complete**")                 
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link}) [BATBIN]({bat_link}) "
           await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
