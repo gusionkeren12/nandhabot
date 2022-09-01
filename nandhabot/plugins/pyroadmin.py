@@ -7,7 +7,7 @@ import os
 async def admins(_, message):
         administrators = []
         async for m in app.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-        administrators.append(m)
+               administrators.append(m)
         await message.reply(str(administrators))
 
 @bot.on_message(filters.command("del"))
