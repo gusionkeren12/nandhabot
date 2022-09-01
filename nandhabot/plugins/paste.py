@@ -74,7 +74,7 @@ async def paste(_, m):
         await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]))
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
@@ -87,7 +87,7 @@ async def paste(_, m):
           await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
+                           ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]))
     
         
         
