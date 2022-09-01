@@ -1,7 +1,7 @@
 from pyrogram import filters, enums
 from nandhabot import bot
 from pyrogram.types import *
-import os
+import os, io
 
 
 
