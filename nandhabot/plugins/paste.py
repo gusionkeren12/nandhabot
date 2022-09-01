@@ -54,20 +54,20 @@ async def paste(_, m):
         spacebin_url = spacebin(file_text)
         safone_url = await Safone.paste(file_text)
         link = await ezup(file_text)
-        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+        caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE]({safone_url.link})"
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyBotton(text="SAFONE", url=safone_url),]]),disable_web_page_preview=True)
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyBotton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
           link = await ezup(text)
           safone_url = await Safone.paste(text)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE.PASTE]({safone_url}) "
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE.PASTE]({safone_url.link}) "
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton(text="SAFONE", url=safone_url), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                          [[InlineKeyboardButton(text="SAFONE", url=safone_url.link), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
     
         
