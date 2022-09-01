@@ -12,4 +12,5 @@ async def animenews(_, message):
        img = anews["results"][0]["imageUrl"]
        link = anews["results"][0]["link"]
        title = anews["results"][0]["title"] 
+       caption = f"""**Title**: `{title}`\n\n**News**: `{caption}`
        await message.reply_photo(img,caption=caption,reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Source Link", url=link)]]))
