@@ -4,13 +4,25 @@ from pyrogram.types import *
 import os, io
 
 
+import json
+
+administrators = [] 
+with myClient:
+     for m in myClient.get_chat_members(chatid, filter=enums.ChatMembersFilter.ADMINISTRATORS):
+      
+      
+   
+      
+      
 
 @bot.on_message(filters.command("admins"))
 async def admins(_, message):
         administrators = []
         async for m in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
                       administrators.append(m)
-        with io.BytesIO(str.encode(str(administrators))) as adminlist:
+        data = json.loads(str(m))
+        username = data['user']['username']
+        with io.BytesIO(str.encode(username)) as adminlist:
             adminlist.name = "admins.txt"
             await message.reply_document(
                 document=adminlist,
