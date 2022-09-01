@@ -19,17 +19,14 @@ BASE = "https://batbin.me/"
 
 
 async def paste(content: str):
-    resp = await post(f"{BASE}api/v2/paste", data=content)
-    if not resp["success"]:
-        return
-    return BASE + resp["message"]
-
+    
 @bot.on_message(filters.command("batbin"))
 async def pastebin(_, m: Message):
           if m.reply_to_message:
-              content = m.reply_to_message.text
-              link = await paste(content)
-              await m.reply(link)
+              content = message.reply_to_message.text or message.reply_to_message.caption
+              resp = await post(f"{BASE}api/v2/paste", data=content)
+              await message.reply(f"{BASE}{resp["message"]}")
+              await m.reply_photo(link,caption=link)
 
       
 def spacebin(text):
