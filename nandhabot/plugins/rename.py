@@ -20,5 +20,5 @@ async def rename(_, message):
                  return await message.reply_document(downloads)
                  await msg.delete()
           except Exception as error:
-                 await message.reply("**ERROR**: {error}")
+                 await message.reply(f"**ERROR**: {error}")
              
