@@ -9,6 +9,10 @@ from nandhabot import bot, dev_user
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
+from SafoneAPI import SafoneAPI
+
+Safone = SafoneAPI()
+
 
 def spacebin(text):
     url = "https://spaceb.in/api/v1/documents/"
@@ -48,20 +52,22 @@ async def paste(_, m):
           file_text = await f.read()
         os.remove(doc)
         spacebin_url = spacebin(file_text)
+        safone_url = await Safone.paste(file_text)
         link = await ezup(file_text)
         caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyBotton(text="SAFONE", url=safone_url),]]),disable_web_page_preview=True)
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
           link = await ezup(text)
-          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})"
+          safone_url = await Safone.paste(text)
+          caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({link})\n [SAFONE.PASTE]({safone_url}) "
           await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                          [[InlineKeyboardButton(text="SAFONE", url=safone_url), ],[ InlineKeyboardButton("SPACEBIN", url=spacebin_url),
                            ],[ InlineKeyboardButton("EZUP.DEV", url=link)]]),disable_web_page_preview=True)
     
         
