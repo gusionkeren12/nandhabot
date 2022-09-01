@@ -13,7 +13,7 @@ async def admins(_, message):
         with io.BytesIO(str.encode(str(administrators))) as adminlist:
             adminlist.name = "admins.txt"
             message.reply_document(
-                document=logs,
+                document=adminlist,
             )
         
 
