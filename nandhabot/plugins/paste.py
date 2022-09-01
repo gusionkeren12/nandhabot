@@ -58,7 +58,7 @@ async def paste(_, m):
         await m.reply_text(text=caption,
                       reply_markup=InlineKeyboardMarkup(
                           [[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyBotton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=link),],[ InlineKeyboardBotton(text="SAFONE", url=safone_url.link),]]),disable_web_page_preview=True)
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           spacebin_url = spacebin(text)
