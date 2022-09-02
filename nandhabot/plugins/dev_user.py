@@ -102,7 +102,7 @@ def sendfilecallback(_, query: CallbackQuery):
             "This Is A Developer's Restricted Command.You Don't Have Access To Use This."
         )
       
-@app.on_message(filters.user(dev_user) & filters.command("eval"))
+@app.on_message(filters.user(dev_user) & filters.command("eval"), filters.on_edited_message)
 async def eval(client, message):
     status_message = await message.reply_text("Processing ...")
     cmd = message.text.split(" ", maxsplit=1)[1]
