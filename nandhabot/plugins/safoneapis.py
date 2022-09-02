@@ -6,7 +6,7 @@ api = SafoneAPI()
 
 @bot.on_message(filters.command("webshot"))
 async def webshot(_, m):
-         if len(message.command) <2:
+         if len(m.command) <2:
                 return await m.reply("**Give A URL to Shot **\n**- /webshot github.com**")
          text = m.text.split(None, 1)[1]
          make_shot = await api.webshot(text)
