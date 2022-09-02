@@ -4,6 +4,13 @@ from SafoneAPI import SafoneAPI
 api = SafoneAPI()
 
 
+@bot.on_message(filters command("webshot"))
+async def webshot(_, m):
+         if len(message.command) <2:
+                return await m.reply("**Give A App Name**\n**- /app telegram**")
+         text = m.text.split(None, 1)[1]
+         make_shot = await api.webshot(text)
+         await m.reply_document(make_shot)
 
 @bot.on_message(filters.command("app"))
 async def apps(_, message):
