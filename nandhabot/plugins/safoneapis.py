@@ -9,7 +9,9 @@ async def webshot(_, m):
          if len(m.command) <2:
                 return await m.reply("**Give A URL to Shot **\n**- /webshot github.com**")
          text = m.text.split(None, 1)[1]
+         msg = await m.reply("**Your Request is Processing**")
          make_shot = await api.webshot(text)
+         await msg.edit("**Complete Process.**")
          await m.reply_document(make_shot,caption=f"**Request by {message.from_user.mention}**")
 
 @bot.on_message(filters.command("app"))
