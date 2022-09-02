@@ -12,7 +12,7 @@ async def webshot(_, m):
          msg = await m.reply("**Your Request is Processing**")
          make_shot = await api.webshot(text)
          await msg.edit("**Complete Process.**")
-         await m.reply_document(make_shot,caption=f"**Request by {message.from_user.mention}**")
+         await m.reply_document(make_shot,caption=f"**Request by {m.from_user.mention}**")
 
 @bot.on_message(filters.command("app"))
 async def apps(_, message):
