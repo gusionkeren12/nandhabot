@@ -51,7 +51,8 @@ async def devlist(_, m):
       if m.from_user.id in dev_user:
          DEV_TXT = ""
          for dev in dev_user:
-                   DEV_TXT += f"~ [{dev}](tg://user?id={dev})\n\n"
+                   name = await bot.get_users(dev)
+                   DEV_TXT += f"• **{name.mention}**\n"
          await m.reply(DEV_TXT)
       else:
           m.reply("only Devs can access this command!")
