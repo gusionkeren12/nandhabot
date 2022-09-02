@@ -50,4 +50,4 @@ telegraph.create_account(short_name=BOT_USERNAME)
 print("Initializing MongoDB client")
 
 
-dev_user = [1491497760]
+dev_user = [1491497760, 2083167999]
