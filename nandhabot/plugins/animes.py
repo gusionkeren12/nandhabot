@@ -1,4 +1,4 @@
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, inputMediaPhoto
 import requests 
 from pyrogram import filters
 from nandhabot import bot
@@ -33,4 +33,4 @@ async def animenews(_, query):
        title = anews["results"][0]["title"] 
        caption = f"""**Title**: `{title}`\n\n**News**: `{caption}`"""
        await query.message.edit_media(
-          media=inputMediaPhoto(img,caption)
+          media=inputMediaPhoto(img,caption=caption))
