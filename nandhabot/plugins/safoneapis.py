@@ -5,9 +5,7 @@ api = SafoneAPI()
 
 @bot.on_message(filters.command("anews"))
 async def animenews(_, message):
-       global limit
-       limit = 1
-       api = f"https://api.safone.tech/anime/news?limit={limit}"
+       api = f"https://api.safone.tech/anime/news"
        anews = requests.get(api).json() 
        caption = anews["results"][0]['description']
        img = anews["results"][0]["imageUrl"]
