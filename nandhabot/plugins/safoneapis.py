@@ -8,10 +8,10 @@ async def carbon(_, message):
         if not message.reply_to_message:
              return await message.reply("**Reply To Message.**") 
         elif message.reply_to_message:
-              return await message.reply("**Process Your Request.**")
-        carbon = await api.carbon(message.reply_to_message.text)
-        await message.reply("**Complete Process.**")
-        await message.reply_photo(carbon)
+             msg = await message.reply("**Process Your Request.**")
+             carbon = await api.carbon(message.reply_to_message.text)
+             await msg.edit("**Complete Process.**")
+             await message.reply_photo(carbon,caption=f"**Request by {message.from_user.mention}**")
 
 
 @bot.on_message(filters.command("webshot"))
