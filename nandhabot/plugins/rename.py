@@ -1,6 +1,6 @@
 from pyrogram import filters
 from pyrogram.types import *
-
+from nandhabot.utils.progress import progress_for_pyrogram
 from nandhabot import bot
 
 
@@ -15,7 +15,7 @@ async def rename(_, message):
              name = message.text.split(None, 1)[1]
              if message.reply_to_message.media:
                  msg = await message.reply("`now downloading...`")
-                 downloads = await message.reply_to_message.download(file_name=name)
+                 downloads = await message.reply_to_message.download(file_name=name, progress=progress_for_pyrogram)
                  await msg.edit("`download complete!\n now uploading to telegram")
                  return await message.reply_document(downloads)
                  await msg.delete()
