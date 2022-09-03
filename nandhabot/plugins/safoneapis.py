@@ -8,7 +8,7 @@ async def carbon(_, message):
         if message.reply_to_message:
            return await message.reply("**Process Your Request.**")
         code = {
-  "code": f"message.reply_to_message.text",
+  "code": f"{message.reply_to_message.text}",
   "backgroundColor": "green"
 }
         carbon = await api.carbon(code)
