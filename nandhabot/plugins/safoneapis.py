@@ -6,7 +6,7 @@ api = SafoneAPI()
 @bot.on_message(filters.command("carbon"))
 async def carbon(_, message):
         if not messag.reply_to_message:
-             rerun await message.reply("**Reply To Message.**") 
+             return await message.reply("**Reply To Message.**") 
         elif message.reply_to_message:
               return await message.reply("**Process Your Request.**")
         carbon = await api.carbon(message.reply_to_message.text)
