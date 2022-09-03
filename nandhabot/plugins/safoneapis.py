@@ -3,6 +3,18 @@ from nandhabot import bot
 from SafoneAPI import SafoneAPI
 api = SafoneAPI()
 
+@bot.on_message(filters.command("carbon"))
+async def carbon(_, message):
+        if message.reply_to_message:
+           return await message.reply("**Process Your Request.**")
+        code = {
+  "code": f"message.reply_to_message.text",
+  "backgroundColor": "green"
+}
+        carbon = await api.carbon(code)
+        await message.reply("**Complete Process.**")
+        await message.reply_photo(carbon)
+
 
 @bot.on_message(filters.command("webshot"))
 async def webshot(_, m):
