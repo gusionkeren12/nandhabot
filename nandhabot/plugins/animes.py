@@ -25,7 +25,7 @@ async def animenews(_, message):
 @bot.on_callback_query(filters.regex("animenews"))
 async def animenews(_, query):
        next = limit+1
-       api = f"https://api.safone.tech/anime/news?limit={next}"
+       api = f"https://api.safone.tech/anime/news?limit=2"
        anews = requests.get(api).json() 
        caption = anews["results"][0]['description']
        img = anews["results"][0]["imageUrl"]
