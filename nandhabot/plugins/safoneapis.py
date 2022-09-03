@@ -9,7 +9,7 @@ async def carbon(_, message):
              rerun await message.reply("**Reply To Message.**") 
         elif message.reply_to_message:
               return await message.reply("**Process Your Request.**")
-        carbon = await api.carbon(message.reply_to_message text)
+        carbon = await api.carbon(message.reply_to_message.text)
         await message.reply("**Complete Process.**")
         await message.reply_photo(carbon)
 
