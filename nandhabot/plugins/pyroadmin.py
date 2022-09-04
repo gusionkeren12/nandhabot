@@ -29,7 +29,23 @@ async def demotes(_, message):
    except Exception as errors:
            await message.reply(f"**Error**: {errors}")
        
-
+@bot.on_message(filters.command("unban"))
+async def unbanning(_, message):
+        try:
+           chat_id = message.chat.id
+           admire = message.from_user
+           user = message.reply_to_message.from_user
+           check = await bot.get_chat_member(chat_id, admire.id)
+           if check.privileges.can_restrict_members:
+               msg = await message.reply("**Unbnning Proces.**")
+               message.chat.unban_member(user_id=user.id)
+               await msg.edit(f"""**Unbanned by Admire:**\n **{admire.mention}**
+**UnBanned User**:\n**{user.mention}**""")
+        except Exception as errors:
+           await message.reply(f"**Error**: {errors}")
+           
+              
+       
 
    
       
@@ -152,7 +168,7 @@ async def banned(_, message):
 @bot.on_callback_query(filters.regex("unban"))
 async def unbaning(_, query):
          stats = await bot.get_chat_member(query.message.chat.id, query.from_user.id)
-         if stats.privileges:
+         if stats.privileges.can_restrict_members:
                   await bot.unban_chat_member(query.message.chat.id, reply_user.id)
                   await query.message.edit(f"""**Admire: {query.from_user.mention}**
 **Unban: {reply_user.mention}**""")    
