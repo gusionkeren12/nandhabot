@@ -45,7 +45,6 @@ async def promoting(_, message):
      admire = message.from_user
      user_stats = await bot.get_chat_member(chat_id, admire.id)
      bot_stats = await bot.get_chat_member(chat_id, "self")
-     admin_title = message.command[1] if admin_title else "Admin"
      if not bot_stats.privileges:
          return await message.reply("**Lol! Make Me Admin When!**")
      elif not user_stats.privileges:
@@ -56,7 +55,6 @@ async def promoting(_, message):
          return await message.reply("**Your missing the admin rights `can_promote_members**")
      elif user_stats.privileges.can_promote_members:
           msg = await message.reply_text("**Promoting Process.**")
-          await bot.set_administrator_title(chat_id, new_admin.id, admin_title)
           await bot.promote_chat_member(
             chat_id,
             new_admin.id,
