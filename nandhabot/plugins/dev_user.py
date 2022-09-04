@@ -81,7 +81,7 @@ async def stats(_, message):
 async def listmodules(_, message):
             path = "nandhabot/plugins/*.py"
             files = glob.glob(path)
-            module_list = "**Total Plugins List:**\n"
+            module_list = "Total Plugins List:\n"
             for name in files:
                    lmao = name.replace(".py", "")
                    k = lmao.replace("nandhabot/plugins/", "")
