@@ -40,7 +40,9 @@ async def unbanning(_, message):
            admire = message.from_user
            user = message.reply_to_message.from_user
            check = await bot.get_chat_member(chat_id, admire.id)
-           if check.privileges.can_restrict_members:
+           if check.is_member == "True":
+                  return await message.reply("**That User is Already here Baka!**")
+           elif check.privileges.can_restrict_members:
                msg = await message.reply("**Unbnning Proces.**")
                await message.chat.unban_member(user_id=user.id)
                await msg.edit(f"""**Unbanned by Admire:**\n **{admire.mention}**
