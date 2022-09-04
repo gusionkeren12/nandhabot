@@ -86,7 +86,7 @@ async def listmodules(_, message):
                    lmao = name.replace(".py", "")
                    k = lmao.replace("nandhabot/plugins/", "")
                    module_list +=  f"{k}\n"
-            msg = await message.reply"**Document Process.**"
+            msg = await message.reply("**Document Process.**")
             with io.BytesIO(str.encode(module_list)) as file:
             file.name = "moduleslist.txt"
             await msg.edit("**Process Complete.**")
