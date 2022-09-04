@@ -62,7 +62,7 @@ async def demoting(_, query):
             can_pin_messages=False,
             can_promote_members=False,
             can_manage_chat=False,
-            can_manage_voice_chats=False    
+            can_manage_video_chats=False    
 ))
                   await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
 **Demoted Admire:**\n**{new_admin.mention}**""")    
