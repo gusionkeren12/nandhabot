@@ -50,7 +50,7 @@ async def promoting(_, message):
 async def demoting(_, query):
          chat_id = query.message.chat.id
          stats = await bot.get_chat_member(query.message.chat.id, query.from_user.id)
-         if stats.privileges:
+         if stats.privileges.can_promote_members:
                   await bot.promote_chat_member(
                      chat_id,
             new_admin.id,
@@ -64,7 +64,7 @@ async def demoting(_, query):
                   await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
 **Demoted Admire:**\n**{new_admin.mention}**""")    
          else:
-               await query.answer("You Not Admin!", show_alert=True )
+               await query.answer("You can't Demote!", show_alert=True )
                     
         
 
