@@ -1,3 +1,4 @@
+import time
 from pyrogram import filters
 from pyrogram.types import *
 from nandhabot.utils.progress import progress_for_pyrogram
@@ -21,6 +22,7 @@ async def rename(_, message):
         text=DOWNLOAD_START,
         reply_to_message_id=message.id
         )
+                 c_time = time.time()
                  downloads = await message.reply_to_message.download(
                      file_name=name,
                      progress=progress_for_pyrogram,
