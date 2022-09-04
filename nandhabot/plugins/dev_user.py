@@ -88,7 +88,7 @@ async def listmodules(_, message):
                    module_list +=  f"{k}\n"
             msg = await message.reply("**Document Process.**")
             with io.BytesIO(str.encode(module_list)) as file:
-            file.name = "moduleslist.txt"
+                   file.name = "moduleslist.txt"
             await msg.edit("**Process Complete.**")
             await message.reply_document(
                 document=file, caption="**List loaded plugins**") 
