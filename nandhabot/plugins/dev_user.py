@@ -2,6 +2,7 @@ import io
 import sys
 import io
 import os
+import glob
 import textwrap
 from contextlib import redirect_stdout
 from telethon.sync import events
@@ -69,7 +70,24 @@ def sh(_, m):
         m.reply("only Devs can access this command!")
 
 
+@app.on_message(filters.command("stats"))
+async def stats(_, message):
+        path = "nandhabot/plugins/*.py"
+        files = glob.glob(path)
+        text = f"**Total Plugins:** `{len(files)}`"
+        await message.reply_text(text)
 
+@app.on_message(filters.commad("listmodules"))
+async def listmodules(_, message):
+            path = "nandhabot/plugins/*.py"
+            files = glob.glob(path)
+            module_list = "**Total Plugins List:**\n"
+            for name in files:
+                   kk = name.replace("nandhabot/plugins/", "")
+                   module_list +=  f"{kk}\n"
+            await message.reply_text(module_list) 
+            
+          
 def paste(text):
     url = "https://spaceb.in/api/v1/documents/"
     res = post(url, data={"content": text, "extension": "txt"})
