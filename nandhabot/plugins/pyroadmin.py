@@ -6,6 +6,8 @@ import os, io, json
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
    try:
+       if not message.reply_to_message:
+             return await message.reply("**Reply to Someone.**")
        chat_id = message.chat.id
        admire = message.from_user
        user = message.reply_to_message.from_user
@@ -32,15 +34,17 @@ async def demotes(_, message):
 @bot.on_message(filters.command("unban"))
 async def unbanning(_, message):
         try:
+           if not message.reply_to_message:
+                 return await message.reply("**Reply to Someone.**")
            chat_id = message.chat.id
            admire = message.from_user
            user = message.reply_to_message.from_user
            check = await bot.get_chat_member(chat_id, admire.id)
            if check.privileges.can_restrict_members:
                msg = await message.reply("**Unbnning Proces.**")
-               message.chat.unban_member(user.id)
+               await message.chat.unban_member(user_id=user.id)
                await msg.edit(f"""**Unbanned by Admire:**\n **{admire.mention}**
-**UnBanned User**:\n**{user.mention}**""")
+**Unbanned User**:\n**{user.mention}**""")
         except Exception as errors:
            await message.reply(f"**Error**: {errors}")
            
