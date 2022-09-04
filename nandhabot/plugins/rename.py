@@ -3,7 +3,9 @@ from pyrogram.types import *
 from nandhabot.utils.progress import progress_for_pyrogram
 from nandhabot import bot
 
-
+DOWNLOAD_START = "<b>Downloading To My server !! Pls Wait</b>"
+UPLOAD_START = "<b>Downloading Completed Now I'm Uploading Into TeleGram</b>"
+AFTER_SUCCESSFUL_UPLOAD_MSG = "<b>Thank you for Using Me Support Our Channel @NandhaBots</b>"
 
 @bot.on_message(filters.command("rename"))
 async def rename(_, message):
@@ -14,11 +16,32 @@ async def rename(_, message):
                   return await message.reply("provide some text with in extinction!\n for example: `/rename movies.mkv`")
              name = message.text.split(None, 1)[1]
              if message.reply_to_message.media:
-                 msg = await message.reply("`now downloading...`")
-                 downloads = await message.reply_to_message.download(file_name=name, progress=progress_for_pyrogram)
-                 await msg.edit("`download complete!\n now uploading to telegram")
-                 return await message.reply_document(downloads)
-                 await msg.delete()
+                 a = await bot.send_message(
+        chat_id=message.chat.id,
+        text=DOWNLOAD_START,
+        reply_to_message_id=message.id
+        )
+                 downloads = await message.reply_to_message.download(
+                     file_name=name,
+                     progress=progress_for_pyrogram,
+                     progress_args=(
+                DOWNLOAD_START,
+                a,
+                c_time
+            ))
+                 await bot.edit_message_text(
+                text=UPLOAD_START,
+                chat_id=message.chat.id,
+                message_id=a.id
+                )
+                 await message.reply_document(downloads)
+                 await bot.edit_message_text(
+                text=AFTER_SUCCESSFUL_UPLOAD_MSG,
+                chat_id=message.chat.id,
+                message_id=a.id,
+                disable_web_page_preview=True
+           )
+                 
           except Exception as error:
                  await message.reply(f"**ERROR**: {error}")
              
