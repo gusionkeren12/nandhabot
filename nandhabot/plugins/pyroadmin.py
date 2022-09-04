@@ -9,18 +9,7 @@ import os, io, json
       
       
 
-@bot.on_message(filters.command("admins"))
-async def admins(_, message):
-        administrators = []
-        async for m in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
-                      administrators.append(m)
-        data = json.loads(str(m))
-        username = data['user']['username']
-        with io.BytesIO(str.encode(username)) as adminlist:
-            adminlist.name = "admins.txt"
-            await message.reply_document(
-                document=adminlist,
-            )
+
         
 
 @bot.on_message(filters.command("del"))
@@ -51,6 +40,7 @@ async def delete(_, m):
 
 @bot.on_message(filters.command("ban"))
 async def banned(_, message):
+                  global reply_user, 
          if not message.reply_to_message:
                    return await message.reply("Reply to Someone to BAN")
          reply_user = message.reply_to_message.from_user
@@ -70,8 +60,16 @@ async def banned(_, message):
                    return await message.reply("Sorry son I can't ban administrators")
          elif not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
-                     await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}")
-                     return 
+                     await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}",
+                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text=Unban", callback_data="unban")]]))
+                     
+@bot.on_callback_query(filters.regex("unban"))
+async def unbaning(_, query):
+         stats = await bot.get_chat_member(message.chat.id, query.from_user.id)
+         if stats.privileges:
+                  await bot.unban_chat_member(query.message.chat.id, reply_user.id)
+                  await query.message.edit(f"""**Admire: {query.from_user.mention}**
+**Unban: {reply_user.mention}**""")
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
