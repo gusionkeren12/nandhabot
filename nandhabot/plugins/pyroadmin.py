@@ -39,7 +39,7 @@ async def promoting(_, message):
             can_restrict_members=True
 ))
           await msg.edit(f"""**Promoted Admire: {admire.mention}**
-          **New Admire: {new_admin.mention}** """
+          **New Admire: {new_admin.mention}** """)
      
 
         
