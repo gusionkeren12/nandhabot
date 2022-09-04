@@ -19,9 +19,7 @@ async def promoting(_, message):
      admire = message.from_user
      user_stats = await bot.get_chat_member(chat_id, admire.id)
      bot_stats = await bot.get_chat_member(chat_id, "self")
-     admin_title = message.command[1]
-     if not admin_title:
-           return "Admin"
+     admin_title = message.command[1] if admin_title else "Admin"
      if not bot_stats.privileges:
          return await message.reply("**Lol! Make Me Admin When!**")
      elif not user_stats.privileges:
