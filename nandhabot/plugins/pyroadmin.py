@@ -1,7 +1,7 @@
 from pyrogram import filters, enums
 from nandhabot import bot
 from pyrogram.types import *
-import os, io, json
+import os, io
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
