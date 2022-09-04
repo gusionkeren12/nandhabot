@@ -70,6 +70,8 @@ async def unbaning(_, query):
                   await bot.unban_chat_member(query.message.chat.id, reply_user.id)
                   await query.message.edit(f"""**Admire: {query.from_user.mention}**
 **Unban: {reply_user.mention}**""")
+          else:
+               await query.answer("You Not Admin!", show_alert=True )
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
 async def setgrouptitle(_, m):
