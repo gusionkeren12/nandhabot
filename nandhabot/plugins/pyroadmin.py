@@ -10,6 +10,7 @@ import os, io, json
       
 @bot.on_message(filters.command("promote"))
 async def promoting(_, message):
+     global new_admin
      if not message.reply_to_message:
          return await message.reply("**Reply someone To Promoting.**")
      reply = message.reply_to_message
@@ -38,10 +39,23 @@ async def promoting(_, message):
             can_manage_video_chats=True,
             can_restrict_members=True
 ))
-          await msg.edit(f"""**Promoted Admire: {admire.mention}**
-          **New Admire: {new_admin.mention}** """)
+          await msg.edit(f"""**Promoted Admire**:\n**{admire.mention}**
+          **New Admire:**\n**{new_admin.mention}** """,
+              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Demote", callback_data="demote"),
+                                                        InlineKeyboardButton(text="Delete", callback_data="close")]]))
+                               
      
-
+                     
+@bot.on_callback_query(filters.regex("demote"))
+async def demoting(_, query):
+         stats = await bot.get_chat_member(query.message.chat.id, query.from_user.id)
+         if stats.privileges:
+                  await bot.unban_chat_member(query.message.chat.id, new_admin.id)
+                  await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
+**Demoted Admire:**\n**{reply_user.mention}**""")    
+         else:
+               await query.answer("You Not Admin!", show_alert=True )
+                    
         
 
 @bot.on_message(filters.command("del"))
