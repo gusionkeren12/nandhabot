@@ -30,7 +30,7 @@ async def promoting(_, message):
           msg = await message.reply_text("**Promoting Process.**")
           await bot.promote_chat_member(
             chat_id,
-            new_admire.id,
+            new_admin.id,
             privileges=pyrogram.types.ChatPrivileges(
             can_delete_messages=True,
             can_pin_messages=True,
