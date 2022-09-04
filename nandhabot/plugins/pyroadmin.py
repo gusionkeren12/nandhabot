@@ -55,11 +55,14 @@ async def demoting(_, query):
                      chat_id,
             new_admin.id,
             privileges=pyrogram.types.ChatPrivileges(
-            can_delete_messages=False,
-            can_pin_messages=False,
+            can_change_info=False,
             can_invite_users=False,
-            can_manage_video_chats=False,
-            can_restrict_members=False
+            can_delete_messages=False,
+            can_restrict_members=False,
+            can_pin_messages=False,
+            can_promote_members=False,
+            can_manage_chat=False,
+            can_manage_voice_chats=False    
 ))
                   await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
 **Demoted Admire:**\n**{new_admin.mention}**""")    
