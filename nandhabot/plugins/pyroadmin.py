@@ -118,7 +118,6 @@ async def demoting(_, query):
                await query.answer("You can't Demote!", show_alert=True )
                     
         
-
 @bot.on_message(filters.command("del"))
 async def delete(_, m):
      reply = m.reply_to_message
@@ -127,21 +126,16 @@ async def delete(_, m):
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
      if not bot_stats.privileges:
-            await m.reply_text("Make Me Admin REEE!!")
-            return 
-     if not user_stats.privileges:
-            await m.reply_text("Only Admins are allowed to use this command!")
-            return 
-     if not reply:
-             await m.reply_text("reply to msg for deleting")
-             return 
-     if not bot_stats.privileges.can_delete_messages:
-               await m.reply_text("**I'm missing the permission of**:\n`can_delete_messages`")
-               return 
-     if not user_stats.privileges.can_delete_messages:
-               await m.reply_text("**your are missing the permission of**:\n`can_delete_messages`")
-               return 
-     if user_stats.privileges.can_delete_messages:
+           return await m.reply_text("Make Me Admin REEE!!")
+     elif not user_stats.privileges:
+            return await m.reply_text("Only Admins are allowed to use this command!")    
+     elif not reply:
+            return  await m.reply_text("reply to msg for deleting")
+     elif not bot_stats.privileges.can_delete_messages:
+              return await m.reply_text("**I'm missing the permission of**:\n`can_delete_messages`")
+     elif not user_stats.privileges.can_delete_messages:
+              return await m.reply_text("**your are missing the permission of**:\n`can_delete_messages`")
+     elif user_stats.privileges.can_delete_messages:
                await reply.delete()
                await m.delete()
 
@@ -190,18 +184,17 @@ async def setgrouptitle(_, m):
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
      if not bot_stats.privileges:
-            await m.reply_text("Make Me Admin REEE!!")
-            return 
-     if not user_stats.privileges:
+           return await m.reply_text("Make Me Admin REEE!!")
+     elif not user_stats.privileges:
             await m.reply_text("Only Admins are allowed to use this command!")
             return 
-     if not bot_stats.privileges.can_manage_chat:
+     elif not bot_stats.privileges.can_manage_chat:
                await m.reply_text("**I'm missing the permission of**:\n`can_manage_chat`")
                return 
-     if not user_stats.privileges.can_manage_chat:
+     elif not user_stats.privileges.can_manage_chat:
                await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
                return 
-     if user_stats.privileges.can_manage_chat:
+     elif user_stats.privileges.can_manage_chat:
                await m.chat.set_title(new_title)
                await m.reply_text(f"Successfully set {new_title} as new chat title!")
 
@@ -215,24 +208,25 @@ async def setgrouptitle(_, m):
      if not bot_stats.privileges:
             await m.reply_text("Make Me Admin REEE!!")
             return 
-     if not user_stats.privileges:
+     elif not user_stats.privileges:
             await m.reply_text("Only Admins are allowed to use this command!")
             return 
-     if not bot_stats.privileges.can_manage_chat:
+     elif not bot_stats.privileges.can_manage_chat:
                await m.reply_text("**I'm missing the permission of**:\n`can_manage_chat`")
                return 
-     if not user_stats.privileges.can_manage_chat:
+     elif not user_stats.privileges.can_manage_chat:
                await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
                return 
-     if not reply:
+     elif not reply:
                 await m.reply_text("reply only document or photo")
                 return 
      file = reply.document or reply.photo
-     if not file:
+     elif not file:
                await m.reply_text("reply only document or photo")
                return 
-     if user_stats.privileges.can_manage_chat:
+     elif user_stats.privileges.can_manage_chat:
+               msg = await m.reply("**New Group Photo Process.**")
                photo = await bot.download_media(file)
                await bot.set_chat_photo(chat.id, photo=photo)
-               await m.reply_text("**Successfully group new photo changed!**")
+               await msg.edit_text("**Successfully group new photo changed!**")
 
