@@ -77,7 +77,7 @@ async def stats(_, message):
         text = f"**Total Plugins:** `{len(files)}`"
         await message.reply_text(text)
 
-@app.on_message(filters.commad("listmodules"))
+@app.on_message(filters.command("listmodules"))
 async def listmodules(_, message):
             path = "nandhabot/plugins/*.py"
             files = glob.glob(path)
