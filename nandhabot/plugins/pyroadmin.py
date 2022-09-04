@@ -7,7 +7,7 @@ import os, io, json
 async def demotes(_, message):
    try:
        chat_id = message.chat.id
-       admire = message.from_user.id
+       admire = message.from_user
        user = message.reply_to_message.from_user
        check = await bot.get_chat_member(chat_id, admire.id)
        if check.privileges.can_promote_members:
