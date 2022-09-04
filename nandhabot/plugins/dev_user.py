@@ -83,9 +83,15 @@ async def listmodules(_, message):
             files = glob.glob(path)
             module_list = "**Total Plugins List:**\n"
             for name in files:
-                   kk = name.replace("nandhabot/plugins/", "")
-                   module_list +=  f"{kk}\n"
-            await message.reply_text(module_list) 
+                   lmao = name.replace(".py", "")
+                   k = lmao.replace("nandhabot/plugins/", "")
+                   module_list +=  f"{k}\n"
+            msg = await message.reply"**Document Process.**"
+            with io.BytesIO(str.encode(module_list)) as file:
+            file.name = "moduleslist.txt"
+            await msg.edit("**Process Complete.**")
+            await message.reply_document(
+                document=file, caption="**List loaded plugins**") 
             
           
 def paste(text):
