@@ -65,7 +65,7 @@ async def banned(_, message):
                      
 @bot.on_callback_query(filters.regex("unban"))
 async def unbaning(_, query):
-         stats = await bot.get_chat_member(message.chat.id, query.from_user.id)
+         stats = await bot.get_chat_member(query.message.chat.id, query.from_user.id)
          if stats.privileges:
                   await bot.unban_chat_member(query.message.chat.id, reply_user.id)
                   await query.message.edit(f"""**Admire: {query.from_user.mention}**
