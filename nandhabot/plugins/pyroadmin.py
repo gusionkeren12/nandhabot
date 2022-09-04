@@ -16,7 +16,7 @@ async def promoting(_, message):
      chat_id = message.chat.id
      new_admin = reply.from_user.id
      admire = message.from_user
-     user_stats = await bot.get_chat_member(chat_id, new_admin.id)
+     user_stats = await bot.get_chat_member(chat_id, admire.id)
      bot_stats = await bot.get_chat_member(chat_id, "self")
      if not bot_stats.privileges:
          return await message.reply("**Lol! Make Me Admin When!**")
