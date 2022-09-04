@@ -218,12 +218,11 @@ async def setgrouptitle(_, m):
                await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
                return 
      elif not reply:
-                await m.reply_text("reply only document or photo")
-                return 
-     file = reply.document or reply.photo
-     elif not file:
-               await m.reply_text("reply only document or photo")
-               return 
+            return await m.reply_text("reply only document or photo")
+             
+     elif not reply.document or reply.photo:
+              return await m.reply_text("reply only document or photo")
+               
      elif user_stats.privileges.can_manage_chat:
                msg = await m.reply("**New Group Photo Process.**")
                photo = await bot.download_media(file)
