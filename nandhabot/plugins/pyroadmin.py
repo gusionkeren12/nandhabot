@@ -8,7 +8,30 @@ import os, io, json
    
       
       
-
+@bot.on_message(filters.command("promote"))
+async def promoting(_, message):
+     if not message.reply_to_message:
+         return await message.reply("**Reply someone To Promoting.**")
+     reply = message.reply_to_message
+     chat_id = message.chat.id
+     new_admin = reply.from_user.id
+     admire = message.from_user
+     user_stats = await bot.get_chat_member(chat_id, new_admin.id)
+     bot_stats = await bot.get_chat_member(chat_id, "self")
+     if not bot_stats.privileges:
+         return await message.reply("**Lol! Make Me Admin When!**")
+     elif not user_stats.privileges:
+         return await message.reply("**You Needs Admin Rights to Control Me (~_^)!**")
+     elif not bot_stats.privileges.can_promote_members:
+         return await message.reply("**I'm missing the admin rights `can_promote_members**")
+     elif not user_stats.privileges.can_promote_members:
+         return await message.reply("**Your missing the admin rights `can_promote_members**")
+     elif user_stats.privileges.can_promote_members:
+          msg = await message.reply_text("**Promoting Process.**")
+          await bot.promote_chat_members(chat_id, user_id)
+          await msg.edit(f"""**Promoted Admire: {admire.mention}**
+          **New Admire: {new_admin.mention}** """
+     
 
         
 
@@ -61,7 +84,8 @@ async def banned(_, message):
          elif not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}",
-                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban")]]))
+                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban"),
+                                                        InlineKeyboardButton(text="Delete", callback_data="close")]]))
                      
 @bot.on_callback_query(filters.regex("unban"))
 async def unbaning(_, query):
@@ -69,8 +93,8 @@ async def unbaning(_, query):
          if stats.privileges:
                   await bot.unban_chat_member(query.message.chat.id, reply_user.id)
                   await query.message.edit(f"""**Admire: {query.from_user.mention}**
-**Unban: {reply_user.mention}**""")
-          else:
+**Unban: {reply_user.mention}**""")    
+         else:
                await query.answer("You Not Admin!", show_alert=True )
                     
 @bot.on_message(filters.command(["setgtitle","setchattitle"]))
