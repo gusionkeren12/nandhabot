@@ -62,7 +62,7 @@ async def demoting(_, query):
             can_restrict_members=False
 ))
                   await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
-**Demoted Admire:**\n**{reply_user.mention}**""")    
+**Demoted Admire:**\n**{new_admin.mention}**""")    
          else:
                await query.answer("You Not Admin!", show_alert=True )
                     
