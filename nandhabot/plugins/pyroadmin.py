@@ -28,7 +28,16 @@ async def promoting(_, message):
          return await message.reply("**Your missing the admin rights `can_promote_members**")
      elif user_stats.privileges.can_promote_members:
           msg = await message.reply_text("**Promoting Process.**")
-          await bot.promote_chat_members(chat_id, user_id)
+          await bot.promote_chat_member(
+            chat_id,
+            new_admire.id,
+            privileges=pyrogram.types.ChatPrivileges(
+            can_delete_messages=True,
+            can_pin_messages=True,
+            can_invite_users=True,
+            can_manage_video_chats=True,
+            can_restrict_members=True
+))
           await msg.edit(f"""**Promoted Admire: {admire.mention}**
           **New Admire: {new_admin.mention}** """
      
