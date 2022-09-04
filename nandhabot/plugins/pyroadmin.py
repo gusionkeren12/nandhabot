@@ -61,7 +61,7 @@ async def banned(_, message):
          elif not reply_user_stats.privileges:
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}",
-                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text=Unban", callback_data="unban")]]))
+                     reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban")]]))
                      
 @bot.on_callback_query(filters.regex("unban"))
 async def unbaning(_, query):
