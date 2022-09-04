@@ -40,7 +40,7 @@ async def delete(_, m):
 
 @bot.on_message(filters.command("ban"))
 async def banned(_, message):
-                  global reply_user, 
+                  global reply_user
          if not message.reply_to_message:
                    return await message.reply("Reply to Someone to BAN")
          reply_user = message.reply_to_message.from_user
