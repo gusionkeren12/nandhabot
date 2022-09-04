@@ -48,9 +48,19 @@ async def promoting(_, message):
                      
 @bot.on_callback_query(filters.regex("demote"))
 async def demoting(_, query):
+         chat_id = query.message.chat.id
          stats = await bot.get_chat_member(query.message.chat.id, query.from_user.id)
          if stats.privileges:
-                  await bot.unban_chat_member(query.message.chat.id, new_admin.id)
+                  await bot.promote_chat_member(
+                     chat_id,
+            new_admin.id,
+            privileges=pyrogram.types.ChatPrivileges(
+            can_delete_messages=False,
+            can_pin_messages=False,
+            can_invite_users=False,
+            can_manage_video_chats=False,
+            can_restrict_members=False
+))
                   await query.message.edit(f"""**Demote by Admire:**\n** {query.from_user.mention}**
 **Demoted Admire:**\n**{reply_user.mention}**""")    
          else:
