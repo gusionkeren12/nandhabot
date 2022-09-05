@@ -162,7 +162,7 @@ async def banned(_, message):
                   ko = await message.reply_text("**Provide A Reason For Banning.**")
                   time.sleep(5)
                   ko.delete()
-         reason = message.command[1]
+         
          elif not bot_stats.privileges:
                   return await message.reply("Make Me Admin with (`can_restrict_members`) power!")
          elif not from_user_stats.privileges:
@@ -174,6 +174,7 @@ async def banned(_, message):
          elif reply_user_stats.privileges:
                    return await message.reply("Sorry son I can't ban administrators")
          elif not reply_user_stats.privileges:
+                     reason = message.command[1]
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"**Banned: {reply_user.mention}**\n**Reason: {reason}**",
                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban"),
