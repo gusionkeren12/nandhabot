@@ -7,13 +7,14 @@ import os, io
 async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
-     
+       admires = []
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    name = m.user.id
+                    admires.append(m.user.id)
+      
                     for admin in name:
                           admins = f"**Admires in {chat_title}**\n"
                           admins += f"**[{admin}](tg://user?id={admin})**\n"
-                    await message.reply(admins)
+                    await message.reply_text(str(admins))
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
@@ -240,4 +241,4 @@ async def setgrouptitle(_, m):
                photo = await bot.download_media(file)
                await bot.set_chat_photo(chat.id, photo=photo)
                await msg.edit_text("**Successfully group new photo changed!**")
-
+#gg
