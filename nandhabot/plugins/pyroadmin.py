@@ -11,6 +11,7 @@ async def admins(_, message):
                     admins = "**Admires in {chat_title}**\n"
                     for admire in m:
                          admins += f"**{admire.user.mention}**\n")
+                    await message.reply(admins)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
