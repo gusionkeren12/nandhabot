@@ -224,9 +224,10 @@ async def setgrouptitle(_, m):
      chat = m.chat
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
-     if not reply.media and not reply:
+     format = reply or reply.media
+     if not format:
               return await m.reply_text("reply only document or photo")
-               
+      
      elif not bot_stats.privileges:
             return await m.reply_text("Make Me Admin REEE!!")
              
