@@ -10,15 +10,13 @@ async def admins(_, message):
        normal_admin_list = []
        msg = await message.reply_text("**Searching Admins!**")
        administrators = bot.get_chat_members(chat_id=message.chat.id, filter="administrators")
-  
-                    for admin in administrators:
-                          user = admin.user
-                          name = "{}".format(user.mention)
-                          normal_admin_list.append(name)
-
-                    for admin in normal_admin_list:
-                           text = "<code> • </code>{}".format(admin)
-                           await msg.edit(text)
+       for admin in administrators:
+                  user = admin.user
+                  name = "{}".format(user.mention)
+                  normal_admin_list.append(name)
+       for admin in normal_admin_list:
+                   text = "<code> • </code>{}".format(admin)
+                   await msg.edit(text)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
