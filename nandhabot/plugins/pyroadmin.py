@@ -214,7 +214,10 @@ async def setgrouptitle(_, m):
      chat = m.chat
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
-     if not bot_stats.privileges:
+     if not reply or not reply.document or not reply.photo:
+              return await m.reply_text("reply only document or photo")
+               
+     elif not bot_stats.privileges:
             return await m.reply_text("Make Me Admin REEE!!")
              
      elif not user_stats.privileges:
@@ -226,11 +229,8 @@ async def setgrouptitle(_, m):
      elif not user_stats.privileges.can_change_info:
                return await m.reply_text("**your are missing the permission of**:\n`can_change_info`")
                 
-     elif not reply and not reply.document and not reply.photo:
-              return await m.reply_text("reply only document or photo")
-               
      elif user_stats.privileges.can_change_info:
                msg = await m.reply("**New Group Photo Process.**")
-               photo = await bot.download_media(file)
+               photo = await message.reply_to_message.download()
                await bot.set_chat_photo(chat.id, photo=photo)
                await msg.edit_text("**Successfully group photo Applied**")
