@@ -6,8 +6,11 @@ import os, io
 @bot.on_message(filters.command("admins"))
 async def admins(_, message):
        chat_id = message.chat.id
+       chat_title = message.chat.title
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    await message.reply_text(m.user.mention)
+                    admins = "**Admires in {chat_title}**\n"
+                    for admire in m:
+                         admins += f"**{admire.user.mention}**\n")
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
