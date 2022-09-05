@@ -7,7 +7,7 @@ import os, io
 async def admins(_, message):
        chat_id = message.chat.id
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    print(m.user.mention)
+                    await message.reply_text(m.user.mention)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
