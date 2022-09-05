@@ -10,7 +10,8 @@ async def admins(_, message):
        ok = []
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
                     ok.append(m.user.first_name)
-                    await message.reply_text(ok)
+                    for name in ok:
+                          await message.reply_text(name)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
@@ -161,7 +162,7 @@ async def banned(_, message):
          if len(message.command) <2:
                   ko = await message.reply_text("**Provide A Reason For Banning.**")
                   time.sleep(5)
-                  ko.delete()
+                  await ko.delete()
          
          elif not bot_stats.privileges:
                   return await message.reply("Make Me Admin with (`can_restrict_members`) power!")
@@ -174,7 +175,7 @@ async def banned(_, message):
          elif reply_user_stats.privileges:
                    return await message.reply("Sorry son I can't ban administrators")
          elif not reply_user_stats.privileges:
-                     reason = message.command[1]
+                     reason = message.text.split(None, 1)[1]
                      await bot.ban_chat_member(message.chat.id, reply_user.id)
                      await message.reply_text(f"**Banned: {reply_user.mention}**\n**Reason: {reason}**",
                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban"),
