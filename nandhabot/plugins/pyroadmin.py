@@ -7,12 +7,9 @@ import os, io
 async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
-       admires = []
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    admins = "**Admires in {chat_title}**\n"
-                    admires.append(m.user.id)
-                    for admire in admires:
-                         admins += f"**[{admire}](tg://user?id={admire})**\n"
+                    admins = f"**Admires in {chat_title}**\n"
+                    admins += f"**[{m.user.id}](tg://user?id={m.user.id})**\n"
                     await message.reply(admins)
 
 @bot.on_message(filters.command("demote"))
