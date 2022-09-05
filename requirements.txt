@@ -1,5 +1,6 @@
 emoji
 bs4
+bing_image_downloader
 aiohttp
 uvloop
 pyrogram
@@ -8,6 +9,7 @@ requests
 dnspython
 tgcrypto
 typing
+telethon==1.25.0
 telegraph
 Python_ARQ
 pymongo
@@ -18,8 +20,6 @@ wikipedia
 secureme
 countryinfo
 lxml
-telethon
-bing_image_downloader
 faker
 PyDictionary
 safoneapi
