@@ -11,7 +11,7 @@ async def admins(_, message):
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
                     admires.append(m.user.id)
       
-                    for admin in name:
+                    for admin in admires:
                           admins = f"**Admires in {chat_title}**\n"
                           admins += f"**[{admin}](tg://user?id={admin})**\n"
                     await message.reply_text(str(admins))
