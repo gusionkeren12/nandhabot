@@ -49,11 +49,12 @@ async def reddit(_, m):
               await m.reply_text("Gime text to search reddit!")
               return 
           text = m.text.split(None, 1)[1]
-          x = await arq.reddit(text)
-          y = x.result
-          url  = y["url"]
-          title = y["title"]
-          await m.reply_photo(url,caption=title)
+          search = await arq.reddit(text)
+          url = search.result["url"]
+          title = search.result["title"]
+          postlink = search.result["postLink"]
+          await m.reply_photo(url,caption=f"**{title}**",
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Post Link", url=postlink")]]))
 
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
