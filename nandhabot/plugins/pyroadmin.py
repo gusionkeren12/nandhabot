@@ -8,12 +8,14 @@ async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
        admin_list = []
+       yeah = []
        msg = await message.reply_text("**Searching Admins!**")
        async for administrators in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
                      admin_list.append(administrators.user.mention)
                      for admin in admin_list:
-                           for name in admin:
-                                text = "• {}".format(name)
+                            yeah.append(admin)
+                     for domn in yeah:
+                                text = "• {}".format(domn)
                                 await msg.edit(text)
 
 @bot.on_message(filters.command("demote"))
