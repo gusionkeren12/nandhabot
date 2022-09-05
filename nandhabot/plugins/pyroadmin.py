@@ -12,7 +12,7 @@ async def admins(_, message):
                     ok.append(m.user.id)
                     for admin in ok:
                           admins = f"**Admires in {chat_title}**\n"
-                          admins += f"**[{ok}](tg://user?id={ok})**\n"
+                          admins += f"**[{admin}](tg://user?id={admin})**\n"
                     await message.reply(admins)
 
 @bot.on_message(filters.command("demote"))
