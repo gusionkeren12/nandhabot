@@ -12,11 +12,11 @@ async def admins(_, message):
        msg = await message.reply_text("**Searching Admins!**")
        async for administrators in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
                      admin_list.append(administrators.user.mention)
+                     ok = "Admins:\n"
                      for admin in admin_list:
-                            yeah.append(admin)
-                     for domn in yeah:
-                                text = f"• {domn}\n"
-                                await message.reply(text)
+                             ok += f"[{admin}]({admin})"
+                             await message.reply(ok)
+                            
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
