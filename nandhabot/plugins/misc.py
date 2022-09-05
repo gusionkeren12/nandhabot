@@ -54,7 +54,7 @@ async def reddit(_, m):
           title = search.result["title"]
           postlink = search.result["postLink"]
           await m.reply_photo(url,caption=f"**{title}**",
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Post Link", url=postlink")]]))
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Post Link", url=postlink)]]))
 
 @bot.on_message(filters.command(["lang", "langs"]))
 def language(_, m: Message):
