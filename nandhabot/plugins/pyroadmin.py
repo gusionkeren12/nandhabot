@@ -173,6 +173,11 @@ async def banned(_, message):
                      await message.reply_text(f"Admin {from_user.mention} BANNED {reply_user.mention} from {message.chat.title}",
                      reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Unban", callback_data="unban"),
                                                         InlineKeyboardButton(text="Delete", callback_data="close")]]))
+       
+         else:
+                user_id = message.command
+               
+               
                      
 @bot.on_callback_query(filters.regex("unban"))
 async def unbaning(_, query):
@@ -214,8 +219,8 @@ async def setgrouptitle(_, m):
      chat = m.chat
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
-     if not reply.media:
-              await m.reply_text("reply only document or photo")
+     if not reply.media and not reply:
+              return await m.reply_text("reply only document or photo")
                
      elif not bot_stats.privileges:
             return await m.reply_text("Make Me Admin REEE!!")
