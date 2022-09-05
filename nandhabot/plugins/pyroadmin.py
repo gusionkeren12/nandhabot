@@ -7,9 +7,10 @@ import os, io
 async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
+       ok = []
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                   
-                    for admin in m.user.id:
+                    ok.append(m.user.id)
+                    for admin in ok:
                           admins = f"**Admires in** \n**{chat_title}**\n"
                           admins += f"**[{admin}](tg://user?id={admin})**\n"
                     await message.reply_text(admins)
