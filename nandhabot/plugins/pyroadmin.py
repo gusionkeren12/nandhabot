@@ -3,11 +3,11 @@ from nandhabot import bot
 from pyrogram.types import *
 import os, io
 
-@bot.on_message(filters.command(["admins","adminlist"]))
+@bot.on_message(filters.command("admins"))
 async def admins(_, message):
        chat_id = message.chat.id
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    await message.reply(f"**{m.user.mention}**")
+                    print(m.user.mention)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
