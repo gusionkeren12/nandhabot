@@ -9,7 +9,7 @@ async def admins(_, message):
        chat_title = message.chat.title
        ok = []
        async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    ok.append(m.user.id)
+                    ok.append(m.user.first_name)
                     await message.reply_text(ok)
 
 @bot.on_message(filters.command("demote"))
@@ -214,7 +214,7 @@ async def setgrouptitle(_, m):
      chat = m.chat
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
-     if not reply or not reply.document or not reply.photo:
+     if not reply or reply.media:
               return await m.reply_text("reply only document or photo")
                
      elif not bot_stats.privileges:
