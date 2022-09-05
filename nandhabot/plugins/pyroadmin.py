@@ -9,7 +9,7 @@ async def admins(_, message):
        chat_title = message.chat.title
        admin_list = []
        msg = await message.reply_text("**Searching Admins!**")
-       async for administrators in bot.get_chat_members(chat_id=message.chat.id, filter="Administrators"):
+       async for administrators in bot.get_chat_members(message.chat.id, filter=enums.ChatMembersFilter.ADMINISTRATORS):
                      admin_list.append(administrators.user.mention)
                      for admin in admin_list:
                             text = "• {}".format(admin)
