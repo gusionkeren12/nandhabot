@@ -215,25 +215,22 @@ async def setgrouptitle(_, m):
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
      if not bot_stats.privileges:
-            await m.reply_text("Make Me Admin REEE!!")
-            return 
-     elif not user_stats.privileges:
-            await m.reply_text("Only Admins are allowed to use this command!")
-            return 
-     elif not bot_stats.privileges.can_manage_chat:
-               await m.reply_text("**I'm missing the permission of**:\n`can_manage_chat`")
-               return 
-     elif not user_stats.privileges.can_manage_chat:
-               await m.reply_text("**your are missing the permission of**:\n`can_manage_chat`")
-               return 
-     elif not reply:
-            return await m.reply_text("reply only document or photo")
+            return await m.reply_text("Make Me Admin REEE!!")
              
-     elif not reply.document or reply.photo:
+     elif not user_stats.privileges:
+           return await m.reply_text("Only Admins are allowed to use this command!")
+             
+     elif not bot_stats.privileges.can_change_info:
+             return await m.reply_text("**I'm missing the permission of**:\n`can_change_info`")
+                
+     elif not user_stats.privileges.can_change_info:
+               return await m.reply_text("**your are missing the permission of**:\n`can_change_info`")
+                
+     elif not reply and not reply.document and not reply.photo:
               return await m.reply_text("reply only document or photo")
                
-     elif user_stats.privileges.can_manage_chat:
+     elif user_stats.privileges.can_change_info:
                msg = await m.reply("**New Group Photo Process.**")
                photo = await bot.download_media(file)
                await bot.set_chat_photo(chat.id, photo=photo)
-               await msg.edit_text("**Successfully group new photo changed!**")
+               await msg.edit_text("**Successfully group photo Applied**")
