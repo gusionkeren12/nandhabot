@@ -7,16 +7,13 @@ import os, io, time
 async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
-       normal_admin_list = []
+       admin_list = []
        msg = await message.reply_text("**Searching Admins!**")
-       async for administrators in bot.get_chat_members(chat_id=message.chat.id, filter="Administrators")
-       for admin in administrators:
-                  user = admin.user
-                  name = "{}".format(user.mention)
-                  normal_admin_list.append(name)
-       for admin in normal_admin_list:
-                   text = "<code> • </code>{}".format(admin)
-                   await msg.edit(text)
+       async for administrators in bot.get_chat_members(chat_id=message.chat.id, filter="Administrators"):
+                     admin_list.append(administrators.user.mention)
+                     for admin in admin_list:
+                            text = "• {}".format(admin)
+                            await msg.edit(text)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
