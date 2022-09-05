@@ -7,11 +7,18 @@ import os, io, time
 async def admins(_, message):
        chat_id = message.chat.id
        chat_title = message.chat.title
-       ok = []
-       async for m in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
-                    ok.append(m.user.first_name)
-                    for name in ok:
-                          await message.reply_text(name)
+       normal_admin_list = []
+       msg = await message.reply_text("**Searching Admins*")
+       async for administrators in bot.get_chat_members(chat_id,filter=enums.ChatMembersFilter.ADMINISTRATORS): 
+                    
+                    for admin in administrators:
+                          user = admin.user
+                          name = "{}".format(user.mention)
+                          normal_admin_list.append(name)
+
+                    for admin in normal_admin_list:
+                           text = "<code> • </code>{}".format(admin)
+                           await msg.edit(text)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
@@ -224,8 +231,8 @@ async def setgrouptitle(_, m):
      chat = m.chat
      user_stats = await bot.get_chat_member(chat.id, user.id)
      bot_stats = await bot.get_chat_member(chat.id, "self")
-     format = reply or reply.media
-     if not format:
+     
+     if not reply:
               return await m.reply_text("reply only document or photo")
       
      elif not bot_stats.privileges:
