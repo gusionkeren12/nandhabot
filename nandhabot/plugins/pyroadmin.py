@@ -15,8 +15,8 @@ async def admins(_, message):
                      for admin in admin_list:
                             yeah.append(admin)
                      for domn in yeah:
-                                text = "• {}".format(domn)
-                                await msg.edit(text)
+                                text = f"• {domn}\n"
+                                await message.reply(text)
 
 @bot.on_message(filters.command("demote"))
 async def demotes(_, message):
