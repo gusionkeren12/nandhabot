@@ -1,5 +1,5 @@
-from pyrogram import bot 
-from pyrogram.types import filters
+from pyrogram import filters
+from pyrogram.types import *
 from nandhabot import bot
 
 page1 = """
