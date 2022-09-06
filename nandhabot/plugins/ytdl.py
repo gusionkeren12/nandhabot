@@ -47,14 +47,13 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **خطا:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("**Process Complete.\n Now Uploading.**")
-    await message.reply_audio(
+    await message.reply_video(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
-        caption=ytdl_data["title"],
-    )
+        caption=f"{ytdl_data["title"]}\n**Request by {message.from_user.mention}**")
+     await msg.delete()
     try:
         os.remove(file_name)
-        await msg.delete()
     except Exception as e:
         print(e)                                  
