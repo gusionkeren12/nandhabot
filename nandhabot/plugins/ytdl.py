@@ -47,7 +47,7 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **خطا:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("**Process Complete.\n Now Uploading.**")
-    await message.reply_video(
+    await message.reply_audio(
         file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
