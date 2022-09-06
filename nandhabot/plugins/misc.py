@@ -1,4 +1,4 @@
-import os, random , io
+import os, random , io, time
 import requests
 from PIL import Image
 from pyrogram import filters, enums
@@ -17,7 +17,9 @@ async def short_url(_, message):
              elif message.reply_to_message:
                     search = pyshorteners.Shortener()
                     short_url = search.tinyurl.short(message.reply_to_message.text)
-                    await message.reply(f"**Short URL:**{short_url}")
+                    msg await message.reply("**Generating URL Process.**")
+                    time.sleep(2)
+                    await message.reply(f"**Short URL:**\n{short_url}",disable_web_page_preview=True)
 
 @bot.on_message(filters.command(["echo","text"]))
 async def echo(_, m):
