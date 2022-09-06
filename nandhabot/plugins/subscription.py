@@ -13,7 +13,9 @@ async def subscription(_, message):
            if not uid in users:
                 users.append(uid)
                 stats = len(users)
-           await bot.send_message("@NandhaSupport", text=f"""**New User Started Bot**!
-\n **uid: {uid}**
+           await bot.send_message(-1001717881477,f"""**New User Started Bot**!
+**uid: {uid}**
 **Name: {mention}**
-**Total Users Increased: {stats}**""")
+
+**Total Users Increased: {stats}**
+""")
