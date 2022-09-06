@@ -25,3 +25,5 @@ PyDictionary
 safoneapi
 opencv-python-headless
 pyshorteners
+yt_dlp
+youtube_search
