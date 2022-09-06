@@ -13,7 +13,7 @@ from pyrogram.types import *
 from nandhabot import bot
 
 
-@bot.on_message(filters.command("yt"))
+@bot.on_message(filters.command("ytvideo"))
 async def vsong(client, message):
     ydl_opts = {
         "format": "best",
