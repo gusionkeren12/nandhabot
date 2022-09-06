@@ -47,10 +47,11 @@ async def vsong(client, message):
         return await msg.edit(f"🚫 **خطا:** {e}")
     preview = wget.download(thumbnail)
     await msg.edit("**Process Complete.\n Now Uploading.**")
+    title = ytdl_data["title"]
     await message.reply_video(file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
-        caption=f"{ytdl_data["title"]}\n**Request by {message.from_user.mention}**"),)
+        caption=f"{title}\n**Request by {message.from_user.mention}**")
      
     await msg.delete()
     try:
