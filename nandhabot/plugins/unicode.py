@@ -59,5 +59,5 @@ async def unicodes(_, query):
 @bot.on_message(filters.command("unicodes"))
 async def unicodes(_, message):
               await message.reply("**unicodes list below check!**",
-              reply_mark=InlineKeyboardMarkup([[InlineKeyboardButton(text="Page 1", callback_data="unicode1"),
+              reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Page 1", callback_data="unicode1"),
                 InlineKeyboardButton(text="Page 2", callback_data="unicode2")]]))
