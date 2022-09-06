@@ -57,13 +57,33 @@ buttons = [
             InlineKeyboardButton(
                 "HELP", callback_data='help_back'),]]
 
+users = []
+
 @bot.on_message(filters.command(["start"], ["/", ".", "?"]))
 async def start(_, m: Message):
-        await m.reply_photo(
+        uid = message.from_user.id
+        mention = message.from_user.mention
+        if ChatType == ChatTye.PRIVATE:
+                await m.reply_photo(
             random.choice(BOT_IMG),
             caption=pm_text.format(m.from_user.mention),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
+        elif not uid in users:
+            await users.append(uid)
+            await bot.send_message(-1001717881477, f"**Someone Started Our Bot ^o^**\n**Name: {mention}**\n**uid: {uid}**\n**total users {len(stats)}**")
+            await m.reply_photo(
+            random.choice(BOT_IMG),
+            caption=pm_text.format(m.from_user.mention),
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+        else: 
+              await m.reply_photo(
+            random.choice(BOT_IMG),
+            caption=pm_text.format(m.from_user.mention),
+            reply_markup=InlineKeyboardMarkup(buttons),
+        )
+            
    
 HELP_TEXT = """
 **Hello Dear**!
