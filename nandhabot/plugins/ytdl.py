@@ -50,7 +50,7 @@ async def vsong(client, message):
     await message.reply_video(file_name,
         duration=int(ytdl_data["duration"]),
         thumb=preview,
-        caption=f"{ytdl_data["title"]}\n**Request by {message.from_user.mention}**")
+        caption=f"{ytdl_data["title"]}\n**Request by {message.from_user.mention}**"),)
      
     await msg.delete()
     try:
