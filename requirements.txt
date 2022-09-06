@@ -24,3 +24,4 @@ faker
 PyDictionary
 safoneapi
 opencv-python-headless
+pyshorteners
