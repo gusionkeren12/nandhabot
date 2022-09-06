@@ -4,12 +4,14 @@ from pyrogram.enums import ChatType
 
 from nandhabot import bot
 
-@bot.on_message()
+users = []
+
+@bot.on_message(filters.command("start"))
 async def subscription(_, message):
-       users = []
+       
        uid = message.from_user.id
        mention = message.from_user.mention
-       if ChatType == ChatType.PRIVATE and message.text == "/start":
+       if ChatType == ChatType.PRIVATE:
            if not uid in users:
                 users.append(uid)
                 stats = len(users)
