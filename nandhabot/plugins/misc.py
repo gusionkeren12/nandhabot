@@ -8,8 +8,16 @@ from pyrogram.types import Message
 from gpytranslate import Translator
 from nandhabot import bot, SUPPORT_CHAT, arq
 from urllib.parse import quote
+import pyshorteners
 
-
+@bot.on_message(filters.command("shorturl"))
+async def short_url(_, message):
+             if not message.reply_to_message:
+                   return await message.reply("**Reply to URL**")
+             elif message.reply_to_message:
+                    search = pyshorteners.Shortener()
+                    short_url = search.tinyurl.short(message.reply_to_message.text)
+                    await message.reply(f"**Short URL:**{short_url}")
 
 @bot.on_message(filters.command(["echo","text"]))
 async def echo(_, m):
