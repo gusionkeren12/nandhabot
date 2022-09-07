@@ -32,13 +32,13 @@ async def add_user(user_id: int):
 
 NEW_USER_TEXT = """**Someone Started Our Bot ヘ(^_^)ヘ**
 
-🕵 Name: {}
-🆔 UID: {}
+**🕵 Name: {}**
+**🆔 UID: {}**
 
-🌟 Total UserStats: {}
+**🌟 Total UserStats: {}**
 """
-START_TEXT = """ Hey? {}
-Do you know I can do anything for you? (๑•́ ₃ •̀๑) check my available commands for /help.
+START_TEXT = """ **Hey? {}
+Do you know I can do anything for you? (๑•́ ₃ •̀๑) check my available commands for /help.**
 """
 
 
@@ -51,6 +51,7 @@ InlineKeyboardButton(text="📊", url="t.me/Nandha_Network"),],[ InlineKeyboardB
 @bot.on_message(filters.command("start",["/","!",".","?","$"]))
 async def start(_, message):
      user_id = message.from_user.id
+     mention = message.from_user.mention
      if message.chat.type == ChatType.PRIVATE and not await is_user(user_id):
             await add_user(user_id)
             mention = message.from_user.mention
@@ -59,9 +60,11 @@ async def start(_, message):
             await bot.send_message(-1001717881477, text=NEW_USER_TEXT.format(mention, id, user_stats))
             await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
             return 
+         
      elif message.chat.type == ChatType.PRIVATE and await is_user(user_id):
+
                return await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
      elif message.chat.type == ChatType.SUPERGROUP or ChatType.GROUP:
-            return await message.reply_text("**I'm Already Awake! Nani yo? ¯\_(ツ)_/¯**")
+            return await message.reply_text("**I'm Already Awake! Nani yo?\n     ¯\_(ツ)_/¯**")
 
 #### by @NandhaBots ###
