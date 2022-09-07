@@ -32,6 +32,10 @@ BOT_ID = BOT_ID
 CMD = "~"
 TEMP_DOWNLOAD_DIRECTORY = "./" 
 
+###Mogondb Functions # You can use pymongo module also
+MONGO = "mongodb+srv://Dolphin:Dolphin999@cluster0.gsuyn.mongodb.net/?retryWrites=true&w=majority" # mongo db url here
+mongo = MongoClient(MONGO)
+mongodb = mongo.bot 
 
 #main vars set your deploying app
 API_ID = os.environ.get("API_ID", None)
@@ -47,7 +51,6 @@ aiohttpsession = ClientSession()
 arq = ARQ(ARQ_API_URL, ARQ_API_KEY, aiohttpsession)
 telegraph = Telegraph()
 telegraph.create_account(short_name=BOT_USERNAME)
-print("Initializing MongoDB client")
 
 
 dev_user = [1491497760, 2083167999]
