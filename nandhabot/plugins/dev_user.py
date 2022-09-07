@@ -11,6 +11,7 @@ import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
+from nandhabot.plugins.stats import get_users
 from pyrogram import filters
 from pyrogram.types import (
     CallbackQuery,
@@ -59,7 +60,7 @@ async def devlist(_, m):
           m.reply("only Devs can access this command!")
   
         
-@app.on_message(filters.user(dev_user) & filters.command("sh", prefixes=['/', '.', '?', '-']))
+@app.on_message(filters.command("sh", prefixes=['/', '.', '?', '-']))
 def sh(_, m):
     if m.from_user.id in dev_user:
         code = m.text.replace(m.text.split(" ")[0], "")
@@ -74,7 +75,8 @@ def sh(_, m):
 async def stats(_, message):
         path = "nandhabot/plugins/*.py"
         files = glob.glob(path)
-        text = f"**Total Plugins:** `{len(files)}`"
+        text = f"**Total Plugins:** `{len(files)}`,\n"
+        text += f"**Total Users:** `{len(await get_users())}`"
         await message.reply_text(text)
 
 @app.on_message(filters.command("listmodules"))
