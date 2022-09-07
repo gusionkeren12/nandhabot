@@ -64,7 +64,7 @@ users = []
 async def start(_, message):
         uid = message.from_user.id
         mention = message.from_user.mention
-        if message.chat.type == ChatTye.PRIVATE and not uid in users:
+        if message.chat.type == ChatType.PRIVATE and not uid in users:
                 await users.append(uid)
                 await bot.send_message(-1001717881477, f"**Someone Started Our Bot ^o^**\n**Name: {mention}**\n**uid: {uid}**\n**total users {len(stats)}**")
                 await message.reply_photo(
