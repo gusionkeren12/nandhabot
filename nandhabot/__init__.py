@@ -33,7 +33,7 @@ CMD = "~"
 TEMP_DOWNLOAD_DIRECTORY = "./" 
 
 ###Mogondb Functions # You can use pymongo module also
-MONGO = "mongodb+srv://Dolphin:Dolphin999@cluster0.gsuyn.mongodb.net/?retryWrites=true&w=majority" # mongo db url here
+MONGO = "mongodb+srv://Rahulsburi:aaaa1111@cluster0.iij9cx9.mongodb.net/?retryWrites=true&w=majority" # mongo db url here
 mongo = MongoClient(MONGO)
 mongodb = mongo.bot 
 
