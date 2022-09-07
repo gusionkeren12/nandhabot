@@ -11,7 +11,7 @@ import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
-from nandhabot.plugins.stats import get_users get_groups
+from nandhabot.plugins.stats import get_users, get_groups
 from pyrogram import filters
 from pyrogram.types import (
     CallbackQuery,
