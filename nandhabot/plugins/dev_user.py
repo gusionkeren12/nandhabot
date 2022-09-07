@@ -11,7 +11,7 @@ import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
-from nandhabot.plugins.stats import get_users
+from nandhabot.plugins.stats import get_users get_groups
 from pyrogram import filters
 from pyrogram.types import (
     CallbackQuery,
@@ -76,7 +76,8 @@ async def stats(_, message):
         path = "nandhabot/plugins/*.py"
         files = glob.glob(path)
         text = f"**Total Plugins:** `{len(files)}`\n"
-        text += f"**Total Users:** `{len(await get_users())}`"
+        text += f"**Total Users:** `{len(await get_users())}`\n"
+        text += f"**Total Groups:** `{len(await get_groups())}`"
         await message.reply_text(text)
 
 @app.on_message(filters.command("listmodules") & filters.user(dev_user))
