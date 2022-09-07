@@ -65,6 +65,6 @@ async def start(_, message):
 
                return await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
      elif message.chat.type == ChatType.SUPERGROUP or ChatType.GROUP:
-            return await message.reply_text("**I'm Already Awake! Nani yo?\n     ¯\_(ツ)_/¯**")
+            return await message.reply_text("**I'm Already Awake! Nani yo?\n             ¯\_(ツ)_/¯**")
 
 #### by @NandhaBots ###
