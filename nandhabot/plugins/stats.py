@@ -8,8 +8,6 @@ from pyrogram.enums import ChatType
 
 
 usersdb = mongodb.users
-groupsdb = mongodb.chats
-
 
 async def is_user(user_id: int) -> bool:
     user = await usersdb.find_one({"user_id": user_id})
@@ -30,6 +28,9 @@ async def add_user(user_id: int):
     return await usersdb.insert_one({"user_id": user_id})   
 
  
+##################### GROUPS DB #####################
+groupsdb = mongodb.groups
+
 async def is_group(chat_id: int) -> bool:
     group = await groupsdb.find_one({"chat_id": chat_id})
     if not group:
@@ -101,7 +102,7 @@ async def new_chat(_, message):
     for member in message.new_chat_members:
         if member.id == bot_id:
             if not await is_group(chat_id):
-               return await add_group(chat_id)
+               await add_group(chat_id)
             await message.reply(
                 "  Thanks for add me to your group ! "
             )
