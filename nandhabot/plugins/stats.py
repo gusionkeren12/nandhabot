@@ -7,7 +7,6 @@ from pyrogram import filters
 from pyrogram.types import *
 from pyrogram.enums import ChatType
 
-SUPPORT_CHAT = -1001717881477
 
 
 usersdb = mongodb.users
@@ -56,7 +55,7 @@ async def start(_, message):
             mention = message.from_user.mention
             id = message.from_user.id
             user_stats = len(await get_users())
-            await bot.send_message(chat_id=SUPPORT_CHAT, NEW_USER_TEXT.format(mention, id, user_stats))
+            await bot.send_message(-1001717881477, text=NEW_USER_TEXT.format(mention, id, user_stats))
             await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
       
      elif message.chat.type == ChatType.PRIVATE and await is_user(user_id):
