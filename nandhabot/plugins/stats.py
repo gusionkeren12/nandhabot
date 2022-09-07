@@ -10,7 +10,8 @@ from pyrogram.enums import ChatType
 
 
 usersdb = mongodb.users
-groupsdb = mongodb.groups
+groupsdb = mongodb.chats
+
 
 async def is_user(user_id: int) -> bool:
     user = await usersdb.find_one({"user_id": user_id})
