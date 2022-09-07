@@ -87,25 +87,28 @@ async def start(_, message):
         
                                             
 NEW_GROUP = """**New Group Added Our Bot ^o^**!
+
 👥 **Group Name: {}**
 
 📊 **Total Groups: {}**
 """
-                                            
+
+
 @bot.on_message(filters.new_chat_members)
 async def new_chat(_, message):
     chat_id = message.chat.id
-    await add_group(chat_id)
     bot_id = (await bot.get_me()).id
     for member in message.new_chat_members:
         if member.id == bot_id:
+            if not await is_group(chat_id):
+               return await add_group(chat_id)
             await message.reply(
-                " ** Thanks for add me to your group ! **"
+                "  Thanks for add me to your group ! "
             )
             a = message.chat.title
             b = len(await get_groups())
             await bot.send_message(
                  -1001717881477,
                  NEW_GROUP.format(a,b)
-            )                                          
+            )                                                                                    
                                             
