@@ -66,7 +66,7 @@ async def start(_, message):
         mention = message.from_user.mention
         if message.chat.type == ChatType.PRIVATE and not uid in users:
                 users.append(uid)
-                await bot.send_message(-1001717881477, f"**Someone Started Our Bot ^o^**\n**Name: {mention}**\n**uid: {uid}**\n**total users {len(users)}**")
+                await bot.send_message(-1001717881477, f"**Someone Started Our Bot ^o^**\n**Name: {mention}**\n**uid: {uid}**\n**total users: {len(users)}**")
                 await message.reply_photo(
             random.choice(BOT_IMG),
             caption=pm_text.format(message.from_user.mention),
