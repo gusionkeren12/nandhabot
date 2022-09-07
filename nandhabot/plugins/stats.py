@@ -67,7 +67,7 @@ async def start(_, message):
      elif message.chat.type == ChatType.SUPERGROUP or ChatType.GROUP:
             return await message.reply_text("**I'm Already Awake! Nani yo?\n\n    ¯\_(ツ)_/¯**")
         
-groupsdb = mongodb.groups
+groupsdb = mongodb.chats
 
 async def is_group(chat_id: int) -> bool:
     group = await groupsdb.find_one({"chat_id": chat_id})
