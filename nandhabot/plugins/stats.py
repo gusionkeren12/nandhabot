@@ -10,6 +10,7 @@ from pyrogram.enums import ChatType
 
 
 usersdb = mongodb.users
+groupsdb = mongodb.groups
 
 async def is_user(user_id: int) -> bool:
     user = await usersdb.find_one({"user_id": user_id})
@@ -29,6 +30,24 @@ async def add_user(user_id: int):
         return
     return await usersdb.insert_one({"user_id": user_id})   
 
+ 
+async def is_group(chat_id: int) -> bool:
+    group = await groupsdb.find_one({"chat_id": chat_id})
+    if not group:
+        return False
+    return True
+
+async def get_groups() -> list:
+    groups_list = []
+    async for group in groupsdb.find({"chat_id": {"$gt": 0}}):
+        groups_list.append(group)
+    return groups_list
+    
+async def add_group(chat_id: int):
+    is_served = await is_group(chat_id)
+    if is_served:
+        return
+    return await groupsdb.insert_one({"chat_id": chat_id})   
 
 NEW_USER_TEXT = """**Someone Started Our Bot ヘ(^_^)ヘ**
 
@@ -67,25 +86,6 @@ async def start(_, message):
      elif message.chat.type == ChatType.SUPERGROUP or ChatType.GROUP:
             return await message.reply_text("**I'm Already Awake! Nani yo?\n\n    ¯\_(ツ)_/¯**")
         
-groupsdb = mongodb.chats
-
-async def is_group(chat_id: int) -> bool:
-    group = await groupsdb.find_one({"chat_id": chat_id})
-    if not group:
-        return False
-    return True
-
-async def get_groups() -> list:
-    groups_list = []
-    async for group in groupsdb.find({"chat_id": {"$gt": 0}}):
-        groups_list.append(group)
-    return groups_list
-    
-async def add_group(chat_id: int):
-    is_served = await is_group(chat_id)
-    if is_served:
-        return
-    return await groupsdb.insert_one({"chat_id": chat_id})  
                                             
 NEW_GROUP = """**New Group Added Our Bot ^o^**!
 👥 **Group Name: {}**
