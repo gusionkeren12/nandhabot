@@ -13,6 +13,9 @@ from nandhabot import bot, SUPPORT_CHAT, BOT_USERNAME
 from nandhabot.plugins.dev_user import get_readable_time
 from pyrogram.types import CallbackQuery
 
+BOT_IMG = ("https://telegra.ph/file/239a076932e0a047f715e.jpg",
+                       "https://telegra.ph/file/2cb897995025e09fa14c9.jpg")
+
 
 @bot.on_message(filters.command("alive"))
 async def alive(_, m: Message):
