@@ -40,51 +40,7 @@ async def alive(_, m: Message):
     await msg.edit_text(text=(pm_caption),disable_web_page_preview=True)
 
            
-BOT_IMG = [ "https://telegra.ph/file/b3fbf990e0b67ede241a3.jpg",
-           "https://telegra.ph/file/94865dae2576a2fa52732.jpg" ]
-pm_text = """
-Hello! Dear {}
 
-I'm An Anime themed Smart VegetaRobot make your group's
-joyful Using /help commands!!
-
-powered by @NandhaBots
-"""
-
-buttons = [
-        [
-            InlineKeyboardButton(
-                "ADD ME", url="t.me/VegetaRobot?startgroup=true"),
-            InlineKeyboardButton(
-                "HELP", callback_data='help_back'),]]
-
-users = []
-
-@bot.on_message(filters.command(["start"], ["/", ".", "?"]))
-async def start(_, message):
-        uid = message.from_user.id
-        mention = message.from_user.mention
-        if message.chat.type == ChatType.PRIVATE and not uid in users:
-                users.append(uid)
-                await bot.send_message(-1001717881477, f"**Someone Started Our Bot ^o^**\n**Name: {mention}**\n**uid: {uid}**\n**total users: {len(users)}**")
-                await message.reply_photo(
-            random.choice(BOT_IMG),
-            caption=pm_text.format(message.from_user.mention),
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-        elif message.chat.type == ChatType.PRIVATE and uid in users:
-            await message.reply_photo(
-            random.choice(BOT_IMG),
-            caption=pm_text.format(message.from_user.mention),
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-        else: 
-              await message.reply_photo(
-            random.choice(BOT_IMG),
-            caption=pm_text.format(message.from_user.mention),
-            reply_markup=InlineKeyboardMarkup(buttons),
-        )
-            
    
 HELP_TEXT = """
 **Hello Dear**!
