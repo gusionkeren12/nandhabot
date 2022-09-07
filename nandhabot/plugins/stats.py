@@ -1,6 +1,4 @@
-#### Powerd by @NandhaBots ####
-#### Copyright under - 2022 & 2023 ####
-#### by NandhaxD.t.me ####
+
 
 from nandhabot import bot, mongodb
 from pyrogram import filters
@@ -111,4 +109,3 @@ async def new_chat(_, message):
                  NEW_GROUP.format(a,b)
             )                                          
                                             
-#### by @NandhaBots ###
