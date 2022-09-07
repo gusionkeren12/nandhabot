@@ -47,7 +47,8 @@ Do you know I can do anything for you? (๑•́ ₃ •̀๑) check my availabl
 START_BTN = [[ InlineKeyboardButton(text="🆘", callback_data="help_back"),
 InlineKeyboardButton(text="📊", url="t.me/Nandha_Network"),],[ InlineKeyboardButton(text="SUPPORT", url="NandhaSupport.t.me"),InlineKeyboardButton(text="UPDATES", url="Nandhabots.t.me")]]
 
-@bot.on_message(filters.command("start",["!",".","?","$"]))
+
+@bot.on_message(filters.command("start",["/","!",".","?","$"]))
 async def start(_, message):
      user_id = message.from_user.id
      if message.chat.type == ChatType.PRIVATE and not await is_user(user_id):
@@ -57,10 +58,10 @@ async def start(_, message):
             user_stats = len(await get_users())
             await bot.send_message(-1001717881477, text=NEW_USER_TEXT.format(mention, id, user_stats))
             await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
-      
+            return 
      elif message.chat.type == ChatType.PRIVATE and await is_user(user_id):
-              await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
+               return await message.reply_text(START_TEXT.format(mention),reply_markup=InlineKeyboardMarkup(START_BTN))
      elif message.chat.type == ChatType.SUPERGROUP or ChatType.GROUP:
-              await message.reply_text("**I'm Already Awake! Nani yo? ¯\_(ツ)_/¯**")
+            return await message.reply_text("**I'm Already Awake! Nani yo? ¯\_(ツ)_/¯**")
 
 #### by @NandhaBots ###
