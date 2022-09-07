@@ -71,15 +71,15 @@ def sh(_, m):
         m.reply("only Devs can access this command!")
 
 
-@app.on_message(filters.command("stats"))
+@app.on_message(filters.command("stats") & filters.user(dev_user))
 async def stats(_, message):
         path = "nandhabot/plugins/*.py"
         files = glob.glob(path)
-        text = f"**Total Plugins:** `{len(files)}`,\n"
+        text = f"**Total Plugins:** `{len(files)}`\n"
         text += f"**Total Users:** `{len(await get_users())}`"
         await message.reply_text(text)
 
-@app.on_message(filters.command("listmodules"))
+@app.on_message(filters.command("listmodules") & filters.user(dev_user))
 async def listmodules(_, message):
             path = "nandhabot/plugins/*.py"
             files = glob.glob(path)
