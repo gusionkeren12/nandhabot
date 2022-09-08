@@ -33,8 +33,11 @@ CMD = "~"
 TEMP_DOWNLOAD_DIRECTORY = "./" 
 
 ###Mogondb Functions # You can use pymongo module also
-MONGO = "mongodb+srv://Rahulsburi:aaaa1111@cluster0.iij9cx9.mongodb.net/?retryWrites=true&w=majority" # mongo db url here
-mongo = MongoClient(MONGO)
+MONGO = "mongodb+srv://Rahulsburi:aaaa1111@cluster0.iij9cx9.mongodb.net/?retryWrites=true&w=majority"
+
+DB_URL = "mongodb+srv://Bave999:Bave999@cluster0.1aheaa1.mongodb.net/?retryWrites=true&w=majority"
+# mongo db url here
+mongo = MongoClient(DB_URL)
 mongodb = mongo.bot 
 
 #main vars set your deploying app
