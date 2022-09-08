@@ -52,11 +52,11 @@ def get_readable_time(seconds: int) -> str:
 @bot.on_message(filters.command("addsudo"))
 async def addsudo(_, message):
             if message.from_user.id in dev_user:
-            user_id = message.reply_to_message.from_user.id
-            msg = await message.reply("**Adding Sudo**")
-            mention = await get_users(user_id)
-            await add_sudo(user_id)
-            await msg.edit(f"**Successfully Added Sudo {mention}**")
+                  user_id = message.reply_to_message.from_user.id
+                  msg = await message.reply("**Adding Sudo**")
+                  mention = await get_users(user_id)
+                  await add_sudo(user_id)
+                  await msg.edit(f"**Successfully Added Sudo {mention}**")
            
 
 @bot.on_message(filters.command('devlist'))
