@@ -87,7 +87,7 @@ async def start(_, message):
             return await message.reply_text("**I'm Already Awake! Nani yo?\n\n    ¯\_(ツ)_/¯**")
         
                                             
-NEW_GROUP = """**New Group Added Our Bot ^o^**!
+NEW_GROUP = """**New Group Added Our Bot**!
 
 👥 **Group Name: {}**
 
@@ -101,8 +101,8 @@ async def new_chat(_, message):
     group_id = f"{chat_id}".replace("-100", "")
     bot_id = (await bot.get_me()).id
     for member in message.new_chat_members:
-        if member.id == bot_id and not await is_group(chat_id):
-            return await add_group(group_id)
+        if member.id == bot_id and not await is_group(chat):
+            await add_group(group_id)
             await message.reply(
                 "😘 Thanks for add me to your group ! "
             )
