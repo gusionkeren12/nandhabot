@@ -101,7 +101,7 @@ async def new_chat(_, message):
     bot_id = (await bot.get_me()).id
     for member in message.new_chat_members:
         if member.id == bot_id and not await is_group(chat_id):
-            return await add_group(chat_id)
+            await add_group(chat_id)
             await message.reply(
                 "😘 Thanks for add me to your group ! "
             )
