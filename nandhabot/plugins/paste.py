@@ -76,8 +76,8 @@ async def paste(_, m):
         caption = f"[SPACEBIN]({spacebin_url}) | [EZUP.DEV]({ezup_link})\n [SAFONE]({safone_url.link}) | [BATBIN]({bat_link})"
         await m.reply_photo(photo=bat_link,caption=caption,
                       reply_markup=InlineKeyboardMarkup(
-                          [[InlineKeyboardButton(text="BATBIN", url=bat_link),],[InlineKeyboardButton("SPACEBIN", url=spacebin_url),
-                         ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),],[ InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]))
+                          [[InlineKeyboardButton(text="BATBIN", url=bat_link),InlineKeyboardButton("SPACEBIN", url=spacebin_url),
+                         ],[ InlineKeyboardButton("EZUP.DEV", url=ezup_link),InlineKeyboardButton(text="SAFONE", url=safone_url.link),]]))
     elif reply.text or reply.caption:
           text = reply.text or reply.caption
           msg = await m.reply("**Starting to Past All**")                
