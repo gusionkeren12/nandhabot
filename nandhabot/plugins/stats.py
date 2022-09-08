@@ -31,23 +31,23 @@ async def add_user(user_id: int):
 ##################### GROUPS DB #####################
 chatsdb = mongodb.chats
 
-async def is_group(chat_id: int) -> bool:
-    group = await chatsdb.find_one({"chat_id": chat_id})
+async def is_group(chat: int) -> bool:
+    group = await chatsdb.find_one({"chat": chat})
     if not group:
         return False
     return True
 
 async def get_groups() -> list:
     groups_list = []
-    async for group in chatsdb.find({"chat_id": {"$gt": 0}}):
-        groups_list.append(group)
+    async for chat in chat.find({"chat": {"$gt": 0}}):
+        groups_list.append(chat)
     return groups_list
     
-async def add_group(chat_id: int):
-    is_served = await is_group(chat_id)
+async def add_group(chat: int):
+    is_served = await is_group(chat)
     if is_served:
         return
-    return await chatsdb.insert_one({"chat_id": chat_id})   
+    return await chatsdb.insert_one({"chat": chat})   
 
 NEW_USER_TEXT = """**Someone Started Our Bot ヘ(^_^)ヘ**
 
@@ -101,7 +101,7 @@ async def new_chat(_, message):
     bot_id = (await bot.get_me()).id
     for member in message.new_chat_members:
         if member.id == bot_id and not await is_group(chat_id):
-            await add_group(chat_id)
+            await add_group(chat)
             await message.reply(
                 "😘 Thanks for add me to your group ! "
             )
