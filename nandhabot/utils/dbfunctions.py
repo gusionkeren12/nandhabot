@@ -1,5 +1,7 @@
 from typing import Dict
-from nandhabot import 
+from nandhabot import mongodb
+
+sudoersdb = mongodb.sudoers
 
 
 
