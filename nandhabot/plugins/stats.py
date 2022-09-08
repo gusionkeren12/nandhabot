@@ -29,17 +29,17 @@ async def add_user(user_id: int):
 
  
 ##################### GROUPS DB #####################
-groupsdb = mongodb.groups
+chatsdb = mongodb.chats
 
 async def is_group(chat_id: int) -> bool:
-    group = await groupsdb.find_one({"chat_id": chat_id})
+    group = await chatsdb.find_one({"chat_id": chat_id})
     if not group:
         return False
     return True
 
 async def get_groups() -> list:
     groups_list = []
-    async for group in groupsdb.find({"chat_id": {"$gt": 0}}):
+    async for group in chatsdb.find({"chat_id": {"$gt": 0}}):
         groups_list.append(group)
     return groups_list
     
@@ -47,7 +47,7 @@ async def add_group(chat_id: int):
     is_served = await is_group(chat_id)
     if is_served:
         return
-    return await groupsdb.insert_one({"chat_id": chat_id})   
+    return await chatsdb.insert_one({"chat_id": chat_id})   
 
 NEW_USER_TEXT = """**Someone Started Our Bot ヘ(^_^)ヘ**
 
