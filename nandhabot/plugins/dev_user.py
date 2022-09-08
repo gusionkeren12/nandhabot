@@ -11,6 +11,7 @@ import pyrogram
 StartTime = time.time()
 import traceback
 from subprocess import getoutput as run
+from nandhabot.utils.dbfunctions import add_sudo 
 from nandhabot.plugins.stats import get_users, get_groups
 from pyrogram import filters
 from pyrogram.types import (
@@ -47,6 +48,16 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
     return ping_time
                   
+
+@bot.on_message(filters.command("addsudo"))
+async def addsudo(_, message):
+            if message.from_user.id in dev_user:
+            user_id = message.reply_to_message.from_user.id
+            msg = await message.reply("**Adding Sudo**")
+            mention = await get_users(user_id)
+            await add_sudo(user_id)
+            await msg.edit(f"**Successfully Added Sudo {mention}**")
+           
 
 @bot.on_message(filters.command('devlist'))
 async def devlist(_, m):
