@@ -98,11 +98,11 @@ NEW_GROUP = """**New Group Added Our Bot**!
 @bot.on_message(filters.new_chat_members)
 async def new_chat(_, message):
     chat_id = message.chat.id
-    group_id = f"{chat_id}".replace("-100", "")
+    chat = str(chat_id).replace("-100", "")
     bot_id = (await bot.get_me()).id
     for member in message.new_chat_members:
-        if member.id == bot_id and not await is_group(group_id):
-            await add_group(group_id)
+        if member.id == bot_id and not await is_group(chat):
+            await add_group(chat)
             await message.reply(
                 "😘 Thanks for add me to your group ! "
             )
