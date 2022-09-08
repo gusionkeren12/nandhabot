@@ -39,7 +39,7 @@ async def is_group(chat: int) -> bool:
 
 async def get_groups() -> list:
     groups_list = []
-    async for chat in chat.find({"chat": {"$gt": 0}}):
+    async for chat in chatsdb.find({"chat": {"$gt": 0}}):
         groups_list.append(chat)
     return groups_list
     
