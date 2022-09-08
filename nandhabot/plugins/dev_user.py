@@ -54,7 +54,7 @@ async def addsudo(_, message):
             if message.from_user.id in dev_user:
                   user_id = message.reply_to_message.from_user.id
                   msg = await message.reply("**Adding Sudo**")
-                  mention = (await get_chat(user_id)).mention
+                  mention = (await bot.get_users(user_id)).mention
                   await add_sudo(user_id)
                   await msg.edit(f"**Successfully Added Sudo {mention}**")
            
