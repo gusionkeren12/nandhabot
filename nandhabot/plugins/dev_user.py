@@ -49,24 +49,33 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
                   
 @bot.on_message(filters.command(["rsudo","removesudo"]))
-async def addsudo(_, message):
-            if message.from_user.id in dev_user:
-                  user_id = message.reply_to_message.from_user.id
+async def removesudo(_, message):
+            if not message.reply_to_message:
+                   return await message.reply("**Reply to Someone.**")
+            elif message.from_user.id in dev_user and not user_id in (await get_sudoers()):
+                   return await message.reply("**The User is Not Sudo**.")
+            elif message.from_user.id in dev_user:
+                   
                   msg = await message.reply("**Removeing. Sudo**")
                   mention = (await bot.get_users(user_id)).mention
                   await remove_sudo(user_id)
                   await msg.edit(f"**Successfully Removed Sudo {mention}**")
            
-@bot.on_message(filters.command("addsudo"))
-async def removesudo(_, message):
-            if message.from_user.id in dev_user:
-                  user_id = message.reply_to_message.from_user.id
-                  msg = await message.reply("**Adding Sudo**")
+
+
+@bot.on_message(filters.command(["addsudo","addsupport"]))
+async def addsudo(_, message):
+            if not message.reply_to_message:
+                   return await message.reply("**Reply to Someone.**")
+            elif message.from_user.id in dev_user and user_id in (await get_sudoers()):
+                   return await message.reply("**The User is Already Sudo**.")
+            elif message.from_user.id in dev_user:
+                   
+                  msg = await message.reply("**Removeing. Sudo**")
                   mention = (await bot.get_users(user_id)).mention
                   await add_sudo(user_id)
                   await msg.edit(f"**Successfully Added Sudo {mention}**")
            
-
 @bot.on_message(filters.command('devlist'))
 async def devlist(_, m):
       if m.from_user.id in dev_user:
