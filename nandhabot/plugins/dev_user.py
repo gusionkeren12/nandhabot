@@ -69,8 +69,8 @@ async def sudolist(_, message):
                   user_ids = (await get_sudoers())
                   sudo_text = ""
                   for name in user_ids:
-                           await bot.get_users(user_ids)
-                           sudo_text = f"**• {name.mention}**"
+                           ok = await bot.get_users(user_ids)
+                           sudo_text = f"**• {ok.mention}**"
                   await message.reply(sudo_text)
 
 @bot.on_message(filters.command(["addsudo","addsupport"]))
