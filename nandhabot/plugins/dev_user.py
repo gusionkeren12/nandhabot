@@ -68,7 +68,7 @@ async def sudolist(_, message):
            else:
                   user_ids = (await get_sudoers())
                   sudo_text = ""
-                  for name in user_ids
+                  for name in user_ids:
                            await bot.get_users(user_ids)
                            sudo_text = f"**• {name.mention}**"
                   await message.reply(sudo_text)
