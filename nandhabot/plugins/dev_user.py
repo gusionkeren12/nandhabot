@@ -52,7 +52,7 @@ def get_readable_time(seconds: int) -> str:
 async def removesudo(_, message):
             if not message.reply_to_message:
                    return await message.reply("**Reply to Someone.**")
-            elif message.from_user.id in dev_user and not user_id in (await get_sudoers()):
+            elif message.from_user.id in dev_user and not message.reply_to_message.from_user.id in (await get_sudoers()):
                    return await message.reply("**The User is Not Sudo**.")
             elif message.from_user.id in dev_user:
                    
@@ -67,7 +67,7 @@ async def removesudo(_, message):
 async def addsudo(_, message):
             if not message.reply_to_message:
                    return await message.reply("**Reply to Someone.**")
-            elif message.from_user.id in dev_user and user_id in (await get_sudoers()):
+            elif message.from_user.id in dev_user and message.reply_to_message.from_user.id in (await get_sudoers()):
                    return await message.reply("**The User is Already Sudo**.")
             elif message.from_user.id in dev_user:
                    
