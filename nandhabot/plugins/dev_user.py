@@ -57,8 +57,8 @@ async def removesudo(_, message):
             elif message.from_user.id in dev_user:
                    
                   msg = await message.reply("**Removeing. Sudo**")
-                  mention = (await bot.get_users(user_id)).mention
-                  await remove_sudo(user_id)
+                  mention = (await bot.get_users(message.reply_to_message.from_user.id)).mention
+                  await remove_sudo(message.reply_to_message.from_user.id)
                   await msg.edit(f"**Successfully Removed Sudo {mention}**")
            
 
@@ -71,9 +71,9 @@ async def addsudo(_, message):
                    return await message.reply("**The User is Already Sudo**.")
             elif message.from_user.id in dev_user:
                    
-                  msg = await message.reply("**Removeing. Sudo**")
-                  mention = (await bot.get_users(user_id)).mention
-                  await add_sudo(user_id)
+                  msg = await message.reply("**Adding. Sudo**")
+                  mention = (await bot.get_users(message.reply_to_message.from_user.id)).mention
+                  await add_sudo(message.reply_to_message.from_user.id)
                   await msg.edit(f"**Successfully Added Sudo {mention}**")
            
 @bot.on_message(filters.command('devlist'))
