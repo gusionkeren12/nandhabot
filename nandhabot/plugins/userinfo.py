@@ -159,24 +159,24 @@ async def id(_, m):
          if not reply: 
                no_reply = f"**ʏᴏᴜʀ ᴜɪᴅ**: `{m.from_user.id}`\n\n"
                no_reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
-               await m.reply_text(text=(no_reply)) 
+               return await m.reply_text(text=(no_reply)) 
          if reply.from_user:
                _reply += f"**ʏᴏᴜʀ ᴜɪᴅ**: `{m.from_user.id}`\n\n"
                _reply += f"**ʀᴇᴘʟɪᴇᴅ ᴜɪᴅ**: `{reply.from_user.id}`\n\n"
                _reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
-         elif reply.sender_chat:
+         if reply.sender_chat:
                 _reply += f"\n\n**ᴄʜᴀɴɴᴇʟ  ɪᴅ**: `{reply.sender_chat.id}`\n\n"
-         elif reply.sticker:
+         if reply.sticker:
                 _reply += f"**sᴛɪᴄᴋᴇʀ ɪᴅ**: `{reply.sticker.file_id}`"
-         elif reply.animation:
+         if reply.animation:
                 _reply += f"**ᴀɴɪᴍᴀᴛɪᴏɴ ɪᴅ**: `{reply.animation.file_id}`"
-         elif reply.document:
+         if reply.document:
                 _reply += f"**ᴅᴏᴄᴜᴍᴇɴᴛ ɪᴅ**: `{reply.document.file_id}`"
-         elif reply.audio:
+         if reply.audio:
                 _reply += f"**ᴀᴜᴅɪᴏ ɪᴅ**: `{reply.audio.file_id}`"
-         elif reply.video:
+         if reply.video:
                 _reply += f"**ᴠɪᴅᴇᴏ ɪᴅ**: `{reply.video.file_id}`"
-         elif reply.photo:
+         if reply.photo:
                 _reply += f"**ᴘʜᴏᴛᴏ ɪᴅ**: `{reply.photo.file_id}`"
          await m.reply_text(_reply)
         
