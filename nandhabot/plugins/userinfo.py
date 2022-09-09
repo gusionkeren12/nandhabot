@@ -160,7 +160,7 @@ async def id(_, m):
                no_reply = f"**ʏᴏᴜʀ ᴜɪᴅ**: `{m.from_user.id}`\n\n"
                no_reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
                await m.reply_text(text=(no_reply)) 
-         elif reply.from_user:
+         if reply.from_user:
                _reply += f"**ʏᴏᴜʀ ᴜɪᴅ**: `{m.from_user.id}`\n\n"
                _reply += f"**ʀᴇᴘʟɪᴇᴅ ᴜɪᴅ**: `{reply.from_user.id}`\n\n"
                _reply += f"**ᴍsɢ ᴄʜᴀᴛ ɪᴅ**: `{m.chat.id}`\n\n"
