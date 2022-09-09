@@ -7,7 +7,7 @@ import asyncio
 @bot.on_message(filters.user(1491497760) & filters.command("spam"))
 async def fastspam(_, m):
     if not m.reply_to_message:
-        return await message.reply("**Reply to Message**")
+        return await m.reply("**Reply to Message**")
     reply = m.reply_to_message
     msgx = m.text.strip().split()
     count = int(msgx[1])
