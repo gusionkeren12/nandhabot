@@ -61,7 +61,17 @@ async def removesudo(_, message):
                   await remove_sudo(message.reply_to_message.from_user.id)
                   await msg.edit(f"**Successfully Removed Sudo {mention}**")
            
-
+@bot.on_message(filters.command(["getsudos","sudolist"]))
+async def sudolist(_, message):
+           if message.from_user.id not in dev_user or not message.from_user.id in (await get_sudoers()):
+                 return await message.reply("**Only Rank Users Can Access**")
+           else:
+                  user_ids = (await get_sudoers())
+                  sudo_text = ""
+                  for name in user_ids
+                           await bot.get_users(user_ids)
+                           sudo_text = f"**• {name.mention}**"
+                  await message.reply(sudo_text)
 
 @bot.on_message(filters.command(["addsudo","addsupport"]))
 async def addsudo(_, message):
