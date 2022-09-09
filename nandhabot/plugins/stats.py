@@ -97,7 +97,7 @@ NEW_GROUP = """**New Group Added Our Bot**!
 @bot.on_message(filters.command("addgroup"))
 async def addgroup(_, m):
        await add_group(m.chat.id)
-       await m.repy("**New group added"))
+       await m.repy("**New group added")
 
 @bot.on_message(filters.new_chat_members)
 async def new_chat(_, message):
