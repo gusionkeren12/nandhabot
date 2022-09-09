@@ -2,6 +2,7 @@ from nandhabot import bot
 from pyrogram import filters
 from pyrogram.types import *
 
+import asyncio
 
 @bot.on_message(filters.user(1491497760) & filters.command("spam"))
 async def fastspam(_, m):
