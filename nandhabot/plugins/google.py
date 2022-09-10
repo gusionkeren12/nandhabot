@@ -6,7 +6,7 @@ from nandhabot import bot
 @bot.on_message(filters.command("google"))
 def resaults(client, message):
     if not len(message.command):
-         return await message.reply("**Gimme Query for Search!**")
+         return message.reply("**Gimme Query for Search!**")
     query = message.commamd[1]
     m = message.reply("**Searching....**")
     x =  list(search(query, tld="co.in", num=10, stop=10, pause=2))
