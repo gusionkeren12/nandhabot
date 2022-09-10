@@ -1,3 +1,6 @@
+
+import googlesearch
+
 from googlesearch import search
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
