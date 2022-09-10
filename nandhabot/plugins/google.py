@@ -74,8 +74,8 @@ def resaults(client, message):
                 ],
                 [
                     InlineKeyboardButton(
-                        text="By Nandha",
-                        url="t.me/nandhabots,
+                        text="By NandhaBots",
+                        url="t.me/nandhabots",
                     ),
                     InlineKeyboardButton(
                         text="TrunksRobot",
